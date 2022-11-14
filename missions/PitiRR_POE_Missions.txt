@@ -9,57 +9,115 @@ poe_local_hegemon_missions = {
 	}
 
 	poe_local_power = {
-		icon = 
+		icon = mission_assemble_an_army
 		required_missions = {  }
 		position = 1
 		
-		provinces_to_highlight = {
-			#area = template_area
-			#NOT = { owned_by = ROOT }
-		}
-		
 		trigger = {
-			#template_area = {
-			#	type = all
-			#	owned_by = ROOT
-			#}
+			army_tradition = 75
+			army_size_percentage = 1
+			army_strength = { #is 3/4 as strong as the turks
+				who = TUR
+				value = 0.75
+			}
 		}
 		
 		effect = {
-			#next_template_area = {
-			#	limit = {
-			#		NOT = { is_core = ROOT }
-			#		NOT = {  is_permanent_claim = ROOT }
-			#	}
-			#	add_permanent_claim = ROOT
-			#}
+			add_country_modifier = {
+				name = poe_generation_war
+				duration = 18250 #50 years
+			}
+			add_army_professionalism = 0.05
 		}
 	}
 	poe_local_trade_power = {
-		icon = template_mission_icon
+		icon = mission_dominate_home_trade_node
 		required_missions = { poe_local_power }
 		position = 2
 		
 		provinces_to_highlight = {
-			#area = template_area
-			#NOT = { owned_by = ROOT }
+			OR = {
+				province_id = 1322 #Crimea trade node
+				province_id = 1320 #Constantinople trade node
+			}
 		}
 		
 		trigger = {
-			#template_area = {
-			#	type = all
-			#	owned_by = ROOT
-			#}
+			1322 = {
+				has_merchant = ROOT
+				is_strongest_trade_power = ROOT
+			}
+			1320 = {
+				has_merchant = ROOT
+				is_strongest_trade_power = ROOT
+			}
 		}
 		
 		effect = {
-			#next_template_area = {
-			#	limit = {
-					NOT = { is_core = ROOT }
-					NOT = {  is_permanent_claim = ROOT }
-			#	}
-			#	add_permanent_claim = ROOT
-			#}
+			hidden_effect = {
+				home_trade_node_effect_scope = {
+					random_trade_node_member_province = {
+						limit = {
+							owned_by = ROOT
+						}
+						save_event_target_as = reward_province
+					}
+					random_trade_node_member_province = {
+						limit = {
+							owned_by = ROOT
+							is_capital = yes
+						}
+						save_event_target_as = reward_province
+					}
+					random_trade_node_member_province = {
+						limit = {
+							owned_by = ROOT
+							development = CAPITAL
+							is_capital = no
+						}
+						save_event_target_as = reward_province
+					}
+					random_trade_node_member_province = {
+						limit = {
+							owned_by = ROOT
+							development = CAPITAL
+							is_capital = no
+							development = 20
+						}
+						save_event_target_as = reward_province
+					}
+					random_trade_node_member_province = {
+						limit = {
+							owned_by = ROOT
+							development = CAPITAL
+							is_capital = no
+							development = 25
+						}
+						save_event_target_as = reward_province
+					}
+					random_trade_node_member_province = {
+						limit = {
+							owned_by = ROOT
+							development = CAPITAL
+							is_capital = no
+							development = 30
+						}
+						save_event_target_as = reward_province
+					}
+				}
+			}
+			if = {
+				limit = { has_saved_event_target = reward_province }
+				event_target:reward_province = {
+					add_province_modifier = {
+						name = "dominant_trade_hub"
+						duration = -1
+					}
+				}
+			}
+			else = {
+				custom_tooltip = dominant_home_node_reward_tooltip
+			}
 		}
 	}
 }
@@ -73,84 +131,124 @@ poe_conquer_west_missions = {
 		tag = POE
 	}
 	poe_conquer_central_anatolia = {
-		icon = template_mission_icon
+		icon = mission_central_asian_city
 		required_missions = { poe_unify_the_realm }
 		position = 2
 		
 		provinces_to_highlight = {
-			#area = template_area
-			#NOT = { owned_by = ROOT }
+			OR = {
+				area = rum_area
+				area = ankara_area
+			}
+			NOT = { owned_by = ROOT }
 		}
 		
 		trigger = {
-			#template_area = {
-			#	type = all
-			#	owned_by = ROOT
-			#}
+			rum_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			ankara_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		
 		effect = {
-			#next_template_area = {
-			#	limit = {
-			#		NOT = { is_core = ROOT }
-			#		NOT = {  is_permanent_claim = ROOT }
-			#	}
-			#	add_permanent_claim = ROOT
-			#}
+			hudavendigar_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			aydin_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 	poe_conquer_west_anatolia = {
-		icon = template_mission_icon
+		icon = mission_pf_map_table
 		required_missions = { poe_conquer_central_anatolia }
 		position = 3
 		
 		provinces_to_highlight = {
-			#area = template_area
-			#NOT = { owned_by = ROOT }
+			OR = {
+				area = hudavendigar_area
+				area = aydin_area
+			}
+			NOT = { owned_by = ROOT }
 		}
 		
 		trigger = {
-			#template_area = {
-			#	type = all
-			#	owned_by = ROOT
-			#}
+			hudavendigar_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			aydin_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		
 		effect = {
-			#next_template_area = {
-			#	limit = {
-			#		NOT = { is_core = ROOT }
-			#		NOT = {  is_permanent_claim = ROOT }
-			#	}
-			#	add_permanent_claim = ROOT
-			#}
+			country_event = {
+				id = pitirr_flavor_poe.3 #Pontic Greeks go out of hiding
+				days = 30
+				random = 15
+			}
+			151 = { #Constantinople
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 	poe_conquer_greece = {
-		icon = template_mission_icon
+		icon = mission_unite_home_region
 		required_missions = { poe_dawn_of_a_new_empire }
 		position = 5
 		
 		provinces_to_highlight = {
-			#area = template_area
-			#NOT = { owned_by = ROOT }
+			OR = {
+				area = thrace_area
+				area = northern_greece_area
+				area = morea_area
+				area = macedonia_area
+			}
+			NOT = { owned_by = ROOT }
 		}
 		
 		trigger = {
-			#template_area = {
-			#	type = all
-			#	owned_by = ROOT
-			#}
+			thrace_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			northern_greece_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			morea_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			macedonia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		
 		effect = {
-			#next_template_area = {
-			#	limit = {
-			#		NOT = { is_core = ROOT }
-			#		NOT = {  is_permanent_claim = ROOT }
-			#	}
-			#	add_permanent_claim = ROOT
-			#}
+			add_country_modifier = {
+				name = poe_greeks_unified
+				duration = -1
+			}
 		}
 	}
 }
@@ -164,7 +262,7 @@ poe_central_missions = {
 		tag = POE
 	}
 	poe_unify_the_realm = {
-		icon = template_mission_icon
+		icon = mission_restore_faith_in_the_throne
 		required_missions = {  }
 		position = 1
 		
@@ -213,13 +311,15 @@ poe_central_missions = {
 		}
 	}
 	poe_worthy_capital = {
-		icon = template_mission_icon
+		icon = mission_guilds_of_barcelona
 		required_missions = { poe_unify_the_realm }
 		position = 3
 		
 		provinces_to_highlight = {
-			province_id = 330
-			province_id = 
+			OR = {
+				province_id = 330
+				is_capital_of = ROOT
+			}
 		}
 		
 		trigger = {
@@ -238,20 +338,33 @@ poe_central_missions = {
 		}
 		
 		effect = {
+			add_prestige = 25
 			country_event = { 
-				#TODO
 				id = pitirr_flavor_poe.2
-				tooltip = pitirr_flavor_poe_2_tooltip
 			}
 		}
 	}
 	poe_dawn_of_a_new_empire = {
-		icon = template_mission_icon
-		required_missions = { poe_worthy_capital }
+		icon = mission_the_third_rome
+		required_missions = { poe_worthy_capital poe_conquer_azov_sea poe_conquer_west_anatolia }
 		position = 4
-		
+
+		provinces_to_highlight = {
+			OR {
+				AND = {
+					province_id = 151 #Constantinople
+					NOT = { owned_by = ROOT }
+				}
+				is_capital_of = ROOT
+			}
+		}
 		trigger = {
-			owns_core_province = 151 #Constanstinople
+			OR = {
+				owns_core_province = 151 #Constanstinople
+				capital_scope = { #...Or eclipse Constantinople!
+					higher_development_than = 151
+				}
+			}
 		}
 		
 		effect = {
@@ -286,57 +399,81 @@ poe_central_missions = {
 		}
 	}
 	poe_conquer_all_anatolia = {
-		icon = template_mission_icon
+		icon = mission_steppe_warriors
 		required_missions = { poe_dawn_of_a_new_empire }
 		position = 5
 		
 		provinces_to_highlight = {
-			#area = template_area
-			#NOT = { owned_by = ROOT }
+			region = anatolia_region
+			NOT = { owned_by = ROOT }
 		}
 		
 		trigger = {
-			#template_area = {
-			#	type = all
-			#	owned_by = ROOT
-			#}
+			anatolia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		
 		effect = {
-			#next_template_area = {
-			#	limit = {
-			#		NOT = { is_core = ROOT }
-			#		NOT = {  is_permanent_claim = ROOT }
-			#	}
-			#	add_permanent_claim = ROOT
-			#}
+			syria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			aleppo_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			palestine_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
-	poe_restore_pentarchy = {
-		icon = template_mission_icon
+	poe_conquer_levant = {
+		icon = mission_egyptian_mamluk_soldier
 		required_missions = { poe_conquer_all_anatolia }
 		position = 6
 		
 		provinces_to_highlight = {
-			#area = template_area
-			#NOT = { owned_by = ROOT }
+			OR = {
+				area = syria_area
+				area = aleppo_area
+				area = palestine_area
+			}
+			NOT = { owned_by = ROOT }
 		}
 		
 		trigger = {
-			#template_area = {
-			#	type = all
-			#	owned_by = ROOT
-			#}
+			syria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			aleppo_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			palestine_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		
 		effect = {
-			#next_template_area = {
-			#	limit = {
-			#		NOT = { is_core = ROOT }
-			#		NOT = {  is_permanent_claim = ROOT }
-			#	}
-			#	add_permanent_claim = ROOT
-			#}
+			add_prestige = 50
+			add_country_modifier = {
+    			name = poe_middle_east
+    			duration = -1
+			}
 		}
 	}
 }
@@ -350,115 +487,190 @@ poe_conquer_east_missions = {
 		tag = POE
 	}
 	poe_expand_coastline = {
-		icon = template_mission_icon
-		required_missions = { poe_dawn_of_a_new_empire }
+		icon = mission_retake_ceuta
+		required_missions = { poe_unify_the_realm }
 		position = 2
 		
 		provinces_to_highlight = {
-			#area = template_area
-			#NOT = { owned_by = ROOT }
+			OR = {
+				province_id = 2196 	#Guria
+				province_id = 462 	#Odishi
+				province_id = 1856 	#Abkhazia
+				province_id = 2195 	#Adyghe
+				province_id = 2447 	#Matrega
+				province_id = 285 	#Caffa
+			}
+			NOT = { owned_by = ROOT }
 		}
 		
 		trigger = {
-			#template_area = {
-			#	type = all
-			#	owned_by = ROOT
-			#}
+			POE_expand_the_coast_trigger = yes
 		}
 		
 		effect = {
-			#next_template_area = {
-			#	limit = {
-			#		NOT = { is_core = ROOT }
-			#		NOT = {  is_permanent_claim = ROOT }
-			#	}
-			#	add_permanent_claim = ROOT
-			#}
+			azov_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			zaporizhia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			crimea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			1974 = { #Yedishkul
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 	poe_conquer_azov_sea = {
-		icon = template_mission_icon
+		icon = mission_sca_lit_conquer_crimea
 		required_missions = { poe_expand_coastline }
 		position = 3
 		
 		provinces_to_highlight = {
-			#area = template_area
-			#NOT = { owned_by = ROOT }
+			OR = {
+				area = azov_area
+				area = zaporizhia_area
+				area = crimea_area
+				province_id = 1974 #Yedishkul
+			}
+			NOT = { owned_by = ROOT }
 		}
 		
 		trigger = {
-			#template_area = {
-			#	type = all
-			#	owned_by = ROOT
-			#}
+			azov_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			zaporizhia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			crimea_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1974 = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		effect = {
-			#next_template_area = {
-			#	limit = {
-			#		NOT = { is_core = ROOT }
-			#		NOT = {  is_permanent_claim = ROOT }
-			#	}
-			#	add_permanent_claim = ROOT
-			#}
+			285 = {
+				add_province_modifier = {
+					name = poe_dev_capital_modifier
+					duration = 7300
+				}
+			}
+			add_country_modifier = {
+				name = poe_black_sea_trade
+				duration = 9125 #25 years
+			}
 		}
 	}
 	poe_conquer_georgia = {
-		icon = template_mission_icon
+		icon = mission_develop_the_scandes
 		required_missions = { poe_dawn_of_a_new_empire }
 		position = 5
 		
 		provinces_to_highlight = {
-			#area = template_area
-			#NOT = { owned_by = ROOT }
+			OR = {
+				area = imereti_area
+				area = samtskhe_area
+				area = kartli_kakheti_area
+			}
+			NOT = { owned_by = ROOT }
 		}
 		
 		trigger = {
-			#template_area = {
-			#	type = all
-			#	owned_by = ROOT
-			#}
+			imereti_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			samtskhe_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			kartli_kakheti_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		
 		effect = {
-			#next_template_area = {
-			#	limit = {
-			#		NOT = { is_core = ROOT }
-			#		NOT = {  is_permanent_claim = ROOT }
-			#	}
-			#	add_permanent_claim = ROOT
-			#}
+			armenia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			shirvan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 	poe_conquer_armenia = {
-		icon = template_mission_icon
+		icon = mission_control_the_desh
 		required_missions = { poe_conquer_georgia }
 		position = 6
 		
 		provinces_to_highlight = {
-			#area = template_area
-			#NOT = { owned_by = ROOT }
+			OR = {
+				area = armenia_area
+				area = shirvan_area
+			}
+			NOT = { owned_by = ROOT }
 		}
 		
 		trigger = {
-			#template_area = {
-			#	type = all
-			#	owned_by = ROOT
-			#}
+			armenia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			shirvan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		
 		effect = {
-			#next_template_area = {
-			#	limit = {
-			#		NOT = { is_core = ROOT }
-			#		NOT = {  is_permanent_claim = ROOT }
-			#	}
-			#	add_permanent_claim = ROOT
-			#}
+			circassia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			dagestan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
 		}
 	}
 }
-poe_develop_missions = {
+poe_misc_missions = {
     slot = 5
 	generic = no
 	ai = yes
@@ -466,5 +678,175 @@ poe_develop_missions = {
 	
 	potential = {
 		tag = POE
+	}
+	poe_caffa = {
+		icon = mission_dominate_genoa
+		required_missions = { poe_conquer_azov_sea }
+		position = 4
+				
+		provinces_to_highlight = {
+			province_id = 285 #Caffa
+		}
+
+		trigger = {
+			285 = { #Tbilsi
+				province_has_center_of_trade_of_level = 2
+				has_building = marketplace
+				num_of_times_improved_by_owner = 5
+			}
+		}
+		
+		effect = {
+			285 = {
+				add_province_modifier = {
+					name = poe_caffa_center
+					duration = -1
+				}
+				change_province_name = "Theodosia"
+				rename_capital = "Theodosia"
+			}
+			if = {
+				limit = {
+					285 = {
+						NOT = { culture = pontic_greek }
+					}
+					285 = {
+						culture = pontic_greek
+					}
+				}
+			}
+		}
+	}
+	poe_develop_georgia = {
+		icon = mission_industria_sedera
+		required_missions = { poe_conquer_georgia }
+		position = 6
+				
+		provinces_to_highlight = {
+			OR = {
+				area = imereti_area
+				area = samtskhe_area
+				area = kartli_kakheti_area
+			}
+			OR = {
+				NOT = { is_core = ROOT }
+				NOT = { owned_by = ROOT }
+				NOT = { num_of_times_improved_by_owner = 3 }
+			}
+		}
+
+		trigger = {
+			accepted_culture = georgian
+			423 = { #Tbilsi
+				province_has_center_of_trade_of_level = 3
+				has_building = textile
+				has_building = marketplace
+				num_of_times_improved_by_owner = 10
+			}
+			462 = { #Odishi
+				province_has_center_of_trade_of_level = 2
+				has_building = marketplace
+				num_of_times_improved_by_owner = 5
+			}
+			imereti_area = {
+				owned_by = ROOT
+				is_core = ROOT
+				type = all
+				num_of_times_improved = 3
+			}
+			samtskhe_area = {
+				owned_by = ROOT
+				is_core = ROOT
+				type = all
+				num_of_times_improved = 3
+			}
+			kartli_kakheti_area = {
+				owned_by = ROOT
+				is_core = ROOT
+				type = all
+				num_of_times_improved = 3
+			}
+		}
+		
+		effect = {
+			imereti_area = { 	
+				add_devastation = -100
+				add_prosperity = 100
+				add_local_autonomy = -50
+				add_nationalism = -30
+			}
+			samtskhe_area = {
+				add_devastation = -100
+				add_prosperity = 100
+				add_local_autonomy = -50
+				add_nationalism = -30
+			}
+			kartli_kakheti_area = {
+				add_devastation = -100
+				add_prosperity = 100
+				add_local_autonomy = -50
+				add_nationalism = -30
+			}
+		}
+	}
+	poe_develop_armenia = {
+		icon = mission_valencian_silk
+		required_missions = { poe_conquer_armenia }
+		position = 7
+				
+		provinces_to_highlight = {
+			OR = {
+				area = armenia_area
+				area = shirvan_area
+			}
+			OR = {
+				NOT = { is_core = ROOT }
+				NOT = { owned_by = ROOT }
+				NOT = { num_of_times_improved_by_owner = 3 }
+				NOT = { culture = armenian }
+			}
+		}
+
+		trigger = {
+			accepted_culture = armenian
+			419 = { #Yerevan
+				province_has_center_of_trade_of_level = 3
+				OR = {
+					has_building = farm_estate
+					has_building = soldier_households
+				}
+				has_building = marketplace
+				num_of_times_improved_by_owner = 10
+			}
+			armenia_area = {
+				owned_by = ROOT
+				is_core = ROOT
+				type = all
+				num_of_times_improved = 3
+				culture = armenian
+			}
+			shirvan_area = {
+				owned_by = ROOT
+				is_core = ROOT
+				type = all
+				num_of_times_improved = 3
+				culture = armenian
+			}
+		}
+		
+		effect = {
+			armenia_area = { 	
+				add_devastation = -100
+				add_prosperity = 100
+				add_local_autonomy = -50
+				add_nationalism = -30
+			}
+			shirvan_area = {
+				add_devastation = -100
+				add_prosperity = 100
+				add_local_autonomy = -50
+				add_nationalism = -30
+			}
+		}
 	}
 }

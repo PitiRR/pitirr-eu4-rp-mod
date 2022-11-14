@@ -156,12 +156,12 @@ belgium_ideas = {
 
 pontus_ideas = {
 	start = {
-        manpower_in_true_faith_provinces= 0.25
-        land_maintenance_modifier = -0.10
+		manpower_in_accepted_culture_provinces = 0.25
+        discipline = 0.05
 	}
 	
 	bonus = {
-        discipline = 0.05
+        land_maintenance_modifier = -0.10
 	}
 	
 	trigger = {
@@ -183,14 +183,14 @@ pontus_ideas = {
         diplomatic_reputation = 2
         legitimacy = 1
 	}
-	POE_ = {
-        production_efficiency = 0.1
+	POE_mother_of_nations = {
+    	num_accepted_cultures = 2
 	}
 	POE_greek_minorities = {
         global_missionary_strength = 0.02
 	}
 	POE_jannisary_model = {
-        reserves_organisation = -0.10
+        reserves_organisation = 0.10
 	}
 }
 

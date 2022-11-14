@@ -75,3 +75,72 @@ country_event = { # Candar turns Orthodox and Pontic, or not
         } 
     }
 }
+
+country_event = { # called via poe_worthy_capital mission. Decide between Trabzon or current capital to be the new capital
+
+    id = pitirr_flavor_poe.2
+    title = pitirr_flavor_poe.2.title
+    desc = pitirr_flavor_poe.2.desc
+    picture = CITY_VIEW_eventPicture
+
+    fire_only_once = yes
+    is_triggered_only = yes
+
+    option = { # Trabzon (330) becomes the new capital
+        name = pitirr_flavor_poe.2.a
+        set_capital = 330
+        330 = {
+            add_base_tax = 2
+            add_base_production = 2
+            add_base_manpower = 2
+        }
+
+        ai_chance = { 
+            factor = 50
+        } 
+    }    
+    option = { # Keep current capital
+        name = pitirr_flavor_poe.2.b
+        capital_scope = {
+            add_base_tax = 2
+            add_base_production = 2
+            add_base_manpower = 2
+        }
+
+        ai_chance = { 
+            factor = 50
+        } 
+    }
+
+    after = { # No matter the choice
+        add_splendor = 250
+        add_adm_power = 50
+        add_dip_power = 50
+        add_mil_power = 50
+    }
+}
+
+country_event = { # called via poe_conquer_west_anatolia mission. Pontics go out of hiding in West Anatolia.
+
+    id = pitirr_flavor_poe.3
+    title = pitirr_flavor_poe.3.title
+    desc = pitirr_flavor_poe.3.desc
+    picture = CULTURE_eventPicture
+
+    fire_only_once = yes
+    is_triggered_only = yes
+
+    option = { 
+        name = pitirr_flavor_poe.3.a
+
+        hudavendigar_area = { 
+            change_culture = pontic_greek
+        }        
+        aydin_area = {
+            change_culture = pontic_greek
+        }        
+        kastamonu_area = {
+            change_culture = pontic_greek
+        }
+    }
+}

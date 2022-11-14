@@ -1,29 +1,36 @@
 ﻿l_english:
   PLM:0 "Palaiologoi" #actually, Piedmont-Lombardy
+  PLM:0 "Palaiologoi"
   piedmont_lombardy_nation_title:0 "Flourish the House of Palaiologos"
   piedmont_lombardy_nation_desc:0 "Our cadet branch of the legendary Palaiologos dynasty has ruled the duchy of Montferrat since 1306. However, our recent developments in Northern Italy, now centre of European culture, politics and wealth, have allowed us to claim the leadership of the scattered house. Undeniably, our advancements are equal to those of our Eastern cousins. Let us lead the Palaiologos to glory once more!"
 
   RHI:0 "Rhineland"
+  RHI:0 "Rhenish"
   rhineland_nation_title:0 "Unite the Rhine"
   rhineland_nation_desc:0 "A call roars like a thunderbolt, like clashing swords and splashing waves. To the Rhine, the Rhine, to the German Rhine, who wants to be the guardian of the river?"
 
   SMT:0 "Sarmatia"
+  SMT:0 "Sarmatian"
   sarmatia_nation_title:0 "Form Sarmatia"
   sarmatia_nation_desc:0 "History can create an ironic fate. Though our nation has been bordering an expansionist Hungary and hostile Ottoman Empire, we have found our place in history - our brothers in Ruthenia, the Zaporozhian Cossacks, have proven to be integral to the Vlachs and Romanians at large. We should formalize the Act of Integration, and let both peoples join a union to defend both nations under the ancient and prestigious banner of Sarmatia. Together we stand, divided we fall."
 
   BGM:0 "Belgium"
+  BGM:0 "Belgian"
   belgium_nation_title:0 "Form Belgium"
   belgium_nation_desc:0 "**TODO**"
 
   POE:0 "Pontus"
+  POE_ADJ:0 "Pontic"
   pontus_nation_title:0 "Form the Pontic Empire"
   pontus_nation_desc:0 "Though now weak, the Empire of Trebizond has maintained an international prestige. Rich in history and diplomacy with Eastern Rome, we should adopt a new identity. Our destiny leads us to become the lords of the Black Sea"
 
   SLV:0 "Slovenia"
+  SLV_ADJ:0 "Slovenian"
   slovenia_nation_title:0 "Unite the Slovenes"
   slovenia_nation_desc:0 "Throughout history, one nation of Slovenes have lived under many lords, most not speaking or acknowledging Slovene. The [Root.Monarch.GetTitle] of [Root.GetTag] has consolidated [Root.Monarch.GetHerHis] holdings in Carniola. It is the time to create the state of Slovenia and forge our own destiny!"  
   
   KUS:0 "Kurdistan"
+  KUS:0 "Kurd"
   kurdistan_nation_title:0 "Unite the Kurdish nation"
   kurdistan_nation_desc:0 "**TODO**"
 

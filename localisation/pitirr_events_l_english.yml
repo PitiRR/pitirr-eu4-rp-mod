@@ -14,6 +14,15 @@
 
   consequences_warning:0 "\n§RWARNING!§! This action will have consequences."
 
+  pitirr_flavor_poe.2.title:0 "A Worthy Capital"
+  pitirr_flavor_poe.2.desc:0 "My [Root.Monarch.GetTitle], we have finished great works of [Root.GetCapital] and Trapezous. Those cities and surrounding lands are flourishing with milk and honey, thanks to Yours efforts. You have impressed the court and some have decided to settle near the latter city. My initial investigation leads me to believe there would be no negative consequences to move there, my lord.\n\nConsider this, for Trabzon, as some in the coutnry call it, is a very well defended position and Your wealth, prestige and family would be well protected there. Alternatively, we can convince some of the nobility to come back to [Root.GetCapital], increasing our prosperity here.\nDo You wish to move Your court?"
+
+  pitirr_flavor_poe.2.a:0 "Yes, I will move my court to Trebizond."
+  pitirr_flavor_poe.2.b:0 "We cannot abandon [Root.GetCapital]!"
+
+  pitirr_flavor_poe.3.title:0 "Pontic Greeks come out of hiding"
+  pitirr_flavor_poe.3.desc:0 "My liege, as Pontus came back to Western Asia Minor, persecuted and overtaxed Greeks have stopped being discriminated by Turks. As it appears, when equal in local power structures, they overwhelm the Turkish minority. It's a surprise, to be sure, but a welcome one."
+  pitirr_flavor_poe.3.a:0 "Welcome home!"
   #misc_events.txt
 
   pitirr_misc_events.1.title:0 "Ty Janie Pawle Drugi, dzieci wielu gwalcicielu"
