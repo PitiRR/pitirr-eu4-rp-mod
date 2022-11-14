@@ -1,0 +1,77 @@
+namespace = pitirr_flavor_poe
+
+country_event = { # Candar turns Orthodox and Pontic, or not
+    id = pitirr_flavor_poe.1
+    title = pitirr_flavor_poe.1.title
+    desc = pitirr_flavor_poe.1.desc
+    picture = the_second_coming_eventPicture
+
+    fire_only_once = yes
+
+    major = yes
+    major_trigger = {
+        ROOT = { ai = no }
+    }
+
+    trigger = {
+        AND = {
+            tag = CND #Candar
+            owns = 330 #Trebizond
+        }
+    }
+
+    mean_time_to_happen = {
+        months = 1
+    }
+
+    option = {
+        # Become Pontic
+        name = pitirr_flavor_poe.1.a
+        change_primary_culture = pontic_greek
+        add_stability = -1
+        ai_chance = { 
+            factor = 0
+        } 
+        custom_tooltip = consequences_warning
+    }    
+    option = {
+        # Become Orthodox
+        name = pitirr_flavor_poe.1.b
+        change_religion = orthodox
+        add_stability = -1
+        ai_chance = { 
+            factor = 0
+        } 
+        custom_tooltip = consequences_warning
+    }
+    option = {
+        # Become Pontic and Orthodox
+        name = pitirr_flavor_poe.1.c
+        change_primary_culture = pontic_greek
+        change_religion = orthodox
+        add_stability = -3
+        hidden_effect = {
+            clear_religious_scholar_modifiers_effect = yes
+        }
+        ai_chance = { 
+            factor = 0
+        } 
+        custom_tooltip = consequences_warning
+    }
+
+    option = {
+        # Remain Muslim
+        name = pitirr_flavor_poe.1.d
+        goto = 330 #Trebizond
+        add_stability = 1
+        330 = {
+            add_province_modifier = {
+                name = declined_pontus_modifier 
+                duration = 3650 
+            }
+        }
+       ai_chance = { 
+            factor = 100
+        } 
+    }
+}

@@ -1,0 +1,24 @@
+namespace = pitirr_misc_events
+
+country_event = {
+    id = pitirr_misc_events.1
+    title = pitirr_misc_events.1.title
+    desc = pitirr_misc_events.1.desc
+    picture = suddenlyjp2_EventPicture
+
+    fire_only_once = yes
+
+    trigger = {
+        tag = PAP #Papal State
+    }
+    mean_time_to_happen = {
+        months = 1
+    }
+    option = {
+        name = pitirr_misc_events.1.a
+        custom_tooltip = 2137_tooltip
+        hidden_effect = {
+            add_curia_treasury = 2.137 
+        }
+    }  
+}

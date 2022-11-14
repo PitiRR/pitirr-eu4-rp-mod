@@ -1,0 +1,268 @@
+piedmont_lombardy_ideas = {
+	start = {
+		development_cost = -0.1
+		ae_impact = -0.15
+	}
+	
+	bonus = {
+		discipline = 0.05
+	}
+	
+	trigger = {
+		tag = PLM
+	}
+	free = yes
+	
+	PLM_greek_refugees = {
+		technology_cost = -0.05
+        idea_cost = -0.05
+	}
+	PLM_alpine_defenses = {
+		defensiveness = 0.15
+	}
+	PLM_byzantine_connections = {
+		improve_relation_modifier = 0.25
+        diplomatic_reputation = 1
+	}
+	PLM_home_to_renaissance = {
+		advisor_pool = 1
+        advisor_cost = -0.1
+	}
+	PLM_greek_fire = {
+		galley_power = 0.2
+	}
+	PLM_heal_the_shism = {
+		tolerance_heretic = 4
+        tolerance_of_heretics_capacity = 1
+	}
+	PLM_mediterranean_trade = {
+		trade_efficiency = 0.1
+	}
+}
+
+rhineland_ideas = {
+	start = { 	
+        global_allowed_num_of_buildings = 1
+        tolerance_own = 2
+	}
+	
+	bonus = {
+        development_cost_modifier = -0.05
+	}
+	
+	trigger = {
+		tag = RHI
+	}
+	free = yes
+	
+	RHI_zollverein = {
+        global_own_trade_power = 0.2
+        mercantilism_cost = -0.25
+	}
+	RHI_ = {
+        global_manpower_modifier = 0.25
+	}
+	RHI_ = {
+        discipline = 0.05
+	}
+	RHI_hessian_mercenaries = {
+        merc_maintenance_modifier = -0.2
+        mercenary_discipline = 0.05
+        possible_condottieri = 1
+	}
+	RHI_bishoprics_league = {
+        monthly_church_power = 0.025
+        papal_influence = 2
+        monthly_fervor_increase = 2
+	}
+	RHI_copper_iron_artillery = {
+        fire_damage = 0.15
+	}
+	RHI_early_industrialization = {
+        global_trade_goods_size_modifier = 0.1
+        governing_cost = 0.75
+        expand_administration_cost = -0.5
+	}
+}
+
+sarmatia_ideas = {
+	start = {
+        global_tax_modifier = 0.2
+        prestige = 1
+	}
+	
+	bonus = {
+        shock_damage = 0.15
+	}
+	
+	trigger = {
+		tag = SMT
+	}
+	free = yes
+	
+	SMT_ = {
+        manpower_recovery_speed = 0.10
+	}
+	SMT_ = {
+        province_warscore_cost = -0.2
+	}
+	SMT_ = {
+        cavalry_power = 0.2
+        cav_to_inf_ratio = 0.25
+	}
+	SMT_ = { 	
+        global_own_trade_power = 0.25
+	}
+	SMT_ = {
+        army_tradition_from_battle = 0.5
+	}
+	SMT_ = {
+        possible_mil_policy = 1
+	}
+	SMT_sich_rada = {
+        republican_tradition = 0.5
+        legitimacy = 1
+        devotion = 1 	
+	}
+}
+
+belgium_ideas = {
+	start = {
+	}
+	
+	bonus = {
+	}
+	
+	trigger = {
+		tag = BGM
+	}
+	free = yes
+	
+	BGM_ = {
+	}
+	BGM_ = {
+	}
+	BGM_ = {
+	}
+	BGM_ = {
+	}
+	BGM_ = {
+	}
+	BGM_ = {
+	}
+	BGM_ = {
+	}
+}
+
+pontus_ideas = {
+	start = {
+        manpower_in_true_faith_provinces= 0.25
+        land_maintenance_modifier = -0.10
+	}
+	
+	bonus = {
+        discipline = 0.05
+	}
+	
+	trigger = {
+		tag = POE
+	}
+	free = yes
+	
+	POE_black_sea_contender = {
+        galley_power = 0.2
+	}
+	POE_phoenix_rises = {
+        land_morale = 0.10
+	}
+	POE_restore_forts = {
+        defensiveness = 0.15
+        garrison_size = 0.10
+	}
+	POE_byzantine_legacy = {
+        diplomatic_reputation = 2
+        legitimacy = 1
+	}
+	POE_ = {
+        production_efficiency = 0.1
+	}
+	POE_greek_minorities = {
+        global_missionary_strength = 0.02
+	}
+	POE_jannisary_model = {
+        reserves_organisation = -0.10
+	}
+}
+
+slovenia_ideas = {
+	start = {
+        defensiveness = 0.33
+        fort_maintenance_modifier = -0.25
+	}
+	
+	bonus = {
+        same_culture_advisor_cost = -0.25
+	}
+	
+	trigger = {
+		tag = SLV
+	}
+	free = yes
+	
+	SLV_develop_slovenia = {
+        development_cost = -0.1
+	}
+	SLV_cilli_diplomacy = {
+        monarch_diplomatic_power = 1
+	}
+	SLV_lessons_of_krain = {
+        discipline = 0.05
+        morale_damage_received = -0.1
+	}
+	SLV_habsburg_connections = {
+        diplomatic_reputation = 1
+	}
+	SLV_comradeship = {
+        global_spy_defence = 0.25
+	}
+	SLV_a_united_nation = {
+        stability_cost_modifier = -0.15
+        hostile_attrition = 1
+        max_hostile_attrition = 1
+	}
+	SLV_local_infrastructure = {
+        build_cost = -0.1
+        global_allowed_num_of_buildings = 1
+	}
+}
+
+kurdistan_ideas = {
+	start = {
+        land_morale = 0.10
+        land_attrition = -0.20
+	}
+	
+	bonus = {
+	}
+	
+	trigger = {
+		tag = KUS
+	}
+	free = yes
+	
+	KUS_ = {
+        cavalry_power = 0.15
+	}
+	KUS_ = {
+	}
+	KUS_ = {
+	}
+	KUS_ = {
+	}
+	KUS_ = {
+	}
+	KUS_ = {
+	}
+	KUS_ = {
+	}
+}

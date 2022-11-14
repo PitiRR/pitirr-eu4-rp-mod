@@ -1,0 +1,23 @@
+﻿l_english:
+
+  #POE_events.txt
+  pitirr_flavor_poe.1.title:0 "The question of a Dream"
+  pitirr_flavor_poe.1.desc:0 "Dear Diary,\nI, [Root.Monarch.GetName] the [Root.Monarch.GetTitle] of Jandar, have fulfilled the Muslim duty of spreading the Prophet's (PBUH) words by spreading the faithful to Trabzon. I have prayed five times that day when the gates opened, and so five times I did today. When I slept today, I have dreamt of Isa, of Jesus, coming down Heaven, in the company of seven thousands angels, holding the Cross in one arm, resting in his shoulder and doing the 'above' hand gesture with the other hand. I instantly felt amazement, wonder, and fear. Isa calmly said \n\n'[Root.Monarch.GetName], join Me.' \n\nHe put his hand for me to hold onto. Soon thereafter, I awoke in cold sweats. I have never dreamt such a thing. Is it destiny? Is it the devil tempting me? I have to think about it."
+  
+  pitirr_flavor_poe.1.a:0 "Isa is a Prophet and the Greeks are chosen people!"
+  pitirr_flavor_poe.1.b:0 "The dream is true. I will baptize overmorrow."
+  pitirr_flavor_poe.1.c:0 "Isa is a Messiah and the Greeks are chosen people!"
+  pitirr_flavor_poe.1.d:0 "The dream is false. La ilaha illallah; there is no God but Allah."
+
+  declined_pontus_modifier:0 "Beylik overseeing conversion efforts"
+  declined_pontus_modifier_desc:0 "The Beylik himself is overseeing the integration of Trabzon into the state. Nobody really knows why he is managing so much personally."
+
+  consequences_warning:0 "\n§RWARNING!§! This action will have consequences."
+
+  #misc_events.txt
+
+  pitirr_misc_events.1.title:0 "Ty Janie Pawle Drugi, dzieci wielu gwalcicielu"
+  pitirr_misc_events.1.desc:0 "No i ja sie pytam czlowieku dumny ty jestes z siebie zdajesz sobie sprawe z tego co robisz?masz ty w ogole rozum i godnosc czlowieka?Ja nie wiem ale zalosny typek z ciebie, chyba nie pomyslales nawet co robisz i kogo obrazasz, mozesz sobie obrazac tych co na to zasluzyli sobie ale nie naszego papieza polaka naszego rodaka wielka osobe ,i tak wyjatkowa i wazna bo to nie jest ktos tam taki sobie ze mozesz go sobie wysmiac bo tak ci sie podoba nie wiem w jakiej ty sie wychowales rodzinie ale chyba ty nie wiem nie rozumiesz co to jest wiara .Jesli myslisz ze jestes wspanialy to jestes zwyklym czubkiem ktorego ktos nie odizolowal jeszcze od spoleczenstwa ,nie wiem co w tym jest takie smieszne ale czepcie sie stalina albo hitlera albo innych zwyrodnialcow a nie czepiacie sie takiej swietej osoby jak papiez jan pawel 2 .Jak mozna wogole publicznie zamieszczac takie zdiecia na forach internetowych?ja sie pytam kto powinien za to odpowiedziec bo chyba widac ze do kosciola nie chodzi jak jestes nie wiem ateista albo wierzysz w jakies sekty czy wogole jestes moze ty sluga szatana a nie bedziesz z papieza robil takiego ,to ty chyba jestes jakis nie wiem co sie jarasz pomiotami szatana .Wez pomysl sobie ile papiez zrobil ,on byl kims a ty kim jestes zeby z niego sobie robic kpiny co? kto dal ci prawo obrazac wogole papieza naszego ?pomyslales wogole nad tym ze to nie jest osoba taka sobie ze ja wysmieje i mnie beda wszyscy chwalic? wez dziecko naprawde jestes jakis psycholek bo w przeciwienstwie do ciebie to papiez jest autorytetem dla mnie a ty to nie wiem czyim mozesz byc autorytetem chyba takich samych jakis glupkow jak ty ktorzy nie wiedza co to kosciol i religia ,widac ze sie nie modlisz i nie chodzisz na religie do szkoly ,widac nie szanujesz religii to nie wiem jak chcesz to sobie wez swoje zdiecie wstaw ciekawe czy bys sie odwazyl .naprawde wezta sie dzieci zastanowcie co wy roicie bo nie macie widac pojecia o tym kim byl papiez jan pawel2 jak nie jestescie w pelni rozwiniete umyslowo to sie nie zabierajcie za taka osobe jak ojciec swiety bo to swiadczy o tym ze nie macie chyba w domu krzyza ani jednego obraza swietego nie chodzi tutaj o kosciol mnie ale wogole ogolnie o zasady wiary zeby miec jakas godnosc bo papiez nikogo nie obrazal a ty za co go obrazasz co? no powiedz za co obrazasz taka osobe jak ojciec swiety ?brak mnie slow ale jakbys mial pojecie chociaz i siegnal po pismo swiete i poczytal sobie to moze bys sie odmienil .nie wiem idz do kosciola bo widac juz dawno szatan jest w tobie czlowieku ,nie lubisz kosciola to chociaz siedz cicho i nie obrazaj innych ludzi . "
+  pitirr_misc_events.1.a:0 "Jeszcze jak!"
+
+  2137_tooltip:0 "Add to Curia Treasury §G2.137§!¤"

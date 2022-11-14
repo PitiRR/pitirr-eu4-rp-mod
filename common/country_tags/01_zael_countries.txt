@@ -1,0 +1,8 @@
+# Western Europe
+PLM = "countries/PieLom.txt"
+RHI = "countries/Rhineland.txt"
+SMT = "countries/Sarmatia.txt"
+BGM = "countries/Belgium.txt"
+SLV = "countries/Slovenia.txt"
+POE = "countries/Pontus.txt"
+KUS = "countries/Kurdistan.txt"

@@ -1,0 +1,111 @@
+country_decisions = {
+
+	kurdistan_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+            culture = kurdish
+			NOT = { has_country_flag = formed_kurdistan_flag }
+			NOT = { exists = KUS }
+			is_colonial_nation = no
+			is_former_colonial_nation = no
+		}
+		provinces_to_highlight = {
+			OR = {
+                AND = {
+					OR = {
+						area = al_jazira_area
+						area = dulkadir_area
+						area = north_kurdistan_area
+						area = shahrizor_area
+						area = tabriz_area
+						area = luristan_area
+					}
+                    NOT = { owned_by = ROOT }
+                    NOT = { is_core = ROOT }
+					culture = kurdish
+                }
+            }
+		}
+		allow = {
+			adm_tech = 7
+			is_at_war = no
+			north_kurdistan_area = {
+				type = all
+				owned_by = ROOT
+				NOT = { local_autonomy = 25 }
+				NOT = { nationalism = 5 }
+			}
+			num_of_owned_provinces_with = {
+				value = 7 #those areas have 16 provs, so 8 is half. 9 is more than half. Fair!
+                OR = {
+                    area = al_jazira_area
+                    area = dulkadir_area
+                    area = north_kurdistan_area
+                    area = shahrizor_area
+                    area = tabriz_area
+                    area = luristan_area
+                }
+				culture = kurdish
+				is_core = root
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				hidden_effect = {
+					set_in_empire = no
+				}
+				set_government_rank = 2
+			}
+			change_tag = KUS
+			north_kurdistan_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_core = KUS
+			}
+			al_jazira_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = KUS
+			}
+			dulkadir_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = KUS
+			}
+			shahrizor_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = KUS
+			}
+			tabriz_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = KUS
+			}
+			luristan_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = KUS
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = formed_kurdistan_flag
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

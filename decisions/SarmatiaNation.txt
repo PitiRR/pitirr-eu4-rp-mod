@@ -1,0 +1,101 @@
+country_decisions = {
+
+	sarmatia_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			OR {
+            	culture = romanian
+				culture = ruthenian
+			}
+			NOT = { has_country_flag = formed_sarmatia_flag }
+			NOT = { exists = SMT }
+			is_colonial_nation = no
+			is_former_colonial_nation = no
+		}
+		provinces_to_highlight = {
+			OR = {
+                AND = {
+                    OR = {
+                        area = wallachia_area
+                        area = moldavia_area
+                        area = yedisan_area
+                        area = zaporizhia_area
+                    }
+                    NOT = { owned_by = ROOT }
+                    NOT = { is_core = ROOT }
+                }
+            }
+		}
+		allow = {
+			adm_tech = 7
+			if = {
+				limit = { culture = romanian }
+				accepted_culture = ruthenian
+			}
+			if = {
+				limit = { culture = ruthenian }
+				accepted_culture = romanian
+			}
+			is_at_war = no
+            owns_core_province = 161		#Tirgoviste
+            owns_core_province = 283		#Zaporozhe
+			num_of_owned_provinces_with = {
+				value = 9
+                OR = {
+                    area = wallachia_area
+                    area = moldavia_area
+                    area = yedisan_area
+                    area = zaporizhia_area
+                }
+				is_core = root
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				hidden_effect = {
+					set_in_empire = no
+				}
+				set_government_rank = 2
+			}
+			change_tag = SMT
+			wallachia_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = SMT
+			}
+			moldavia_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = SMT
+			}
+			yedisan_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = SMT
+			}
+			zaporizhia_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = SMT
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = formed_sarmatia_flag
+			add_government_reform = cossacks_reform
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

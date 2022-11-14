@@ -1,0 +1,13 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "the_second_coming_eventPicture"
+		texturefile = "gfx//event_pictures//the_second_coming_eventPicture.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "suddenlyjp2_EventPicture"
+		texturefile = "gfx//event_pictures//suddenlyjp2_EventPicture.dds"
+		alwaystransparent = yes
+	}
+}
