@@ -353,6 +353,9 @@ poe_central_missions = {
 			OR {
 				AND = {
 					province_id = 151 #Constantinople
+					area = silistria_area
+					province_id = 1756 #Bessarabia
+					province_id = 1764 #Burgas
 					NOT = { owned_by = ROOT }
 				}
 				is_capital_of = ROOT
@@ -364,6 +367,18 @@ poe_central_missions = {
 				capital_scope = { #...Or eclipse Constantinople!
 					higher_development_than = 151
 				}
+			}
+			silistria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1756 = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1764 = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		
@@ -390,6 +405,34 @@ poe_central_missions = {
 				add_permanent_claim = ROOT
 			}
 			northern_greece_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			anatolia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			samtskhe_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kartli_kakheti_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			imereti_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = {  is_permanent_claim = ROOT }
@@ -529,7 +572,7 @@ poe_conquer_east_missions = {
 				}
 				add_permanent_claim = ROOT
 			}
-			1974 = { #Yedishkul
+			yedisan_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = {  is_permanent_claim = ROOT }
@@ -548,7 +591,7 @@ poe_conquer_east_missions = {
 				area = azov_area
 				area = zaporizhia_area
 				area = crimea_area
-				province_id = 1974 #Yedishkul
+				area = yedisan_area
 			}
 			NOT = { owned_by = ROOT }
 		}
@@ -566,7 +609,10 @@ poe_conquer_east_missions = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			1974 = { country_or_non_sovereign_subject_holds = ROOT }
+			yedisan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		
 		effect = {
@@ -578,7 +624,28 @@ poe_conquer_east_missions = {
 			}
 			add_country_modifier = {
 				name = poe_black_sea_trade
-				duration = 9125 #25 years
+				duration = 18250 #50 years
+			}
+			1764 = { #Burgas
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			1756 = { #Bessarabia
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			silistria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
