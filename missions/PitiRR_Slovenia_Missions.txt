@@ -1,0 +1,730 @@
+slv_purchase_of_krain_missions = {
+    slot = 1
+    generic = No
+	ai = yes
+	has_country_shield = yes
+
+	potential = {
+        OR = {
+		    tag = SLV
+            tag = CLI
+        }
+	}
+    slv_buy_krain = {
+		icon = the_ostend_company
+		required_missions = {  }
+		position = 1
+		provinces_to_highlight = {
+            province_id = 129 #Krain
+			NOT = { owned_by = ROOT }
+        }
+		trigger = {
+            129 = { owned_by = ROOT }
+		}
+		
+		effect = {
+			carinthia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
+
+slv_1_column_missions = {
+    slot = 1
+    generic = No
+	ai = yes
+	has_country_shield = yes
+
+	potential = {
+		tag = SLV
+	}
+    slv_conquer_croatia = {
+		icon = 
+		required_missions = { slv_unite_slovenia }
+		position = 2
+		provinces_to_highlight = {
+            OR = {
+                area = slavonia_area
+                area = croatia_area
+            }
+			NOT = { owned_by = ROOT }
+        }
+		trigger = {
+            152 = { #Varazdin
+                owned_by = ROOT
+            }
+			num_of_owned_provinces_with = {
+				value = 4
+                OR = {
+                    area = slavonia_area
+                    area = croatia_area
+                }
+                owned_by = ROOT
+			}
+		}
+		
+		effect = {
+			4752 = { #Rijeka
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			1826 = { #Lika
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			east_adriatic_coast_area = { #Rijeka
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+            
+		}
+	}
+    slv_conquer_adriatic_coast = {
+		icon = 
+		required_missions = { slv_conquer_croatia }
+		position = 3
+		provinces_to_highlight = {
+            OR = {
+                area = east_adriatic_coast_area
+                province_id = 4752  #Rijeka
+                province_id = 1826  #Lika
+            }
+			NOT = { owned_by = ROOT }
+        }
+		trigger = {
+            4752 = { country_or_non_sovereign_subject_holds = ROOT }
+            1826 = { country_or_non_sovereign_subject_holds = ROOT }
+            east_adriatic_coast_area = {
+                type = all
+                country_or_non_sovereign_subject_holds = ROOT
+            }
+		}
+		
+		effect = {
+            #TODO
+		}
+	}
+    slv_dev_istria = {
+		icon = 
+		required_missions = { slv_prosper }
+		position = 4
+		provinces_to_highlight = {
+            province_id = 130
+        }
+		trigger = {
+            130 = { 
+                OR = { 
+                    has_building = marketplace 
+                    has_building = trade_depot 
+                    has_building = stock_exchange 
+                } 
+            }
+            130 = {
+                has_building = wharf
+            }
+            130 = { development = 25 }
+            130 = { province_trade_power = 50 }
+            1308 = { #Gulf of Venice
+                trade_share = {
+                    country = ROOT
+                    share = 51
+                }
+            }
+		}
+		
+		effect = {
+            #TODO
+		}
+	}
+    slv_adriatic_pearl = {
+		icon = 
+		required_missions = { slv_dev_istria }
+		position = 5
+		provinces_to_highlight = {
+            province_id = 130
+        }
+		trigger = {
+            130 = {
+                higher_development_than = SLV_adriatic_ports
+            }
+            130 = {
+                province_has_center_of_trade_of_level = 3
+            }
+		}
+		
+		effect = {
+            add_country_modifier = {
+                name = slv_winning_in_trade
+                duration = 7300
+            }
+            130 = {
+                add_province_modifier = {
+                    name = slv_pearl_of_the_adriatic
+                    duration -1
+                }
+            }
+		}
+	}
+}
+slv_2_column_missions = {
+    slot = 2
+    generic = No
+	ai = yes
+	has_country_shield = yes
+
+	potential = {
+		tag = SLV
+	}
+    slv_house_of_cilli = {
+		icon = 
+		required_missions = { slv_unite_slovenia }
+		position = 2
+		trigger = {
+            OR = {
+                emperor = {
+                    alliance_with = SLV
+                }
+                num_of_unions = 2
+                vassal = 3
+            }
+		}
+		
+		effect = {
+            
+		}
+	}
+    slv_imperial_question = {
+		icon = 
+		required_missions = { slv_house_of_cilli }
+		position = 3
+		trigger = {
+				if = {
+					limit = {
+						is_part_of_hre = yes
+						is_elector = no
+                        OR = {
+						    ROOT = { any_subject_country = { is_elector = yes } }
+                            AND = {
+                                emperor = {
+                                    alliance_with = SLV
+                                }
+                                NOT = { num_of_electors = 7 } #idc if there's possible 8 electors game never goes that far
+                            }
+                        }
+						OR = {
+							hre_religion_locked = no
+							hre_religion = root
+						}
+					}
+					custom_tooltip = emp_bav_union_with_palatinate_effect_tooltip
+					emperor = {
+						custom_tooltip = emp_bav_union_with_palatinate_effect_tooltip2
+					}
+					custom_tooltip = emp_bav_union_with_palatinate_effect_tooltip3
+					tooltip = {
+						add_prestige = 25
+						add_legitimacy = 20
+						add_devotion = 20
+						add_republican_tradition = 10
+					}
+				}
+				else = {
+					tooltip = {
+						add_prestige = 25
+						add_legitimacy = 20
+						add_devotion = 20
+						add_republican_tradition = 10
+					}
+				}
+		}
+		
+		effect = {
+            #TODO
+		}
+	}
+    slv_dev_triest = {
+		icon = 
+		required_missions = { slv_prosper }
+		position = 4
+		provinces_to_highlight = {
+            province_id = 4738
+        }
+		trigger = {
+            4738 = { 
+                OR = { 
+                    has_building = dock
+                    has_building = drydock
+                } 
+            }
+            4738 = { 
+                OR = { 
+                    has_building = shipyard
+                    has_building = grand_shipyard
+                } 
+            }
+            4738 = {
+                has_building = impressment_offices
+            }
+            4738 = { development = 25 }
+		}
+		
+		effect = {
+            #TODO
+		}
+	}
+    slv_a_slovenian_navy = {
+		icon = 
+		required_missions = { slv_dev_triest }
+		position = 5
+		provinces_to_highlight = {
+            province_id = 4738
+        }
+		trigger = {
+            4738 = {
+                galleys_in_province = 30
+            }
+            has_flagship = yes
+            navy_tradition = 50
+		}
+		
+		effect = {
+            4738 = {
+                add_province_modifier = {
+                    name = slv_shipyards_of_trst
+                    duration = -1
+                }
+            }
+		}
+	}
+}
+slv_3_column_mission = {
+    slot = 3
+    generic = No
+	ai = yes
+	has_country_shield = yes
+
+	potential = {
+		tag = SLV
+	}
+    slv_unite_slovenia = {
+		icon = 
+		required_missions = {  }
+		position = 1
+		provinces_to_highlight = {
+            area = carinthia_area
+			NOT = { owned_by = ROOT }
+        }
+		trigger = {
+            carinthia_area = {
+                owned_by = ROOT
+            }
+		}
+		
+		effect = {
+            prestige = 25
+            legitimacy = 50
+			croatia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			slavonia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+            carinthia_area = {
+                add_nationalism = -30
+                add_province_modifier = {
+                    name = slv_culture_convert
+                    duration = 7300
+                }
+            }
+		}
+	}
+    slv_slovenians_emerge = {
+		icon = 
+		required_missions = { slv_unite_slovenia }
+		position = 2
+		provinces_to_highlight = {
+            area = carinthia_area
+        }
+		trigger = {
+            carinthia_area = {
+                type = all
+                culture = slovenian
+            }
+		}
+		
+		effect = {
+            carinthia_area = {
+                add_province_modifier = {
+                    name = slv_dev_up_devboy
+                    duration = 10950 #30 yers
+                }
+            }
+		}
+	}
+    slv_dev_gorizia = {
+		icon = 
+		required_missions = { slv_slovenians_emerge }
+		position = 4
+		provinces_to_highlight = {
+            province_id = 1769
+        }
+		trigger = {
+            1769 = { 
+                OR = { 
+                    has_building = workshop
+                    has_building = counting_house
+                } 
+            }
+            1769 = {
+                has_building = weapons
+            }
+            1769 = { development = 25 }
+		}
+		
+		effect = {
+            #TODO
+		}
+	}
+    slv_kropa_mine = {
+		icon = 
+		required_missions = { slv_dev_triest }
+		position = 5
+		provinces_to_highlight = {
+            province_id = 4738
+        }
+		trigger = {
+            4738 = {
+                province_trade_power = 25
+            }
+		}
+		
+		effect = {
+            add_great_project = {
+                type = kropa_mine
+                instant = no 
+            }
+		}
+	}
+
+}
+slv_4_column_mission = {
+    slot = 4
+    generic = No
+	ai = yes
+	has_country_shield = yes
+
+	potential = {
+		tag = SLV
+	}
+    slv_religious_influence = {
+		icon = 
+		required_missions = { slv_unite_slovenia }
+		position = 2
+		trigger = {
+            if = {
+                limit = {
+                    religion = catholic
+                }
+                if = {
+                    limit = {
+                        exists = PAP
+                    }
+                    has_opinion = {
+                        who = PAP
+                        value = 150
+                    }
+                    PAP = {
+                        has_opinion_modifier = {
+                            who = SLV
+                            modifier = bought_indulgances
+                        }
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    religion = orthodox
+                }
+                patriarch_authority = 1.00
+                129 = {
+                    has_state_patriach = yes
+                }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        religion = protestant
+                        religion = anglican
+                        religion = reformed
+                        religion = hussite
+                    }
+                }
+                always = yes
+            }
+            else = {
+                religious_unity = 0.99
+            }
+		}
+		
+		effect = {
+            prestige = 25
+            legitimacy = 50
+			croatia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			slavonia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = {  is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+            carinthia_area = {
+                add_nationalism = -30
+                add_province_modifier = {
+                    name = slv_culture_convert
+                    duration = 7300
+                }
+            }
+		}
+	}   
+    slv_papal_question = {
+		icon = 
+		required_missions = { slv_religious_influence }
+		position = 3
+		provinces_to_highlight = {
+        }
+		trigger = {
+            if = {
+                limit = {
+                    religion = catholic
+                }
+                is_all_concessions_in_council_taken = yes
+                religious_unity = 1
+            }
+            else_if = {
+                limit = {
+                    religion = orthodox
+                }
+                always = yes
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        religion = protestant
+                        religion = anglican
+                        religion = reformed
+                        religion = hussite
+                    }
+                }
+                always = yes
+            }
+        }
+		
+		effect = {
+            #TODO
+		}
+	}
+    slv_dev_kraina = {
+		icon = 
+		required_missions = { slv_prosper }
+		position = 4
+		provinces_to_highlight = {
+            province_id = 129
+        }
+		trigger = {
+            129 = { 
+                OR = { 
+                    has_building = courthouse
+                    has_building = town_hall
+                } 
+            }
+            129 = { 
+                OR = { 
+                    has_building = soldier_households
+                    has_building = farm_estate
+                    has_building = state_house
+                } 
+            }
+            129 = { development = 25 }
+		}
+		
+		effect = {
+            #TODO
+		}
+	}
+    slv_dragon_city = {
+		icon = 
+		required_missions = { slv_dev_triest }
+		position = 5
+		provinces_to_highlight = {
+            province_id = 129
+        }
+		trigger = {
+            #TODO
+		}
+		
+		effect = {
+            #TODO
+		}
+	}
+}
+slv_5_column_mission = {
+    slot = 5
+    generic = No
+	ai = yes
+	has_country_shield = yes
+
+	potential = {
+		tag = SLV
+	}
+
+    slv_para_bellum = {
+		icon = 
+		required_missions = { slv_unite_slovenia }
+		position = 2
+		provinces_to_highlight = {
+            area = carinthia_area
+			OR = {
+				NOT = { owned_by = root }
+				AND = {
+					NOT = { has_building = fort_15th }
+					NOT = { has_building = fort_16th }
+					NOT = { has_building = fort_17th }
+					NOT = { has_building = fort_18th }
+				}
+			}
+        }
+		trigger = {
+            carinthia_area = {
+                every_owned_province = {
+                    OR = {
+                        has_building = fort_15th
+                        has_building = fort_16th
+                        has_building = fort_17th
+                        has_building = fort_18th
+                    }
+                }
+            }
+		}
+		
+		
+		effect = {
+			custom_tooltip = emp_mlo_fortify_alps_effects_tooltip
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						area = carinthia_ara
+						has_building = fort_18th
+					}
+					add_province_modifier = {
+						name = mlo_expanded_fortifications
+						duration = -1
+					}
+				}
+				every_owned_province = {
+					limit = {
+						area = carinthia_ara
+					}
+					if = {
+						limit = { has_building = fort_17th }
+						remove_building = fort_17th
+						add_building = fort_18th
+					}
+					else_if = {
+						limit = { has_building = fort_16th }
+						remove_building = fort_16th
+						add_building = fort_17th
+					}
+					else_if = {
+						limit = { has_building = fort_15th }
+						remove_building = fort_15th
+						add_building = fort_16th
+					}
+				}
+			}
+		}
+	}
+    slv_para_bellum = {
+		icon = 
+		required_missions = { slv_unite_slovenia }
+		position = 2
+		provinces_to_highlight = {
+            area = carinthia_area
+			OR = {
+				NOT = { owned_by = root }
+				AND = {
+					NOT = { has_building = fort_15th }
+					NOT = { has_building = fort_16th }
+					NOT = { has_building = fort_17th }
+					NOT = { has_building = fort_18th }
+				}
+			}
+        }
+		trigger = {
+            is_in_war = {
+                defender_leader = ROOT
+                duration = 30
+            }
+		}
+		
+		
+		effect = {
+		}
+	}
+    slv_dev_cilli = {
+		icon = 
+		required_missions = { slv_prosper }
+		position = 4
+		provinces_to_highlight = {
+            province_id = 4751
+        }
+		trigger = {
+            #TODO
+        }
+		effect = {
+            #TODO
+		}
+	}
+    slv_baroque_capital = {
+		icon = 
+		required_missions = { slv_dev_cilli }
+		position = 5
+		provinces_to_highlight = {
+            province_id = 4751
+        }
+		trigger = {
+            #TODO
+		}
+		
+		effect = {
+            #TODO
+		}
+	}
+}

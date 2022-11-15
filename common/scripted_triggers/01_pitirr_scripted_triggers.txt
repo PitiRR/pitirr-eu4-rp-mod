@@ -23,3 +23,32 @@ has_any_manufactory = {
 		has_building = state_house
 	}
 }
+
+SLV_adriatic_ports = {
+	AND = {
+		province_id = 112
+		province_id = 111
+		province_id = 1774
+		province_id = 4729
+		province_id = 113
+		province_id = 114
+		province_id = 2977
+		province_id = 119
+		province_id = 120
+		province_id = 4733
+		province_id = 2985
+		province_id = 1933
+		province_id = 122
+		province_id = 4738 #yes, Istria has to eclipse even Triest which you own
+		province_id = 4752
+		province_id = 1826
+		province_id = 4753
+		province_id = 136
+		province_id = 137
+		province_id = 4754
+		province_id = 4175
+		province_id = 4174
+		province_id = 143
+
+	}
+}

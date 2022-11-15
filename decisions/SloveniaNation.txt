@@ -1,5 +1,4 @@
 country_decisions = {
-
 	slovenia_nation = {
 		major = yes
 		potential = {
@@ -22,6 +21,8 @@ country_decisions = {
 		allow = {
 			adm_tech = 10
 			is_at_war = no
+			is_free_or_tributary_trigger = yes
+
             owns_core_province = 4751		#Cilli
             owns_core_province = 1769		#Gorizia
             owns_core_province = 129		#Kraina
@@ -31,8 +32,22 @@ country_decisions = {
 			}
 		}
 		effect = {
+			if = { #if isn't Cilli, inherit all their cores
+				limit = {
+					ROOT = {
+						NOT = { tag = CLI }
+					}
+				}
+				every_province = {
+					limit = {
+						is_core = CLI
+					}
+					add_core = SLV
+				}
+			}
 			change_tag = SLV
-			hesse_area = {
+			swap_non_generic_missions = yes
+			carinthia_area = {
 				limit = {
 					NOT = { owned_by = ROOT }
 				}
