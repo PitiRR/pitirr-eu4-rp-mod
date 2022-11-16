@@ -219,8 +219,8 @@ slovenia_ideas = {
         discipline = 0.05
         morale_damage_received = -0.1
 	}
-	SLV_habsburg_connections = {
-        diplomatic_reputation = 1
+	SLV_forests = {
+        own_territory_dice_roll_bonus = 1
 	}
 	SLV_comradeship = {
         global_spy_defence = 0.25
