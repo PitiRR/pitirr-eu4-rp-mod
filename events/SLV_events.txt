@@ -1,0 +1,340 @@
+namespace = pitirr_flavor_slv
+
+country_event = {
+	id = pitirr_flavor_slv.1
+	title = pitirr_flavor_slv.1.t
+	desc = pitirr_flavor_slv.1.d
+	picture = DIPLOMACY_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = CLI
+		NOT = { num_of_loans = 4 }
+		129 = {
+			owned_by = HAB
+			controlled_by = HAB
+		}
+		HAB = {
+			has_opinion = {
+				who = CLI
+				value = 100
+			}
+		}
+		NOT = { war_with = HAB }
+	}
+	
+	mean_time_to_happen = {
+		months = 12 #Reduced due to trigger inflexibility
+	}
+	
+	option = {
+		name = pitirr_flavor_slv.1.a #Offer the Austrians to buy Krain for 20 000 Guilders (half of what Brandenburg bought Neumark for)
+		ai_chance = {
+			factor = 75
+		}
+		custom_tooltip = pitirr_flavor_slv.1.a.tt
+		HAB = {
+			country_event = { id = pitirr_flavor_slv.2 }
+		}
+	}
+	option = { #We could not afford that.
+		name = "pitirr_flavor_slv.1.b"
+		ai_chance = {
+			factor = 25
+		}
+		custom_tooltip = pitirr_flavor_slv.1.b.tt
+		add_prestige = -5
+	}
+}
+
+#The fate of Krain
+country_event = {
+	id = pitirr_flavor_slv.2
+	title = pitirr_flavor_slv.2.t
+	desc = pitirr_flavor_slv.2.d
+	picture = DIPLOMACY_eventPicture
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = pitirr_flavor_slv.2.a #We need the money.
+		ai_chance = { factor = 100 }
+		tooltip = {
+			129 = {
+				if = {
+					limit = {
+						owned_by = HAB
+						controlled_by = HAB
+					}
+					cede_province = CLI
+					add_core = CLI
+					remove_core = HAB
+				}
+			}
+		}
+		add_treasury = 50
+		FROM = {
+			country_event = { id = pitirr_flavor_slv.3 }
+			add_opinion = {
+				who = ROOT
+				modifier = pawning_of_neumark
+			}
+		}
+	}
+	option = {
+		name = "pitirr_flavor_slv.2.b" #Krain shall remain ours!
+		ai_chance = { factor = 0 }
+		custom_tooltip = pitirr_flavor_slv.2.b.tt
+		FROM = {
+			country_event = { id = pitirr_flavor_slv.4 }
+		}
+	}
+}
+
+country_event = {
+	id = pitirr_flavor_slv.3
+	title = pitirr_flavor_slv.3.t
+	desc = pitirr_flavor_slv.3.d
+	picture = DIPLOMACY_eventPicture
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "pitirr_flavor_slv.3.a" #Krain shall not be brought to non-Slovene Tongue!
+		HAB = {
+			129 = {
+				if = {
+					limit = {
+						owned_by = HAB
+						controlled_by = HAB
+					}
+					cede_province = CLI
+					add_core = CLI
+					remove_core = HAB
+				}
+			}
+		}
+		add_treasury = -50
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = pawning_of_neumark
+			}
+		}
+	}
+}
+
+#Austria Declines our Offer.
+country_event = {
+	id = pitirr_flavor_slv.4
+	title = pitirr_flavor_slv.4.t
+	desc = pitirr_flavor_slv.4.d
+	picture = DIPLOMACY_eventPicture
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "pitirr_flavor_slv.4.a" #Ack!
+	}
+}
+
+#Cilli inherits an electorate
+
+country_event = {
+	id = new_flavour_bav.10
+	title = new_flavour_bav.10.t
+	desc = {
+		desc = new_flavour_bav.10.d
+		trigger = { NOT = { tag = from } }
+	}
+	desc = {
+		desc = new_flavour_bav.10.d.bav
+		trigger = { tag = from }
+	}
+	picture = HRE_eventPicture
+	major = yes
+	
+	is_triggered_only = yes
+	immediate = {
+		random_elector = {
+			limit = {is_subject_of = SLV}
+			save_event_target_as = elector_vassal
+		 }
+	}
+	option = { #transfer the electorate
+		name = new_flavour_bav.10.a	
+		
+		trigger = { NOT = { tag = from } }
+
+		event_target:elector_vassal = {
+			tooltip = { elector = no }
+			add_opinion = {
+				who = root
+				modifier = opinion_bav_repealed_electorate
+			}
+		}
+
+		from = {
+			hidden_effect = { country_event = { id = new_flavour_bav.101 } }
+			tooltip = { elector = yes }
+			add_opinion = {
+				who = root
+				modifier = opinion_bav_gave_electorate
+			}
+		}
+
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = {
+						has_opinion = {
+							who = from
+							value = 0
+						}
+					}
+					ai_attitude = {
+						who = from
+						attitude = attitude_threatened
+					}
+					ai_attitude = {
+						who = from
+						attitude = attitude_hostile
+					}
+					ai_attitude = {
+						who = from
+						attitude = attitude_outraged
+					}
+					ai_attitude = {
+						who = from
+						attitude = attitude_rivalry
+					}
+				}
+			}
+		}
+	}
+	option = { #transfer the electorate
+		name = new_flavour_bav.10.a2
+		
+		trigger = { tag = from }
+
+		event_target:elector_vassal = {
+			elector = no
+			add_opinion = {
+				who = root
+				modifier = opinion_bav_repealed_electorate
+			}
+			add_liberty_desire = 50
+		}
+
+		elector = yes
+
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = { #don't transfer the electorate
+		name = new_flavour_bav.10.b
+		
+		trigger = { NOT = { tag = from } }
+
+		from = {
+			hidden_effect = { country_event = { id = new_flavour_bav.102 } }
+			add_opinion = {
+				who = root
+				modifier = opinion_bav_refused_to_transfer_electorate
+			}
+		}
+		
+		custom_tooltip = legitimate_subject_elector_tt
+		hidden_effect = {
+			PAL = {
+				add_country_modifier = {
+					hidden = yes
+					name = "legitimate_subject_elector_modifer"
+					duration = -1
+				}
+			}
+		}
+
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				OR = {
+					alliance_with = from
+					has_opinion = {
+						who = from
+						value = 120
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					who = from
+					value = 60
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					NOT = {
+						has_opinion = {
+							who = from
+							value = 60
+						}
+					}
+					AND = {
+						NOT = {
+							ai_attitude = {
+								who = from
+								attitude = attitude_allied
+							}
+						}
+						NOT = {
+							ai_attitude = {
+								who = from
+								attitude = attitude_friendly
+							}
+						}
+						NOT = {
+							ai_attitude = {
+								who = from
+								attitude = attitude_protective
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	option = { #don't transfer the electorate
+		name = new_flavour_bav.10.b2
+		
+		trigger = { tag = from }
+
+		custom_tooltip = legitimate_subject_elector_tt
+		hidden_effect = {
+			PAL = {
+				add_country_modifier = {
+					hidden = yes
+					name = "legitimate_subject_elector_modifer"
+					duration = -1
+				}
+			}
+		}
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+}

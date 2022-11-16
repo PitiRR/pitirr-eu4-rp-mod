@@ -98,10 +98,13 @@ country_decisions = {
 				add_permanent_claim = BGM
 			}
 			181 = { #Rethel
-				limit = {
-					NOT = { owned_by = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = {  is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = BGM
 			}
 			if = {
 				limit = { has_custom_ideas = no }

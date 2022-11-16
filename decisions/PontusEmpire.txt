@@ -80,28 +80,40 @@ country_decisions = {
 				add_permanent_claim = POE
 			}
 			2195 = {
-				limit = {
-					NOT = { owned_by = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = {  is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = POE
 			}
 			1856 = {
-				limit = {
-					NOT = { owned_by = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = {  is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = POE
 			}
 			462 = {
-				limit = {
-					NOT = { owned_by = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = {  is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = POE
 			}
 			2196 = {
-				limit = {
-					NOT = { owned_by = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = {  is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = POE
 			}
 			if = {
 				limit = { has_custom_ideas = no }

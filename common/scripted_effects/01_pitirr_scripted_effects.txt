@@ -10,45 +10,57 @@ clear_religious_scholar_modifiers_effect = {
 
 POE_expand_the_coast = {
 	2196 = {
-		limit = {
-			NOT = { is_core = ROOT }
-			NOT = {  is_permanent_claim = ROOT }
+		if = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = {  is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
 		}
-		add_permanent_claim = ROOT
 	}
 	462 = {
-		limit = {
-			NOT = { is_core = ROOT }
-			NOT = {  is_permanent_claim = ROOT }
+		if = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = {  is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
 		}
-		add_permanent_claim = ROOT
 	}
 	1856 = {
-		limit = {
-			NOT = { is_core = ROOT }
-			NOT = {  is_permanent_claim = ROOT }
+		if = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = {  is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
 		}
-		add_permanent_claim = ROOT
 	}
 	2195 = {
-		limit = {
-			NOT = { is_core = ROOT }
-			NOT = {  is_permanent_claim = ROOT }
+		if = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = {  is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
 		}
-		add_permanent_claim = ROOT
 	}
 	2447 = {
-		limit = {
-			NOT = { is_core = ROOT }
-			NOT = {  is_permanent_claim = ROOT }
+		if = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = {  is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
 		}
-		add_permanent_claim = ROOT
 	}
 	285 = {
-		limit = {
-			NOT = { is_core = ROOT }
-			NOT = {  is_permanent_claim = ROOT }
+		if = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = {  is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
 		}
-		add_permanent_claim = ROOT
 	}
 }

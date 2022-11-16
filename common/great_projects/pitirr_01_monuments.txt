@@ -1,0 +1,130 @@
+kropa_mine = {
+	start = 1769 #Gorizia
+	date = 1400.01.01 #Kropa museum website says 14th century
+	time = { months = 0	}
+	build_cost = 0
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 0
+	type = monument
+
+	build_trigger = {
+		owner = { mission_completed = slv_kropa_mine }
+	}
+
+	on_built = {
+	}
+
+	on_destroyed = {
+	}
+
+	can_use_modifiers_trigger = {
+		AND = {
+			culture = english
+			province_is_or_accepts_culture = yes
+		}
+	}
+
+	can_upgrade_trigger = {
+		AND = {
+			culture = english
+			province_is_or_accepts_culture = yes
+		}
+	}
+
+	keep_trigger = {
+		AND = {
+			culture = english
+			province_is_or_accepts_culture = yes
+		}
+	}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1000
+		}
+		province_modifiers = {
+			trade_goods_size = 1.5
+			local_regiment_cost = -0.125
+		}
+		area_modifier = {
+			local_build_cost = -0.05
+			local_build_time = -0.05
+		}
+		country_modifiers = {	
+			global_trade_power = 0.1
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+			trade_goods_size = 3
+			regiment_recruit_speed = -0.125
+			local_regiment_cost = -0.25
+		}
+		area_modifier = {
+			local_build_cost = -0.1
+			local_build_time = -0.1
+			local_development_cost_modifier = -0.05
+		}
+		country_modifiers = {
+			artillery_cost = -0.1
+			global_trade_power = 0.2
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+			trade_goods_size = 4.5
+			regiment_recruit_speed = -0.25
+			local_regiment_cost = -0.5
+		}
+		area_modifier = {
+			local_build_cost = -0.2
+			local_build_time = -0.2
+			local_development_cost_modifier = -0.1
+		}
+		country_modifiers = {
+			artillery_cost = -0.2
+			global_trade_power = 0.3
+		}
+		on_upgraded = {
+		}
+	}
+}
