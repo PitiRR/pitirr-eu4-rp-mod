@@ -85,7 +85,7 @@ country_decisions = {
 					}
 					add_permanent_claim = PLM
 				}
-			} else { #if Byz exists - implicitly it means you have 80 trust, 150 relations, and are allied
+			} else = { #if Byz exists - implicitly it means you have 80 trust, 150 relations, and are allied
 				add_historical_friend = BYZ
 				BYZ = {
 					add_historical_friend = PLM

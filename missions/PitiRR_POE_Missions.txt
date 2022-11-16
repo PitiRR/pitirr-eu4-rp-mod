@@ -202,11 +202,13 @@ poe_conquer_west_missions = {
 				random = 15
 			}
 			151 = { #Constantinople
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = {  is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -625,18 +627,22 @@ poe_conquer_east_missions = {
 				duration = 18250 #50 years
 			}
 			1764 = { #Burgas
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = {  is_permanent_claim = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = {  is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = ROOT
 			}
 			1756 = { #Bessarabia
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = {  is_permanent_claim = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = {  is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = ROOT
 			}
 			silistria_area = {
 				limit = {

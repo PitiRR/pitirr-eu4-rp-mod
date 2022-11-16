@@ -44,7 +44,7 @@ slv_1_column_missions = {
 		tag = SLV
 	}
     slv_conquer_croatia = {
-		icon = mission_unknown_mission
+		icon = multicultural_empire
 		required_missions = { slv_unite_slovenia }
 		position = 2
 		provinces_to_highlight = {
@@ -70,18 +70,22 @@ slv_1_column_missions = {
 		
 		effect = {
 			4752 = { #Rijeka
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = ROOT
 			}
 			1826 = { #Lika
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = ROOT
 			}
 			east_adriatic_coast_area = {
 				limit = {
@@ -94,7 +98,7 @@ slv_1_column_missions = {
 		}
 	}
     slv_conquer_adriatic_coast = {
-		icon = mission_unknown_mission
+		icon = imperial_navy
 		required_missions = { slv_conquer_croatia }
 		position = 3
 		provinces_to_highlight = {
@@ -115,11 +119,28 @@ slv_1_column_missions = {
 		}
 		
 		effect = {
-            #TODO
+            4752 = {
+                add_province_modifier = {
+                    name = slv_hostile_takeover
+                    duration = 3650
+                }
+			}
+            1826 = {
+                add_province_modifier = {
+                    name = slv_hostile_takeover
+                    duration = 3650
+                }
+			}
+			east_adriatic_coast_area = {
+                add_province_modifier = {
+                    name = slv_hostile_takeover
+                    duration = 3650
+                }
+			}
 		}
 	}
     slv_dev_istria = {
-		icon = mission_unknown_mission
+		icon = imperial_capitals
 		required_missions = { slv_prosper }
 		position = 4
 		provinces_to_highlight = {
@@ -147,11 +168,17 @@ slv_1_column_missions = {
 		}
 		
 		effect = {
-            #TODO
+			add_prestige = 20
+            130 = {
+                add_province_modifier = {
+                    name = slv_istria_1
+                    duration = -1
+                }
+            }
 		}
 	}
     slv_adriatic_pearl = {
-		icon = mission_unknown_mission
+		icon = mission_rb_mediterranean_authority
 		required_missions = { slv_dev_istria }
 		position = 5
 		provinces_to_highlight = {
@@ -192,10 +219,12 @@ slv_1_column_missions = {
 		}
 		
 		effect = {
+			add_prestige = 20
             add_country_modifier = {
                 name = slv_winning_in_trade
                 duration = 7300
             }
+            130 = { remove_province_modifier = slv_istria_1 }
             130 = {
                 add_province_modifier = {
                     name = slv_pearl_of_the_adriatic
@@ -215,14 +244,17 @@ slv_2_column_missions = {
 		tag = SLV
 	}
     slv_house_of_cilli = {
-		icon = mission_unknown_mission
+		icon = mission_lead_the_hakkapeliitta
 		required_missions = { slv_unite_slovenia }
 		position = 2
 		trigger = {
             OR = {
-                emperor = {
-                    alliance_with = SLV
-                }
+				AND = {
+					emperor = {
+						alliance_with = SLV
+					}
+					HAB = { trust = { who = SLV value = 75 } }
+				}
 				OR = {
 					personal_union = 2
 					vassal = 3
@@ -231,60 +263,98 @@ slv_2_column_missions = {
 		}
 		
 		effect = {
-            
+            add_country_modifier = {
+				name = slv_imperial_diplomacy
+				duration = 7300
+			}
 		}
 	}
-    slv_imperial_question = {
-		icon = mission_unknown_mission
+    slv_imperial_question = { #currently broken
+		icon = a.e.i.o.u.
 		required_missions = { slv_house_of_cilli }
 		position = 3
 		trigger = {
-		#	if = {
-		#		limit = {
-		#			is_part_of_hre = yes
-		#			is_elector = no
-		#			OR = {
-		#				ROOT = { any_subject_country = { is_elector = yes } }
-		#				AND = {
-		#					emperor = {
-		#						alliance_with = SLV
-		#					}
-		#					NOT = { num_of_electors = 7 } #idc if there's possible 8 electors game never goes that far
-		#				}
-		#			}
-		#			OR = {
-		#				hre_religion_locked = no
-		#				hre_religion = root
-		#			}
-		#		}
-		#		custom_tooltip = emp_bav_union_with_palatinate_effect_tooltip
-		#		emperor = {
-		#			custom_tooltip = emp_bav_union_with_palatinate_effect_tooltip2
-		#		}
-		#		custom_tooltip = emp_bav_union_with_palatinate_effect_tooltip3
-		#		tooltip = {
-		#			add_prestige = 25
-		#			add_legitimacy = 20
-		#			add_devotion = 20
-		#			add_republican_tradition = 10
-		#		}
-		#	}
-		#	else = {
-		#		tooltip = {
-		#			add_prestige = 25
-		#			add_legitimacy = 20
-		#			add_devotion = 20
-		#			add_republican_tradition = 10
-		#		}
-		#	}
+			OR = {
+				is_elector = yes
+				is_emperor = yes
+				senior_union_with = PAL
+				any_elector = {
+					is_subject_of = SLV #Both PU and vassal is good
+				}
+			}
 		}
 		
 		effect = {
-            #TODO
+			if = {
+				limit = {
+					NOT = {
+						SLV = { any_subject_country = { is_elector = yes } }
+					}
+				}
+				if = {
+					limit = {
+						is_part_of_hre = yes
+						is_elector = no
+						SLV = { any_subject_country = { is_elector = yes } }
+						OR = {
+							hre_religion_locked = no
+							hre_religion = root
+						}
+					}
+					custom_tooltip = slv_union_with_elector_tooltip
+					emperor = {
+						custom_tooltip = slv_union_with_elector_tooltip2
+					}
+					custom_tooltip = slv_union_with_elector_tooltip3
+					tooltip = {
+						add_prestige = 10
+						add_legitimacy = 10
+						add_devotion = 10
+						add_republican_tradition = 5
+					}
+				}
+				else = {
+					tooltip = {
+						add_prestige = 10
+						add_legitimacy = 10
+						add_devotion = 10
+						add_republican_tradition = 5
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_part_of_hre = yes
+					is_elector = no
+					PAL = { is_elector = yes }
+					senior_union_with = PAL
+					OR = {
+						hre_religion_locked = no
+						hre_religion = root
+					}
+				}
+				hidden_effect = {
+					if = {
+						limit = {
+							SLV = { any_subject_country = { is_elector = yes } }
+						}
+						emperor = {
+							country_event = { id = new_flavour_bav.10 }
+						}
+					}
+				}
+				custom_tooltip = slv_union_with_elector_tooltip2
+			}
+			else = {
+				add_prestige = 10
+				add_legitimacy = 10
+				add_devotion = 10
+				add_republican_tradition = 5
+			}
 		}
 	}
     slv_dev_triest = {
-		icon = mission_unknown_mission
+		icon = mission_rb_cod_wars
 		required_missions = { slv_prosper }
 		position = 4
 		provinces_to_highlight = {
@@ -310,11 +380,17 @@ slv_2_column_missions = {
 		}
 		
 		effect = {
-            #TODO
+			add_sailors = 1000
+            4738 = {
+                add_province_modifier = {
+                    name = slv_triest_1
+                    duration = -1
+                }
+            }
 		}
 	}
     slv_a_slovenian_navy = {
-		icon = mission_unknown_mission
+		icon = crusader_fleet
 		required_missions = { slv_dev_triest }
 		position = 5
 		provinces_to_highlight = {
@@ -329,6 +405,9 @@ slv_2_column_missions = {
 		}
 		
 		effect = {
+			add_sailors = 2000
+			add_prestige = 20
+            4738 = { remove_province_modifier = slv_triest_1 }
             4738 = {
                 add_province_modifier = {
                     name = slv_shipyards_of_trst
@@ -348,7 +427,7 @@ slv_3_column_mission = {
 		tag = SLV
 	}
     slv_unite_slovenia = {
-		icon = mission_unknown_mission
+		icon = mission_unite_home_region
 		required_missions = {  }
 		position = 1
 		provinces_to_highlight = {
@@ -389,7 +468,7 @@ slv_3_column_mission = {
 		}
 	}
     slv_slovenians_emerge = {
-		icon = mission_unknown_mission
+		icon = mission_noble_council
 		required_missions = { slv_unite_slovenia }
 		position = 2
 		provinces_to_highlight = {
@@ -413,14 +492,27 @@ slv_3_column_mission = {
 		}
 	}
     slv_prosper = {
-		icon = mission_unknown_mission
+		icon = mission_expand_into_the_forest
 		required_missions = { slv_slovenians_emerge }
 		position = 3
 		provinces_to_highlight = {
-            area = carinthia_area
+			area = carinthia_area
+			OR = {
+				NOT = { is_core = ROOT }
+				NOT = { owned_by = ROOT }
+				NOT = { num_of_times_improved_by_owner = 3 }
+			}
         }
 		trigger = {
-            #TODO
+			custom_trigger_tooltip = {
+				tooltip = slv_is_prosperous_tt
+				carinthia_area = {
+					is_prosperous = yes
+				}
+			}
+			carinthia_area = {
+				num_of_times_improved_by_owner = 3
+			}
 		}
 		
 		effect = {
@@ -428,7 +520,7 @@ slv_3_column_mission = {
 		}
 	}
     slv_dev_gorizia = {
-		icon = mission_unknown_mission
+		icon = mission_rb_hanseatic_east
 		required_missions = { slv_prosper }
 		position = 4
 		provinces_to_highlight = {
@@ -448,32 +540,64 @@ slv_3_column_mission = {
 		}
 		
 		effect = {
-            #TODO
+			1769 = {
+				add_province_modifier = {
+					name = slv_gorizia_1
+					duration = -1
+				}
+			}
 		}
 	}
     slv_kropa_mine = {
-		icon = mission_unknown_mission
+		icon = mission_rb_central_belt_coal_mining
 		required_missions = { slv_dev_gorizia }
 		position = 5
 		provinces_to_highlight = {
-            province_id = 4738
+            province_id = 1769
         }
 		trigger = {
-            4738 = {
+            1769 = {
                 province_trade_power = 25
             }
 		}
 		
 		effect = {
-			4738 = {
-				add_great_project = {
-					type = kropa_mine
-					instant = no 
+			add_prestige = 20
+            1769 = {
+				if = {
+					limit = {
+						has_great_project = {
+							type = alhambra
+							tier = 0
+						}
+					}
+					add_great_project_tier = {
+						type = kropa_mine
+						tier = 2
+					}
+				}
+				else_if = {
+					limit = {
+						has_great_project = {
+							type = alhambra
+							tier = 1
+						}
+					}
+					add_great_project_tier = {
+						type = kropa_mine
+						tier = 1
+					}
+				}
+			}
+			1769 = { remove_province_modifier = slv_gorizia_1 }
+			1769 = {
+				add_province_modifier = {
+					name = slv_gorizia_2
+					duration = -1
 				}
 			}
 		}
 	}
-
 }
 slv_4_column_mission = {
     slot = 4
@@ -485,7 +609,7 @@ slv_4_column_mission = {
 		tag = SLV
 	}
     slv_religious_influence = {
-		icon = mission_unknown_mission
+		icon = show_piety
 		required_missions = { slv_unite_slovenia }
 		position = 2
 		trigger = {
@@ -559,9 +683,9 @@ slv_4_column_mission = {
                 }
             }
 		}
-	}   
+	}
     slv_papal_question = {
-		icon = mission_unknown_mission
+		icon = spread_piety
 		required_missions = { slv_religious_influence }
 		position = 3
 		provinces_to_highlight = {
@@ -598,17 +722,24 @@ slv_4_column_mission = {
 		}
 	}
     slv_dev_kraina = {
-		icon = mission_unknown_mission
+		icon = renovate_berlin
 		required_missions = { slv_prosper }
 		position = 4
 		provinces_to_highlight = {
             province_id = 129
         }
 		trigger = {
+			129 = { owned_by = ROOT }
             129 = { 
                 OR = { 
                     has_building = courthouse
                     has_building = town_hall
+                } 
+            }
+            129 = { 
+                OR = { 
+                    has_building = temple
+                    has_building = cathedral
                 } 
             }
             129 = { 
@@ -618,29 +749,61 @@ slv_4_column_mission = {
                     has_building = state_house
                 } 
             }
-            129 = { development = 25 }
+            129 = { development = 20 }
 		}
 		
 		effect = {
-            #TODO
+			129 = {
+				add_province_modifier = {
+					name = slv_kraina_1
+					duration = -1
+				}
+			}
 		}
 	}
     slv_dragon_city = {
-		icon = mission_unknown_mission
+		icon = develop_our_capital
 		required_missions = { slv_dev_kraina }
 		position = 5
 		provinces_to_highlight = {
             province_id = 129
         }
 		trigger = {
-            #TODO
+			129 = {
+				development = 35
+			}
+			129 = {
+				has_building = university
+			}
+			129 = {
+				has_building = cathedral
+			}
+			129 = {
+				has_building = soldier_households
+			}
+			129 = {
+				has_building = farm_estate
+			}
+			129 = {
+				has_building = state_house
+			}
+			natural_scientist = 3
 		}
 		
 		effect = {
+			add_prestige = 20
+			129 = { remove_province_modifier = slv_kraina_1 }
+			129 = {
+				add_province_modifier = {
+					name = slv_kraina_2
+					duration = -1
+				}
+			}
 			129 = {
 				change_province_name = "Ljublana"
 				rename_capital = "Ljublana"
 			}
+			set_capital = 129
 		}
 	}
 }
@@ -655,7 +818,7 @@ slv_5_column_mission = {
 	}
 
     slv_para_bellum = {
-		icon = mission_unknown_mission
+		icon = the_alpine_wall
 		required_missions = { slv_unite_slovenia }
 		position = 2
 		provinces_to_highlight = {
@@ -749,32 +912,78 @@ slv_5_column_mission = {
 		}
 	}	
     slv_dev_cilli = {
-		icon = mission_unknown_mission
+		icon = the_great_city_of_buda
 		required_missions = { slv_prosper }
 		position = 4
 		provinces_to_highlight = {
             province_id = 4751
         }
 		trigger = {
-            #TODO
+			SLV = {
+				diplomatic_reputation = 4
+			}
+			4751 = {
+				development = 20
+			}
+            4751 = { 
+                OR = { 
+                    has_building = temple
+                    has_building = cathedral
+                } 
+            }
+            4751 = { 
+                OR = { 
+                    has_building = courthouse
+                    has_building = town_hall
+                } 
+            }
+            4751 = { 
+                OR = { 
+                    has_building = fort_15th
+                    has_building = fort_16th
+                    has_building = fort_17th
+                    has_building = fort_18th
+                } 
+            }
         }
 		effect = {
-            #TODO
+			4751 = {
+				add_province_modifier = {
+					name = slv_cilli_1
+					duration = -1
+				}
+			}
 		}
 	}
     slv_baroque_capital = {
-		icon = mission_unknown_mission
+		icon = the_viennese_waltz
 		required_missions = { slv_dev_cilli }
 		position = 5
 		provinces_to_highlight = {
             province_id = 4751
         }
 		trigger = {
+			SLV = {
+				diplomatic_reputation = 6
+			}
 			artist = 5
+			4751 = {
+				development = 30
+			}
+			4751 = {
+				has_building = university
+			}
 		}
 		
 		effect = {
-            #TODO
+			add_prestige = 20
+			4751 = { remove_province_modifier = slv_cilli_1 }
+			4751 = {
+				add_province_modifier = {
+					name = slv_cilli_2
+					duration = -1
+				}
+			}
 		}
 	}
 }
