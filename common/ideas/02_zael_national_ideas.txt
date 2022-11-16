@@ -1,0 +1,213 @@
+tunis_ideas = {
+	start = {
+		galley_power = 0.25
+		may_perform_slave_raid = yes
+	}
+	
+	bonus = {
+		naval_forcelimit_modifier = 0.3
+	}
+	
+	trigger = {
+		tag = TUN
+	}
+	
+	catalan_guard = {
+		infantry_power = 0.15
+	}
+	dual_diplomacy = {
+		rival_change_cost = -1
+		diplomatic_upkeep = 1
+	}
+	corsairs = {
+		navy_tradition = 1
+		privateer_efficiency = 0.25
+	}
+	attract_foreign_pirates = {
+		global_sailors_modifier = 0.25
+		regiment_manpower_usage = -0.15
+	}
+	board_of_captains = {
+		leader_navy_fire = 1
+		leader_army_fire = 1
+	}
+	export_monopolies = {
+		trade_efficiency = 0.15
+		embargo_efficiency = 0.25
+	}
+	tunisian_caliphate = {
+		own_tolerance = 2
+		monthly_piety_accelerator = 0.001
+	}
+}
+
+scotland_ideas = {
+	start = {
+		land_forcelimit_modifier = 0.33
+		leader_land_shock = 1
+	}
+	
+	bonus = {
+		land_morale = 0.15
+	}
+	
+	trigger = {
+		tag = SCO
+	}
+	
+	break_the_black_douglas = {
+		global_unrest = -2
+		tax_efficiency = 0.15
+	}
+	modernize_the_royal_scots_navy = {
+		global_ship_cost = -0.1
+	}
+	rein_in_the_clans = {
+		global_manpower_modifier = 0.2
+	}
+	comets = {
+		stability_cost_modifier = -0.1
+	}
+	basilikon_doron = {
+		legitimacy = 1
+		devotion = 1
+		republican_tradition = 0.3
+	}
+	pass_the_act_of_revocation = {
+		ae_impact = -0.15
+	}
+	remember_the_bruce = { # get stuck in ya blaggards
+		infantry_shock = 0.5
+	}
+}
+
+pomerania_ideas = { # feels weird to not type "pomeranian"
+	start = {
+		land_morale = 0.1
+		light_ship_cost = -0.2
+	}
+	
+	bonus = {
+		discipline = 0.075
+	}
+	
+	trigger = {
+		tag = POM
+	}
+	
+	legacy_of_pirates = {
+		embargo_efficiency = 0.33
+		privateer_efficiency = 0.33
+	}
+	pomeranian_merchants = {
+		merchants = 1
+		trade_steering = 0.25
+	}
+	nortern_ports = {
+		global_trade_power = 0.1
+	}
+	religious_freedom = {
+		heretic_tolerance = 3
+		max_heretic_tolerance = 2
+	}
+	mercenary_contracts = {
+		mercenary_maintenance_modifier = -0.2
+		spy_offence = 0.5
+	}
+	dominate_the_baltic = {
+		trade_efficiency = 0.25
+	}
+	germany_navy = {
+		naval_forcelimit_modifier = 0.25
+	}
+}
+
+arabia_ideas = {
+	start = {
+		movement_speed = 0.1
+		land_attrition = -0.33
+	}
+	
+	bonus = {
+		trade_efficiency = 0.2
+	}
+	
+	trigger = {
+		tag = ARB
+	}
+	
+	indian_ocean_trade = {
+		trade_steering = 0.5
+	}
+	arabian_horses = {
+		cavalry_cost = -0.3
+		cavalry_flanking = 0.5
+		cav_to_inf_ratio = 0.2
+	}
+	land_of_the_prophet = {
+		tolerance_own = 2
+		land_morale = 0.25
+	}
+	spreading_the_prophets_word = {
+		heretic_missionary_strength = 0.02
+		manpower_in_true_faith = 0.2
+	}
+	bedouin_traders = {
+		global_prov_trade_power_modifier = 0.3
+		leader_land_manuever = 2
+	}
+	clan_loyalties = {
+		all_estate_influence_modifier = 0.1
+		allow_free_estate_privilege_recovation = yes
+	}
+	arabia = {
+		hostile_attrition = 2
+		max_hostile_attrition = 2
+	}
+}
+
+ulm_ideas = {
+	start = {
+		attack_bonus_in_capital_terrain = yes
+		trade_efficiency = 0.1
+		governing_capacity_modifier = -0.99
+	}
+	
+	bonus = {
+		yearly_army_professionalism = 0.02
+	}
+	
+	trigger = {
+		tag = ulm
+	}
+	
+	grosser_schworbrief = {
+		burghers_loyalty_equilibrium = 0.15
+		republican_tradition = 0.15
+	}
+	schwabischer_bund = {
+		diplomatic_upkeep = 1
+		free_city_imperial_authority = 0.1
+	}
+	birthplace_of_german_realism = {
+		embracement_cost = -0.2
+		innovativeness_gain = 0.2
+		# replace innovativeness with province modifier to ulm (1872) giving it +institution growth? (look at harer (1211) monument)
+	}
+	durers_fortifications = {
+		defensiveness = 0.25
+		garrison_size = 0.25
+	}
+	ulmer_textile_trade = {
+		development_cost = -0.3
+	}
+	enlist_the_swiss_mercenaries = {
+		discipline = 0.075
+		army_tradition_decay = -0.01
+	}
+	finish_the_ulm_minster = {
+		tolerance_own = 6
+		monthly_church_power = 0.03
+		monthly_fervor_increase = 1
+	}
+}

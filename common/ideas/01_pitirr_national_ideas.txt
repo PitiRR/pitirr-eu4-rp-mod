@@ -140,29 +140,29 @@ belgium_ideas = {
 	}
 	free = yes
 	
-	BGM_ = {
+	BGM_coastal_traders = {
 		global_ship_trade_power = 0.2
 		light_ship_power = 0.25
 	}
-	BGM_ = {
+	BGM_fertile_lands = {
 		development_cost = -0.1
 	}
-	BGM_ = {
+	BGM_employ_spanish_cartographers = { # invited on pretense of mapping new belgian settlements from idea 2 rp
 		range = 0.33
 		may_explore = yes
 	}
-	BGM_ = {
+	BGM_lenient_banking = { # invite jews and the like, overlook what is not allowed in catholicism
 		interest = -0.5
 		trade_efficiency = 0.15
 	}
-	BGM_ = {
+	BGM_free_militias = {
 		land_morale = 0.05
 		naval_morale = 0.05
 	}
-	BGM_ = {
+	BGM_invest_in_maritime_interests = {
 		naval_forcelimit_modifier = 0.33
 	}
-	BGM_ = {
+	BGM_never_serve_another = {
 		reserves_organisation = -0.05
 	}
 }
@@ -264,29 +264,71 @@ kurdistan_ideas = {
 	}
 	free = yes
 	
-	KUS_ = { # Irredentism
+	KUS_irredentism = { # Irredentism
 		core_creation = -0.2
 		enemy_core_creation = 0.2
 	}
-	KUS_ = { # Turko-arabic influences
+	KUS_turko_arabic_influences = { # Turko-arabic influences
         cavalry_power = 0.15
 	}
-	KUS_ = { # Righteousness of Faith
+	KUS_righteousness_of_faith = { # Righteousness of Faith
 		land_morale = 0.1
 		global_heretic_missionary_strength = 0.02
 	}
-	KUS_ = { #Citadels and fortresses
+	KUS_citadels_and_fortresses = { #Citadels and fortresses
 		defensiveness = 0.25
 		rival_border_fort_maintenance = -0.1
 	}
-	KUS_ = { # Kurdish Nationalism
+	KUS_kurdish_nationalism = { # Kurdish Nationalism
 		manpower_in_own_culture_provinces = 0.3
 	}
-	KUS_ = { # Cradle to Cradle
+	KUS_cradle_to_cradle = { # Cradle to Cradle
 		global_trade_goods_size_modifier = 0.1
 		global_tax_modifier = 0.2
 	}
-	KUS_ = { # Claim to Ayubbid Splendor
+	KUS_claim_to_ayubbid_splendor = { # Claim to Ayubbid Splendor
 		monthly_splendor = 1
+	}
+}
+africa_ideas = {
+	start = {
+		global_missionary_strength = 0.03
+		galley_power = 0.15
+	}
+	
+	bonus = {
+		discipline = 0.05
+	}
+	
+	trigger = {
+		tag = AFC
+	}
+	
+	AFC_renewed_knightly_orders = {
+		infantry_power = 0.1
+		cavalry_power = 0.1
+	}
+	AFC_coastal_settlements = {
+		placed_merchant_power = 20
+		center_of_trade_upgrade_cost = -0.25
+	}
+	AFC_desert_caravaneers = {
+		merchants = 1
+		global_tax_modifier = 0.25
+	}
+	AFC_crossing_stations = {
+		land_attrition = -0.25
+		global_tax_income = 24
+	}
+	AFC_frontier_churches = {
+		build_cost = -0.1
+		ae_impact = -0.1
+	}
+	AFC_multicultural_empire = {
+		num_accepted_cultures = 3
+		promote_culture_cost = -0.2
+	}
+	AFC_a_new_heartland = {
+		development_cost = -0.1
 	}
 }
