@@ -39,21 +39,26 @@ poe_black_sea_trade = {
 }
 
 slv_winning_in_trade = {
-
+    trade_efficiency = 0.2
 }
 
 slv_pearl_of_the_adriatic = {
-
+    local_development_cost_modifier = -0.1
+    allowed_num_of_buildings = 2
+    province_trade_power_modifier = 0.5
 }
 
 slv_culture_convert = {
-
+    local_culture_conversion_cost = -0.33
 }
 
 slv_dev_up_devboy = {
-
+    local_development_cost = -0.1
 }
 
 slv_shipyards_of_trst = {
-    
+    local_sailors_modifier = 1.00
+    ship_recruit_speed = -0.5
+    local_ship_repair = 1
+    hostile_fleet_attrition = 2
 }

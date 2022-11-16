@@ -637,7 +637,10 @@ slv_4_column_mission = {
 		}
 		
 		effect = {
-            #TODO
+			129 = {
+				change_province_name = "Ljublana"
+				rename_capital = "Ljublana"
+			}
 		}
 	}
 }
@@ -677,6 +680,7 @@ slv_5_column_mission = {
 					has_building = fort_18th
 				}
             }
+			fortification_expert = 3
 		}
 		
 		
@@ -736,18 +740,14 @@ slv_5_column_mission = {
             is_in_war = {
                 defender_leader = ROOT
                 duration = 365
+				#negative warscore here is broken
             }
-			NOT = {
-				is_in_war = {
-					war_score = 0
-				}
-			}
 		}
 		
 		
 		effect = {
 		}
-	}
+	}	
     slv_dev_cilli = {
 		icon = mission_unknown_mission
 		required_missions = { slv_prosper }
@@ -770,7 +770,7 @@ slv_5_column_mission = {
             province_id = 4751
         }
 		trigger = {
-            #TODO
+			artist = 5
 		}
 		
 		effect = {
