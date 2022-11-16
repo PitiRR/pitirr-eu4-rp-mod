@@ -25,7 +25,7 @@ has_any_manufactory = {
 }
 
 SLV_adriatic_ports = {
-	AND = {
+	OR = {
 		province_id = 112
 		province_id = 111
 		province_id = 1774
@@ -39,7 +39,7 @@ SLV_adriatic_ports = {
 		province_id = 2985
 		province_id = 1933
 		province_id = 122
-		province_id = 4738 #yes, Istria has to eclipse even Triest which you own
+		province_id = 4738
 		province_id = 4752
 		province_id = 1826
 		province_id = 4753
@@ -49,6 +49,5 @@ SLV_adriatic_ports = {
 		province_id = 4175
 		province_id = 4174
 		province_id = 143
-
 	}
 }

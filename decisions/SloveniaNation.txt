@@ -47,6 +47,7 @@ country_decisions = {
 			}
 			change_tag = SLV
 			swap_non_generic_missions = yes
+			complete_mission = slv_buy_krain
 			carinthia_area = {
 				limit = {
 					NOT = { owned_by = ROOT }

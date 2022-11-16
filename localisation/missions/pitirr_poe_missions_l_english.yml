@@ -39,7 +39,7 @@
   poe_middle_east:0 "Alexandrian Successor"
   poe_greeks_unified_desc:0 "As we have conquered one of the richest regions in the world, including Jerusalem, we can proudly claim we are walking on Alexander the Great's path. Equally as important, others see this claim as legitimate. Including Syrians."
   poe_dev_capital_modifier:0 "Public works"
-  poe_dev_capital_modifier_desc:0 "This province is being supervised by the Pontic [Root.Monarch.GetTitle] [Root.Monarch.GetHimHer]self. Soon this will be a great, regional capital."
+  poe_dev_capital_modifier_desc:0 "This province is being supervised by the Pontic [Root.Monarch.GetTitle] [Root.Monarch.GetHerHim]self. Soon this will be a great, regional capital."
   poe_caffa_center:0 "Theodosia resurgent"
   poe_caffa_center_desc:0 "Like Phoenix from the Ashes, Theodosia is experiencing a second Golden Age. It is difficult to overstate how beautiful and rich the city is, and consequently, every citizen of the Empire."
   poe_black_sea_trade:0 "Black Sea Trade"

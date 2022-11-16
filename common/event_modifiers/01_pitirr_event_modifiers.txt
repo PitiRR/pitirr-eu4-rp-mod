@@ -37,3 +37,23 @@ poe_black_sea_trade = {
     global_ship_trade_power = 0.25
     mercantilism_cost = -0.25
 }
+
+slv_winning_in_trade = {
+
+}
+
+slv_pearl_of_the_adriatic = {
+
+}
+
+slv_culture_convert = {
+
+}
+
+slv_dev_up_devboy = {
+
+}
+
+slv_shipyards_of_trst = {
+    
+}
