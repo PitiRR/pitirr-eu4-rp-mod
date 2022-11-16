@@ -131,6 +131,8 @@ belgium_ideas = {
 	}
 	
 	bonus = {
+		production_efficiency = 0.1
+		ship_cost = -0.1
 	}
 	
 	trigger = {
@@ -139,18 +141,29 @@ belgium_ideas = {
 	free = yes
 	
 	BGM_ = {
+		global_ship_trade_power = 0.2
+		light_ship_power = 0.25
 	}
 	BGM_ = {
+		development_cost = -0.1
 	}
 	BGM_ = {
+		range = 0.33
+		may_explore = yes
 	}
 	BGM_ = {
+		interest = -0.5
+		trade_efficiency = 0.15
 	}
 	BGM_ = {
+		land_morale = 0.05
+		naval_morale = 0.05
 	}
 	BGM_ = {
+		naval_forcelimit_modifier = 0.33
 	}
 	BGM_ = {
+		reserves_organisation = -0.05
 	}
 }
 
@@ -238,11 +251,12 @@ slovenia_ideas = {
 
 kurdistan_ideas = {
 	start = {
-        land_morale = 0.10
+        shock_damage_received = -0.1
         land_attrition = -0.20
 	}
 	
 	bonus = {
+		discipline = 0.05
 	}
 	
 	trigger = {
@@ -250,19 +264,29 @@ kurdistan_ideas = {
 	}
 	free = yes
 	
-	KUS_ = {
+	KUS_ = { # Irredentism
+		core_creation = -0.2
+		enemy_core_creation = 0.2
+	}
+	KUS_ = { # Turko-arabic influences
         cavalry_power = 0.15
 	}
-	KUS_ = {
+	KUS_ = { # Righteousness of Faith
+		land_morale = 0.1
+		global_heretic_missionary_strength = 0.02
 	}
-	KUS_ = {
+	KUS_ = { #Citadels and fortresses
+		defensiveness = 0.25
+		rival_border_fort_maintenance = -0.1
 	}
-	KUS_ = {
+	KUS_ = { # Kurdish Nationalism
+		manpower_in_own_culture_provinces = 0.3
 	}
-	KUS_ = {
+	KUS_ = { # Cradle to Cradle
+		global_trade_goods_size_modifier = 0.1
+		global_tax_modifier = 0.2
 	}
-	KUS_ = {
-	}
-	KUS_ = {
+	KUS_ = { # Claim to Ayubbid Splendor
+		monthly_splendor = 1
 	}
 }
