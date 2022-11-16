@@ -20,14 +20,14 @@ kropa_mine = {
 
 	can_use_modifiers_trigger = {
 		AND = {
-			culture = english
+			culture = slovene
 			province_is_or_accepts_culture = yes
 		}
 	}
 
 	can_upgrade_trigger = {
 		AND = {
-			culture = english
+			culture = slovene
 			province_is_or_accepts_culture = yes
 		}
 	}
