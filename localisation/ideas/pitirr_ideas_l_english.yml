@@ -17,4 +17,22 @@
   POE_jannisary_model:0 "Adopt the Jannisary Model"
   POE_jannisary_model_desc:0 "The Ottomans may look to us as an empire of evil, but they know how to assemble an army. Let us learn from them. We don't wish to adopt slavery, however the idea of professional, lifelong soldier is very appealing. We can afford one of the first professional armies in the world, and let us pioneer the military technology so we mustn't ever fear from our enemies again."
   
+  #Slovenia
+  slovenia_ideas:0 "Slovene Ideas"
+  slovenia_ideas_start:0 "Slovene Traditions"
+  SLV_develop_slovenia:0 "Develop Slovenia"
+  SLV_develop_slovenia_desc:0 "The Slovenes is a small nation. It is imperative to follow a \"work from the foundations\" approach, rather than fruitlessly fight military wars. Let's dedicate our funds to help out the poorest, subsidize merchants and educate the nobles."
+  SLV_cilli_diplomacy:0 "von Cilli Diplomacy"
+  SLV_cilli_diplomacy_desc:0 "The von Cilli house, who ruled Celje, has always been in close terms with the von Habsburgs. As inheritants of the County, we still keep correspondence with not just the Austrians, but most German nobility. Our competency is better than usual."
+  SLV_lessons_of_krain:0 "Lessons of Krain"
+  SLV_lessons_of_krain_desc:0 "Krain has seen a lot of conflicts, both internal and external. Notably, it has been plagued with robber barons. Though this was the reason Austria considered selling us this land, we had to ultimately depose the criminals ourselves. Our approach is simple - every Slovene must defend their homeland, be it village or Slovenia. We will not be broken, now that we have a home!"
+  SLV_forests:0 "Slovene Forests, Bogs and Hills"
+  SLV_forests_desc:0 "Only the Slovenes know Slovenia like their pocket. Though beautiful, Slovenia can become a death trap for any invader. Teaching geography in schools is our number one priority!"
+  SLV_comradeship:0 "Slovene Comradeship"
+  SLV_comradeship_desc:0 "Small nations, like ours, is often well-connected culturally. Families know each other, soldiers feel at homy anywhere. Even our officials feel patriotism and very evidently don't accept bribes as often (astonishing!)."
+  SLV_a_united_nation:0 "A United Nation"
+  SLV_a_united_nation_desc:0 "To claim to be a state of all people is one thing, to be one is another. We are comfortably in the latter category. We are aware that Slovenia is everything we have to stay prosperous and not rarely alive at all. Even peseants will die to the last drop of their blood so Slovenia can be free."
+  SLV_local_infrastructure:0 "Local Infrastructue and Walkable Cities"
+  SLV_local_infrastructure_desc:0 "A major benefit of small states is how close and relevant it can stay to its population. Intel is high, allowing for close attention to detail and quality supervision of development. We are no different, and can plan ahead like nobody else."
+
   
