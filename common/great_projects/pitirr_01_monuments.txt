@@ -66,13 +66,14 @@ kropa_mine = {
 		province_modifiers = {
 			trade_goods_size = 1.5
 			local_regiment_cost = -0.125
+			local_development_cost_modifier = -0.05
 		}
 		area_modifier = {
 			local_build_cost = -0.05
 			local_build_time = -0.05
 		}
-		country_modifiers = {	
-			global_trade_power = 0.1
+		country_modifiers = {
+			artillery_cost = -0.05
 		}
 		on_upgraded = {
 		}
@@ -91,13 +92,10 @@ kropa_mine = {
 			local_regiment_cost = -0.25
 		}
 		area_modifier = {
-			local_build_cost = -0.1
-			local_build_time = -0.1
 			local_development_cost_modifier = -0.05
 		}
 		country_modifiers = {
 			artillery_cost = -0.1
-			global_trade_power = 0.2
 		}
 		on_upgraded = {
 		}
@@ -116,13 +114,10 @@ kropa_mine = {
 			local_regiment_cost = -0.5
 		}
 		area_modifier = {
-			local_build_cost = -0.2
-			local_build_time = -0.2
 			local_development_cost_modifier = -0.1
 		}
 		country_modifiers = {
-			artillery_cost = -0.2
-			global_trade_power = 0.3
+			artillery_cost = -0.15
 		}
 		on_upgraded = {
 		}

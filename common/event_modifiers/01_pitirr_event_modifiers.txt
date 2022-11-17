@@ -147,3 +147,39 @@ pom_developed_capital = {
     local_development_cost = -0.1
     local_unrest = -2
 }
+
+yem_dof_1 = {
+    land_morale = 0.05
+    global_missionary_strength = 0.01
+}
+yem_dof_2 = {
+    land_morale = 0.1
+    global_missionary_strength = 0.02
+}
+yem_dof_3 = {
+    land_morale = 0.15
+    global_missionary_strength = 0.03
+}
+yem_dof_4 = {
+    land_morale = 0.2
+    global_missionary_strength = 0.04
+}
+yem_dof_5 = {
+    land_morale = 0.25
+    global_missionary_strength = 0.05
+}
+
+yem_anti_mamluk_diplo_modifier = {
+    diplomatic_reputation = 1
+    land_morale = 0.1
+}
+
+yem_new_army_modifier = {
+    drill_decay_modifier = -0.5
+    drill_gain_modifier = 0.25
+}
+
+mocca_coffee = {
+    local_development_cost = -0.1
+    trade_goods_size_modifier = 0.1
+}
