@@ -202,11 +202,13 @@ poe_conquer_west_missions = {
 				random = 15
 			}
 			151 = { #Constantinople
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = {  is_permanent_claim = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = {  is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -350,7 +352,7 @@ poe_central_missions = {
 		position = 4
 
 		provinces_to_highlight = {
-			OR {
+			OR = {
 				AND = {
 					province_id = 151 #Constantinople
 					area = silistria_area
@@ -373,11 +375,9 @@ poe_central_missions = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 			1756 = {
-				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 			1764 = {
-				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
@@ -627,18 +627,22 @@ poe_conquer_east_missions = {
 				duration = 18250 #50 years
 			}
 			1764 = { #Burgas
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = {  is_permanent_claim = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = {  is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = ROOT
 			}
 			1756 = { #Bessarabia
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = {  is_permanent_claim = ROOT }
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = {  is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = ROOT
 			}
 			silistria_area = {
 				limit = {
@@ -777,10 +781,8 @@ poe_misc_missions = {
 					285 = {
 						NOT = { culture = pontic_greek }
 					}
-					285 = {
-						culture = pontic_greek
-					}
 				}
+				285 = { change_culture = pontic_greek }
 			}
 		}
 	}
