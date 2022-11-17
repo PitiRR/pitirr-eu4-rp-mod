@@ -60,15 +60,18 @@ scotland_ideas = {
 		tax_efficiency = 0.15
 	}
 	modernize_the_royal_scots_navy = {
-		global_ship_cost = -0.1
+		ship_durability = 0.05
+		global_ship_trade_power = 0.2
 	}
 	rein_in_the_clans = {
+		global_autonomy = -0.05
 		global_manpower_modifier = 0.2
 	}
 	comets = {
 		stability_cost_modifier = -0.1
 	}
 	basilikon_doron = {
+		max_absolutism = 10
 		legitimacy = 1
 		devotion = 1
 		republican_tradition = 0.3
@@ -168,7 +171,7 @@ arabia_ideas = {
 
 ulm_ideas = {
 	start = {
-		attack_bonus_in_capital_terrain = yes
+		own_territory_dice_roll_bonus = 1
 		trade_efficiency = 0.1
 		governing_capacity_modifier = -0.99
 	}

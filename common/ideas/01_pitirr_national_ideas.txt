@@ -163,7 +163,7 @@ belgium_ideas = {
 		naval_forcelimit_modifier = 0.33
 	}
 	BGM_never_serve_another = {
-		reserves_organisation = -0.05
+		reserves_organisation = 0.05
 	}
 }
 

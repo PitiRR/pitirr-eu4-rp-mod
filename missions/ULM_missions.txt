@@ -9,7 +9,7 @@ ULM_diplomacy = {
 
 
 	ULM_hre_allies = {
-		icon = mission_alliances.png
+		icon = mission_alliances
 		required_missions = { }
 		position = 1
 		
@@ -24,7 +24,7 @@ ULM_diplomacy = {
 		}
 
 		effect = {
-			prestige = 20
+			add_prestige = 20
 			add_country_modifier = {
 				name = "regional_diplomacy"
 				duration = 9125 #25 years
@@ -33,7 +33,7 @@ ULM_diplomacy = {
 	}
 	
 	ULM_imperial_guarantee = {
-	icon = mission_monarch_in_throne_room.png
+	icon = mission_monarch_in_throne_room
 	required_missions = { ULM_hre_allies }
 	position = 2
 		
@@ -41,17 +41,13 @@ ULM_diplomacy = {
 			calc_true_if = { # alejandro = god
 				amount = 1
 				OR = {
-					all_countries = {
-						is_emperor = yes
-						allied_to = ROOT
-					}
-					all_countries = {
-						is_emperor = yes
-						has_opinion = {
-							who = ROOT
-							value = 100
-						}
+					alliance_with = emperor
+					emperor = {
 						owes_favors = { who = ULM value = 10 }
+						has_opinion = {
+							who = root
+							value = 120
+						}
 					}
 				}
 			}
@@ -70,7 +66,7 @@ ULM_diplomacy = {
 	}
 
 	ULM_swabians_and_the_swiss = {
-		icon = mission_italian_condotierre.png
+		icon = mission_italian_condotierre
 		required_missions = { ULM_imperial_guarantee }
 		position = 4
 		
@@ -91,7 +87,7 @@ ULM_diplomacy = {
 	}
 	
 	ULM_free_city_guard = {
-		icon = mission_lanshknecht_soldier.png
+		icon = mission_lanshknecht_soldier
 		required_missions = { ULM_swabians_and_the_swiss ULM_defensive_overhaul }
 		position = 6
 		
@@ -99,28 +95,29 @@ ULM_diplomacy = {
 			army_tradition = 60
 			army_professionalism = 20
 			OR = { 
-				any_ally = {
-					primary_culture = swabian
-					has_opinion = {
-						who = ROOT
-						value = 150
-					}
-					army_professionalism = 40
-				}
-				any_ally = {
-					primary_culture = swiss
-					has_opinion = {
-						who = ROOT
-						value = 150
-					}
-					army_professionalism = 40
-				}
-				any_country = {
-					NOT = {
+				calc_true_if = {
+					amount = 1
+					any_ally = {
+						has_opinion = {
+							who = ROOT
+							value = 150
+						}
+						army_professionalism = 40
 						OR = {
 							primary_culture = swiss
-							primary_cultre = swabian
+							primary_culture = swabian
 						}
+					}
+				}
+				any_country = {
+					vassal_of = ROOT
+					has_opinion = {
+						who = ROOT
+						value = 100
+					}
+					OR = {
+						primary_culture = swiss
+						primary_culture = swabian
 					}
 				}
 			}
@@ -144,7 +141,7 @@ ULM_imperial_misc_missions = {
 	has_country_shield = yes
 	
 	ULM_imperial_bankers = {
-		icon = mission_high_income.png
+		icon = mission_high_income
 		required_missions = { ULM_imperial_guarantee }
 		position = 3
 		
@@ -175,7 +172,7 @@ ULM_imperial_misc_missions = {
 	}
 	
 	ULM_defensive_overhaul = {
-		icon = mission_conquer_50_development.png
+		icon = mission_conquer_50_development
 		required_missions = { ULM_swabians_and_the_swiss ULM_establish_milf }
 		position = 5
 		
@@ -207,7 +204,6 @@ ULM_imperial_misc_missions = {
 				}
 			}
             1872 = {
-				type = all
 				OR = {
 					has_building = fort_15th
 					has_building = fort_16th
@@ -228,10 +224,7 @@ ULM_imperial_misc_missions = {
 			}
 			custom_tooltip = emp_mlo_fortify_alps_effects_tooltip
 			hidden_effect = {
-				every_owned_province = {
-					limit = {
-						province = 1872
-					}
+				1872 = {
 					if = {
 						limit = { has_building = fort_17th }
 						remove_building = fort_17th
@@ -263,9 +256,13 @@ ULM_province_development = {
 	has_country_shield = yes
 	
 	ULM_a_free_city = {
-		icon = mission_early_game_buildings.png
+		icon = mission_early_game_buildings
 		required_missions = { }
 		position = 1
+		
+		provinces_to_highlight = {
+			province_id = 1872
+		}
 		
 		trigger = {
 			1872 = {
@@ -285,7 +282,7 @@ ULM_province_development = {
 	}
 	
 	ULM_early_municipal_safeguards = {
-		icon = mission_colonial.png
+		icon = mission_colonial
 		required_missions = { ULM_a_free_city }
 		position = 2
 		
