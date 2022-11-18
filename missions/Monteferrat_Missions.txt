@@ -1,0 +1,1210 @@
+mfa_naval_ambitions = {
+    	slot = 1
+    	generic = no
+    	ai = yes
+    	potential = {
+			OR = {
+				tag = MFA
+				tag = PLM
+			}
+    	}
+    	has_country_shield = yes
+	MFA_first_national_navy = {
+		icon = mission_sea_battles
+		position = 4
+		required_missions = { MFA_recover_liguria }
+		
+		provinces_to_highlight = {
+			has_port = yes
+			root = {
+				NOT = {
+					any_owned_province = { has_port = yes }
+				}
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			navy_size_percentage = 0.50
+			any_owned_province = { 
+				has_port = yes
+			}
+		}
+		effect = {
+			add_country_modifier = { 
+    				name = mfa_growing_naval_influence 
+    				duration = 7300
+			}
+			corsica_sardinia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	MFA_seize_sardinia = {
+		icon = kingdom_sardinia_corsica
+		position = 5
+		required_missions = { MFA_first_national_navy }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = corsica_sardinia_area 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			corsica_sardinia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			western_sicily_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			2982 = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			124 = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	MFA_recover_sicily = {
+		icon = king_of_sicily
+		position = 6
+		required_missions = { MFA_seize_sardinia }
+		provinces_to_highlight = {
+			OR = {
+				area = western_sicily_area
+				province_id = 124
+				province_id = 2982
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			western_sicily_area = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			owns_or_non_sovereign_subject_of = 124
+			owns_or_non_sovereign_subject_of = 2982
+		}
+		effect = {
+			naples_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			apulia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			calabria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	MFA_recover_the_south = {
+		icon = union_with_naples
+		position = 6
+		required_missions = { MFA_recover_sicily }
+		provinces_to_highlight = {
+			OR = {
+				area = naples_area 
+				area = calabria_area 
+				area = apulia_area 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			naples_area = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			apulia_area = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			calabria_area = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			add_navy_tradition = 15
+			add_army_tradition = 10
+			if = {
+				limit = {
+					NOT = { has_country_flag = mfa_attack_pope_flag }
+					
+				}
+				country_event = { 
+    					id = bbf_mfa_event.4
+				}
+			}
+		}
+	}
+}
+mfa_italian_conquest = {
+    	slot = 2
+    	generic = no
+    	ai = yes
+    	potential = {
+			OR = {
+				tag = MFA
+				tag = PLM
+			}
+    	}
+    	has_country_shield = yes
+	MFA_victory_against_savoy = {
+		icon = mission_assemble_an_army
+		position = 1
+		required_missions = { }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = piedmont_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			is_subject = no
+			piedmont_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			liguria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			capital_scope = {
+				add_base_tax = 1
+				add_base_manpower = 1
+				add_base_production = 1
+			}
+		}
+	}
+	MFA_recover_liguria = {
+		icon = secure_the_republic
+		position = 3
+		required_missions = { MFA_victory_against_savoy }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = liguria_area 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			liguria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			lombardy_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			po_valley_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	MFA_recover_lomardia = {
+		icon = all_roads_lead_to_milan
+		position = 5
+		required_missions = { MFA_recover_liguria }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = po_valley_area
+				area = lombardy_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			lombardy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			po_valley_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			venetia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			emilia_romagna_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tuscany_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	MFA_recover_tuscany = {
+		icon = conquer_tuscany
+		position = 6
+		required_missions = { MFA_recover_lomardia }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = tuscany_area 
+				area = emilia_romagna_area 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			tuscany_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			emilia_romagna_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			add_army_tradition = 25
+			if = {
+				limit = {
+					NOT = { has_country_flag = mfa_attack_pope_flag }
+				}
+				country_event = { 
+    					id = bbf_mfa_event.4
+				}
+			}
+		}
+	}
+	MFA_unite_italy = {
+		icon = complete_the_risorgimento
+		position = 7
+		required_missions = {
+			MFA_recover_tuscany
+			MFA_seize_venice
+			MFA_recover_sicily
+		}
+		
+		provinces_to_highlight = {
+			OR = {
+				region = italy_region
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			italy_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = { 
+    				name = mfa_byzantine_italy 
+    				duration = 5475
+			}
+			if = {
+				limit = {
+					BYZ = {
+						NOT = { owns = 151 }
+					}
+				}
+				thrace_area = { add_core = ROOT }		
+			}
+		}
+	}
+}
+mfa_seize_venice = {
+    	slot = 3
+    	generic = no
+    	ai = yes
+    	potential = {
+			OR = {
+				tag = MFA
+				tag = PLM
+			}
+    	}
+    	has_country_shield = yes
+	MFA_seize_venice = {
+		icon = nuova_promissione_ducale
+		position = 1
+		required_missions = { MFA_recover_lomardia }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = venetia_area 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			venetia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			add_country_modifier = { 
+    				name = mfa_house_venice 
+    				duration = 7300
+			}
+		}
+	}
+}
+mfa_greek_legacy = {
+    	slot = 4
+    	generic = no
+    	ai = yes
+    	potential = {
+			OR = {
+				tag = MFA
+				tag = PLM
+			}
+    	}
+    	has_country_shield = yes
+	MFA_palaiologos_solidarity = {
+		icon = royal_marrage_mission
+		position = 1
+		required_missions = { }
+		
+		trigger = {
+			OR = {
+				AND = {
+					alliance_with = BYZ
+						reverse_has_opinion = {
+						who = BYZ
+						value = 150
+					}
+				}
+				NOT = { exists = BYZ }
+				is_rival = BYZ
+			}
+		}
+		effect = {
+			add_prestige = 10
+			custom_tooltip = BBF_enables_palaiologos_brotherhood_tt
+			set_global_flag = enables_palaiologos_brotherhood_flag
+			set_country_flag = has_enabled_palaiologos_brotherhood_flag
+		}
+	}
+	MFA_protect_constantinople = {
+		icon = end_the_schism
+		position = 2
+		required_missions = { MFA_palaiologos_solidarity }
+		
+		provinces_to_highlight = {
+			province_id = 151
+			NOT = { owned_by = BYZ }
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			OR = {
+				owns = 151
+				AND = {
+					BYZ = {
+						owns = 151
+					}
+					is_year = 1460
+				}	
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = { tag = BYZ }
+					BYZ = { owns = 151 }
+				}
+				country_event = { 
+    					id = bbf_mfa_event.1
+				}
+			}
+			else = {
+				set_country_flag = mfa_seize_byzantium_flag
+				144 = { add_permanent_claim = ROOT }
+				145 = { add_permanent_claim = ROOT }
+				146 = { add_permanent_claim = ROOT }
+				147 = { add_permanent_claim = ROOT }
+				148 = { add_permanent_claim = ROOT }
+				4779 = { add_permanent_claim = ROOT }
+				1773 = { add_permanent_claim = ROOT }
+				1853 = { add_permanent_claim = ROOT }
+				4699 = { add_permanent_claim = ROOT }
+				4705 = { add_permanent_claim = ROOT }
+				4702 = { add_permanent_claim = ROOT }
+			}
+		}
+	}
+	MFA_restore_byzantium = {
+		icon = mission_pf_soldier
+		position = 3
+		required_missions = { MFA_protect_constantinople }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					BYZ = {
+						NOT = { 
+							BYZ = {	is_subject_of = ROOT	} 
+						}
+					}
+					OR = {
+						province_id = 144
+						province_id = 145
+						province_id = 146
+						province_id = 147
+						province_id = 148
+						province_id = 4779
+						province_id = 1773
+						province_id = 1853
+						province_id = 4699
+						province_id = 4701
+						province_id = 4705
+						province_id = 4702
+					}
+					NOT = { owned_by = BYZ }
+					NOT = { owned_by = ROOT }
+				}
+				AND = {
+					BYZ = {
+						exists = BYZ
+						BYZ = {	is_subject_of = ROOT	}
+					}
+					is_core = BYZ
+					continent = europe
+					NOT = { owned_by = BYZ }
+				}
+			}
+		}
+		trigger = {
+			if = {
+				limit = { 
+					exists = BYZ
+					BYZ = { is_free_or_tributary_trigger = yes }
+					NOT = { has_country_flag = mfa_seize_byzantium_flag }
+				}
+				OR = {
+					BYZ = {
+						owns_all_provinces = {
+							custom_trigger_tooltip = {
+								tooltip = owns_BYZ_cores_tt
+								is_core = BYZ
+							}
+							continent = europe
+						}
+					}
+					AND = {
+						owns_or_non_sovereign_subject_of = 144
+						owns_or_non_sovereign_subject_of = 145
+						owns_or_non_sovereign_subject_of = 146
+						owns_or_non_sovereign_subject_of = 147
+						owns_or_non_sovereign_subject_of = 148
+						owns_or_non_sovereign_subject_of = 4779
+						owns_or_non_sovereign_subject_of = 1773
+						owns_or_non_sovereign_subject_of = 1853
+						owns_or_non_sovereign_subject_of = 4699
+						owns_or_non_sovereign_subject_of = 4701
+						owns_or_non_sovereign_subject_of = 4705
+						owns_or_non_sovereign_subject_of = 4702
+					}	
+				}
+			}
+			else_if = {
+				limit = {
+					exists = BYZ
+					BYZ = {	is_subject_of = ROOT	}
+				}
+				BYZ = {
+					owns_all_provinces = {
+						custom_trigger_tooltip = {
+							tooltip = owns_BYZ_cores_tt
+							is_core = BYZ
+						}
+						continent = europe
+					}
+				}
+			}
+			else = {
+				owns_or_non_sovereign_subject_of = 144
+				owns_or_non_sovereign_subject_of = 145
+				owns_or_non_sovereign_subject_of = 146
+				owns_or_non_sovereign_subject_of = 147
+				owns_or_non_sovereign_subject_of = 148
+				owns_or_non_sovereign_subject_of = 4779
+				owns_or_non_sovereign_subject_of = 1773
+				owns_or_non_sovereign_subject_of = 1853
+				owns_or_non_sovereign_subject_of = 4699
+				owns_or_non_sovereign_subject_of = 4701
+				owns_or_non_sovereign_subject_of = 4705
+				owns_or_non_sovereign_subject_of = 4702
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = mfa_byzantium_resurgent
+				duration = 5475
+			}
+			if = {
+				limit = {
+					OR = {
+						BYZ = {
+							NOT = { owns = 151 }
+						}
+						has_country_flag = mfa_seize_byzantium_flag
+					}
+				}
+				balkan_region = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						NOT = { exists = BYZ }
+						AND = {
+							NOT = { 
+								BYZ = {	is_subject_of = ROOT	}
+							}
+							owns_or_non_sovereign_subject_of = 144
+							owns_or_non_sovereign_subject_of = 145
+							owns_or_non_sovereign_subject_of = 146
+							owns_or_non_sovereign_subject_of = 147
+							owns_or_non_sovereign_subject_of = 148
+							owns_or_non_sovereign_subject_of = 4779
+							owns_or_non_sovereign_subject_of = 1773
+							owns_or_non_sovereign_subject_of = 1853
+							owns_or_non_sovereign_subject_of = 4699
+							owns_or_non_sovereign_subject_of = 4701
+							owns_or_non_sovereign_subject_of = 4705
+							owns_or_non_sovereign_subject_of = 4702
+						}
+						has_country_flag = mfa_seize_byzantium_flag
+					}
+				}
+				144 = { add_core = ROOT }
+				145 = { add_core = ROOT }
+				146 = { add_core = ROOT }
+				147 = { add_core = ROOT }
+				148 = { add_core = ROOT }
+				4779 = { add_core = ROOT }
+				1773 = { add_core = ROOT }
+				1853 = { add_core = ROOT }
+				4699 = { add_core = ROOT }
+				4705 = { add_core = ROOT }
+				4702 = { add_core = ROOT }
+			}
+		}
+	}
+	MFA_repel_the_ottomans = {
+		icon = mission_crusade_for_varna
+		position = 4
+		required_missions = { MFA_restore_byzantium }
+		
+		provinces_to_highlight = {
+			region = balkan_region
+			owned_by = TUR
+		}
+		trigger = {
+			if = {
+				limit = {
+					BYZ = { owns = 151 }
+					is_free_or_tributary_trigger = yes
+					BYZ = { is_free_or_tributary_trigger = yes }
+					NOT = { has_country_flag = mfa_seize_byzantium_flag }
+				}
+				alliance_with = BYZ
+			}
+			balkan_region = {
+				type = all
+				NOT = {
+					owned_by = TUR
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = mfa_sword_byzantium
+				duration = -1
+			}
+			if = {
+				limit = {
+					OR = {
+						BYZ = {
+							NOT = { owns = 151 }
+						}
+						has_country_flag = mfa_seize_byzantium_flag
+					}
+				}
+				aegean_archipelago_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			if = {
+				limit = {
+					exists = BYZ
+					NOT = { tag = BYZ }
+					OR = {
+						NOT = { has_country_flag = mfa_seize_byzantium_flag }
+						BYZ = {	is_subject_of = ROOT	}
+					}
+					OR = {
+						AND = {
+							BYZ = { is_free_or_tributary_trigger = no }
+							BYZ = {	is_subject_of = ROOT	}
+						}
+						alliance_with = BYZ
+					}
+					religion = catholic
+					BYZ = { religion = orthodox }
+				}
+				BYZ = {
+					country_event = { 
+    						id = bbf_mfa_event.2
+					}
+				}
+			}
+		}
+	}
+	MFA_recover_aegean = {
+		icon = mission_pf_map_table
+		position = 5
+		required_missions = { MFA_repel_the_ottomans }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = aegean_archipelago_area 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			if = {
+				limit = {
+					BYZ = {
+						owns = 151
+					}
+					NOT = { has_country_flag = mfa_seize_byzantium_flag }
+				}
+				OR = {
+					BYZ = {
+						aegean_archipelago_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+					aegean_archipelago_area = {
+						type = all
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+			else = {
+				aegean_archipelago_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = mfa_glory_byzantium
+				duration = 9125
+			}
+			if = {
+				limit = {
+					OR = {
+						BYZ = {
+							NOT { owns = 151 }
+						}
+						has_country_flag = mfa_seize_byzantium_flag
+					}
+				}
+				hudavendigar_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				aydin_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						NOT = { exists = BYZ }
+						BYZ = {	is_subject_of = ROOT	}
+						has_country_flag = mfa_seize_byzantium_flag
+					}
+					OR = {
+						has_country_flag = mfa_seize_byzantium_flag
+						aegean_archipelago_area = {
+							type = all
+							owned_by = ROOT
+						}
+					}
+				}
+				aegean_archipelago_area = {
+					add_core = ROOT
+				}
+			}
+		}
+	}
+	MFA_secure_the_channel = {
+		icon = anatolian_frontier
+		position = 6
+		required_missions = { MFA_recover_aegean }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = hudavendigar_area
+				area = aydin_area 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			if = {
+				limit = {
+					BYZ = { owns = 151 }
+					NOT = { has_country_flag = mfa_seize_byzantium_flag }
+				}
+				OR = {
+					BYZ = {
+						hudavendigar_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+						aydin_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+					AND = {
+						hudavendigar_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+						aydin_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+				}
+			}
+			else = {
+				hudavendigar_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				aydin_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+		}
+		effect = {
+			add_prestige = 10
+			add_army_tradition = 25
+			if = {
+				limit = {
+					OR = {
+						NOT = { exists = BYZ }
+						BYZ = {	is_subject_of = ROOT	}
+						has_country_flag = mfa_seize_byzantium_flag
+					}
+					OR = {
+						has_country_flag = mfa_seize_byzantium_flag	
+						AND = {
+							hudavendigar_area = {
+								type = all
+								owned_by = ROOT
+							}
+							aydin_area = {
+								type = all
+								owned_by = ROOT
+							}
+						}
+					}
+				}
+				hudavendigar_area = {
+					add_core = ROOT
+				}
+				aydin_area = {
+					add_core = ROOT
+				}
+			}
+		}
+	}
+}
+mfa_question_pope_mission = {
+    	slot = 5
+    	generic = no
+    	ai = yes
+    	potential = {
+			OR = {
+				tag = MFA
+				tag = PLM
+			}
+    	}
+    	has_country_shield = yes
+	MFA_question_the_pope = {
+		icon = answer_the_roman_question
+		position = 2
+		required_missions = { MFA_palaiologos_solidarity }
+		
+		trigger = {
+			tag = MFA
+			religion_group = christian
+			OR = {
+				reverse_has_opinion = {
+					who = BYZ
+					value = 200
+				}
+				is_rival = PAP
+				is_excommunicated = yes
+				current_age = age_of_reformation
+				NOT = { religion = catholic }
+			}
+		}
+		effect = {
+			country_event = { 
+    				id = bbf_mfa_event.3
+			}
+		}
+	}
+}
+mfa_religion_unknown = {
+    	slot = 5
+    	generic = no
+    	ai = yes
+    	potential = {
+		tag = MFA
+		NOT = { has_country_flag = mfa_catholic_path_flag }
+		NOT = { has_country_flag = mfa_noncatholic_path_flag }
+    	}
+    	has_country_shield = yes
+	MFA_unknown_mission_1 = {
+		icon = mission_unknown_mission
+		required_missions = { MFA_question_the_pope }
+		trigger = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		position = 3
+	}
+	MFA_unknown_mission_2 = {
+		icon = mission_unknown_mission
+		required_missions = { MFA_unknown_mission_1 }
+		position = 4
+	}
+	MFA_unknown_mission_3 = {
+		icon = mission_unknown_mission
+		required_missions = { MFA_unknown_mission_2 }
+		position = 5
+	}
+}
+mfa_religion_noncatholic = {
+    	slot = 5
+    	generic = no
+    	ai = yes
+    	potential = {
+		tag = MFA
+		NOT = { has_country_flag = mfa_catholic_path_flag }
+		has_country_flag = mfa_noncatholic_path_flag
+    	}
+    	has_country_shield = yes
+	MFA_religion_unity = {
+		icon = mission_hands_praying
+		required_missions = { MFA_question_the_pope }
+		position = 3
+
+		trigger = {
+			NOT = { religion = catholic }
+			religion_group = christian
+			religious_unity = 1.00
+		}
+		effect = {
+			add_country_modifier = {
+				name = religious_uni_modifier 
+				duration = 5475
+			}
+			add_church_power = 10
+			add_patriarch_authority = 0.1
+		}
+	}
+	MFA_challenge_papacy = {
+		icon = mission_pf_cross
+		required_missions = { MFA_religion_unity }
+		position = 4
+
+		provinces_to_highlight = {
+			province_id = 118	# Roma
+			NOT = { owned_by = ROOT }
+			#NOT = { religion = ROOT }
+		}
+		trigger = {
+			NOT = { religion = catholic }
+			religion_group = christian
+			118 = { 
+				owned_by = ROOT
+				#religion = ROOT
+			}
+		}
+		effect = {
+			118 = { add_province_triggered_modifier = BBF_MFA_new_christain_order }
+		}
+	}
+	MFA_shield_against_catholicism = {
+		icon = the_holy_league
+		required_missions = { MFA_challenge_papacy }
+		position = 5
+
+		trigger = {
+			NOT = { religion = catholic }
+			religion_group = christian
+			is_great_power = yes
+			is_defender_of_faith = yes
+		}
+		effect = {
+			add_prestige = 20
+			add_country_modifier = { 
+    				name = mfa_rivals_of_catholicism
+    				duration = -1
+			}
+		}
+	}
+}
+mfa_religion_catholic = {
+    	slot = 5
+    	generic = no
+    	ai = yes
+    	potential = {
+		tag = MFA
+		NOT = { has_country_flag = mfa_noncatholic_path_flag }
+		has_country_flag = mfa_catholic_path_flag
+    	}
+    	has_country_shield = yes
+	MFA_papal_relations = {
+		icon = holy_state
+		required_missions = { MFA_question_the_pope }
+		position = 3
+
+		trigger = {
+			religion_group = christian
+			OR = {
+				reverse_has_opinion = {
+					who = PAP
+					value = 150
+				}
+				NOT = { exists = PAP }
+			}
+		}
+		effect = {
+			if = {
+				limit = { is_excommunicated = yes }
+				excommunicate = ROOT
+				hidden_effect = {
+					add_opinion = {
+    						who = PAP
+    						modifier = MFA_welcomed_back
+					}
+					reverse_add_opinion = {
+    						who = PAP
+    						modifier = MFA_influenced_papacy_opinion
+					}
+				}
+			}
+			else = {
+				custom_tooltip = get_out_of_excommunication_free_tt
+				set_country_flag = get_out_of_excommunication_free_flag
+			}
+			if = {
+				limit = { 
+					NOT = { has_country_modifier = papal_blessing }
+				}
+				add_ruler_modifier = {
+					name = papal_blessing 
+					duration = -1
+				}
+			}
+			else = {
+				add_stability = 1
+				add_dip_power = 50
+			}
+		}
+	}
+	MFA_influence_papacy = {
+		icon = new_st_peters_basilica
+		required_missions = { MFA_papal_relations }
+		position = 4
+
+		provinces_to_highlight = {
+			has_cardinal = yes
+			root = {
+				NOT = {
+					any_owned_province = { has_cardinal = yes }
+				}
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			religion = catholic
+			religious_unity = 1.00
+			any_owned_province = { 
+				has_cardinal = yes
+			}
+		}
+		effect = {
+			add_papal_influence = 25
+			add_adm_power = 50
+		}
+	}
+	MFA_sword_christ = {
+		icon = the_holy_league
+		required_missions = { MFA_influence_papacy }
+		position = 5
+
+		trigger = {
+			religion = catholic
+			is_papal_controller = yes
+			is_great_power = yes
+		}
+		effect = {
+			custom_tooltip = nonroman_italy_tt
+			set_country_flag = can_from_italy_without_rome_flag
+			add_country_modifier = {
+				name = mfa_christendom_italia 
+				duration = -1
+			}
+		}
+	}
+}
+mfa_greco_latin_union_mission = {
+    	slot = 5
+    	generic = no
+    	ai = yes
+    	potential = {
+		tag = MFA
+    	}
+    	has_country_shield = yes
+	MFA_greco_latin_union = {
+		icon = a_real_roman_empire
+		position = 6
+		required_missions = { MFA_recover_aegean }
+		
+		provinces_to_highlight = {
+			culture_group = byzantine
+			OR = {
+				continent = europe
+				#region = anatolia_region
+				region = caucasia_region
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			owns_all_provinces = {
+				culture_group = byzantine
+				continent = europe
+			}
+			#owns_all_provinces = {
+			#	culture_group = byzantine
+			#	region = anatolia_region
+			#}
+			owns_all_provinces = {
+				culture_group = byzantine
+				region = caucasia_region
+			}
+		}
+		effect = {
+			if = {
+				limit = { 
+					NOT = { government_rank = 3 }
+					is_subject = no
+				}
+				set_government_rank = 3
+			}
+			add_country_modifier = {
+				name = mfa_byzantine_culture_accepted 
+				duration = -1
+			}
+			if = {	
+				limit = {
+					NOT = { accepted_culture = greek }
+				}
+				add_accepted_culture = greek 
+			}
+			if = {	
+				limit = {
+					NOT = { accepted_culture = goths }
+				}
+				add_accepted_culture = goths 
+			}
+			if = {	
+				limit = {
+					NOT = { accepted_culture = pontic_greek }
+				}
+				add_accepted_culture = pontic_greek 
+			}
+		}
+	}
+}

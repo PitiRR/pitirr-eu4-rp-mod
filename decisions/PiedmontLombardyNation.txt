@@ -118,6 +118,7 @@ country_decisions = {
 				set_government_rank = 2
 			}
 			change_tag = PLM
+			swap_non_generic_missions = yes
 			piedmont_area = {
 				limit = {
 					NOT = { owned_by = ROOT }

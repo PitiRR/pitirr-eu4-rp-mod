@@ -140,7 +140,7 @@ poe_conquer_west_missions = {
 				area = rum_area
 				area = ankara_area
 			}
-			NOT = { owned_by = ROOT }
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
@@ -181,7 +181,7 @@ poe_conquer_west_missions = {
 				area = hudavendigar_area
 				area = aydin_area
 			}
-			NOT = { owned_by = ROOT }
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
@@ -224,7 +224,7 @@ poe_conquer_west_missions = {
 				area = morea_area
 				area = macedonia_area
 			}
-			NOT = { owned_by = ROOT }
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
@@ -358,7 +358,7 @@ poe_central_missions = {
 					area = silistria_area
 					province_id = 1756 #Bessarabia
 					province_id = 1764 #Burgas
-					NOT = { owned_by = ROOT }
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
 				}
 				is_capital_of = ROOT
 			}
@@ -448,7 +448,7 @@ poe_central_missions = {
 		
 		provinces_to_highlight = {
 			region = anatolia_region
-			NOT = { owned_by = ROOT }
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
@@ -493,7 +493,7 @@ poe_central_missions = {
 				area = aleppo_area
 				area = palestine_area
 			}
-			NOT = { owned_by = ROOT }
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
@@ -593,7 +593,7 @@ poe_conquer_east_missions = {
 				area = crimea_area
 				area = yedisan_area
 			}
-			NOT = { owned_by = ROOT }
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
@@ -664,7 +664,7 @@ poe_conquer_east_missions = {
 				area = samtskhe_area
 				area = kartli_kakheti_area
 			}
-			NOT = { owned_by = ROOT }
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
@@ -709,7 +709,7 @@ poe_conquer_east_missions = {
 				area = armenia_area
 				area = shirvan_area
 			}
-			NOT = { owned_by = ROOT }
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {

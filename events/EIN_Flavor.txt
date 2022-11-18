@@ -1,0 +1,61 @@
+namespace = ein_event
+
+# Question of Nationality
+country_event = {
+	id = ein_event.1
+	title = "EIN_EVENT.1"
+	desc = "EIN_EVENT_DESC.1"
+	picture = ARTWORK_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EIN_EVENT.1A" #Proclaim the Nation of Indonesia
+		trigger = {
+			NOT = { exists = INS }
+		}
+		change_tag = INS
+		remove_non_electors_emperors_from_empire_effect = yes
+		add_country_modifier = {
+			name = "centralization_modifier"
+			duration = 7300
+		}
+		set_country_flag = formed_indonesia_flag 
+		ai_chance = { 
+			factor = 100
+		}
+	}
+	option = {
+		name = "EIN_EVENT.1A2" #Join Indonesia
+		trigger = {
+			exists = INS
+			INS = {
+				is_free_or_tributary_trigger = yes
+				ai = yes
+			}
+		}
+		switch_tag = INS
+		INS = { inherit = ROOT }
+		ai_chance = { 
+			factor = 0
+		}
+	}
+	option = {
+		name = "EIN_EVENT.1B" #Proclaim the Nation of New Guinea
+		override_country_name = NEW_GUINEA_NATION
+		add_country_modifier = {
+			name = "centralization_modifier"
+			duration = 7300
+		}
+		ai_chance = { 
+			factor = 50
+		}
+	}
+	option = {
+		name = "EIN_EVENT.1C" #Remain East Indonesian
+		add_prestige = 10
+		ai_chance = { 
+			factor = 50
+		}
+	}
+}

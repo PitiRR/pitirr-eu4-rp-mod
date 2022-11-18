@@ -1,0 +1,64 @@
+﻿l_english:
+  kus_first_revenge:0 "First Revenge of the Ayyubids"
+  desc_kus_first_revenge:0 "We are strong and united. We are ready to reclaim what is ours from the Mamluk slavers."
+
+  kus_schism_tolerate:0 "Mend the Schism"
+  desc_kus_schism_tolerate:0 "We have decided to allow the native Shi'ites to continue living in peace under our rule. A stable empire is a strong empire."
+
+  kus_schism_convert:0 "End the Schism"
+  desc_kus_schism_convert:0 "We have decided to convert the natives of Iraq to our true faith. Tolerance would only lead to long-term dissent and separatism."
+
+  kus_schism_not_yet_tt:0 "We haven't made a §Ychoice§! regarding heretics in §YIraq§! yet."
+
+  kus_baghdad_uni:0 "School of Baghdad Restored"
+  desc_kus_baghdad_uni:0 "We have restored the great school of Baghdad. Just like in the Golden Age of the past, scholars are fleeting here and we are great beneficiaries of this city."
+
+  persian_carpets_abroad:0 "Persian Carpetry"
+  desc_persian_carpets_abroad:0 "Thanks to our expansive empire, Persian silk have a much bigger demand. Production is flourishing, and provinces are prospering."
+
+  kus_unite_kurdistan_title:0 "Unite Kurdistan"
+  kus_unite_kurdistan_desc:0 "We cannot be taken seriously by our own people, as well as other states if we don't unite our home region. This is our first, imperative step."
+  kus_unite_kurdistan_title:0 "Unite Kurdistan"
+  kus_unite_kurdistan_desc:0 "We cannot be taken seriously by our own people, as well as other states if we don't unite our home region. This is our first, imperative step."
+
+  kus_turkish_diplo_title:0 "Ottoman Diplomacy"
+  kus_turkish_diplo_desc:0 "The Ottoman Sultanate is without a doubt an emerging superpower. They are yet to completely shake off the Timurid invasion and re-unite their home region, however we see great potential in allying them. They are enemies of Mamluks, our arch-nemesis. The enemy of my enemy is my friend. - Sun Tzu - [Root.Monarch.GetName]."
+
+  kus_expand_frontier_title:0 "Expand the Frontier"
+  kus_expand_frontier_desc:0 "If we wish to preserve, we must push the borders outwards, so that Kurdistan proper is safe from invasion and pillaging."
+
+  kus_ancestral_claims_title:0 "Ancestral Claims"
+  kus_ancestral_claims_desc:0 "Our Ancestors, the Ayyubid Caliphs, once treated the Levant as their homeland. We are de facto (and de jure) inheritants of the Sultans, and thus we should recover those lands."
+
+  kus_second_revenge_title:0 "Revenge of the Ayyubids"
+  kus_second_revenge_desc:0 "Reconquest of Syria and Palestine was a huge success. Last, but not least, we should reclaim Egypt. Only then we can reclaim the mantle of the Ayyubid Caliphate."
+
+  kus_conquer_iraq_title:0 "Conquer Iraq"
+  kus_conquer_iraq_desc:0 "Iraq is a very fertile land and within our sphere of influence. We should take over the land to provide relief to the Kurdish minorities as well as to supply our granaries, as well as coffers."
+
+  kus_answer_the_shism_title:0 "Answer the Schism"
+  kus_answer_the_shism_desc:0 "We need to make a firm decision regarding heretic minorities in Iraq. This region has been plagued by religious civil wars, and we must end this conflict once and for all."
+
+  kus_dev_iraq_title:0 "The Fertile Crescent"
+  kus_dev_iraq_desc:0 "With religious wars settled, we can begin to actually make the region prosperous. Our main bases of operation should be Basrah and Baghdad, as well as lands nearby."
+
+  kus_school_of_baghdad_title:0 "School of Baghdad"
+  kus_school_of_baghdad_desc:0 "Thanks to our efforts, the prosperous region of Iraq now has the capacity to hold an academy or university of sorts. We should restore the once great school of Baghdad for the glory of Allah and our own minds hungry for knowledge."
+
+  kus_second_golden_age_title:0 "A Second Golden Age"
+  kus_second_golden_age_desc:0 "We are a state with an efficient administration, strong diplomacy and world's best economy. At long last the Kurdish people are experiencing a Golden Age."
+
+  kus_eco_dominance_title:0 "Economic Hegemony"
+  kus_eco_dominance_desc:0 "If we wish to remain a relevant power, we must eclipse our enemies. If we fall too weak, we will fall prey to them and possibly have to repeat hsitory. We cannot let that happen at any cost."
+
+  kus_conquer_azerbaijan_title:0 "Conquer Azerbaijan"
+  kus_conquer_azerbaijan_desc:0 "Azerbaijan provides a very strategic access to Persia. Whoever controls these Kharabakh mountains, is the real emperor of Iran. Additionally, these lands have great economic potential. We must secure them."
+
+  kus_persianite_empire_title:0 "A Persianite Empire"
+  kus_persianite_empire_desc:0 "Persians of Isfahan are culturally close to the Kurds. We should integrate the Persians into our state."
+
+  kus_dev_mountains_title:0 "Mountains of Karabakh"
+  kus_dev_mountains_desc:0 "As we initially predicted, the mountainous regions of Armenia-Azerbaijan have great potential. All kinds of things are produced - silk, wool and even dyes. Let's expand those economies for our collective prosperity."
+
+  kus_dev_persia_title:0 "Hamadan Industry"
+  kus_dev_persia_desc:0 "Carpets, silk, spices and many other very profitable industries are central in Persia. It's imperative that we develop those economies so that the local population prospers again, and we fill our coffers."

@@ -1,0 +1,144 @@
+indonesian_missions = {
+    	slot = 1
+    	generic = no
+    	ai = yes
+    	potential = {
+		tag = INS
+    	}
+    	has_country_shield = yes
+	INS_control_indonesia = {
+		icon = indonesian_trade
+		required_missions = { }
+		position = 1
+		
+		provinces_to_highlight = {
+			OR = {
+				region = indonesia_region 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			indonesia_region = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			malaya_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			moluccas_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	INS_control_east_indies = {
+		icon = mission_trade_company_region_abroad
+		required_missions = { INS_control_indonesia }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				region = indonesia_region 
+				region = malaya_region
+				region = moluccas_region
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			indonesia_region = {
+				type = all
+				owned_by = ROOT
+			}
+			moluccas_region	= {
+				type = all
+				owned_by = ROOT
+			}
+			malaya_region = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = ins_east_indies_unity
+				duration = 12775
+			}
+		}
+	}
+	INS_independance = {
+		icon = dutch_east_indies
+		required_missions = { INS_control_east_indies }
+		position = 3
+
+		trigger = {
+			is_free_or_tributary_trigger = yes
+		}
+		effect = {
+			add_dip_power = 100
+			add_prestige = 5
+		}
+	}
+	INS_religion_unity = {
+		icon = mission_hands_praying
+		required_missions = { INS_independance }
+		position = 4
+
+		provinces_to_highlight = {
+			OR = {
+				region = east_indies_superregion 
+				region = malaya_region
+				region = moluccas_region
+			}
+			AND = {
+				NOT = { country_or_non_sovereign_subject_holds = ROOT }
+				NOT = { religion = ROOT }
+			}
+		}
+		trigger = {
+			indonesia_region = {
+				type = all
+				owned_by = ROOT
+				religion = ROOT
+			}
+			moluccas_region	= {
+				type = all
+				owned_by = ROOT
+				religion = ROOT
+			}
+			malaya_region = {
+				type = all
+				owned_by = ROOT
+				religion = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = religious_uni_modifier 
+				duration = 5475
+			}
+		}
+	}
+	INS_empire_indies = {
+		icon = mission_monarch_in_throne_room
+		required_missions = { INS_religion_unity }
+		position = 5
+
+		trigger = {
+			is_great_power = yes
+		}
+		effect = {
+			set_government_rank = 3
+			change_adm = 1
+			change_mil = 1
+		}
+	}
+}

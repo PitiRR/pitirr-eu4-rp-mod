@@ -1,0 +1,388 @@
+country_decisions = {
+
+	restore_phoenician_empire = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			NOT = { has_country_flag = restored_carthage_flag }
+			owns = 341
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { tag = HLR }
+			NOT = { tag = ROM }
+			NOT = { tag = PAP }
+			NOT = { tag = ROM }
+			NOT = { exists = PHO }
+			NOT = { technology_group = western }
+			NOT = { technology_group = eastern }
+			OR = {
+				primary_culture = phoenician
+				culture_group = maghrebi
+				religion_group = pagan
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					region = maghreb_region 
+					is_empty = no
+				}
+				area = corsica_sardinia_area 
+				area = western_sicily_area 
+				area = sicily_area 
+				area = baleares_area 
+				area = valencia_area 
+				area = toledo_area 
+				area = lower_andalucia_area 
+				area = upper_andalucia_area 
+				area = extremadura_area 
+				area = alentejo_area 
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			alentejo_area = {
+				type = all
+				owned_by = ROOT
+			}
+			extremadura_area = {
+				type = all
+				owned_by = ROOT
+			}
+			upper_andalucia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			lower_andalucia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			toledo_area = {
+				type = all
+				owned_by = ROOT
+			}
+			valencia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			baleares_area = {
+				type = all
+				owned_by = ROOT
+			}
+			sicily_area = {
+				type = all
+				owned_by = ROOT
+			}
+			western_sicily_area = {
+				type = all
+				owned_by = ROOT
+			}
+			corsica_sardinia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			owns_all_provinces = {
+				region = maghreb_region
+				is_empty = no
+			}
+			is_at_war = no
+			is_free_or_tributary_trigger = yes
+			is_nomad = no
+			341 = {
+				is_state = yes
+			}
+		}
+		effect = {
+			341 = {
+				move_capital_effect = yes
+				change_province_name = "Carthage"
+				rename_capital = "Carthage"
+			}
+			change_tag = PHO
+			restore_country_name_effect = yes
+			if = {
+				limit = { culture_group = maghrebi }
+				set_country_flag = integrate_maghrebi
+			}
+			custom_tooltip = phoenician_culture_provinces_tooltip
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						culture_group = ROOT
+					}
+					change_culture = phoenician
+				}
+			}
+			change_primary_culture = phoenician
+			custom_tooltip = restore_roman_empire_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						is_part_of_hre = yes
+					}
+					set_in_empire = no
+				}
+			}
+			set_government_rank = 3
+			add_prestige = 50
+			add_core = 341 # Tunis
+			#if = {
+			#	limit = {
+			#		is_part_of_hre = yes
+			#		is_elector = no
+			#	}
+			#	every_owned_province = {
+			#		limit = {
+			#			is_part_of_hre = yes
+			#		}
+			#		set_in_empire = no
+			#	}
+			#}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			set_country_flag = restored_carthage_flag
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	PHO_nation_technology = {
+		major = yes
+		provinces_to_highlight = {
+			OR = {
+				province_id = 118	# Rome
+			}
+			NOT = { owned_by = ROOT }
+		}
+		potential = {
+			tag = PHO
+			NOT = { technology_group = western }
+		}
+		allow = {
+			OR = {
+				adm_tech = 20
+				is_great_power = yes
+			}
+			owns = 118 #Rome
+		}
+		effect = {
+			add_prestige = 10
+			change_technology_group = western
+			change_unit_type = western	
+		}
+	}
+	PHO_triumph_hispania = {
+		major = yes
+		provinces_to_highlight = {
+			OR = {
+				region = iberia_region
+			}
+			NOT = { owned_by = ROOT }
+		}
+		potential = {
+			tag = PHO
+			has_dlc = "Purple Phoenix"
+			NOT = { has_country_flag = pho_triumph_hispania }
+			iberia_region = {
+				type = any
+				owned_by = ROOT
+			}
+		}
+		allow = {
+			iberia_region = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			add_army_tradition = 25
+			set_country_flag = pho_triumph_hispania
+		}
+	}
+	PHO_triumph_italy = {
+		major = yes
+		provinces_to_highlight = {
+			OR = {
+				region = italy_region
+			}
+			NOT = { owned_by = ROOT }
+		}
+		potential = {
+			tag = PHO
+			has_dlc = "Purple Phoenix"
+			NOT = { has_country_flag = pho_triumph_italy }
+			italy_region = {
+				type = any
+				owned_by = ROOT
+			}
+		}
+		allow = {
+			italy_region = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 35
+			add_army_tradition = 25
+			set_country_flag = pho_triumph_italy
+		}
+	}
+	PHO_triumph_phoenicia = {
+		major = yes
+		provinces_to_highlight = {
+			OR = {
+				area = syria_area
+				area = palestine_area 
+			}
+			NOT = { owned_by = ROOT }
+		}
+		potential = {
+			tag = PHO
+			has_dlc = "Purple Phoenix"
+			NOT = { has_country_flag = pho_triumph_phoenicia }
+			OR = {
+				syria_area = {
+					type = any
+					owned_by = ROOT
+				}
+				palestine_area = {
+					type = any
+					owned_by = ROOT
+				}
+			}
+		}
+		allow = {
+			syria_area = {
+				type = all
+				owned_by = ROOT
+			}
+			palestine_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 20
+			add_army_tradition = 25
+			palestine_area = {
+				change_culture = phoenician
+			}
+			syria_area = {
+				change_culture = phoenician
+			}
+			set_country_flag = pho_triumph_phoenicia 
+		}
+	}
+	PHO_integrate_maghrebi = {
+		major = yes
+		potential = {
+			tag = PHO
+			NOT = { has_country_flag = integrate_maghrebi }
+			any_owned_province = { 
+				culture_group = maghrebi
+				OR = {
+					continent = asia
+					continent = africa
+					continent = europe
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				culture_group = maghrebi
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			owns_all_provinces = {
+				culture_group = maghrebi
+				is_empty = no
+				OR = {
+					continent = asia
+					continent = africa
+					continent = europe
+				}
+			}
+		}
+		effect = {
+			custom_tooltip = pho_maghrebi_culture_provinces_tooltip
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						culture_group = maghrebi
+					}
+					change_culture = phoenician
+				}
+			}
+			set_country_flag = integrate_maghrebi
+		}
+	}
+	PHO_adopt_phoenician_idenity = {
+		major = yes
+		potential = {
+			OR = {
+				is_subject_of = PHO
+				is_colonial_nation_of = PHO
+			}
+			NOT = { has_country_flag = colonial_phoenician }
+		}
+		allow = {
+			if = {
+				limit = { ai = no }
+				prestige = 50
+			}
+			else = {
+				has_opinion = {
+					who = PHO
+					value = 200
+				}
+			}
+			is_colonial_nation = yes
+			PHO = {
+				primary_culture = phoenician
+				religion = ROOT
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_global_flag = new_carthage_formed }
+				}
+				capital_scope = {
+					change_province_name = "New Carthage"
+					rename_capital = "New Carthage"
+				}
+				set_global_flag = new_carthage_formed
+			}
+			if = {
+				limit = {
+					NOT = { primary_culture = phoenician }
+				}
+				custom_tooltip = phoenician_culture_provinces_tooltip
+				hidden_effect = {
+					every_owned_province = {
+						limit = {
+							culture_group = ROOT
+						}
+						change_culture = phoenician
+					}
+				}
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = colonial_phoenician
+		}
+	}
+}

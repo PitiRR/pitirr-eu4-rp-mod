@@ -1,0 +1,333 @@
+country_decisions = {
+
+	imperial_china_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_china_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { exists = CCP }
+			NOT = { tag = TTR }
+			NOT = { tag = MUG }
+			NOT = { tag = QNG }
+			NOT = { tag = MNG }
+			NOT = { tag = YUA }
+			NOT = { tag = SNG }
+			culture_group = east_asian
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 8
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					superregion = china_superregion
+					NOT = { province_id = 668 }
+					is_empty = no
+				}
+				region = manchuria_region 
+				region = tibet_region 
+				region = manchuria_region 
+				area = shanshan_area
+				area = kashgaria_area
+				area = tarim_basin_area
+				area = chahar_area
+				area = cicigar_area
+				area = eastern_mongolia
+				area = ordos_area
+				area = inner_mongolia_area
+				area = turpan_kumul_area 
+				area = zungaria_area 
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		allow = {
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			stability = 2
+			owns_core_province = 1816 	#Beijing
+			1816 = {					#Beijing
+				is_state = yes
+			}
+			OR = {
+				adm_tech = 20
+				is_year = 1800
+				has_institution = industrialization
+			}
+			if = {
+				limit = {
+					has_dlc = "Mandate of Heaven"
+					any_country = {
+						is_emperor_of_china = yes
+					}
+				}
+				is_emperor_of_china = yes
+			}
+			else_if = {
+				limit = {
+					has_dlc = "Common Sense"
+				}
+				government_rank = 3
+			}
+			else = {
+				total_development = 1000
+			}
+			owns_all_provinces = {
+				superregion = china_superregion
+				NOT = { province_id = 668 }
+				is_empty = no
+			}
+			tibet_region = {
+				type = all
+				owned_by = ROOT
+			}
+			manchuria_region = {
+				type = all
+				owned_by = ROOT
+			}
+			shanshan_area = {
+				type = all
+				owned_by = ROOT
+			}
+			kashgaria_area = {
+				type = all
+				owned_by = ROOT
+			}
+			tarim_basin_area = {
+				type = all
+				owned_by = ROOT
+			}
+			chahar_area = {
+				type = all
+				owned_by = ROOT
+			}
+			cicigar_area = {
+				type = all
+				owned_by = ROOT
+			}
+			eastern_mongolia = {
+				type = all
+				owned_by = ROOT
+			}
+			ordos_area = {
+				type = all
+				owned_by = ROOT
+			}
+			inner_mongolia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			turpan_kumul_area = {
+				type = all
+				owned_by = ROOT
+			}
+			zungaria_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			1816 = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+				move_capital_effect = yes
+			}
+			change_tag = CCP
+			if = {
+				limit = {
+					NOT = { tag = QNG }
+				}
+				swap_non_generic_missions = yes
+			}
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					has_custom_ideas = no
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = formed_china_flag
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+	endtag_china_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			NOT = { has_country_flag = formed_china_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { exists = CCP }
+			OR = {
+				tag = YUA
+				tag = QNG
+				tag = MNG
+				tag = SNG
+			}
+			culture_group = east_asian
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 8
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					superregion = china_superregion
+					NOT = { province_id = 668 }
+					is_empty = no
+				}
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+				is_empty = no
+			}
+		}
+		allow = {
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			stability = 2
+			owns_core_province = 1816 	#Beijing
+			1816 = {					#Beijing
+				is_state = yes
+			}
+			OR = {
+				adm_tech = 27
+				is_year = 1800
+				has_institution = industrialization
+			}
+			OR = {
+				tag = YUA
+				tag = QNG
+				tag = MNG
+				tag = SNG
+			}
+			if = {
+				limit = {
+					tag = YUA
+				}
+				NOT = { exists = SNG }
+				NOT = { exists = QNG }
+				NOT = { exists = MNG }
+			}
+			else_if = {
+				limit = {
+					tag = QNG
+				}
+				NOT = { exists = SNG }
+				NOT = { exists = YUA }
+				NOT = { exists = MNG }
+			}
+			else_if = {
+				limit = {
+					tag = SNG
+				}
+				NOT = { exists = QNG }
+				NOT = { exists = YUA }
+				NOT = { exists = MNG }
+			}
+			else = {
+				NOT = { exists = SNG }
+				NOT = { exists = QNG }
+				NOT = { exists = YUA }
+			}
+			if = {
+				limit = {
+					has_dlc = "Mandate of Heaven"
+					any_country = {
+						is_emperor_of_china = yes
+					}
+				}
+				is_emperor_of_china = yes
+			}
+			else_if = {
+				limit = {
+					has_dlc = "Common Sense"
+				}
+				government_rank = 3
+			}
+			else = {
+				total_development = 1000
+			}
+			owns_all_provinces = {
+				superregion = china_superregion
+				NOT = { province_id = 668 }
+				is_empty = no
+			}
+		}
+		effect = {
+			1816 = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+				move_capital_effect = yes
+			}
+			if = {
+				limit = {
+					NOT = { tag = QNG }
+					NOT = { tag = YUA }
+				}
+				change_tag = CCP
+				swap_non_generic_missions = yes
+			}
+			else = {
+				change_tag = CCP
+			}
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					has_custom_ideas = no
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = formed_china_flag
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+}

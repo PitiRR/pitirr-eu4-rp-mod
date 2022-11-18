@@ -1,0 +1,837 @@
+tengri_siberian_missions = {
+    	slot = 5
+    	generic = no
+    	ai = yes
+	potential_on_load = {
+		has_dlc = "The Cossacks"
+	}
+    	potential = {
+		has_dlc = "The Cossacks"
+		OR = {
+			tag = RSS
+			tag = SOL
+			tag = KMC
+			tag = CHU
+			tag = CHV
+			tag = HOD
+			tag = NVK
+		}
+    	}
+    	has_country_shield = yes
+	RSS_question_of_faith = {
+		icon = tengri_mission
+		required_missions = { }
+		position = 1
+
+		trigger = {
+			OR = {
+				has_secondary_religion = yes
+				NOT = { religion = tengri_pagan_reformed }
+			}
+		}
+		effect = {
+			country_event = { 
+    				id = siberian_event.3
+			}
+		}
+	}
+}
+siberian_unknown_missions = {
+    	slot = 5
+    	generic = no
+    	ai = yes
+	potential_on_load = {
+		has_dlc = "The Cossacks"
+	}
+    	potential = {
+		has_dlc = "The Cossacks"
+		NOT = { has_country_flag = RSS_tengri_option }
+		NOT = { has_country_flag = RSS_eastern_option }
+		NOT = { has_country_flag = RSS_shinto_option }
+		NOT = { has_country_flag = RSS_islamic_option }
+		NOT = { has_country_flag = RSS_shinto_option }
+		NOT = { has_country_flag = RSS_christian_option }
+		OR = {
+			tag = RSS
+			tag = SOL
+			tag = KMC
+			tag = CHU
+			tag = CHV
+			tag = HOD
+			tag = NVK
+		}
+    	}
+    	has_country_shield = yes
+	RSS_unknown_mission_1 = {
+		icon = mission_unknown_mission
+		required_missions = { RSS_question_of_faith }
+		trigger = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		position = 2
+	}
+	RSS_unknown_mission_2 = {
+		icon = mission_unknown_mission
+		required_missions = { RSS_unknown_mission_1 }
+		position = 3
+	}
+	RSS_unknown_mission_3 = {
+		icon = mission_unknown_mission
+		required_missions = { RSS_unknown_mission_2 }
+		position = 4
+	}
+	RSS_unknown_mission_4 = {
+		icon = mission_unknown_mission
+		required_missions = { RSS_unknown_mission_3 }
+		position = 5
+	}
+}
+tengri_choice = {
+	slot = 5
+    	generic = no
+    	ai = yes
+	has_country_shield = yes
+
+	potential_on_load = {
+		has_dlc = "The Cossacks"
+	}
+    	potential = {
+		has_dlc = "The Cossacks"
+		has_country_flag = RSS_tengri_option
+		OR = {
+			tag = RSS
+			tag = SOL
+			tag = KMC
+			tag = CHU
+			tag = CHV
+			tag = HOD
+			tag = NVK
+		}
+    	}
+	RSS_strengthen_tenri = {
+		icon = mission_sw_against_the_desert
+		required_missions = { RSS_question_of_faith }
+		position = 2
+
+		trigger = {
+			OR = {
+				cavalry_fraction = 0.75
+				has_reform = steppe_horde
+			}
+		}
+		effect = {
+			if = {
+				limit = { has_reform = steppe_horde }
+				add_horde_unity = 25
+				add_prestige = 10
+			}
+			else = {
+				add_country_modifier = { 
+    					name = RSS_nomatic_revival_modifier
+    					duration = 9125
+				}
+			}
+			if = {
+				limit = {
+					NOT = { technology_group = western }
+					NOT = { technology_group = eastern }
+				}
+				change_technology_group = nomad_group
+				change_unit_type = nomad_group
+			}
+		}
+	}
+	mongols_restore_the_khanate = {
+		icon = mission_non-western_cavalry_raid
+		required_missions = { RSS_strengthen_tenri }
+		position = 3
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2116
+				province_id = 4678
+			}
+			NOT = {
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+		trigger = {
+			owns_core_province = 2116
+			owns_core_province = 4678
+			is_subject = no
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						government_rank = 2
+					}
+				}
+				set_government_rank = 2
+			}
+			add_horde_unity = 20
+			mongolia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			set_global_flag = mongol_kurultai_flag
+			custom_tooltip = mongol_kurultai_tooltip
+		}
+	}
+	RSS_mongols_unite_the_mongols = {
+		icon = mission_chinese_general_riding
+		required_missions = { mongols_restore_the_khanate }
+		position = 4
+		provinces_to_highlight = {
+			OR = {
+				culture = mongol
+				culture = chahar
+				culture = khalkha
+				culture = oirats
+				culture = altaic_new
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			if = {
+				limit = {
+					has_global_flag = sinicized_altaic_flag
+				}
+				num_of_owned_provinces_with = {
+					culture = altaic_new
+					value = 20
+				}
+			}
+			else = {
+				num_of_owned_provinces_with = {
+					culture = mongol
+					value = 5
+				}
+				num_of_owned_provinces_with = {
+					culture = chahar
+					value = 5
+				}
+				num_of_owned_provinces_with = {
+					culture = khalkha
+					value = 5
+				}
+				num_of_owned_provinces_with = {
+					culture = oirats
+					value = 5
+				}
+			}
+		}
+		effect = {
+			custom_tooltip = unite_mongol_culture_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							culture = chahar
+							culture = khalkha
+							culture = oirats
+						}
+					}
+					change_culture = mongol
+				}
+			}
+			central_asia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			crimea_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	RSS_unite_the_steppe = {
+		icon = mission_cossack_cavalry
+		required_missions = { RSS_mongols_unite_the_mongols }
+		position = 5
+		provinces_to_highlight = {
+			OR = {
+				region = crimea_region
+				region = central_asia_region
+				region = mongolia_region
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			religion = tengri_pagan_reformed
+			crimea_region = {
+				type = all
+				owned_by = ROOT
+			}
+			central_asia_region = {
+				type = all
+				owned_by = ROOT
+			}
+			mongolia_region = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 15
+			add_country_modifier = { 
+    				name = RSS_united_the_steppes_modifier
+    				duration = -1
+			}
+		}
+	}
+}
+eastern_choice = {
+	slot = 5
+    	generic = no
+    	ai = yes
+	has_country_shield = yes
+
+	potential_on_load = {
+		has_dlc = "The Cossacks"
+	}
+    	potential = {
+		has_dlc = "The Cossacks"
+		has_country_flag = RSS_eastern_option
+		OR = {
+			tag = RSS
+			tag = SOL
+			tag = KMC
+			tag = CHU
+			tag = CHV
+			tag = HOD
+			tag = NVK
+		}
+    	}
+	RSS_convert_nation = {
+		icon = mission_hands_praying
+		required_missions = { RSS_question_of_faith }
+		position = 2
+
+		trigger = {
+			stability = 1
+			religious_unity = 1.00
+		}
+		effect = {
+			add_prestige = 10
+			add_country_modifier = { 
+    				name = religious_uni_modifier
+    				duration = 9125
+			}
+		}
+	}
+	RSS_bejing_conquest = {
+		icon = mission_asian_city
+		required_missions = { RSS_convert_nation }
+		position = 3
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1816
+			}
+			NOT = {
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+		trigger = {
+			owns_core_province = 1816
+			is_subject = no
+		}
+		effect = {
+			north_china_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mongolia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	RSS_north_china = {
+		icon = mission_great_wall
+		required_missions = { RSS_bejing_conquest }
+		position = 4
+		provinces_to_highlight = {
+			OR = {
+				region = north_china_region 
+				region = mongolia_region
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			north_china_region = {
+				type = all
+				owned_by = ROOT
+			}
+			mongolia_region = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			country_event = { 
+    				id = siberian_event.4
+			}
+		}
+	}
+	RSS_mandate_of_heaven = {
+		icon = mission_defy_the_dragon
+		required_missions = { RSS_north_china }
+		position = 5
+		provinces_to_highlight = {
+			OR = {
+				superregion = china_superregion
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+				is_empty = no
+			}
+		}
+		trigger = {
+			if = {
+				limit = {
+					has_dlc = "Mandate of Heaven"
+					any_country = {
+						is_emperor_of_china = yes
+					}
+				}
+				is_emperor_of_china = yes
+			}
+			else = {
+				owns_all_provinces = {
+					superregion = china_superregion
+					is_empty = no
+				}
+			}
+		}
+		effect = {
+			add_prestige = 50
+			add_country_modifier = { 
+    				name = RSS_siberian_mandate
+    				duration = -1
+			}
+		}
+	}
+}
+shinto_choice = {
+	slot = 5
+    	generic = no
+    	ai = yes
+	has_country_shield = yes
+
+	potential_on_load = {
+		has_dlc = "The Cossacks"
+	}
+    	potential = {
+		has_dlc = "The Cossacks"
+		has_country_flag = RSS_shinto_option
+		OR = {
+			tag = RSS
+			tag = SOL
+			tag = KMC
+			tag = CHU
+			tag = CHV
+			tag = HOD
+			tag = NVK
+		}
+    	}
+	RSS_convert_nation = {
+		icon = mission_hands_praying
+		required_missions = { RSS_question_of_faith }
+		position = 2
+
+		trigger = {
+			stability = 1
+			religious_unity = 1.00
+		}
+		effect = {
+			add_prestige = 10
+			add_country_modifier = { 
+    				name = religious_uni_modifier
+    				duration = 9125
+			}
+		}
+	}	
+	RSS_japan_foothold = {
+		icon = mission_invade_island
+		required_missions = { RSS_convert_nation }
+		position = 3
+
+		provinces_to_highlight = {
+			OR = {
+				region = japan_region
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 5
+				region = japan_region
+			}
+		}
+		effect = {
+			japan_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			japan_region = {
+				discover_country = ROOT
+			}
+		}
+	}
+	RSS_conquer_kyoto = {
+		icon = mission_japanese_fort
+		required_missions = { RSS_japan_foothold }
+		position = 4
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1020
+			}
+			NOT = {
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+		trigger = {
+			owns_core_province = 1020
+			is_subject = no
+		}
+		effect = {
+			country_event = { 
+    				id = siberian_event.5
+			}
+		}
+	}
+	RSS_conquer_japan = {
+		icon = mission_japanese_samurai
+		required_missions = { RSS_conquer_kyoto }
+		position = 5
+		provinces_to_highlight = {
+			OR = {
+				region = japan_region
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			japan_region = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 15
+			add_country_modifier = { 
+    				name = RSS_siberian_japan
+    				duration = -1
+			}
+		}
+	}
+}
+muslim_choice = {
+	slot = 5
+    	generic = no
+    	ai = yes
+	has_country_shield = yes
+
+	potential_on_load = {
+		has_dlc = "The Cossacks"
+	}
+    	potential = {
+		has_dlc = "The Cossacks"
+		has_country_flag = RSS_islamic_option
+		OR = {
+			tag = RSS
+			tag = SOL
+			tag = KMC
+			tag = CHU
+			tag = CHV
+			tag = HOD
+			tag = NVK
+		}
+    	}
+	RSS_convert_nation = {
+		icon = mission_hands_praying
+		required_missions = { RSS_question_of_faith }
+		position = 2
+
+		trigger = {
+			stability = 1
+			religious_unity = 1.00
+		}
+		effect = {
+			add_prestige = 10
+			add_country_modifier = { 
+    				name = religious_uni_modifier
+    				duration = 9125
+			}
+		}
+	}
+	RSS_islamic_allies = {
+		icon = mission_ottoman_harem
+		required_missions = { RSS_convert_nation }
+		position = 3
+
+		trigger = {
+			religion_group = muslim
+			custom_trigger_tooltip = {
+				tooltip = religion_alliances_tooltip
+				num_of_allies = 2
+				calc_true_if = {
+					all_ally = {
+						religion_group = ROOT
+					}
+					amount = 2
+				}
+			}
+		}
+		effect = {
+			add_legitimacy = 10
+			add_devotion = 25
+			add_horde_unity = 25
+			add_meritocracy = 10
+			add_republican_tradition = 10
+			add_country_modifier = {
+				name = "influential_diplomacy"
+				duration = 9125
+			}
+		}
+	}
+	RSS_muslim_dev = {
+		icon = mission_central_asian_city
+		required_missions = { RSS_islamic_allies }
+		position = 4
+
+		trigger = {
+			religion_group = muslim
+			development_in_provinces = {
+				value = 300
+				religion_group = muslim
+			}
+		}
+		effect = {
+			custom_tooltip = religion_group_discovery_tooltip
+			hidden_effect = {
+				every_province = {
+					limit = {
+						OR = {
+							religion_group = ROOT
+							any_neighbor_province = { religion_group = ROOT }
+						}
+					}
+					discover_country = ROOT
+				}
+			}
+			change_technology_group = muslim
+			change_unit_type = muslim
+		}
+	}
+	RSS_muslim_wonders = {
+		icon = mission_egyptian_mamluk_soldier
+		required_missions = { RSS_muslim_dev }
+		position = 5
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 361
+				province_id = 2327
+				province_id = 385
+				province_id = 379
+				province_id = 4556
+				province_id = 4568
+				province_id = 151
+				province_id = 454
+				province_id = 429
+				province_id = 2220
+				province_id = 409
+				province_id = 524
+				province_id = 2310
+			}
+			NOT = {
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+		trigger = {
+			is_subject = no
+			OR = {
+				owns_core_province = 361
+				owns_core_province = 2327
+				owns_core_province = 385
+				owns_core_province = 379
+				owns_core_province = 4556
+				owns_core_province = 4568
+				owns_core_province = 151
+				owns_core_province = 454
+				owns_core_province = 429
+				owns_core_province = 2220
+				owns_core_province = 409
+				owns_core_province = 524
+				owns_core_province = 2310
+			}
+		}
+		effect = {
+			add_prestige = 15
+			add_country_modifier = { 
+    				name = RSS_siberian_muslim
+    				duration = -1
+			}
+		}
+	}
+}
+christian_choice = {
+	slot = 5
+    	generic = no
+    	ai = yes
+	has_country_shield = yes
+
+	potential_on_load = {
+		has_dlc = "The Cossacks"
+	}
+    	potential = {
+		has_dlc = "The Cossacks"
+		has_country_flag = RSS_christian_option
+		OR = {
+			tag = RSS
+			tag = SOL
+			tag = KMC
+			tag = CHU
+			tag = CHV
+			tag = HOD
+			tag = NVK
+		}
+    	}
+	RSS_convert_nation = {
+		icon = mission_hands_praying
+		required_missions = { RSS_question_of_faith }
+		position = 2
+
+		trigger = {
+			stability = 1
+			religious_unity = 1.00
+		}
+		effect = {
+			add_prestige = 10
+			add_country_modifier = { 
+    				name = religious_uni_modifier
+    				duration = 9125
+			}
+		}
+	}
+	RSS_papal_states = {
+		icon = mission_italian_condottiere
+		required_missions = { RSS_convert_nation }
+		position = 3
+
+		trigger = {
+			if = {
+				limit = {
+					exists = PAP
+					religion = catholic 
+				}
+				PAP = {
+						has_opinion = {
+						who = ROOT
+						value = 200
+					}
+				}
+			}
+			else = {
+				religion_group = christian
+				custom_trigger_tooltip = {
+					tooltip = religion_alliances_tooltip
+					num_of_allies = 2
+					calc_true_if = {
+						all_ally = {
+							religion_group = ROOT
+						}
+						amount = 2
+					}
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = PAP
+					religion = catholic 
+				}
+				PAP = {
+					country_event = { 
+    						id = siberian_event.6
+					}
+				}
+			}
+			else = {
+				add_legitimacy = 10
+				add_devotion = 25
+				add_horde_unity = 25
+				add_meritocracy = 10
+				add_republican_tradition = 10
+				add_country_modifier = {
+					name = "influential_diplomacy"
+					duration = 9125
+				}
+			}
+		}
+	}
+	RSS_convert_others = {
+		icon = mission_religious
+		required_missions = { RSS_papal_states }
+		position = 4
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = obj_force_converted_tooltip
+				has_country_flag = force_converted
+			}
+		}
+		effect = {
+			add_country_modifier = { 
+    				name = RSS_crusade 
+    				duration = 3650
+			}
+		}
+	}
+	RSS_christian_kingdom = {
+		icon = mission_european_church
+		required_missions = { RSS_convert_others }
+		position = 5
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 300
+				religion_group = christian
+			}
+		}
+		effect = {
+			add_prestige = 25
+			add_country_modifier = { 
+    				name = RSS_europa
+    				duration = -1
+			}
+		}
+	}
+}

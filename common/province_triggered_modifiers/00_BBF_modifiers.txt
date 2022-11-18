@@ -1,0 +1,30 @@
+#New Christain Order
+BBF_MFA_new_christain_order = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+	
+	#viewer = {
+	#}
+	
+	trigger = {
+		owner = {
+			NOT = { religion = catholic }
+			religion_group = christian
+		}
+		NOT = { religion = catholic }
+		religion_group = christian
+	}
+	
+	prestige = 1.0
+	yearly_patriarch_authority = 0.05
+	monthly_church_power = 0.01
+	monthly_fervor_increase = 1
+	#Province scope
+	on_activation = {
+	}
+	
+	on_deactivation = {
+	}
+	
+}

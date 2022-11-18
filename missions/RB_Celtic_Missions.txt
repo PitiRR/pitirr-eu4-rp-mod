@@ -1,0 +1,1220 @@
+celtic_union_missions_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Rule Britannia"
+	}
+	potential = {
+		has_dlc = "Rule Britannia"
+		tag = GCU
+	}
+	has_country_shield = yes
+	GCU_conquer_normandy = {
+		icon = mission_rb_conquer_the_isles
+		required_missions = { 
+			GCU_conquer_england
+			GCU_build_european_army
+		}
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				area = normandy_area 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			normandy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 15
+			ile_de_france_area = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	GCU_reignite_hundyear_war = {
+		icon = mission_assemble_an_army
+		required_missions = { GCU_conquer_normandy }
+		position = 4
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 183
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			owns = 183
+		}
+		effect = {
+			if = {
+				limit = { tag = GCU }
+				custom_tooltip = GCU_dual_monarchy_tt
+				hidden_effect = {
+					set_country_flag = can_form_DOD_mission_flag
+				}
+			}
+			if = {
+				limit = {
+					exists = FRA
+					valid_for_personal_unions_trigger = yes
+					FRA = {
+						valid_for_personal_unions_trigger = yes
+					}
+				}
+				add_casus_belli = {
+					type = cb_restore_personal_union
+					months = 300
+					target = FRA
+				}
+			}
+			france_region = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	GCU_unite_france = {
+		icon = centralize_france
+		required_missions = { GCU_reignite_hundyear_war }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				region = france_region 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			france_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = GCU_celtic_france
+				duration = -1
+			}
+		}
+	}
+	GCU_colonize_guinea = {
+		icon = mission_african_soldier
+		required_missions = { GCU_seize_macaronesia }
+		position = 7
+		
+		provinces_to_highlight = {
+			OR = {
+				region = guinea_region 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {	
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 7
+				region = guinea_region
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = GCU_scramble_for_africa
+				duration = 9125
+			}
+		}
+	}
+	GCU_colonize_south_africa = {
+		icon = mission_trade_company_region_abroad
+		required_missions = { GCU_colonize_guinea }
+		position = 9
+		
+		provinces_to_highlight = {
+			OR = {
+				region = south_africa_region 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {	
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 15
+				region = south_africa_region 
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = { mission_completed = GCU_suez_canal }
+				}
+				country_event = { 
+   					id = celtic_event.1
+				}
+			}
+			else = {
+				add_mercantilism = 2
+				add_adm_power = 100
+			}
+		}
+	}
+	GCU_conquer_deccan = {
+		icon = mission_rb_take_indian_coast
+		required_missions = { GCU_conquer_coromandel }
+		position = 10
+		
+		provinces_to_highlight = {
+			OR = {
+				area = malabar_area 
+				area = mysore_area 
+				area = kanara_area 
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		trigger = {
+			malabar_area = {
+				type = all
+				owns = ROOT
+			}
+			mysore_area = {
+				type = all
+				owns = ROOT
+			}
+			kanara_area = {
+				type = all
+				owns = ROOT
+			}
+		}
+		effect = {
+			add_mercantilism = 2
+			country_event = { 
+   				id = celtic_event.2
+			}
+		}
+	}
+}
+celtic_union_missions_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Rule Britannia"
+	}
+	potential = {
+		has_dlc = "Rule Britannia"
+		tag = GCU
+	}
+	has_country_shield = yes
+	RB_GCU_fortify_brittany = {
+		icon = mission_rb_conquer_brittany
+		required_missions = { }
+		position = 1
+		
+		provinces_to_highlight = {
+			OR = {
+				area = brittany_area
+			}
+			AND = {
+				fort_level = 1
+				owned_by = ROOT
+			}
+		}
+		trigger = {
+			brittany_area = {
+				type = any
+				fort_level = 4
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = GCU_breton_bastions
+				duration = -1
+			}
+		}
+	}
+	GCU_build_european_army = {
+		icon = mission_rb_unite_the_clans
+		required_missions = { RB_GCU_fortify_brittany  }
+		position = 2
+		
+		trigger = {
+			army_size_percentage = 1.0
+			manpower_percentage = 0.6
+			num_of_generals = 1
+		}
+		effect = {
+			add_country_modifier = {
+				name = "thriving_arms_industry"
+				duration = 9125 #25 years
+			}
+			galicia_area = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	RB_GCU_conquer_galicia = {
+		icon = mission_portuguese_interference
+		required_missions = { GCU_build_european_army }
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				area = galicia_area 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			galicia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_accepted_culture = galician
+			226 = {
+				add_permanent_claim = ROOT
+			}
+			1751 = {
+				add_permanent_claim = ROOT
+			}
+			if = {
+				limit = {
+					exists = POR
+					valid_for_personal_unions_trigger = yes
+					POR = {
+						valid_for_personal_unions_trigger = yes
+					}
+				}
+				add_casus_belli = {
+					type = cb_restore_personal_union
+					months = 300
+					target = POR
+				}
+			}
+			else = {
+				alentejo_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT	}
+					}
+					add_permanent_claim = ROOT
+				}
+				beieras_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT	}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+	GCU_conquer_portugal = {
+		icon = mission_lusitanian_empire
+		required_missions = { RB_GCU_conquer_galicia }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				area = beieras_area
+				area = alentejo_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			beieras_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			alentejo_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 20
+			custom_tooltip = GCU_portugese_convert_tt
+			hidden_effect = {
+				every_province = {
+					limit = {
+						culture = portugese
+					}
+					change_culture = galician
+				}
+				every_country = {
+					limit = {
+						primary_culture = portugese
+					}
+					change_primary_culture = galician
+					set_ruler_culture = galician
+					if = {
+						limit = {
+							has_heir = yes
+						}
+						set_heir_culture = galician
+					}
+					if = {
+						limit = {
+							has_consort = yes
+							consort_culture = portugese
+						}
+						set_consort_culture = galician
+					}
+				}
+			}
+		}
+	}
+	GCU_seize_macaronesia = {
+		icon = mission_caribbean_cn
+		required_missions = { GCU_conquer_portugal }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 367
+				province_id = 368
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			owns = 367
+			owns = 368
+		}
+		effect = {
+			add_country_modifier = {
+				name = GCU_push_africa 
+				duration = 12775
+			}
+			western_morocco_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			4563 = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			334 = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	GCU_conquer_morroccan_coast = {
+		icon = mission_arabian_fort
+		required_missions = { GCU_seize_macaronesia }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				area = western_morocco_area 
+				province_id = 4563 
+				province_id = 334 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			western_morocco_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			owns = 4563 
+			owns = 334 
+		}
+		effect = {
+			add_adm_power = 150
+			add_prestige = 5
+		}
+	}
+	GCU_conquer_arab_islands = {
+		icon = mission_rb_monopolize_the_channel
+		required_missions = { GCU_conquer_yemen }
+		position = 8
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1099
+				province_id = 2999
+				province_id = 396
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		trigger = {
+			owns = 1099
+			owns = 2999
+			owns = 396
+		}
+		effect = {
+			1099 = {
+				add_province_modifier = {
+					name = GCU_arabian_sea_trade
+					duration = -1
+				}
+			}
+			2999 = {
+				add_province_modifier = {
+					name = GCU_arabian_sea_trade
+					duration = -1
+				}
+			}
+			396 = {
+				add_province_modifier = {
+					name = GCU_arabian_sea_trade
+					duration = -1
+				}
+			}
+		}
+	}
+	GCU_conquer_coromandel = {
+		icon = mission_indian_stateman
+		required_missions = { GCU_conquer_maldives }
+		position = 9
+		
+		provinces_to_highlight = {
+			OR = {
+				area = andhra_area
+				area = madura_area
+				area = tanjore_area
+				area = kongu_area
+				area = south_carnatic_area
+				area = north_carnatic_area
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		trigger = {
+			andhra_area = {
+				type = all
+				owns = ROOT
+			}
+			madura_area = {
+				type = all
+				owns = ROOT
+			}
+			tanjore_area = {
+				type = all
+				owns = ROOT
+			}
+			kongu_area = {
+				type = all
+				owns = ROOT
+			}
+			south_carnatic_area = {
+				type = all
+				owns = ROOT
+			}
+			north_carnatic_area = {
+				type = all
+				owns = ROOT
+			}
+		}
+		effect = {
+			east_bengal_area = {
+				add_permanent_claim = ROOT
+			}
+			west_bengal_area = {
+				add_permanent_claim = ROOT
+			}
+			orissa_area = {
+				add_permanent_claim = ROOT
+			}
+			malabar_area = {
+				add_permanent_claim = ROOT
+			}
+			mysore_area = {
+				add_permanent_claim = ROOT
+			}
+			kanara_area = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	GCU_conquer_bengal= {
+		icon = mission_rb_conquer_bengal
+		required_missions = { GCU_conquer_coromandel }
+		position = 10
+		
+		provinces_to_highlight = {
+			OR = {
+				area = east_bengal_area 
+				area = west_bengal_area 
+				area = orissa_area 
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		trigger = {
+			east_bengal_area = {
+				type = all
+				owns = ROOT
+			}
+			west_bengal_area = {
+				type = all
+				owns = ROOT
+			}
+			orissa_area = {
+				type = all
+				owns = ROOT
+			}
+		}
+		effect = {
+			add_mercantilism = 2
+			custom_tooltip = GCU_conquer_bengal_tooltip
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						superregion = india_superregion
+					}
+					add_province_modifier = {
+						name = "gbr_inland_trade"
+						duration = 5475
+					}
+				}
+			}
+		}
+	}
+	GCU_jewel_india = {
+		icon = mission_rb_inland_india
+		required_missions = {
+			GCU_conquer_bengal
+			GCU_conquer_deccan 
+		}
+		position = 11
+		
+		provinces_to_highlight = {
+			OR = {
+				area = east_bengal_area 
+				area = west_bengal_area 
+				area = orissa_area
+				area = malabar_area 
+				area = mysore_area
+				area = kanara_area 
+				region = coromandel_region 
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		trigger = {
+			coromandel_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			east_bengal_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			west_bengal_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			orissa_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mysore_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			kanara_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			malabar_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = { 
+    				name = gcu_dominion_india 
+    				duration = -1 
+			}
+		}
+	}
+}
+celtic_union_missions_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Rule Britannia"
+	}
+	potential = {
+		has_dlc = "Rule Britannia"
+		tag = GCU
+	}
+	has_country_shield = yes
+	GCU_burgundy_alliance = {
+		icon = mission_rb_repatriate_burgundy
+		required_missions = {  }
+		position = 1
+		
+		trigger = {
+			if = {
+				limit = {
+					NOT = {
+						exists = LOT
+					}
+				}
+				OR = {
+					AND = {
+						alliance_with = BUR
+						reverse_has_opinion = {
+							who = BUR
+							value = 100
+						}
+					}
+					is_rival = BUR
+					NOT = { exists = BUR }
+				}
+			}
+			else = {
+				OR = {
+					AND = {
+						alliance_with = LOT
+						reverse_has_opinion = {
+							who = LOT
+							value = 100
+						}
+					}
+					is_rival = LOT
+				}
+			}
+		}
+		effect = {
+			add_historical_rival = FRA
+			add_country_modifier = {
+				name = "influential_diplomacy"
+				duration = 9125 #25 years
+			}
+		}
+	}
+	GCU_burgundy_marrage = {
+		icon = royal_marrage_mission
+		required_missions = { GCU_burgundy_alliance }
+		position = 1
+		
+		trigger = {
+			if = {
+				limit = {
+					NOT = {
+						exists = LOT
+					}
+				}
+				OR = {
+					BUR = {
+						dynasty = ROOT
+					}
+					NOT = { exists = BUR }
+				}
+			}
+			else = {
+				LOT = {
+					dynasty = ROOT
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						exists = LOT
+					}
+				}
+				if = {
+					limit = {
+						exists = BUR
+						valid_for_personal_unions_trigger = yes
+						BUR = {
+							valid_for_personal_unions_trigger = yes
+						}
+					}
+					add_casus_belli = {
+						type = cb_restore_personal_union
+						months = 300
+						target = BUR
+					}
+				}
+				else = {
+					add_prestige = 10
+					add_dip_power = 100
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						exists = LOT
+						valid_for_personal_unions_trigger = yes
+						LOT = {
+							valid_for_personal_unions_trigger = yes
+						}
+					}
+					add_casus_belli = {
+						type = cb_restore_personal_union
+						months = 300
+						target = LOT
+					}
+				}
+				else = {
+					add_prestige = 25
+					add_dip_power = 100
+				}
+			}
+		}
+	}
+	GCU_gibraltar_strait = {
+		icon = mission_rb_take_gibraltar
+		required_missions = { RB_GCU_conquer_galicia }
+		position = 4
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1751
+				province_id = 226
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		trigger = {
+			owns = 1751
+			owns = 226
+		}
+		effect = {
+			126 = {
+				add_permanent_claim = ROOT
+			}
+			corsica_sardinia_area = {
+				add_permanent_claim = ROOT
+			}
+			baleares_area = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	GCU_mediterranean = {
+		icon = mission_rb_mediterranean_authority
+		required_missions = { GCU_gibraltar_strait }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 126 
+				area = corsica_sardinia_area 
+				area = baleares_area 
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		trigger = {
+			OR = {
+				owns = 126
+				corsica_sardinia_area = {
+					type = all
+					owns = ROOT
+				}
+				baleares_area = {
+					type = all
+					owns = ROOT
+				}
+			}
+		}
+		effect = {
+			4316 = {
+				add_permanent_claim = ROOT
+			}
+			2315 = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	GCU_suez_canal = {
+		icon = mission_rb_seize_alexandria
+		required_missions = { GCU_mediterranean }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 4316
+				province_id = 2315
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		trigger = {
+			owns = 4316
+			owns = 2315
+		}
+		effect = {
+			tihama_al_yemen_area = {
+				add_permanent_claim = ROOT
+			}
+			upper_yemen_area = {
+				add_permanent_claim = ROOT
+			}
+			yemen_area = {
+				add_permanent_claim = ROOT
+			}
+			hadramut_area = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	GCU_conquer_yemen = {
+		icon = mission_bedouins
+		required_missions = { GCU_suez_canal }
+		position = 7
+		
+		provinces_to_highlight = {
+			OR = {
+				area = tihama_al_yemen_area 
+				area = upper_yemen_area 
+				area = yemen_area 
+				area = hadramut_area 
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		trigger = {
+			tihama_al_yemen_area = {
+				type = all
+				owns = ROOT
+			}
+			upper_yemen_area = {
+				type = all
+				owns = ROOT
+			}
+			yemen_area = {
+				type = all
+				owns = ROOT
+			}
+			hadramut_area = {
+				type = all
+				owns = ROOT
+			}
+		}
+		effect = {
+			1099 = {
+				add_permanent_claim = ROOT
+			}
+			2999 = {
+				add_permanent_claim = ROOT
+			}
+			396 = {
+				add_permanent_claim = ROOT
+			}
+			1248 = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	GCU_conquer_maldives = {
+		icon = mission_sea_battles
+		required_missions = { GCU_conquer_yemen }
+		position = 8
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1248 
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		trigger = {
+			owns = 1248
+		}
+		effect = {
+			coromandel_region = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	GCU_conquer_lanka = {
+		icon = mission_conquer_lanka
+		required_missions = { GCU_conquer_maldives }
+		position = 9
+		
+		provinces_to_highlight = {
+			OR = {
+				area = lanka_area 
+				area = south_lanka_area 
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		trigger = {
+			lanka_area = {
+				type = all
+				owns = ROOT
+			}
+			south_lanka_area = {
+				type = all
+				owns = ROOT
+			}
+		}
+		effect = {
+			4815 = {
+				add_permanent_claim = ROOT
+			}
+			2686 = {
+				add_permanent_claim = ROOT
+			}
+			658 = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	GCU_conquer_malaya_trade = {
+		icon = mission_rb_colonise_spice_islands
+		required_missions = { GCU_conquer_lanka }
+		position = 10
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 4815
+				province_id = 2686
+				province_id = 658
+				province_id = 574 
+				province_id = 659
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		trigger = {
+			owns = 4815
+			owns = 2686
+			owns = 658
+			owns = 659
+			owns = 574 #Uncolonized
+		}
+		effect = {
+			add_mercantilism = 2
+			custom_tooltip = GCU_conquer_malaya_trade_tooltip
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						continent = africa
+						trade_goods = slaves
+					}
+					add_province_modifier = {
+						name = GCU_european_spice_trade
+						duration = 18250
+					}
+				}
+			}
+		}
+	}
+}
+celtic_union_missions_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Rule Britannia"
+	}
+	potential = {
+		has_dlc = "Rule Britannia"
+		tag = GCU
+	}
+	has_country_shield = yes
+	GCU_end_france = {
+		icon = mission_the_french_menace
+		required_missions = { GCU_burgundy_alliance }
+		position = 2
+		
+		trigger = {
+			OR = {
+				NOT = { exists = FRA }
+				FRA = {	is_subject_of = ROOT	}
+			}
+		}
+		effect = {
+			add_prestige = 20
+			add_army_tradition = 25
+		}
+	}
+}
+celtic_union_colonial_missions_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Rule Britannia"
+	}
+	potential = {
+		has_dlc = "Rule Britannia"
+		is_random_new_world = no
+		tag = GCU
+	}
+	has_country_shield = yes
+	GCU_colonize_caribbean = {
+		icon = mission_rb_grow_the_channel
+		required_missions = { irish_america }
+		position = 3
+		
+		provinces_to_highlight = {
+			colonial_region = colonial_the_carribean
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			has_discovered = ROOT
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 5
+				colonial_region = colonial_the_carribean
+				is_city = yes
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = GCU_celtic_caribbean
+				duration = 12775
+			}
+		}
+	}
+	GCU_colonize_panama = {
+		icon = mission_rb_scottish_the_darien_scheme
+		required_missions = { GCU_colonize_caribbean }
+		position = 5
+		
+		provinces_to_highlight = {
+			province_id = 835
+		}
+		trigger = {
+			835 = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		effect = {
+			add_prestige = 10
+			add_navy_tradition = 15
+		}
+	}
+	GCU_panama_canal = {
+		icon = mission_colonial
+		required_missions = { GCU_colonize_panama }
+		position = 6
+		
+		provinces_to_highlight = {
+			province_id = 835
+		}
+		trigger = {
+			835 = {
+				owned_by = ROOT
+				OR = {
+					has_great_project = {
+						type = panama_canal
+						tier = 1
+					}
+					has_great_project = {
+						type = panama_canal
+						tier = 2
+					}
+					has_great_project = {
+						type = panama_canal
+						tier = 3
+					}
+				}
+			}
+		}
+		effect = {
+			add_prestige = 20
+			if = {
+				limit = {
+					835 = {
+						NOT = {
+							has_great_project = {
+								type = panama_canal
+								tier = 3
+							}
+						}
+					}
+				}
+				835 = {
+					add_great_project = {
+   						 type = panama_canal
+    						instant = no 
+					}
+				}
+			}
+			else = {
+				add_navy_tradition = 25
+			}
+		}
+	}
+}
+celtic_union_missions_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Rule Britannia"
+	}
+	potential = {
+		has_dlc = "Rule Britannia"
+		tag = GCU
+	}
+	has_country_shield = yes
+	GCU_resist_reformation = {
+		icon = mission_rb_weather_the_reformation
+		required_missions = { }
+		position = 1
+		
+		trigger = {
+			religious_unity = 1.00
+			NOT = { current_age = age_of_discovery }
+			OR = {
+				NOT = { current_age = age_of_reformation }
+				AND = {
+					NOT = { religion = catholic }
+					NOT = { religion = orthodox }
+				}
+			}
+		}
+		effect = {
+			add_dip_power = 50
+			if = {	
+				limit = {
+					religion = reformed
+					has_dlc = "Wealth of Nations"
+				}
+				add_fervor = 100
+			}
+			else_if = {
+				limit = {
+					religion = protestant
+					has_dlc = "Common Sense"
+				}
+				add_church_power = 100
+			}
+			else_if = {
+				limit = {
+					religion = catholic
+				}
+				add_papal_influence = 50
+			}
+			else = {
+				add_adm_power = 50
+			}
+		}
+	}
+}

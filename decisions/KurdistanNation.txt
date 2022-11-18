@@ -1,5 +1,4 @@
 country_decisions = {
-
 	kurdistan_nation = {
 		major = yes
 		potential = {
@@ -15,21 +14,19 @@ country_decisions = {
 			OR = {
                 AND = {
 					OR = {
-						area = al_jazira_area
-						area = dulkadir_area
-						area = north_kurdistan_area
-						area = shahrizor_area
-						area = tabriz_area
-						area = luristan_area
+						superregion = near_east_superregion
+						superregion = persia_superregion
 					}
                     NOT = { owned_by = ROOT }
                     NOT = { is_core = ROOT }
 					culture = kurdish
                 }
+				area = north_kurdistan_area
             }
 		}
 		allow = {
 			adm_tech = 7
+			is_free_or_tributary_trigger = yes
 			is_at_war = no
 			north_kurdistan_area = {
 				type = all
@@ -38,14 +35,10 @@ country_decisions = {
 				NOT = { nationalism = 5 }
 			}
 			num_of_owned_provinces_with = {
-				value = 7 #those areas have 16 provs, so 8 is half. 9 is more than half. Fair!
+				value = 8 #those areas have 16 provs, so 8 is half. 9 is more than half. Fair!
                 OR = {
-                    area = al_jazira_area
-                    area = dulkadir_area
-                    area = north_kurdistan_area
-                    area = shahrizor_area
-                    area = tabriz_area
-                    area = luristan_area
+					superregion = near_east_superregion
+					superregion = persia_superregion
                 }
 				culture = kurdish
 				is_core = root
@@ -62,6 +55,7 @@ country_decisions = {
 				set_government_rank = 2
 			}
 			change_tag = KUS
+			swap_non_generic_missions = yes
 			north_kurdistan_area = {
 				limit = {
 					NOT = { owned_by = ROOT }

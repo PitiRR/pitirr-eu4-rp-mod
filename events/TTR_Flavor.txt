@@ -1,0 +1,188 @@
+namespace = tartary_event
+
+# Unification of the Eurasian Steppe
+country_event = {
+	id = tartary_event.1
+	title = "TARTARY.1"
+	desc = "TARTARY_DESC.1"
+	picture = MONGOL_BANNERS_eventPicture
+	
+	is_triggered_only = yes
+	#major = yes
+
+	option = {
+		name = "TARTARY.1A"			# Glory to the Great Khan!
+		trigger  = {
+			OR = {
+				tag = FROM
+				has_reform = steppe_horde
+			}
+		}
+		if = {
+			limit = { tag = FROM }
+			add_prestige = 20
+			change_adm = 1
+			change_mil = 1
+		}
+		else = {
+			add_prestige = 5
+		}
+		ai_chance = { 
+			factor = 1	
+		}
+	}
+	option = {
+		name = "TARTARY.1B"			# Gather the banners!
+		trigger = {
+			tag = FROM
+		}
+		add_ruler_modifier = {
+			name = ttr_great_invasion
+			duration = -1
+		}
+		ai_chance = { 
+			factor = 1
+		}
+	}
+	option = {
+		name = "TARTARY.1C"			# Submit to the Great Khan
+		trigger = {
+			NOT = { tag = FROM }
+			OR = {
+				has_reform = steppe_horde
+				any_neighbor_country = {
+					tag = FROM
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { has_reform = steppe_horde } }
+			add_prestige = -10
+		}
+		custom_tooltip = tartary_submit_to_steppe_tt
+		hidden_effect = {
+			FROM = {
+				country_event = { 
+    					id = tartary_event.2
+				}
+			}
+		}
+		ai_chance = { 
+			factor = 2
+			modifier = {
+				factor = 0
+				is_great_power = no
+			}
+		}
+	}
+	option = {
+		name = "TARTARY.1D"			# The horror!
+		trigger = {
+			NOT = { tag = FROM }
+			NOT = { has_reform = steppe_horde }
+		}
+		add_country_modifier = {
+			name = ttr_fear_steppe
+			duration = 3650
+		}
+		ai_chance = { 
+			factor = 2
+			modifier = {
+				factor = 0
+				is_great_power = yes
+			}
+		}
+	}
+	option = {
+		name = "TARTARY.1E"			# Only faith can save us!
+		trigger = {
+			NOT = { tag = FROM }
+			government = theocracy
+		}
+		add_country_modifier = {
+			name = ttr_crusaders_steppe
+			duration = 3650
+		}
+		ai_chance = { 
+			factor = 10
+		}
+	}
+	option = {
+		name = "TARTARY.1F"			# A threat? What a joke!
+		trigger = {
+			NOT = { tag = FROM }
+			OR = {
+				is_emperor_of_china = yes
+'				is_great_power = yes
+			}
+		}
+		add_mandate = 20
+		FROM = {
+			add_casus_belli = {
+    				target = ROOT
+    				type = cb_insult
+    				months = 12
+			}
+		}
+		ai_chance = { 
+			factor = 2
+			modifier = {
+				factor = 0
+				is_great_power = no
+			}
+		}
+	}
+}
+# [From.GetName] swears fealty
+country_event = {
+	id = tartary_event.2
+	title = "TARTARY.2"
+	desc = "TARTARY_DESC.2"
+	picture = DIPLOMACY_eventPicture
+	
+	is_triggered_only = yes
+	#major = yes
+	option = {
+		name = "TARTARY.2A"			# Grant them vassalship
+		create_subject = {
+    			subject_type = vassal
+    			subject = FROM
+		}
+		ai_chance = { 
+			factor = 2
+			modifier = {
+				factor = 0
+				FROM = {
+					capital_scope = {
+						OR = {
+							continent = europe
+							superregion = east_indies_superregion 
+							region = japan_region
+							superregion = india_superregion
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "TARTARY.2B"			# No, they must pay tribute
+		create_subject = {
+    			subject_type = tributary_state 
+    			subject = FROM
+		}
+		ai_chance = { 
+			factor = 2
+			modifier = {
+				factor = 1
+			}
+		}
+	}
+	option = {
+		name = "TARTARY.2C"			# Become a subject? How laughable!
+		add_prestige = 10
+		ai_chance = { 
+			factor = 0
+		}
+	}
+}

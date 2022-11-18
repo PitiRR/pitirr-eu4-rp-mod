@@ -1,0 +1,173 @@
+country_decisions = {
+
+	release_south_africa_nation = {
+		major = yes
+		potential = {
+			NOT = { has_country_flag = formed_south_africa_flag }
+			NOT = { exists = SAF }
+			OR = {
+				technology_group = western
+				technology_group = eastern
+			}
+			south_africa_region = {
+				type = any
+				owned_by = ROOT
+			}
+			capital_scope = {
+				NOT = { region = south_africa_region }
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				region = south_africa_region 
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			adm_tech = 10
+			is_free_or_tributary_trigger = yes
+			NOT = { exists = SAF }
+			is_at_war = no
+			num_of_owned_provinces_with = {
+				value = 5
+				region = south_africa_region 
+			}
+		}
+		effect = {
+			set_country_flag = formed_south_africa_flag
+			south_africa_region = {
+			    add_core = SAF
+			}
+			hidden_effect = {
+				south_africa_region = {
+			    		remove_core = ROOT
+				}
+			}
+			release = SAF		
+			if = {
+				limit = { has_dlc = "Leviathan" }
+				create_subject = {
+    					subject_type = private_enterprise
+    					subject = SAF
+				}
+			}
+			else = {
+				create_subject = {
+    					subject_type = colony
+    					subject = SAF
+				}
+			}
+			hidden_effect = {
+				SAF = {
+					change_primary_culture = ROOT
+					change_religion = ROOT
+					change_government = republic
+					if = {
+						limit = { has_dlc = "Leviathan" }
+						add_government_reform = private_enterprise_colony_government
+					}
+					else = {
+						add_government_reform = colonial_government
+					} 
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	south_africa_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_south_africa_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { has_country_flag = formed_south_africa }
+			NOT = { exists = SAF }
+			NOT = { tag = PAP }
+			NOT = { tag = HLR }
+			OR = {
+				technology_group = western
+				technology_group = eastern
+			}
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 3
+				}
+			}
+			south_africa_region = {
+				type = any
+				owned_by = ROOT
+			}
+			capital_scope = {
+				region = south_africa_region
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				region = south_africa_region
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			adm_tech = 10
+			is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			owns = 1177
+		}
+		effect = {
+			change_tag = SAF
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 10
+			set_country_flag = formed_south_africa_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	south_africa_nation_color = {
+		major = yes
+		potential = {
+			NOT = { has_country_flag = formed_south_africa_flag }
+			tag = SAF
+		}
+		allow = {
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			NOT = { has_reform = colonial_government }
+			NOT = { has_reform = private_enterprise_colony_government }
+			NOT = { has_reform = crown_colony_government }
+			NOT = { has_reform = self_governing_colony_government }
+		}
+		effect = {
+			set_country_flag = formed_south_africa_flag
+			add_prestige = 10
+			set_government_rank = 2
+			restore_country_name_effect = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

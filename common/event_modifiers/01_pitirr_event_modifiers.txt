@@ -162,3 +162,34 @@ mocca_coffee = {
     local_development_cost = -0.1
     trade_goods_size_modifier = 0.1
 }
+
+kus_first_revenge = {
+    morale_damage = 0.1
+    manpower_recovery_speed = 0.2
+    monthly_favor_modifier = 0.33
+}
+
+kus_schism_tolerate = {
+    tolerance_heretic = 2
+    church_loyalty_modifier = -0.1
+    church_influence_modifier = -0.1
+    monthly_piety_accelerator = 0.0025
+}
+
+kus_schism_convert = {
+    global_heretic_missionary_strength = 0.03
+    church_loyalty_modifier = 0.1
+    church_influence_modifier = 0.1
+    monthly_piety_accelerator = 0.0025
+}
+
+kus_baghdad_uni = {
+    idea_cost = -0.1
+    advisor_cost = -0.1
+    advisor_pool = 2
+}
+
+persian_carpets_abroad = {
+    trade_goods_size_modifier = 0.1
+    local_prosperity_growth = 0.1
+}

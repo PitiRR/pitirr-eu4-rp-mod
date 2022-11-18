@@ -1,0 +1,199 @@
+# Do not change tags in here without changing every other reference to them.
+# Do not change tags in here without changing every other reference to them.
+# If adding new groups or ideas, make sure they are unique.
+
+### Nation specific idea groups
+
+BBF_sibirian_ideas = {
+	start = {
+		num_accepted_cultures = 1
+		may_explore = yes
+	}
+	
+	bonus = {
+		defensiveness = 0.15
+	}
+	
+	trigger = {
+		tag = SIB
+	}
+	free = yes
+	
+	life_of_steppe_warrior = {
+		land_attrition = -0.20 #(effect taken in OIR_ideas)
+	}
+	SIB_desendants_of_genghis_khan = {
+		legitimacy = 1
+		horde_unity = 1
+	}
+	traditions_of_the_great_khan = {
+		cavalry_power = 0.20
+	}
+	steppe_leaders = {
+		leader_land_shock = 1
+	}
+	SIB_siberian_frontier = {
+		may_establish_frontier = yes
+		auto_explore_adjacent_to_colony = yes
+	}
+	SIB_raiders_of_north = {
+		raze_power_gain = 0.33
+		loot_amount = 0.15
+	}
+	SIB_resistance_against_cossacks = {
+		land_morale = 0.10
+	}
+}
+BBF_uzbek_ideas = {
+	start = {
+		harsh_treatment_cost = -0.15
+		ae_impact = -0.10
+	}
+	bonus = {
+		build_cost = -0.10
+	}
+	trigger = {
+		tag = SHY
+	}
+	free = yes
+	
+	life_of_steppe_warrior = {
+		#land_attrition = -0.20 #(effect taken in OIR_ideas)
+	}
+	buk_jochid_patrimony = {
+		core_creation = -0.2
+		legitimacy = 0.5
+	}
+	traditions_of_the_great_khan = {
+		#cavalry_power = 0.20
+	}
+	SHY_legacy_of_the_blue_horde = {
+		province_warscore_cost = -0.10
+	}
+	glory_of_conquest = {
+		global_manpower_modifier = 0.25 #(effect taken in OIR_ideas)
+	}
+	kaz_idea_6 = {
+		defensiveness = 0.15 #From Kazan ideas
+	}
+	SHY_founders_of_bukhara = {
+		monthly_piety_accelerator = 0.001
+		global_institution_spread = 0.15
+	}
+}
+BBF_kazakh_ideas = {
+	start = {
+		ae_impact = -0.10
+		cavalry_power = 0.15
+	}
+	
+	bonus = {
+		trade_efficiency = 0.10
+	}
+	
+	trigger = {
+		tag = KZH
+	}
+	free = yes
+	
+	kaz_idea_2 = {
+		core_creation = -0.25 #From Kazan ideas
+	}
+	KZH_great_migration = {
+		land_attrition = -0.20
+		movement_speed = 0.10
+	}
+	KZH_kazakh_calvary = {
+		cavalry_shock = 1
+		cavalry_cost = -0.10
+	}
+	KZH_kazakh_insurrection = {
+		land_morale = 0.10
+	}
+	KZH_challenge_balance_power = {
+		province_warscore_cost = -0.10
+	}
+	KZH_kazakhification = {
+		culture_conversion_cost = -0.25
+	}
+	KZH_three_juzes = {
+		diplomatic_upkeep = 1
+	}
+}
+
+BBF_great_horde_ideas = {
+	start = {
+		ae_impact = -0.10
+		cav_to_inf_ratio = 0.15
+	}
+	bonus = {
+		leader_land_manuever = 1
+	}
+	trigger = {
+		tag = GOL
+	}
+	free = yes
+	
+	cri_genghisid_legacy = {
+		cavalry_power = 0.2
+	}
+	gol_tartar_diplomacy = {
+		diplomatic_upkeep = 1
+		power_projection_from_insults = 0.15
+	}
+	gol_legacy_of_the_golden_horde = {
+		horde_unity = 1
+		legitimacy = 1
+	}
+	gol_legacy_of_the_rus = {
+		vassal_income = 0.30
+		reduced_liberty_desire = 10
+	}
+	logistics_of_khan = { #Used by horde_ideas
+		manpower_recovery_speed = 0.2
+	}
+	gol_last_stand_against_europe = {
+		cavalry_flanking = 0.50
+	}
+	kaz_idea_4 = { #Used by Kazan ideas
+		global_manpower_modifier = 0.25	
+	}
+}
+BBF_nogai_ideas = {
+	start = {
+		ae_impact = -0.10
+		cavalry_power = 0.20
+	}
+	
+	bonus = {
+		global_manpower_modifier = 0.25
+	}
+	
+	trigger = {
+		tag = NOG
+	}
+	free = yes
+	
+	life_of_steppe_warrior = {
+		#land_attrition = -0.20 (effect taken in OIR_ideas)
+	}
+	cri_slavers = { #From Crimean ideas
+		global_own_trade_power = 0.15
+	}
+	kaz_idea_2 = {
+		#core_creation = -0.25 #From Kazan ideas
+	}
+	cri_despoilers = { #From Crimean ideas
+		leader_land_shock = 1
+	}
+	NOG_steppe_rivals = {
+		power_projection_from_insults = 1.00
+	}
+	logistics_of_khan = {
+		#manpower_recovery_speed = 0.2 (effect taken in GLH_ideas)
+	}
+	NOG_subject_of_crimea = {
+		diplomatic_upkeep = 1
+		liberty_desire = -30
+	}
+}

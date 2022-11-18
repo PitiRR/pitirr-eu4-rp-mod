@@ -258,11 +258,11 @@ yem_2 = {
 		trigger = {
 			tihama_al_yemen_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 			upper_yemen_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		
@@ -548,25 +548,25 @@ yem_3 = {
 		trigger = {
 			yemen_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				NOT = { local_autonomy = 50 }
 				NOT = { unrest = 1 }
 			}
 			upper_yemen_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				NOT = { local_autonomy = 50 }
 				NOT = { unrest = 1 }
 			}
 			tihama_al_yemen_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				NOT = { local_autonomy = 50 }
 				NOT = { unrest = 1 }
 			}
 			hadramut_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				NOT = { local_autonomy = 50 }
 				NOT = { unrest = 1 }
 			}
@@ -653,11 +653,11 @@ yem_4 = {
 		trigger = {
 			hadramut_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 			yemen_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		

@@ -1,0 +1,134 @@
+country_decisions = {
+
+	# Flee to Ezo
+	form_ezo_nation = {
+		major = yes
+		potential = {
+			NOT = { tag = EZO }
+			NOT = { tag = JAP }
+			NOT = { tag = ANU }
+			NOT = { tag = RYU }
+			NOT = { primary_culture = ainu }
+			NOT = { has_country_flag = formed_ezo_flag }
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_reform = shogunate }
+			OR = {
+				any_country = {
+					vassal_of = ROOT
+					has_reform = daimyo
+				}
+				culture_group = japanese_g
+				religion = shinto
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 4193
+				province_id = 1847
+				province_id = 1031
+				province_id = 1852
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			NOT = { exists = EZO }
+			is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			OR = {
+				culture_group = japanese_g
+				religion = shinto
+			}
+			owns = 4193
+			owns = 1847
+			owns = 1031
+			owns = 1852
+		}
+		effect = {
+			change_tag = EZO
+			set_country_flag = formed_ezo_flag
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			set_capital = 4193
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				any_owned_province = { 
+					NOT = { area = hokkaido_area }
+				}
+			}
+		}
+	}
+
+	form_ezo_nation_as_ainu = {
+		major = yes
+		potential = {
+			OR = {
+				tag = ANU
+				primary_culture = ainu
+			}
+			NOT = { has_institution = fedualism }
+			NOT = { has_country_flag = formed_ezo_flag }
+			was_never_end_game_tag_trigger = yes
+		}
+		allow = {
+			NOT = { exists = EZO }
+			NOT = { has_institution = fedualism }
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			OR = {
+				culture_group = japanese_g
+				religion = shinto
+				capital_scope = {
+					development = 20
+				}
+			}
+		}
+		effect = {
+			change_tag = EZO
+			set_country_flag = formed_ezo_flag
+			custom_tooltip = ALL_PROVINCES_FEUDAL_tt
+			hidden_effect = {
+				every_owned_province = { 
+					add_institution_embracement = {
+    						which = feudalism
+    						value = 100
+					}
+				}
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			change_government = monarchy 
+			add_government_reform = feudalism_reform
+			#if = {
+			#	limit = { has_custom_ideas = no }
+			#	country_event = { id = ideagroups.1 } #Swap Ideas
+			#}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				any_owned_province = { 
+					NOT = { area = hokkaido_area }
+				}
+			}
+		}
+	}
+}
