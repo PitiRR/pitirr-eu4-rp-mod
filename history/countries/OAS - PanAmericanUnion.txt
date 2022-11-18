@@ -1,7 +1,0 @@
-government = republic
-add_government_reform = oas_republic_reform
-technology_group = western
-primary_culture = panamerican
-religion = protestant
-capital = 953	# Washington D.C
-government_rank = 3
