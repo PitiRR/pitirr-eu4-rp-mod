@@ -21,21 +21,21 @@ kropa_mine = {
 	can_use_modifiers_trigger = {
 		AND = {
 			culture = slovene
-			province_is_or_accepts_culture = yes
+			owner = { primary_culture = slovene }
 		}
 	}
 
 	can_upgrade_trigger = {
 		AND = {
 			culture = slovene
-			province_is_or_accepts_culture = yes
+			owner = { primary_culture = slovene }
 		}
 	}
 
 	keep_trigger = {
 		AND = {
-			culture = english
-			province_is_or_accepts_culture = yes
+			culture = slovene
+			owner = { primary_culture = slovene }
 		}
 	}
 
@@ -64,7 +64,7 @@ kropa_mine = {
 			factor = 1000
 		}
 		province_modifiers = {
-			trade_goods_size = 1.5
+			trade_goods_size = 1
 			local_regiment_cost = -0.125
 			local_development_cost_modifier = -0.05
 		}
@@ -73,7 +73,6 @@ kropa_mine = {
 			local_build_time = -0.05
 		}
 		country_modifiers = {
-			artillery_cost = -0.05
 		}
 		on_upgraded = {
 		}
@@ -87,15 +86,17 @@ kropa_mine = {
 			factor = 2500
 		}
 		province_modifiers = {
-			trade_goods_size = 3
+			trade_goods_size = 2
 			regiment_recruit_speed = -0.125
 			local_regiment_cost = -0.25
 		}
 		area_modifier = {
+			local_build_cost = -0.1
+			local_build_time = -0.1
 			local_development_cost_modifier = -0.05
 		}
 		country_modifiers = {
-			artillery_cost = -0.1
+			artillery_cost = -0.05
 		}
 		on_upgraded = {
 		}
@@ -109,15 +110,17 @@ kropa_mine = {
 			factor = 5000
 		}
 		province_modifiers = {
-			trade_goods_size = 4.5
+			trade_goods_size = 4
 			regiment_recruit_speed = -0.25
 			local_regiment_cost = -0.5
 		}
 		area_modifier = {
+			local_build_cost = -0.2
+			local_build_time = -0.2
 			local_development_cost_modifier = -0.1
 		}
 		country_modifiers = {
-			artillery_cost = -0.15
+			artillery_cost = -0.1
 		}
 		on_upgraded = {
 		}
