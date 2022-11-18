@@ -1,0 +1,948 @@
+yem_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		OR = {
+			tag = RAS
+			tag = ADE
+			tag = YEM
+		}
+	}
+	yem_new_navy = {
+		icon = mission_sponsor_piracy
+		required_missions = { yem_gen_recon_two }
+		position = 3
+		
+		
+		trigger = {
+			num_of_galley = 10
+			calc_true_if = {
+				all_owned_province  = {
+					OR = {
+						has_building = shipyard
+						has_building = grand_shipyard
+						has_building = dock
+						has_building = drydock
+					}
+				}
+				amount = 4
+			}
+			navy_tradition = 10
+		}
+		
+		effect = {
+			add_navy_tradition = 15
+		}
+	}
+	yem_african_diplo = {
+		icon = mission_traverse_the_sahara
+		required_missions = { yem_new_navy }
+		position = 4
+		
+		trigger = {
+			any_known_country = {
+				capital_scope = {
+					OR = {
+						region = horn_of_africa_region
+						region = east_africa_region
+					}
+				}
+				marriage_with = ROOT
+				has_opinion = {
+					who = ROOT
+					value = 150
+				}
+			}
+		}
+		
+		effect = {
+			every_province = {
+				limit = {
+					province_has_center_of_trade_of_level = 1
+					OR = {
+						region = horn_of_africa_region
+						region = east_africa_region
+						region = south_africa_region
+					}
+					has_port = yes
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	yem_diversify_trade = {
+		icon = mission_gujarati_textiles
+		required_missions = { yem_african_diplo yem_conquer_oman }
+		position = 6
+		
+		
+		trigger = {
+			400 = {
+				owned_by = ROOT
+				is_core = ROOT
+			}
+			400 = {
+				has_building = marketplace
+				province_has_center_of_trade_of_level = 2
+				province_trade_power = 25
+			}
+			calc_true_if = {
+				all_owned_province = {
+					OR = {
+						region = east_africa_region
+						region = horn_of_africa_region
+						region = south_africa_region
+					}
+					province_has_center_of_trade_of_level = 1
+					country_or_non_sovereign_subject_holds = root
+					has_building = marketplace
+				}
+				amount = 5
+			}
+		}
+		
+		effect = {
+			add_mercantilism = 10
+			add_prestige = 10
+			2999 = {
+				if = {
+					limit = {
+						NOT = { owned_by = ROOT }
+						NOT = { is_core = ROOT }
+					}
+					add_permanent_claim = root
+				}
+			}
+			hidden_effect = {
+				1457 = {
+					every_neighbor_province = {
+						limit = {
+							NOT = {
+								is_core = ROOT
+								is_permanent_claim = ROOT
+							}
+						}
+						add_permanent_claim = ROOT
+					}
+				}
+				1456 = {
+					every_neighbor_province = {
+						limit = {
+							NOT = {
+								is_core = ROOT
+								is_permanent_claim = ROOT
+							}
+						}
+						add_permanent_claim = ROOT
+					}
+				}
+				1627 = {
+					every_neighbor_province = {
+						limit = {
+							NOT = {
+								is_core = ROOT
+								is_permanent_claim = ROOT
+							}
+						}
+						add_permanent_claim = ROOT
+					}
+				}
+				1454 = {
+					every_neighbor_province = {
+						limit = {
+							NOT = {
+								is_core = ROOT
+								is_permanent_claim = ROOT
+							}
+						}
+						add_permanent_claim = ROOT
+					}
+				}
+				1450 = {
+					every_neighbor_province = {
+						limit = {
+							NOT = {
+								is_core = ROOT
+								is_permanent_claim = ROOT
+							}
+						}
+						add_permanent_claim = ROOT
+					}
+				}
+				1449 = {
+					every_neighbor_province = {
+						limit = {
+							NOT = {
+								is_core = ROOT
+								is_permanent_claim = ROOT
+							}
+						}
+						add_permanent_claim = ROOT
+					}
+				}
+				1448 = {
+					every_neighbor_province = {
+						limit = {
+							NOT = {
+								is_core = ROOT
+								is_permanent_claim = ROOT
+							}
+						}
+						add_permanent_claim = ROOT
+					}
+				}
+				1447 = {
+					every_neighbor_province = {
+						limit = {
+							NOT = {
+								is_core = ROOT
+								is_permanent_claim = ROOT
+							}
+						}
+						add_permanent_claim = ROOT
+					}
+				}
+				1446 = {
+					every_neighbor_province = {
+						limit = {
+							NOT = {
+								is_core = ROOT
+								is_permanent_claim = ROOT
+							}
+						}
+						add_permanent_claim = ROOT
+					}
+				}
+
+			}
+			custom_tooltip = claims_on_east_african_coast_tt
+		}
+	}
+}
+
+yem_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		OR = {
+			tag = RAS
+			tag = ADE
+			tag = YEM
+		}
+	}
+	yem_gen_recon_two = {
+		icon = mission_central_asian_city
+		required_missions = { yem_gen_buildforces }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				area = tihama_al_yemen_area
+				area = upper_yemen_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			tihama_al_yemen_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			upper_yemen_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			add_adm_power = 50
+			add_mil_power = 50
+			add_prestige = 15
+			dhofar_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			oman_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mascat_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			pirate_coast_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	yem_conquer_oman = {
+		icon = mission_control_surat
+		required_missions = { yem_gen_recon_two }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				area = dhofar_area
+				area = oman_area
+				area = pirate_coast_area
+				area = mascat_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			dhofar_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = root
+			}
+			oman_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = root
+			}
+			pirate_coast_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = root
+			}
+			mascat_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = root
+			}
+		}
+		
+		effect = {
+			2999 = {
+				if = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+	yem_anti_mamluks_diplo = {
+		icon = mission_ottoman_diplomacy
+		required_missions = { yem_conquer_oman }
+		position = 6
+		
+		provinces_to_highlight = {
+			any_country = {
+				OR = {
+					is_rival = MAM
+					is_enemy = MAM
+				}
+				NOT = { alliance_with = ROOT }
+			}
+		}
+		
+		trigger = {
+			if = {
+				limit = {
+					any_country = {
+						OR = {
+							is_rival = MAM
+							is_enemy = MAM
+						}
+					}
+				}
+				any_country = {
+					OR = {
+						is_rival = MAM
+						is_enemy = MAM
+					}
+					alliance_with = ROOT
+				}
+			} 
+			else = {
+				army_size = MAM
+				army_tradition = MAM
+			}
+		}
+		
+		effect = {
+			add_prestige = 10
+			add_country_modifier = {
+				name = yem_anti_mamluk_diplo_modifier
+				duration = 3650
+			}
+		}
+	}
+	yem_new_army = {
+		icon = mal_trade_with_europeans
+		required_missions = { yem_anti_mamluks_diplo }
+		position = 7
+		
+		
+		trigger = {
+			has_global_modifier_value = {
+				which = discipline
+				value = 0.10
+				extra_shortcut = yes
+			}
+			has_global_modifier_value = {
+				which = infantry_power
+				value = 0.25
+				extra_shortcut = yes
+			}
+			army_professionalism = 0.1
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = yem_new_army_modifier
+				duration = -1
+			}
+			custom_tooltip = yem_mercs_available
+		}
+	}
+}
+yem_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		OR = {
+			tag = RAS
+			tag = ADE
+			tag = YEM
+		}
+	}
+	yem_gen_buildforces = {
+		icon = mission_bedouins
+		required_missions = { }
+		position = 1
+		
+		trigger = {
+			army_size_percentage = 1
+			manpower_percentage = 0.6
+			num_of_generals = 1
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "oma_buildforces_mod"
+				duration = 5475
+			}
+			yemen_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			upper_yemen_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			hadramut_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tihama_al_yemen_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	yem_dev_mocca = {
+		icon = mission_el_badi_palace
+		required_missions = { yem_gen_buildforces }
+		position = 2
+		provinces_to_highlight = {
+			province_id = 387 #Mocca
+		}
+		
+		trigger = {
+			387 = {
+				owned_by = ROOT
+			}
+			387 = {
+				num_of_times_improved = 8
+				base_production = 6
+			}
+			387 = {
+				has_building = workshop
+			}
+		}
+		
+		effect = {
+			387 = {
+				add_province_modifier = {
+					name = mocca_coffee
+					duration = -1
+				}
+			}
+			387 = {
+				add_building_construction = {
+					building = plantations
+					speed = 0.5
+					cost = 0
+				}
+			}
+			add_years_of_owned_provinces_production_income = {
+				years = 20
+				trigger = {
+					OR = {
+						trade_goods = coffee
+					}
+				}
+				custom_tooltip = MONOPOLY_INCOME_COFFEE_DESC
+			}
+		}
+	}
+	yem_united_yemen = {
+		icon = mission_imperial_cities
+		required_missions = { yem_gen_recon_one yem_gen_recon_two }
+		position = 3
+		provinces_to_highlight = {
+			OR = {
+				area = yemen_area
+				area = upper_yemen_area
+				area = tihama_al_yemen_area
+				area = hadramut_area
+			}
+			NOT = { owned_by = ROOT }
+			local_autonomy = 50
+			unrest = 1
+		}
+		
+		trigger = {
+			yemen_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+				NOT = { local_autonomy = 50 }
+				NOT = { unrest = 1 }
+			}
+			upper_yemen_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+				NOT = { local_autonomy = 50 }
+				NOT = { unrest = 1 }
+			}
+			tihama_al_yemen_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+				NOT = { local_autonomy = 50 }
+				NOT = { unrest = 1 }
+			}
+			hadramut_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+				NOT = { local_autonomy = 50 }
+				NOT = { unrest = 1 }
+			}
+		}
+		
+		effect = {
+			add_stability = 1
+			add_legitimacy = 50
+			add_prestige = 20
+		}
+	}
+	yem_an_empire = {
+		icon = mission_conquer_algiers
+		required_missions = { yem_united_yemen yem_conquer_oman yem_conquer_mainland }
+		position = 6
+		
+		trigger = {
+			government_rank = 3
+			reform_level = 6
+			NOT = { average_autonomy = 10 }
+			army_size = 50
+			4345 = { #Gulf of Aden
+				trade_share = {
+					country = ROOT
+					share = 10
+				}
+			}
+			1334 = { #Hormuz
+				trade_share = {
+					country = ROOT
+					share = 10
+				}
+			}
+			1448 = { #Zanzibar
+				trade_share = {
+					country = ROOT
+					share = 10
+				}
+			}
+			504 = { #Gujarat
+				trade_share = {
+					country = ROOT
+					share = 10
+				}
+			}
+		}
+		
+		effect = {
+			add_stability = 3
+			add_adm_power = 100
+			add_dip_power = 100
+			add_mil_power = 100
+		}
+	}
+}
+yem_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		OR = {
+			tag = RAS
+			tag = ADE
+			tag = YEM
+		}
+	}
+	yem_gen_recon_one = {
+		icon = mission_arabian_fort
+		required_missions = { yem_gen_buildforces }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				area = hadramut_area
+				area = yemen_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			hadramut_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			yemen_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			add_mil_power = 50
+			add_adm_power = 50
+			add_prestige = 15
+			yamamah_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			asir_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			bahrain_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			qasim_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			nafud_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	yem_conquer_mainland = {
+		icon = mission_fatimid_caliphate
+		required_missions = { yem_gen_recon_one }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				area = asir_area
+				area = yamamah_area
+				area = bahrain_area
+				area = qasim_area
+				area = nafud_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			asir_area = {
+				type = all
+				country_or_subject_holds = root
+			}
+			yamamah_area = {
+				type = all
+				country_or_subject_holds = root
+			}
+			bahrain_area = {
+				type = all
+				country_or_subject_holds = root
+			}
+			qasim_area = {
+				type = all
+				country_or_subject_holds = root
+			}
+			nafud_area = {
+				type = all
+				country_or_subject_holds = root
+			}
+		}
+		
+		effect = {
+			add_mil_power = 50
+			add_adm_power = 50
+			add_prestige = 15
+			basra_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			khuzestan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+		ai_weight = {
+			factor = 500	#Conquering Yemen is also a good idea
+		}
+	}
+	yem_conquer_basra = {
+		icon = mission_into_persia_1
+		required_missions = { yem_conquer_mainland }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				area = basra_area
+				area = khuzestan_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			basra_area = {
+				type = all
+				country_or_subject_holds = root
+			}
+			khuzestan_area = {
+				type = all
+				country_or_subject_holds = root
+			}
+		}
+		
+		effect = {
+			add_mil_power = 50
+			add_adm_power = 50
+			add_prestige = 15
+		}
+	}
+}
+yem_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		OR = {
+			tag = RAS
+			tag = ADE
+			tag = YEM
+		}
+	}
+
+	yem_zealous_army = {
+		icon = mission_conquer_timbuktu
+		required_missions = {  }
+		position = 2
+		
+		
+		trigger = {
+			OR = {
+				has_global_modifier_value = {
+					which = global_missionary_strength
+					value = 0.05
+					extra_shortcut = yes
+				}
+				has_global_modifier_value = {
+					which = global_heretic_missionary_strength
+					value = 0.05
+					extra_shortcut = yes
+				}
+			}
+			has_global_modifier_value = {
+				which = land_morale
+				value = 0.25
+				extra_shortcut = yes
+			}
+		}
+		
+		effect = {
+			mecca_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			medina_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	yem_pilgrimage = {
+		icon = mission_into_arabia
+		required_missions = { yem_zealous_army yem_gen_recon_one }
+		position = 3
+		
+		trigger = {
+			mecca_area = {
+				type = all
+				country_or_subject_holds = root
+			}
+			medina_area = {
+				type = all
+				country_or_subject_holds = root
+			}
+			385 = { #Mecca
+				owned_by = root
+				is_core = root
+			} 
+			384 = { #Medinah
+				owned_by = root
+				is_core = root
+			} 
+		}
+		
+		effect = {
+		}
+	}
+	yem_fight_religious_enemy = {
+		icon = mission_reconquer_ceuta
+		required_missions = { yem_pilgrimage }
+		position = 4
+		
+		trigger = {
+			is_in_war = {
+				attacker_leader = ROOT
+				casus_belli = cb_war_against_heresy
+				war_score = 51
+				duration = 730
+			}
+		}
+		
+		effect = {
+		}
+	}
+	yem_guardian_of_islam = {
+		icon = mission_persian_soldiers
+		required_missions = { yem_fight_religious_enemy yem_conquer_mainland }
+		position = 6
+		
+		trigger = {
+			is_defender_of_faith = yes
+			religious_unity = 1
+		}
+		
+		effect = {
+			hidden_effect = {
+				if = {
+					limit = { is_defender_of_faith_of_tier = 1 }
+					add_country_modifier = {
+						name = yem_dof_1
+						duration = -1
+					}
+				} else_if = {
+					limit = { is_defender_of_faith_of_tier = 2 }
+					add_country_modifier = {
+						name = yem_dof_2
+						duration = -1
+					}
+				} else_if = {
+					limit = { is_defender_of_faith_of_tier = 3 }
+					add_country_modifier = {
+						name = yem_dof_3
+						duration = -1
+					}
+				} else_if = {
+					limit = { is_defender_of_faith_of_tier = 4 }
+					add_country_modifier = {
+						name = yem_dof_4
+						duration = -1
+					}
+				} else_if = {
+					limit = { is_defender_of_faith_of_tier = 5 }
+					add_country_modifier = {
+						name = yem_dof_5
+						duration = -1
+					}
+				}
+			} 
+			custom_tooltip = yem_dof_reward_tt
+		}
+	}
+}

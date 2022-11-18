@@ -93,3 +93,5 @@
   desc_slv_cilli_2:0 "The palaces of Celje are famous all around the world. Particularly, its gardens and ballrooms. We are the de facto diplomatic center of Europe."
 
   kropa_mine:0 "Kropa Iron Mines"
+
+  slv_can_build_kropa_mine_tt:0 "Allows us the construction of §YKropa Iron Mines§! Great Project."

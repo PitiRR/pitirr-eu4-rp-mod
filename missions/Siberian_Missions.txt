@@ -1,0 +1,327 @@
+siberian_conquest = {
+    	slot = 2
+    	generic = no
+    	ai = yes
+    	potential = {
+		OR = {
+			tag = RSS
+			tag = KMC
+			tag = CHU
+			tag = CHV
+			tag = HOD
+			AND = {
+				is_playing_custom_nation = yes
+				OR = {
+					AND = {
+						culture_group = evenks
+						NOT = { primary_culture = manchu }
+					}
+					primary_culture = kamchatkan
+					primary_culture = nivkh
+				}
+			}
+		}
+    	}
+    	has_country_shield = yes
+	BBF_mil_buildup = {
+		icon = mission_build_up_to_force_limit
+		required_missions = { }
+		position = 1
+
+		trigger = {
+			army_size_percentage = 1.0
+			manpower_percentage = 0.6
+			num_of_generals = 1
+		}
+		effect = {
+			east_siberia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			hokkaido_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	RSS_siberian_unification_mission = {
+		icon = arctic_fox
+		required_missions = { BBF_mil_buildup }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				region = east_siberia_region 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			OR = {
+				east_siberia_region = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				tag = RSS
+			}
+		}
+		effect = {
+			if = {
+				limit = { NOT = { has_country_flag = RRS_completed_fate_of_nation } }
+				country_event = { 
+    					id = siberian_event.1
+				}
+			}
+			else = {
+				add_prestige = 5
+				change_government_reform_progress = 100
+			}
+		}
+	}
+	RSS_push_west = {
+		icon = mission_cossack_cavalry
+		required_missions = { RSS_siberian_unification_mission }
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				region = east_siberia_region 
+				region = west_siberia_region
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			east_siberia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			num_of_owned_provinces_with = {
+				value = 7
+				region = west_siberia_region
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			west_siberia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	RSS_true_siberian_unification = {
+		icon = mission_siberia
+		required_missions = { RSS_push_west }
+		position = 4
+		
+		provinces_to_highlight = {
+			OR = {
+				region = east_siberia_region 
+				region = west_siberia_region
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			east_siberia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			west_siberia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 25
+			add_country_modifier = { 
+    				name = siberian_uni_modifier
+    				duration = 9125
+			}
+			ural_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			russia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	RSS_russian_conquest = {
+		icon = mission_steppe_warriors
+		required_missions = { RSS_true_siberian_unification }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				region = ural_region
+				region = russia_region
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			russia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			ural_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			add_country_modifier = { 
+    				name = RSS_european_invasion_modifier
+    				duration = -1
+			}
+		}
+	}
+}
+RSS_far_east_conquest = {
+    	slot = 1
+    	generic = no
+    	ai = yes
+    	potential = {
+		OR = {
+			tag = RSS
+			tag = KMC
+			tag = CHU
+			tag = CHV
+			tag = HOD
+			AND = {
+				is_playing_custom_nation = yes
+				OR = {
+					AND = {
+						culture_group = evenks
+						NOT = { primary_culture = manchu }
+					}
+					primary_culture = kamchatkan
+					primary_culture = nivkh
+				}
+			}
+		}
+    	}
+    	has_country_shield = yes
+	RSS_hokkaido = {
+		icon = mission_japanese_fort
+		required_missions = { BBF_mil_buildup }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				area = hokkaido_area 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			hokkaido_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			if = {
+				limit {
+					manchuria_region = {
+						type = all
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				add_prestige = 10
+				add_mil_power = 75
+			}
+			else = {
+				manchuria_region = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+	RSS_manchuria = {
+		icon = mission_manchu_warrior
+		required_missions = { RSS_hokkaido }
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				region = manchuria_region 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			manchuria_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			add_mil_power = 75
+		}
+	}
+	RSS_cultural_unification = {
+		icon = mission_unite_home_region
+		required_missions = { 
+			RSS_manchuria
+			RSS_push_west 
+		}
+		position = 4
+		
+		provinces_to_highlight = {
+			OR = {
+				culture_group = evenks
+				culture_group = kamchatkan_g
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			OR = {
+				culture_group = evenks
+				culture_group = kamchatkan_g
+			}
+			owns_all_provinces = {
+				continent = asia
+				culture_group = evenks
+			}
+			owns_all_provinces = {
+				continent = asia
+				culture_group = kamchatkan_g
+			}
+		}
+		effect = {
+			if = {
+				limit = { NOT = { has_country_flag = RRS_completed_cultural_unification } }
+				country_event = { 
+    					id = siberian_event.2
+				}
+			}
+			else = {
+				add_prestige = 15
+				add_adm_power = 100
+			}
+		}
+	}
+}

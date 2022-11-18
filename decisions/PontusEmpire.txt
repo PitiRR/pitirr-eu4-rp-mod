@@ -8,7 +8,10 @@ country_decisions = {
 			is_colonial_nation = no
 			is_former_colonial_nation = no
 
-            culture = pontic_greek
+			NOT = { tag = BYZ }
+			NOT = { tag = PAP }
+            primary_culture = pontic_greek
+			
 			NOT = { has_country_flag = formed_pontus_flag }
 			NOT = { exists = POE }
 		}

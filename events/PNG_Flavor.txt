@@ -1,0 +1,97 @@
+namespace = png_event
+
+# Papuan Nationalism
+country_event = {
+	id = png_event.1
+	title = "PNG_EVENT.1"
+	desc = "PNG_EVENT_DESC.1"
+	picture = BORDER_TENSION_eventPicture
+	
+	trigger = {
+		NOT = { culture_group = pacific }
+		NOT = { accepted_culture = papuan }
+		OR = {
+			AND = {
+				NOT = { technology_group = polynesian_tech }
+				current_age = age_of_revolutions
+			}
+			AND = {
+				technology_group = eastern
+				average_unrest = 5
+			}
+			AND = {
+				technology_group = western
+				average_unrest = 5
+			}
+		}
+		num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+			value = 5
+			culture = papuan
+			unrest = 3
+		}
+		NOT = { has_global_flag = BBF_papuan_nationalism }
+	}
+
+	option = {
+		name = "PNG_EVENT.1A" #Traitors!
+		custom_tooltip = papuan_nationalism_tooltip
+		hidden_effect = {
+			every_owned_province = {
+				limit = { culture = papuan }
+				add_core = PNG
+				add_unrest = 7
+			}	
+		}
+		set_global_flag = BBF_papuan_nationalism
+		ai_chance = { 
+			factor = 100
+		}
+	}
+	option = {
+		name = "PNG_EVENT.1B" #Allow Papuan Independance
+		add_prestige = -25
+		custom_tooltip = peaceful_papuan_nationalism_tooltip
+		hidden_effect = {
+			every_owned_province = {
+				limit = { culture = papuan }
+				add_core = PNG
+			}	
+		}
+		release = PNG
+		hidden_effect = {
+			PNG = {
+				change_technology_group = polynesian_tech
+				change_unit_type = polynesian_tech
+			}
+		}
+		set_global_flag = BBF_papuan_nationalism
+		ai_chance = { 
+			factor = 100
+		}
+	}
+	option = {
+		name = "PNG_EVENT.1C" #Support the Papuans
+		trigger = {
+			NOT = { exists = PNG }
+		}
+		custom_tooltip = peaceful_papuan_nationalism_tooltip
+		hidden_effect = {
+			every_owned_province = {
+				limit = { culture = papuan }
+				add_core = PNG
+			}	
+		}
+		release = PNG
+		switch_tag = PNG
+		hidden_effect = {
+			PNG = {
+				change_technology_group = polynesian_tech
+				change_unit_type = polynesian_tech
+			}
+		}
+		set_global_flag = BBF_papuan_nationalism
+		ai_chance = { 
+			factor = 100
+		}
+	}
+}

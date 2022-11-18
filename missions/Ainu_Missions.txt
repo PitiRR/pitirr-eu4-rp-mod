@@ -1,0 +1,525 @@
+ainu_against_japan_missions = {
+    	slot = 1
+    	generic = no
+    	ai = yes
+    	potential = {
+		tag = ANU
+    	}
+    	has_country_shield = yes
+	ANU_push_the_japanese = {
+		icon = japanese_horseback
+		required_missions = { }
+		position = 1
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 4193
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			owns = 4193
+		}
+		effect = {
+			if = {
+				limit = { 
+					NOT = { culture_group = japanese_g }
+				}
+				country_event = { 
+    					id = ainu_event.1
+				}
+			}
+			else = {
+				add_prestige = 10
+			}
+			thohoku_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	ANU_foothold_japan = {
+		icon = mission_japanese_samurai
+		required_missions = { ANU_push_the_japanese }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				area = thohoku_area 
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			thohoku_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			eastern_kanto_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kanto_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			eastern_chubu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			hokuriku_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			chubu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	ANU_central_japan = {
+		icon = shogunate_mission
+		required_missions = { ANU_foothold_japan }
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				area = eastern_kanto_area 
+				area = kanto_area 
+				area = eastern_chubu_area 
+				area = hokuriku_area 
+				area = chubu_area 
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			eastern_kanto_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			kanto_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			eastern_chubu_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			hokuriku_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			chubu_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			kinai_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			saigoku_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sanindo_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	ANU_south_mainland_japan = {
+		icon = mission_japanese_fort
+		required_missions = { ANU_central_japan }
+		position = 4
+		
+		provinces_to_highlight = {
+			OR = {
+				area = kinai_area 
+				area = saigoku_area 
+				area = sanindo_area 
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			kinai_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			saigoku_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			sanindo_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			shikoku_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			northern_kyushu = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kyushu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	ANU_south_japan = { 
+		icon = mission_impaled_soldies
+		required_missions = { ANU_south_mainland_japan }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				area = shikoku_area 
+				area = northern_kyushu 
+				area = kyushu_area 
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			shikoku_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			northern_kyushu = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			kyushu_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = ANU_crush_japan
+				duration = -1
+			}
+		}
+	}
+}
+ainu_against_north_missions = {
+    	slot = 2
+    	generic = no
+    	ai = yes
+    	potential = {
+		tag = ANU
+    	}
+    	has_country_shield = yes
+	ANU_unite_sakhalin = {
+		icon = mission_ne_palisades
+		required_missions = { }
+		position = 1
+		
+		provinces_to_highlight = {
+			OR = {
+				area = sakhalin_area 
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			sakhalin_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					primary_culture = ainu
+				}
+				4658 = { change_culture = ROOT }
+				1033 = { change_culture = ROOT }
+			}
+			ilan_hala_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	ANU_conquer_nivkh = {
+		icon = claim_the_borderlands
+		required_missions = { ANU_unite_sakhalin }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				area = ilan_hala_area 
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			ilan_hala_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			central_jilin_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			furdan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	ANU_east_manchu = {
+		icon = mission_manchu_warrior
+		required_missions = { ANU_conquer_nivkh }
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				area = central_jilin_area 
+				area = furdan_area 
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			central_jilin_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			furdan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			create_conquistador = { tradition = 100 }
+		}
+	}
+	ANU_discover_siberia = {
+		icon = arctic_fox
+		required_missions = { ANU_east_manchu }
+		position = 4
+		
+		provinces_to_highlight = {
+			OR = {
+				region = east_siberia_region
+			}
+			NOT = { owned_by = ROOT }
+			has_discovered = ROOT
+		}
+		trigger = {
+			east_siberia_region = {
+				type = all
+				has_discovered = ROOT
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					east_siberia_region = {
+						type = any
+						is_empty = yes
+						has_port = yes
+					}
+				}
+				country_event = { 
+    					id = ainu_event.3
+				}
+			}
+			else = {
+				add_prestige = 20
+			}
+		}
+	}
+	ANU_ainu_empire = {
+		icon = mission_siberia
+		required_missions = { ANU_discover_siberia }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				region = east_siberia_region
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			OR = {
+				AND = {
+					culture_group = kamchatkan_g 
+					has_unified_culture_group = yes
+				}
+				east_siberia_region = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					culture_group = kamchatkan_g
+					NOT = { has_reform = siberian_tribe }	
+				}
+				add_adm_power = 25
+				add_dip_power = 25
+				set_government_rank = 3
+			}
+			else = {
+				add_adm_power = 50
+				add_dip_power = 50
+				add_mil_power = 50
+			}
+		}
+	}
+}
+ainu_economic_missions = {
+    	slot = 5
+    	generic = no
+    	ai = yes
+    	potential = {
+		OR = {
+			tag = ANU
+			AND = {
+    				is_playing_custom_nation = yes
+				primary_culture = ainu
+			}
+		}
+	}
+    	has_country_shield = yes
+	ANU_embrace_fedualism = {
+		icon = mission_scholar_officials
+		required_missions = { }
+		position = 1
+		
+		trigger = {
+			has_institution = feudalism
+		}
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						culture_group = japanese_g
+						is_playing_custom_nation = yes
+					}
+				}
+				add_dip_power = 10
+				add_stability = 1
+			}
+			else = {
+				country_event = { 
+    					id = ainu_event.2
+				}
+			}
+		}
+	}
+	ANU_japanese_trade = {
+		icon = mission_asian_trader
+		required_missions = { ANU_embrace_fedualism }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 4193
+			}
+		}
+		trigger = {
+			4193 = {
+				owned_by = ROOT
+				trade_share = {
+					country = ROOT
+					share = 25
+				}
+			}
+		}
+		effect = {
+			add_dip_power = 50
+			add_adm_power = 50
+			4193 = {
+				center_of_trade = 2
+			}
+		}
+	}
+	ANU_new_world = {
+		icon = mission_galleys_in_port
+		required_missions = {  }
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				continent = north_america
+				continent = south_america 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			has_discovered = ROOT
+		}
+		trigger = {
+			OR = {
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 5
+					continent = north_america 
+				}
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 5
+					continent = south_america 
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = ANU_new_world_modifier
+				duration = 7300
+			}
+		}
+	}
+}

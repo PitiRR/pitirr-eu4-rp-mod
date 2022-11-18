@@ -1,0 +1,515 @@
+namespace = khazak_insurrection_event
+
+# Khazak Migration
+country_event = {
+	id = khazak_insurrection_event.1
+	title = "KHAZAK_REVOLT.1"
+	desc = "KHAZAK_REVOLT_DESC.1"
+	picture = HORDE_ON_HORSEBACK_eventPicture
+	
+	major = yes
+
+	
+	trigger = {
+		current_age = age_of_discovery
+		NOT = { has_disaster = khazak_insurrection }
+		OR = {
+			tag = SHY
+			was_tag = SHY
+			primary_culture = uzbehk
+		}
+		NOT = { exists = KZH }
+		NOT = { has_country_flag = had_khazak_migration }
+		NOT = { has_country_flag = had_khazak_insurrection }
+		any_owned_province = { 
+			culture = khazak
+		}
+		OR = {
+			tag = SHY
+			tag = BUK
+			primary_culture = uzbehk
+		}
+		OR = {
+			NOT = { horde_unity = 50 }
+			NOT = { has_reform = steppe_horde }
+		}
+	}
+	
+	immediate = {
+		set_country_flag = had_khazak_migration
+	}
+
+	option = {
+		name = "KHAZAK_REVOLT.1A"			# Allow the migration
+		add_country_modifier = {
+			name = SHY_encourage_migration
+			duration = 7300
+		}
+		hidden_effect = {
+			set_country_flag = start_khazak_disaster
+		}
+		custom_tooltip = khazak_insurrection_depopulate_tt
+		hidden_effect = {
+			every_province = {
+				limit = {
+					culture = khazak
+				}
+				add_base_manpower = -1
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					any_country = { 
+						NOT = { tag = ROOT }
+						is_free_or_tributary_trigger = yes
+						any_owned_province = { 
+							culture = khazak
+						}
+					}
+				}
+				random_country = { 
+					limit = {
+						NOT = { tag = ROOT }
+						is_free_or_tributary_trigger = yes
+						any_owned_province = { 
+							culture = khazak
+						}
+					}
+					country_event = { 
+						id = khazak_insurrection_event.2
+						days = 60
+						random = 120
+					}
+				}
+			}
+			else = {
+				random_neighbor_country = { 
+					country_event = { 
+						id = khazak_insurrection_event.2
+						days = 60
+						random = 120
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = {
+		name = "KHAZAK_REVOLT.1B"			# Stop it by any means!
+		custom_tooltip = start_khazak_disaster_tt
+		hidden_effect = {
+			set_country_flag = start_early_khazak_disaster
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+# Incoming Khazak Migrants
+country_event = {
+	id = khazak_insurrection_event.2
+	title = "KHAZAK_REVOLT.2"
+	desc = "KHAZAK_REVOLT_DESC.2"
+	picture = HORDE_ON_HORSEBACK_eventPicture
+	
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "KHAZAK_REVOLT.2A"			# Grant them Autonomy
+		trigger = {
+			NOT = { exists = KZH }
+			any_owned_province = { 
+				culture = khazak
+			}
+		}
+		add_historical_rival = FROM
+		hidden_effect = {
+			FROM = { add_historical_rival = ROOT }
+		}
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					culture = khazak
+				}
+				add_core = KZH
+			}
+		}
+		release = KZH
+		vassalize = KZH
+		hidden_effect = {
+			KZH = {
+				change_government = tribal
+				add_government_reform = steppe_horde
+				change_technology_group = nomad_group
+				change_unit_type = nomad_group
+			}
+			set_country_flag = can_support_khazak_war_flag
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = {
+		name = "KHAZAK_REVOLT.2B"			# Welcome the Khazaks
+		if = {
+			limit = {
+				any_owned_province = { 
+					culture = khazak
+				}
+			}
+			custom_tooltip = khazak_populate_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						culture = khazak
+					}
+					add_base_manpower = 1
+				}
+			}
+		}
+		else = {
+			random_core_province = {
+				change_culture = khazak
+				add_base_manpower = 3
+			}
+			random_core_province = {
+				change_culture = khazak
+				add_base_manpower = 3
+			}
+		}
+		hidden_effect = { set_country_flag = can_support_khazak_war_flag }
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = {
+		name = "KHAZAK_REVOLT.2C"			# Deny the Khazaks
+		random_owned_province = {
+			limit = { culture = khazak }
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 2
+				win = yes
+				unrest = 5
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+# Khazak Insurrection
+country_event = {
+	id = khazak_insurrection_event.3
+	title = "KHAZAK_REVOLT.3"
+	desc = "KHAZAK_REVOLT_DESC.3"
+	picture = CIVIL_WAR_eventPicture
+	
+	major = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		add_prestige = -10
+		add_stability = -3
+		if = {
+			limit = { has_country_flag = start_early_khazak_disaster }
+			random_owned_province = {
+				limit = { culture = khazak }
+				spawn_rebels = {
+					type = nationalist_rebels
+					size = 2
+					win = yes
+					unrest = 5
+				}
+			}	
+		}
+		random_owned_province = {
+			limit = { culture = khazak }
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 2
+				win = yes
+				unrest = 5
+			}
+		}
+		random_owned_province = {
+			limit = { culture = khazak }
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 1
+				win = yes
+				unrest = 5
+			}
+		}
+		random_owned_province = {
+			limit = { culture = khazak }
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 1
+				win = yes
+				unrest = 5
+			}
+		}
+		set_country_flag = had_khazak_insurrection
+	}
+
+	option = {
+		name = "EVTOPTA3021"			# Dire times are ahead of us
+		hidden_effect = {
+			every_country = {
+				limit = { 
+					NOT = { has_disaster = khazak_insurrection }
+					OR = {
+						AND = {
+							tag = KZH
+							is_free_or_tributary_trigger = yes
+						}
+						has_country_flag = can_support_khazak_war_flag
+					}
+				}
+				country_event = { 
+						id = khazak_insurrection_event.6
+				}
+			}
+		}	
+	}
+}
+# End of the Khazak Insurrection
+country_event = {
+	id = khazak_insurrection_event.4
+	title = "KHAZAK_REVOLT.4"
+	desc = "KHAZAK_REVOLT_DESC.4"
+	picture = WOUNDED_SOLDIERS_eventPicture
+	
+	
+	major = yes
+	is_triggered_only = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "KHAZAK_REVOLT.4A"			# We have prevailed!
+		add_stability = 3
+		add_legitimacy = 50
+		add_horde_unity = 50
+		hidden_effect = {
+			clr_country_flag = khazak_pretenders_flag
+			clr_country_flag = sibirian_revolt
+		}
+	}
+}
+
+#The Rebellion Grows
+country_event = {
+	id = khazak_insurrection_event.5
+	title = "KHAZAK_REVOLT.5"
+	desc = "KHAZAK_REVOLT_DESC.5"
+	picture = ANGRY_MOB_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_disaster = khazak_insurrection
+		any_owned_province = { culture = khazak }	
+	}
+	immediate = {
+		if = {
+			limit = { has_country_flag = start_early_khazak_disaster }
+			random_owned_province = {
+				limit = { culture = khazak }
+				spawn_rebels = {
+					type = nationalist_rebels
+					size = 1
+					win = yes
+					unrest = 5
+				}
+			}	
+		}
+		random_owned_province = {
+			limit = { culture = khazak }
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 1
+				win = yes
+				unrest = 5
+			}
+		}
+		random_owned_province = {
+			limit = { culture = khazak }
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 1
+				win = yes
+				unrest = 5
+			}
+		}
+	}
+
+	option = {
+		name = "KHAZAK_REVOLT.5A"			# Traitors!
+	}
+}
+#Support the Khazaks?
+country_event = {
+	id = khazak_insurrection_event.6
+	title = "KHAZAK_REVOLT.6"
+	desc = "KHAZAK_REVOLT_DESC.6"
+	picture = HORDE_ON_HORSEBACK_eventPicture
+	
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "KHAZAK_REVOLT.6A"			# Of course!
+		add_years_of_income = -0.5
+		reverse_add_opinion = {
+    			who = FROM
+    			modifier = SHY_khazak_insurrection_interferance
+		}
+		if = {
+			limit = {
+				NOT = { tag = KHZ }
+				exists = KZH
+			}
+			reverse_add_opinion = {
+    				who = KZH
+    				modifier = KZH_khazak_insurrection_interferance 
+			}
+		}
+		FROM = {
+			random_owned_province = {
+				limit = { culture = khazak }
+				spawn_rebels = {
+					type = nationalist_rebels
+					size = 2
+					win = yes
+					unrest = 5
+				}
+			}
+			random_owned_province = {
+				limit = { culture = khazak }
+				spawn_rebels = {
+					type = nationalist_rebels
+					size = 1
+					win = yes
+					unrest = 5
+				}
+			}
+		}
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 0
+				NOT = { is_rival = FROM }
+				NOT = { tag = KZH }
+			}
+			modifier = {
+				factor = 0
+				NOT = { years_of_income = 0.50 }
+			}
+		}
+	}
+	option = {
+		name = "KHAZAK_REVOLT.6B"			# We would rather not.
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { num_of_rebel_controlled_provinces = 1 }
+				NOT = {
+					has_spawned_rebels = nationalist_rebels
+				}
+				NOT = {
+					has_spawned_rebels = pretender_rebels 
+				}
+			}
+		}
+	}
+}
+#Sibirian Declaration of Independence
+country_event = {
+	id = khazak_insurrection_event.7
+	title = "KHAZAK_REVOLT.7"
+	desc = "KHAZAK_REVOLT_DESC.7"
+	picture = ANGRY_MOB_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_disaster = khazak_insurrection
+		any_owned_province = { is_core = SIB }
+		NOT = { exists = SIB }
+		NOT = { has_country_flag = sibirian_revolt }
+	}
+	immediate = {
+		release = SIB
+		hidden_effect = {
+			set_country_flag = sibirian_revolt
+			SIB = {
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.4
+						cavalry = 0.3
+					}
+				}
+				change_government = tribal
+				add_government_reform = steppe_horde
+				change_technology_group = nomad_group
+				change_unit_type = nomad_group
+				define_ruler = {
+    					name = "Ibak"
+    					dynasty = "Shaybanid"
+    					adm = 3
+    					dip = 4
+    					mil = 4	
+    					claim = 95
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "KHAZAK_REVOLT.7A"			# We need to stop this!
+		declare_war_with_cb = {
+    			who = SIB
+ 	   		casus_belli = cb_core
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = {
+		name = "KHAZAK_REVOLT.7B"			# There is nothing we can do
+		add_prestige = -20
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { num_of_rebel_controlled_provinces = 1 }
+				NOT = {
+					has_spawned_rebels = nationalist_rebels
+				}
+				NOT = {
+					has_spawned_rebels = pretender_rebels 
+				}
+			}
+			modifier = {
+				factor = 0
+				was_player = yes
+			}
+		}
+	}
+	option = {
+		name = "KHAZAK_REVOLT.7C"			# Support the Sibirians
+		switch_tag = SIB
+		ai_chance = {
+			factor = 0
+		}
+	}
+}

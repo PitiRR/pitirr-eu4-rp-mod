@@ -1,0 +1,147 @@
+namespace = ainu_event
+
+# The Japanese in [4193.GetName]
+country_event = {
+	id = ainu_event.1
+	title = "AINU.1"
+	desc = "AINU_DESC.1"
+	picture = CONQUEST_eventPicture
+	
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = "AINU.1A"			# Destory the Japanese!
+		4193 = {
+			change_culture = ROOT
+			change_religion = ROOT
+			add_core = ROOT
+			set_base_tax = 1
+			set_base_production = 1
+			set_base_manpower = 1
+		}
+		ai_chance = { 
+			factor = 1
+		}
+	}
+	option = {
+		name = "AINU.1B"			# Accept them
+		trigger = {
+			4193 = { culture = togoku }
+		}
+		add_accepted_culture = togoku
+		4193 = {
+			add_core = ROOT
+		}
+		ai_chance = { 
+			factor = 0
+		}
+	}
+	option = {
+		name = "AINU.1C"			# Leave them be
+		trigger = {
+			NOT = { 4193 = { culture = togoku } }
+		}
+		add_mil_power = 10
+		4193 = {
+			add_core = ROOT
+		}
+		ai_chance = { 
+			factor = 0
+		}
+	}
+}
+# Japanese Cultural Influence
+country_event = {
+	id = ainu_event.2
+	title = "AINU.2"
+	desc = "AINU_DESC.2"
+	picture = ECONOMY_eventPicture
+	
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = "AINU.2A"			# Embrace Japanese Culture!
+		hidden_effect = {
+			every_owned_province = { 
+				limit = { has_owner_culture = yes }
+				change_culture = togoku
+			}
+			change_primary_culture = togoku
+			set_ruler_culture = togoku
+			if = {
+				limit = {
+					has_heir = yes
+				}
+				set_heir_culture = togoku
+			}
+			if = {
+				limit = {
+					has_consort = yes
+					consort_culture = togoku
+				}
+				set_consort_culture = togoku
+			}
+		}
+		custom_tooltip = ANU_shift_japanese_culture_tt
+		change_religion = shinto
+		if = {
+			limit = {
+				has_custom_ideas = no
+				tag = EZO
+			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
+		}
+		ai_chance = { 
+			factor = 0
+		}
+	}
+	option = {
+		name = "AINU.2B"			# No we are [Root.Culture.GetName]!
+		add_prestige = 10
+		ai_chance = { 
+			factor = 1
+		}
+	}
+}
+# Foothold in Siberia
+country_event = {
+	id = ainu_event.3
+	title = "AINU.3"
+	desc = "AINU_DESC.3"
+	picture = COLONIZATION_eventPicture
+	
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = "AINU.3A"			# Push onto the coast!
+		custom_tooltip = ANU_east_siberia_frontier_tt
+		hidden_effect = {
+			east_siberia_region = {
+				limit = {
+					is_empty = yes
+					has_port = yes
+				}
+				add_siberian_construction = 200
+			}
+		}
+		ai_chance = { 
+			factor = 1
+		}
+	}
+	option = {
+		name = "AINU.3B"			# We must unify, not colonize!
+		east_siberia_region = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		ai_chance = { 
+			factor = 0
+		}
+	}
+}

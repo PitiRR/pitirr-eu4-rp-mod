@@ -1,0 +1,155 @@
+celtic_english_conquest = {
+    	slot = 1
+    	generic = no
+    	ai = yes
+    	potential = {
+		tag = GCU
+    	}
+    	has_country_shield = yes
+	GCU_dominate_england = {
+		icon = mission_galleys_in_port
+		required_missions = { }
+		position = 1
+
+		trigger = {
+			236 = {
+				is_strongest_trade_power = ROOT
+			}
+			if = {
+				limit = { exists = ENG }
+				navy_size = ENG
+			}
+			else = {
+				navy_size_percentage = 0.85
+			}
+		}
+		effect = {
+			british_isles_region = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	GCU_conquer_england = {
+		icon = mission_monarch_in_throne_room
+		required_missions = { GCU_dominate_england }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				area = west_midlands_area
+				area = wessex_area
+				area = scottish_marches_area
+				area = east_midlands_area
+				area = yorkshire_area 
+				area = home_counties_area
+				area = east_anglia_area  
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			west_midlands_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			wessex_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			scottish_marches_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			east_midlands_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			yorkshire_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			yorkshire_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			home_counties_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			east_anglia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			if = {
+				limit = { has_dlc = "Rule Britannia" }
+				normandy_area = {
+					add_permanent_claim = ROOT
+				}
+			}
+			else = {
+				add_army_tradition = 25
+			}
+		}
+	}
+}
+celtic_no_dlc = {
+    	slot = 1
+    	generic = no
+    	ai = yes
+    	potential = {
+		tag = GCU
+		NOT = { has_dlc = "Rule Britannia" }
+    	}
+    	has_country_shield = yes
+	GCU_fortify_brittany = {
+		icon = mission_landsknecht_soldier
+		required_missions = { }
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				area = brittany_area
+			}
+			AND = {
+				fort_level = 1
+				owned_by = ROOT
+			}
+		}
+		trigger = {
+			brittany_area = {
+				type = any
+				fort_level = 4
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			galicia_area = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	GCU_conquer_galicia = {
+		icon = mission_invade_island
+		required_missions = { GCU_fortify_brittany }
+		position = 4
+		
+		provinces_to_highlight = {
+			OR = {
+				area = galicia_area 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			galicia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 20
+			add_accepted_culture = galician
+		}
+	}
+}

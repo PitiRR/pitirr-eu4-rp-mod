@@ -1,0 +1,475 @@
+country_decisions = {
+
+	tartary_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			OR = {
+				was_never_end_game_tag_trigger = yes
+				tag = GLH
+				tag = YUA
+				tag = TRN
+			}
+			NOT = { has_country_flag = formed_tartary_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				NOT = { exists = TTR }
+				ai = no
+			}
+			NOT = { tag = TTR }
+			NOT = { tag = MGE }
+			NOT = { tag = PAP }
+			NOT = { tag = HLR }
+			OR = {
+				culture_group = altaic
+				culture_group = tartar
+				primary_culture = altaic_new
+				culture_group = kamchatkan_g
+				culture_group = evenks
+				culture_group = BBF_transeurasian
+			}
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 3
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						region = mongolia_region
+						region = central_asia_region
+						province_id = 1075
+						culture_group = altaic
+						culture_group = tartar
+					}
+					AND = {
+						NOT = { owned_by = ROOT }
+					}
+				}
+				AND = {
+					OR = {
+						region = tibet_region
+						region = manchuria_region
+					}
+					AND = {
+						NOT = { country_or_non_sovereign_subject_holds = ROOT }
+					}
+				}
+			}
+		}
+		allow = {
+			adm_tech = 10
+			NOT = { exists = TTR }
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			mongolia_region = {
+				type = all
+				owned_by = ROOT
+			}
+			central_asia_region = {
+				type = all
+				owned_by = ROOT
+			}
+			tibet_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			manchuria_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			owns = 1075
+			owns_all_provinces = {
+				OR = {
+					culture_group = altaic
+					culture_group = tartar
+					culture = altaic_new
+				}
+				is_empty = no
+			}
+		}
+		effect = {
+			change_tag = TTR
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 3 }
+				}
+				set_government_rank = 3
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			set_country_flag = formed_tartary_flag
+			if = {
+				limit = { 
+					NOT = { has_global_flag = unite_eurasian_steppe_flag }
+					is_emperor_of_china = no
+				}
+				custom_tooltip = BBF_transeurasian_superculture_tt
+				hidden_effect = {
+					every_country = {
+						limit = {
+							OR = {
+								culture_group = tartar	
+								culture_group = altaic 
+								culture_group = evenks 
+								culture_group = kamchatkan_g
+							}
+						}
+						if = {
+							limit = {
+								OR = {
+									culture = altaic_new
+									culture_group = altaic
+								}
+							}
+							change_primary_culture = BBF_altaic 
+							set_ruler_culture = BBF_altaic 
+							if = {
+								limit = {
+									has_heir = yes
+								}
+								set_heir_culture = BBF_altaic 
+							}
+							if = {
+								limit = {
+									has_consort = yes
+								}
+								set_consort_culture = BBF_altaic 
+							}
+						}
+						if = {
+							limit = { culture_group = tartar }
+							change_primary_culture = BBF_tartar 
+							set_ruler_culture = BBF_tartar 
+							if = {
+								limit = {
+									has_heir = yes
+								}
+								set_heir_culture = BBF_tartar 
+							}
+							if = {
+								limit = {
+									has_consort = yes
+								}
+								set_consort_culture = BBF_tartar 
+							}
+						}
+						if = {
+							limit = { 
+								OR = {
+									culture_group = evenks
+									culture_group = kamchatkan_g
+								}
+							}
+							change_primary_culture = BBF_tungustic 
+							set_ruler_culture = BBF_tungustic 
+							if = {
+								limit = {
+									has_heir = yes
+								}
+								set_heir_culture = BBF_tungustic 
+							}
+							if = {
+								limit = {
+									has_consort = yes
+								}
+								set_consort_culture = BBF_tungustic 
+							}
+						}
+						every_province = {
+							limit = {
+								OR = {
+									culture = altaic_new
+									culture_group = altaic
+								}
+							}
+							change_culture = BBF_altaic 
+						}
+						every_province = {
+							limit = { culture_group = tartar }
+							change_culture = BBF_tartar 
+						}
+						every_province = {
+							limit = {
+								OR = {
+									culture_group = evenks
+									culture_group = kamchatkan_g
+								}
+							}
+							change_culture = BBF_tungustic 
+						}
+					}
+					every_country = {
+						limit = {
+							any_province = {
+								owned_by = ROOT
+								has_discovered = THIS
+							}
+						}
+						country_event = { 
+    							id = tartary_event.1
+						}
+					}
+				}
+				set_global_flag = unite_eurasian_steppe_flag
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	unite_eurasian_steppe_decision = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			OR = {
+				tag = TTR
+				tag = MGE
+			}
+			NOT = { has_global_flag = unite_eurasian_steppe_flag }
+			OR = {
+				culture_group = altaic
+				culture_group = tartar
+				primary_culture = altaic_new
+				culture_group = kamchatkan_g
+				culture_group = evenks
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				culture_group = altaic
+				culture_group = tartar
+			}
+			AND = {
+				NOT = { owned_by = ROOT }
+			}
+		}
+		allow = {
+			adm_tech = 10
+			is_free_or_tributary_trigger = yes
+			is_emperor_of_china = no
+			is_at_war = no
+			owns_all_provinces = {
+				OR = {
+					culture_group = altaic
+					culture_group = tartar
+					culture = altaic_new
+				}
+				is_empty = no
+			}
+		}
+		effect = {
+			custom_tooltip = BBF_transeurasian_superculture_tt
+			hidden_effect = {
+				every_country = {
+					limit = {
+						OR = {
+							culture_group = tartar	
+							culture_group = altaic 
+							culture_group = evenks 
+							culture_group = kamchatkan_g
+						}
+					}
+					if = {
+						limit = {
+							OR = {
+								culture = altaic_new
+								culture_group = altaic
+							}
+						}
+						change_primary_culture = BBF_altaic 
+						set_ruler_culture = BBF_altaic 
+						if = {
+							limit = {
+								has_heir = yes
+							}
+							set_heir_culture = BBF_altaic 
+						}
+						if = {
+							limit = {
+								has_consort = yes
+							}
+							set_consort_culture = BBF_altaic 
+						}
+					}
+					if = {
+						limit = { culture_group = tartar }
+						change_primary_culture = BBF_tartar 
+						set_ruler_culture = BBF_tartar 
+						if = {
+							limit = {
+								has_heir = yes
+							}
+							set_heir_culture = BBF_tartar 
+						}
+						if = {
+							limit = {
+								has_consort = yes
+							}
+							set_consort_culture = BBF_tartar 
+						}
+					}
+					if = {
+						limit = { 
+							OR = {
+								culture_group = evenks
+								culture_group = kamchatkan_g
+							}
+						}
+						change_primary_culture = BBF_tungustic 
+						set_ruler_culture = BBF_tungustic 
+						if = {
+							limit = {
+								has_heir = yes
+							}
+							set_heir_culture = BBF_tungustic 
+						}
+						if = {
+							limit = {
+								has_consort = yes
+							}
+							set_consort_culture = BBF_tungustic 
+						}
+					}
+					every_province = {
+						limit = {
+							OR = {
+								culture = altaic_new
+								culture_group = altaic
+							}
+						}
+						change_culture = BBF_altaic 
+					}
+					every_province = {
+						limit = { culture_group = tartar }
+						change_culture = BBF_tartar 
+					}
+					every_province = {
+						limit = {
+							OR = {
+								culture_group = evenks
+								culture_group = kamchatkan_g
+							}
+						}
+						change_culture = BBF_tungustic 
+					}
+				}
+				every_country = {
+					limit = {
+						any_province = {
+							owned_by = ROOT
+							has_discovered = THIS
+						}
+					}
+					country_event = { 
+    						id = tartary_event.1
+					}
+				}
+			}
+			set_global_flag = unite_eurasian_steppe_flag
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	BBF_legacy_of_the_steppe_decision = {
+		major = no
+		potential = {
+			NOT = { has_country_flag = BBF_ended_nomatic_legacy }
+			has_country_modifier = BBF_legacy_of_the_steppe
+			NOT = { has_reform = steppe_horde }
+			NOT = { has_reform = great_mongol_state_reform }
+		}
+		allow = {
+			if = {
+				limit = { government = tribal }
+				NOT = { government = tribal }
+			}
+			OR = {
+				has_idea = kaz_idea_6
+				adm = 5
+				full_idea_group = innovativeness_ideas
+				tag = BUK
+				culture_group = east_asian
+			}
+		}
+		effect = {
+			add_ruler_modifier = { 
+    				name = great_reformist_modifier
+    				duration = -1
+			}
+			custom_tooltip = BBF_end_nomatic_legacy_tt
+			set_country_flag = BBF_ended_nomatic_legacy
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	embrace_BBF_legacy_of_the_steppe_decision = {
+		major = yes
+		potential = {
+			NOT = { tag = ZAZ }
+			NOT = { has_country_flag = BBF_ended_nomatic_legacy }
+			has_country_modifier = BBF_legacy_of_the_steppe
+			government = tribal
+			NOT = { has_reform = steppe_horde }
+			NOT = { has_reform = great_mongol_state_reform }
+		}
+		allow = {
+			OR = {
+				mil_power = 100
+				mil = 5
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = { mil = 5 }
+					add_mil_power = -100
+				}
+			}
+			if = {
+				limit = {
+					culture_group = east_slavic
+					NOT = { tag = MGE }
+				}
+				change_government = republic
+				add_government_reform = cossacks_reform
+			}
+			else_if = {
+				limit = { tag = MGE }
+				add_government_reform = great_mongol_state_reform
+			}
+			else = {
+				add_government_reform = steppe_horde
+			}
+			change_unit_type = nomad_group
+			change_technology_group = nomad_group
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

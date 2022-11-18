@@ -1,0 +1,430 @@
+country_decisions = {
+
+	claim_roman_empire = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			NOT = { has_country_flag = restored_rome_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { exists = ROM }
+			OR = {
+				tag = BYZ
+				was_tag = BYZ
+				tag = MFA
+				was_tag = MFA
+			}
+			OR = {
+				NOT = { has_country_flag = formed_byzantium_flag }
+				tag = MFA
+				was_tag = MFA
+				dynasty = "Palaiologos"
+			}
+			OR = {
+				culture_group = byzantine
+				culture_group = latin
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				region = italy_region
+				region = balkan_region
+				region = anatolia_region
+				#region = mashriq_region
+				area = al_jazira_area
+				area = syrian_desert_area
+				area = aleppo_area
+				area = syria_area
+				area = trans_jordan_area
+				area = palestine_area
+				region = egypt_region
+				area = carinthia_area
+				area = tunisia_area
+				area = djerba_area 
+				area = tripolitania_area
+				area = kabylia_area
+				area = baleares_area
+				province_id = 2410 # Theodoro
+				province_id = 285 # Cafa
+				province_id = 2447 # Matrega
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			italy_region = {
+				type = all
+				owned_by = ROOT
+			}
+			balkan_region = {
+				type = all
+				owned_by = ROOT
+			}
+			anatolia_region = {
+				type = all
+				owned_by = ROOT
+			}
+			#mashriq_region = {
+			#	type = all
+			#	owned_by = ROOT
+			#}
+			al_jazira_area = {
+				type = all
+				owned_by = ROOT
+			}
+			syrian_desert_area = {
+				type = all
+				owned_by = ROOT
+			}
+			trans_jordan_area = {
+				type = all
+				owned_by = ROOT
+			}
+			syria_area = {
+				type = all
+				owned_by = ROOT
+			}
+			palestine_area = {
+				type = all
+				owned_by = ROOT
+			}
+			egypt_region = {
+				type = all
+				owned_by = ROOT
+			}
+			carinthia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			tunisia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			djerba_area = {
+				type = all
+				owned_by = ROOT
+			}
+			tripolitania_area = {
+				type = all
+				owned_by = ROOT
+			}
+			kabylia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			baleares_area = {
+				type = all
+				owned_by = ROOT
+			}
+			owns = 2410 # Theodoro
+			owns = 285 # Cafa
+			owns = 2447 # Matrega
+			is_at_war = no
+			is_free_or_tributary_trigger = yes
+			is_nomad = no
+			118 = {
+				is_state = yes
+			}
+		}
+		effect = {
+			118 = {
+				move_capital_effect = yes
+			}
+			change_tag = ROM
+			restore_country_name_effect = yes
+			custom_tooltip = BYZ_roman_culture_provinces_tooltip
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							culture_group = byzantine
+							culture_group = latin
+						}
+					}
+					change_culture = roman
+				}
+			}
+			change_primary_culture = roman
+			custom_tooltip = restore_roman_empire_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						is_part_of_hre = yes
+					}
+					set_in_empire = no
+				}
+			}
+			set_government_rank = 3
+			add_prestige = 50
+			add_core = 118 # Rome
+			#if = {
+			#	limit = {
+			#		is_part_of_hre = yes
+			#		is_elector = no
+			#	}
+			#	every_owned_province = {
+			#		limit = {
+			#			is_part_of_hre = yes
+			#		}
+			#		set_in_empire = no
+			#	}
+			#}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			set_country_flag = restored_rome_flag
+			set_country_flag = can_claim_western_rome_flag
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	ROM_nation_technology = {
+		major = yes
+		provinces_to_highlight = {
+			OR = {
+				region = italy_region
+				region = france_region
+				region = iberia_region
+				province_id = 236 # London
+				province_id = 245 # Yorkshire
+				province_id = 96 # Zeeland
+			}
+			NOT = { owned_by = ROOT }
+		}
+		potential = {
+			OR = {
+				tag = ROM
+				AND = {
+					tag = BYZ
+					NOT = { has_country_flag = formed_byzantium_flag }
+				}
+			}
+			NOT = { technology_group = western }
+		}
+		allow = {
+			OR = {
+				adm_tech = 20
+				is_great_power = yes
+			}
+			italy_region = {
+				type = all
+				owned_by = ROOT
+			}
+			france_region = {
+				type = all
+				owned_by = ROOT
+			}
+			iberia_region = {
+				type = all
+				owned_by = ROOT
+			}
+			owns = 236 # London
+			owns = 245 # Yorkshire
+			owns = 96 # Zeeland
+		}
+		effect = {
+			add_prestige = 10
+			change_technology_group = western
+			change_unit_type = western	
+		}
+	}
+	ROM_integrate_grecolatins = {
+		major = yes
+		potential = {
+			tag = ROM
+			NOT = { has_country_flag = integrate_grecolatins }
+			any_owned_province = { 
+				OR = {
+					culture_group = byzantine
+					culture_group = latin
+				}
+				OR = {
+					continent = asia
+					continent = africa
+					continent = europe
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				culture_group = byzantine
+				culture_group = latin
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			owns_all_provinces = {
+				OR = {
+					culture_group = byzantine
+					culture_group = latin
+				}
+				is_empty = no
+				OR = {
+					continent = asia
+					continent = africa
+					continent = europe
+				}
+			}
+		}
+		effect = {
+			custom_tooltip = BYZ_roman_culture_provinces_tooltip
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							culture_group = byzantine
+							culture_group = latin
+						}
+					}
+					change_culture = roman
+				}
+			}
+			set_country_flag = integrate_grecolatins
+		}
+	}
+	ROM_adopt_roman_idenity = {
+		major = yes
+		potential = {
+			OR = {
+				is_subject_of = ROM
+				is_colonial_nation_of = ROM
+			}
+			NOT = { has_country_flag = colonial_roman }
+		}
+		allow = {
+			if = {
+				limit = { ai = no }
+				prestige = 50
+			}
+			else = {
+				has_opinion = {
+					who = ROM
+					value = 200
+				}
+			}
+			is_colonial_nation = yes
+			ROM = {
+				primary_culture = roman
+				religion = ROOT
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_global_flag = nova_roma_formed }
+				}
+				capital_scope = {
+					change_province_name = "Nova Roma"
+					rename_capital = "Nova Roma"
+				}
+				set_global_flag = nova_roma_formed
+			}
+			if = {
+				limit = {
+					NOT = { primary_culture = roman }
+				}
+				custom_tooltip = roman_culture_provinces_tooltip
+				hidden_effect = {
+					every_owned_province = {
+						limit = {
+							culture_group = ROOT
+						}
+						change_culture = roman
+					}
+				}
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = colonial_roman
+		}
+	}
+	ROM_claim_western_rome = {
+		major = yes
+		potential = {
+			has_country_flag = can_claim_western_rome_flag
+			tag = ROM
+		}
+		allow = {
+			OR = {
+				adm_tech = 20
+				is_great_power = yes
+			}
+			OR = {
+				technology_group = western
+				custom_trigger_tooltip = {
+					tooltip = hre_doesnt_exist_tooltip
+					AND = {
+						NOT = {
+							hre_size = 1
+						}
+						NOT = { exists = HLR }
+					}
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = { 
+    				name = ROM_overly_ambitious_claims
+   				 duration = 7300
+			}
+			france_region = {
+				add_permanent_claim = ROOT
+			}
+			iberia_region = {
+				add_permanent_claim = ROOT
+			}
+			maghreb_region = {
+				add_permanent_claim = ROOT
+			}
+			east_anglia_area = {
+				add_permanent_claim = ROOT
+			}
+			wessex_area = {
+				add_permanent_claim = ROOT
+			}
+			west_midlands_area = {
+				add_permanent_claim = ROOT
+			}
+			wales_area = {
+				add_permanent_claim = ROOT
+			}
+			scottish_marches_area = {
+				add_permanent_claim = ROOT
+			}
+			yorkshire_area = {
+				add_permanent_claim = ROOT
+			}
+			east_midlands_area = {
+				add_permanent_claim = ROOT
+			}
+			wallonia_area = {
+				add_permanent_claim = ROOT
+			}
+			flanders_area = {
+				add_permanent_claim = ROOT
+			}
+			brabant_area = {
+				add_permanent_claim = ROOT
+			}
+			north_brabant_area = {
+				add_permanent_claim = ROOT
+			}
+			lower_rhineland_area = {
+				add_permanent_claim = ROOT
+			}
+			96 = {
+				add_permanent_claim = ROOT
+			}
+			clr_country_flag = can_claim_western_rome_flag
+		}
+	}
+}

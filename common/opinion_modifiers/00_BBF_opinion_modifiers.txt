@@ -1,0 +1,36 @@
+#########################################################################
+# OPINION MODIFIERS
+##########################################################################
+
+##########################################################################
+# HARD - DO NOT REMOVE OR RENAME ANY OF THESE
+##########################################################################
+
+##############
+# FIXED STATE
+##############
+
+SHY_khazak_insurrection_interferance = {
+	opinion = -200
+	yearly_decay = 2
+}
+KZH_khazak_insurrection_interferance = {
+	opinion = 200
+	yearly_decay = 2
+}
+BYZ_claimed_throne = {
+	opinion = -100
+	yearly_decay = 2
+}
+MFA_refused_catholic = {
+	opinion = -50
+	yearly_decay = 2
+}
+MFA_welcomed_back = {
+	opinion = 200
+	yearly_decay = 2
+}
+MFA_influenced_papacy_opinion = {
+	opinion = 100
+	yearly_decay = 2
+}

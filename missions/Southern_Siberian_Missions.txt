@@ -1,0 +1,531 @@
+southern_siberian_conquest = {
+    	slot = 1
+    	generic = no
+    	ai = yes
+    	potential = {
+		OR = {
+			tag = SOL
+			tag = NVK
+		}
+    	}
+    	has_country_shield = yes
+	SOL_mil_buildup = {
+		icon = mission_build_up_to_force_limit
+		required_missions = { }
+		position = 1
+
+		trigger = {
+			army_size_percentage = 1.0
+			manpower_percentage = 0.6
+			num_of_generals = 1
+		}
+		effect = {
+			custom_tooltip = southern_siberia_claims_tt
+			hidden_effect = {
+				every_province = {
+					limit = {
+						OR = {
+							culture = evenk
+							culture = nivkh
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+	SOL_unite_southern_siberia = {
+		icon = arctic_fox
+		required_missions = { SOL_mil_buildup }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				culture = evenk
+				culture = nivkh
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			owns_all_provinces = {
+				culture = evenk
+			}
+			owns_all_provinces = {
+				culture = nivkh
+			}
+		}
+		effect = {
+			if = {
+				limit = { NOT = { has_country_flag = RRS_completed_fate_of_nation } }
+				country_event = { 
+    					id = siberian_event.1
+				}
+			}
+			else = {
+				add_prestige = 5
+				change_government_reform_progress = 100
+			}
+			manchuria_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	SOL_conquer_jurcherns = {
+		icon = mission_manchu_warrior
+		required_missions = { SOL_unite_southern_siberia }
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				region = manchuria_region 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			if = {
+				limit = {
+					any_province = { 
+						AND = {
+							culture = manchu
+							region = manchuria_region 
+						}
+					}
+				}
+				owns_all_provinces = {
+					culture = manchu 
+					region = manchuria_region 
+				}
+			}
+			else = {
+				manchuria_region = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = { primary_culture = manchu }
+					NOT = { accepted_culture = manchu }
+					any_province = { 
+						AND = {
+							culture = manchu
+							region = manchuria_region 
+						}
+					}
+				}
+				country_event = { 
+    					id = siberian_event.9
+				}
+			}
+			else = {
+				add_prestige = 15
+			}
+			724 = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			1058 = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			cicigar_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			eastern_mongolia = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			chahar_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			xilin_gol_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	SOL_expand_the_heartland = {
+		icon = mission_extent_yasak_to_the_east
+		required_missions = { SOL_conquer_jurcherns }
+		position = 4
+		
+		provinces_to_highlight = {
+			OR = {
+				region = manchuria_region
+				area = cicigar_area  
+				area = eastern_mongolia 
+				area = chahar_area 
+				area = xilin_gol_area 
+				province_id = 1058 
+				province_id = 724 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			manchuria_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			cicigar_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			eastern_mongolia = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			chahar_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			xilin_gol_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1058 = { country_or_non_sovereign_subject_holds = ROOT }
+			724 = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		effect = {
+			add_prestige = 25
+			add_country_modifier = { 
+    				name = sol_solidfy_the_heartland 
+    				duration = -1
+			}
+			korea_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	SOL_conquer_korea = {
+		icon = mission_kowtow
+		required_missions = { SOL_expand_the_heartland }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				region = korea_region 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			korea_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = { 
+    				name = mch_korean_subjugation
+    				duration = 7300
+			}
+		}
+	}
+}
+solon_missions = {
+    	slot = 2
+    	generic = no
+    	ai = yes
+    	potential = {
+		OR = {
+			tag = SOL
+		}
+    	}
+    	has_country_shield = yes
+	SOL_explorers = {
+		icon = mission_polar_bears
+		required_missions = { }
+		position = 1
+
+		trigger = {
+			OR = {
+				has_institution = new_world_i
+				full_idea_group = exploration_ideas
+				custom_trigger_tooltip = {
+					tooltip = allied_colonial_power_tooltip
+					num_of_allies = 1
+					calc_true_if = {
+						all_ally = {
+							has_idea_group = exploration_ideas
+						}
+						amount = 1
+					}
+				}
+			}
+
+		}
+		effect = {
+			add_prestige = 10
+			create_conquistador = { tradition = 100 }
+		}
+	}
+	SOL_discover_siberia = {
+		icon = mission_protect_white_sea_trade
+		required_missions = { SOL_explorers }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				region = east_siberia_region
+			}
+			NOT = { owned_by = ROOT }
+			has_discovered = ROOT
+		}
+		trigger = {
+			east_siberia_region = {
+				type = all
+				has_discovered = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = sol_siberian_push
+				duration = 7300
+			}
+		}
+	}
+	SOL_colonize_siberia = {
+		icon = mission_siberia
+		required_missions = { SOL_discover_siberia }
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				region = east_siberia_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			has_discovered = ROOT
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 10
+				region = east_siberia_region	
+			}
+		}
+		effect = {
+			add_prestige = 10
+			east_siberia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			west_siberia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	SOL_cultural_unification = {
+		icon = mission_unite_home_region
+		required_missions = { SOL_colonize_siberia }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				culture_group = evenks
+				culture_group = kamchatkan_g
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			OR = {
+				culture_group = evenks
+				culture_group = kamchatkan_g
+			}
+			owns_all_provinces = {
+				continent = asia
+				culture_group = evenks
+			}
+			owns_all_provinces = {
+				continent = asia
+				culture_group = kamchatkan_g
+			}
+		}
+		effect = {
+			if = {
+				limit = { NOT = { has_country_flag = RRS_completed_cultural_unification } }
+				country_event = { 
+    					id = siberian_event.2
+				}
+			}
+			else = {
+				add_prestige = 15
+				add_adm_power = 100
+			}
+		}
+	}
+}
+nivkh_missions = {
+    	slot = 2
+    	generic = no
+    	ai = yes
+    	potential = {
+		OR = {
+			tag = NVK
+		}
+    	}
+    	has_country_shield = yes
+	NVK_unite_sakhalin = {
+		icon = mission_ne_palisades
+		required_missions = { }
+		position = 1
+		
+		provinces_to_highlight = {
+			OR = {
+				area = sakhalin_area 
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			sakhalin_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					primary_culture = nivkh
+				}
+				4658 = { change_culture = ROOT }
+				1033 = { change_culture = ROOT }
+			}
+			hokkaido_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	NVK_conquer_ainu = {
+		icon = claim_the_borderlands
+		required_missions = { NVK_unite_sakhalin }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1031 
+				province_id = 1847 
+				province_id = 1852 
+				province_id = 1032 
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			1031 = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1847 = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1852 = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1032 = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			create_explorer = { tradition = 50 }	
+			create_conquistador = { tradition = 50 }
+		}
+	}
+	NVK_discover_siberia = {
+		icon = mission_siberia
+		required_missions = { NVK_conquer_ainu }
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				region = east_siberia_region
+			}
+			NOT = { owned_by = ROOT }
+			has_discovered = ROOT
+		}
+		trigger = {
+			east_siberia_region = {
+				type = all
+				has_discovered = ROOT
+			}
+		}
+		effect = {
+			country_event = { 
+    				id = ainu_event.3
+			}
+		}
+	}
+	NVK_seize_siberian_coast = {
+		icon = mission_galleys_in_port
+		required_missions = { NVK_discover_siberia }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				region = east_siberia_region
+			}
+			NOT = { owned_by = ROOT }
+			has_port = yes
+		}
+		trigger = {
+			owns_all_provinces = {
+				region = east_siberia_region
+				has_port = yes
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = sol_siberian_push
+				duration = 7300
+			}
+			east_siberia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}

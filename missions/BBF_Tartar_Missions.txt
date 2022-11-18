@@ -1,0 +1,365 @@
+uzbek_disaster = {
+    	slot = 2
+    	generic = no
+    	ai = yes
+    	potential = {
+		OR = {
+			tag = SHY
+			AND = {
+				tag = BUK
+				was_tag = SHY
+			}
+			AND = {
+				tag = TRN
+				was_tag = SHY
+			}
+			AND = {
+				tag = GLH
+				was_tag = SHY
+			}
+		}
+		NOT = { map_setup = map_setup_random }
+    	}
+    	has_country_shield = yes
+	SHY_khazak_insurrection_mission = {
+		icon = mission_afghan_frontier
+		position = 1
+		required_missions = { }
+		completed_by = 1468.1.1
+		trigger = {
+			OR = {
+				NOT = { current_age = age_of_discovery }
+				custom_trigger_tooltip = {
+					tooltip = SHY_victory_khazak_insurrection_tt
+					has_country_flag = had_khazak_insurrection
+					NOT = { has_disaster = khazak_insurrection }
+				}
+			}
+		}
+		effect = {
+			add_mil_power = 150
+			add_prestige = 15
+			add_horde_unity = 15
+		}
+	}
+}
+khazak_missions = {
+    	slot = 2
+    	generic = no
+    	ai = yes
+    	potential = {
+		OR = {
+			tag = KZH
+			AND = {
+				tag = TRN
+				was_tag = KZH
+			}
+			AND = {
+				tag = GLH
+				was_tag = KZH
+			}
+		}
+		NOT = { map_setup = map_setup_random }
+    	}
+    	has_country_shield = yes
+	KZH_subjugate_nogaybak_mission = {
+		icon = tartar_mission_icon
+		position = 1
+		required_missions = { }
+		completed_by = 1520.1.1
+		provinces_to_highlight = {
+			OR = {
+				culture = nogaybak
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			if = {
+				limit = {
+					has_idea_group = BBF_kazakh_ideas 
+				}
+				has_idea = KZH_kazakhification
+			}
+			else_if = {
+				limit = {
+					has_idea_group = TRN_ideas 
+				}
+				has_idea = TRN_turkification 
+			}
+			else = {
+				accepted_culture = nogaybak
+			}
+			owns_all_provinces = {
+				culture = nogaybak
+			}
+		}
+		effect = {
+			add_prestige = 15
+			if = {
+				limit = { 
+					any_province = { 
+						culture = nogaybak
+						NOT = { primary_culture = nogaybak }
+					}	
+				}
+				custom_tooltip = KZH_subjugate_nogaybak_mission_tt
+				hidden_effect = {
+					every_province = {
+						limit = { culture = nogaybak }
+						change_culture = ROOT
+					}
+					remove_accepted_culture = nogaybak
+				}
+			}
+			else = {
+				add_adm_power = 100
+			}
+		}
+	}
+}
+sibir_missions = {
+    	slot = 2
+    	generic = no
+    	ai = yes
+	potential_on_load = {
+		has_dlc = "Third Rome"
+	}
+    	potential = {
+		OR = {
+			tag = SIB
+			AND = {
+				tag = TRN
+				was_tag = SIB
+			}
+			AND = {
+				tag = GLH
+				was_tag = SIB
+			}
+		}
+		has_dlc = "Third Rome"
+		NOT = { map_setup = map_setup_random }
+    	}
+    	has_country_shield = yes
+	SIB_expand_frontier_mission = {
+		icon = mission_collect_yasak
+		position = 1
+		required_missions = { }
+		completed_by = 1468.1.1
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1069 
+				province_id = 1070
+			}
+			is_empty = yes
+		}
+		trigger = {
+			1069 = {
+				OR = {
+					units_in_province = 4
+					is_empty = no
+				}
+			}
+			1070 = {
+				OR = {
+					units_in_province = 4
+					is_empty = no
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					1069 = { is_empty = yes }
+				}
+				1069 = { add_siberian_construction = 400 }
+			}
+			if = {
+				limit = {
+					1070 = { is_empty = yes }
+				}
+				1070 = { add_siberian_construction = 400 }
+			}
+			if = {
+				limit = {
+					1078 = {
+						is_empty = yes
+						units_in_province = 4
+					}
+				}
+				1078 = { add_siberian_construction = 400 }
+			}
+		}
+	}
+}
+great_horde_missions = {
+    	slot = 2
+    	generic = no
+    	ai = yes
+    	potential = {
+		OR = {
+			tag = GOL
+			AND = {
+				tag = GLH
+				was_tag = GOL
+			}
+		}
+		NOT = { map_setup = map_setup_random }
+    	}
+    	has_country_shield = yes
+	GOL_restore_golden_horde_mission = {
+		icon = tartar_mission_icon
+		position = 1
+		required_missions = { }
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						NOT = { owned_by = ROOT }
+						NOT = { is_core = ROOT }
+					}
+					OR = {
+						province_id = 284 #Crimea
+						province_id = 302 #Tambov
+						province_id = 464 #Astrakhan
+						province_id = 465 #Nogai
+						province_id = 466 #Sarai
+						province_id = 476 #Kypchak
+						province_id = 1075 #Chimgi-Tura
+						province_id = 1082 #Kazan
+						province_id = 1778 #Qasim
+						province_id = 2411 #Mansur
+					}
+				}
+				AND = {
+					OR = {
+						NOT = { country_or_non_sovereign_subject_holds = ROOT }
+					}
+					OR = {
+						province_id = 294
+						province_id = 295
+						province_id = 301
+						province_id = 307
+						province_id = 308
+						province_id = 1956
+					}
+				}
+			}
+		}
+		trigger = {
+			OR = {
+				tag = GLH
+				was_tag = GLH
+				tag = MGE
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = gol_revival_great_state
+				duration = -1
+			}
+			custom_tooltip = vassals_can_form_ruthenia_tag_tt
+			set_country_flag = GOL_vassals_can_form_russia
+		}
+	}
+}
+crimea_missions = {
+    	slot = 2
+    	generic = no
+    	ai = yes
+    	potential = {
+		OR = {
+			tag = CRI
+			AND = {
+				tag = GLH
+				was_tag = CRI
+			}
+		}
+		NOT = { map_setup = map_setup_random }
+    	}
+    	has_country_shield = yes
+	CRI_conquer_cores_mission = {
+		icon = tartar_mission_icon
+		position = 1
+		required_missions = { }
+		provinces_to_highlight = {
+			is_core = CRI
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			owns_all_provinces = {
+				custom_trigger_tooltip = {
+					tooltip = owns_all_cores_tt
+					is_core = ROOT
+				}
+			}
+		}
+		effect = {
+			add_prestige = 15
+			if = {
+				limit = { culture_group = tartar }
+				custom_tooltip = culture_change_crimea_tt
+				hidden_effect = {
+					every_owned_province = {
+						limit = {
+							OR = {
+								area = yedisan_area
+								area = zaporizhia_area
+								area = azov_area
+								area = crimea_area
+							}
+							NOT = { culture_group = tartar }
+						}
+						change_culture = ROOT
+					}
+				}
+			}
+			else = {
+				army_tradition = 10
+			}
+		}
+	}
+}
+kazan_missions = {
+    	slot = 2
+    	generic = no
+    	ai = yes
+    	potential = {
+		OR = {
+			tag = KAZ
+			AND = {
+				tag = GLH
+				was_tag = KAZ
+			}
+		}
+		NOT = { map_setup = map_setup_random }
+    	}
+    	has_country_shield = yes
+	KAZ_city_of_gold_mission = {
+		icon = mission_entrepot_of_india
+		position = 1
+		required_missions = { }
+		provinces_to_highlight = {
+			province_id = 2444
+			OR = {
+				NOT = { development = 15 }
+				NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			}
+		}
+		trigger = {
+			2444 = {
+				development = 15
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 15
+			2444 = {
+				add_province_modifier = { 
+    					name = kaz_city_of_gold_modifier
+    					duration = -1  
+				}
+					
+			}
+		}
+	}
+}

@@ -73,6 +73,7 @@ country_decisions = {
 				set_government_rank = 2
 			}
 			change_tag = BGM
+			swap_non_generic_missions = yes
 			picardy_area = {
 				limit = {
 					NOT = { owned_by = ROOT }

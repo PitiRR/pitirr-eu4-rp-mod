@@ -1,0 +1,796 @@
+KUS_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		tag = KUS
+	}
+
+	kus_turkish_diplo = {
+		icon = mission_ottoman_diplomacy
+		required_missions = {  }
+		position = 1
+		
+		trigger = {
+			OR = {
+				TUR = { exists = no }
+				TUR = {
+					alliance_with = ROOT
+				}
+				TUR = {
+					is_rival = ROOT
+				}
+			}
+		}
+		
+		effect = {
+			TUR = {
+				add_prestige = 10
+			}
+			add_country_modifier = {
+				name = kus_first_revenge
+				duration = 7300
+			}
+			if = {
+				limit = {
+					TUR = { alliance_with = ROOT }
+				}
+				add_trust = {
+					who = TUR
+					value = 15
+					mutual = yes
+				}
+			}
+			else = {
+				add_prestige = 20
+				add_legitimacy = 20 #outstrengthened/outlives
+			}
+		}
+	}
+}
+
+KUS_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		tag = KUS
+	}
+	kus_expand_frontier = {
+		icon = mission_abu_saids_dream
+		required_missions = { kus_unite_kurdistan kus_turkish_diplo }
+		position = 2
+		provinces_to_highlight = {
+			OR = {
+				area = aleppo_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			aleppo_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			syria_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			palestine_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			trans_jordan_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			syrian_desert_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	kus_ancestral_claims = {
+		icon = mission_fatehpur_sikri
+		required_missions = { kus_expand_frontier }
+		position = 3
+		provinces_to_highlight = {
+			OR = {
+				area = syria_area
+				area = syrian_desert_area
+				area = palestine_area
+				area = trans_jordan_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			syria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			syrian_desert_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			palestine_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			trans_jordan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_legitimacy = 20
+			egypt_region = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	kus_second_revenge = {
+		icon = mission_steppe_warriors
+		required_missions = { kus_ancestral_claims }
+		position = 5
+		provinces_to_highlight = {
+			OR = {
+				region = egypt_region
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			egypt_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			MAM = {
+				exists = no
+			}
+		}
+		effect = {
+			add_prestige = 25
+			add_stability = 1
+			override_country_name = AYYUBID_CALIPHATE
+		}
+	}
+	
+}
+
+KUS_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		tag = KUS
+	}
+	kus_unite_kurdistan = {
+		icon = mission_unite_home_region
+		required_missions = { }
+		position = 1
+		provinces_to_highlight = {
+			OR = {
+				area = al_jazira_area
+				area = north_kurdistan_area
+				area = shahrizor_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			al_jazira_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			north_kurdistan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			shahrizor_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			add_legitimacy = 50
+			iraq_arabi_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			basra_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			aleppo_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			tabriz_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			shirvan_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			khuzestan_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			azerbaijan_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	kus_conquer_iraq = {
+		icon = mission_secure_hajj_ports
+		required_missions = { kus_unite_kurdistan }
+		position = 2
+		provinces_to_highlight = {
+			OR = {
+				area = iraq_arabi_area
+				area = basra_area
+				area = khuzestan_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			iraq_arabi_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			basra_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			khuzestan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			country_event = {
+				id = pitirr_flavor_kus.1
+			}
+		}
+	}
+	kus_answer_the_shism = {
+		icon = mission_din_i_llahi
+		required_missions = { kus_conquer_iraq }
+		position = 3
+		provinces_to_highlight = {
+			OR = {
+				area = iraq_arabi_area
+				area = basra_area
+				area = khuzestan_area
+			}
+			NOT = { religion = root }
+		}
+		trigger = {
+			if = {
+				limit = { has_country_flag = kus_converting }
+				religious_unity = 0.99
+				iraq_arabi_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+					religion = root
+				}
+				basra_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+					religion = root
+				}
+				khuzestan_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+					religion = root
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = kus_tolerating }
+				religious_unity = 0.99
+				accepted_culture = al_iraqiya_arabic
+				if = {
+					limit = { religion = sunni }
+					shiite = 2
+				} else_if = {
+					limit = { religion = shiite }
+					sunni = 2
+				}
+				iraq_arabi_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+					NOT = { unrest = 1 }
+				}
+				basra_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+					NOT = { unrest = 1 }
+				}
+				khuzestan_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+					NOT = { unrest = 1 }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = kus_schism_not_yet_tt
+					always = no #in case of a bug. Should be unreachable
+				}
+			}
+		}
+		effect = {
+			add_prestige = 10
+		}
+	}
+	kus_dev_iraq = {
+		icon = mission_riches_of_golconda
+		required_missions = { kus_answer_the_shism }
+		position = 4
+		provinces_to_highlight = {
+			OR = {
+				area = iraq_arabi_area
+				area = basra_area
+				area = khuzestan_area
+			}
+			NOT = { num_of_times_improved = 3 }
+		}
+		trigger = {
+			iraq_arabi_area = {
+				type = all
+				num_of_times_improved = 3
+			}
+			basra_area = {
+				type = all
+				num_of_times_improved = 3
+			}
+			khuzestan_area = {
+				type = all
+				owned_by = root
+				num_of_times_improved = 3
+			}
+			408 = { #Basra
+				has_building = marketplace
+			}
+			410 = { #Baghdad
+				has_building = marketplace
+			}
+			410 = {
+				has_building = temple
+			}
+		}
+		effect = {
+			add_prestige = 10
+		}
+	}
+	kus_school_of_baghdad = {
+		icon = mission_fatehpur_sikri
+		required_missions = { kus_dev_iraq }
+		position = 5
+		provinces_to_highlight = {
+			province_id = 410
+		}
+		trigger = {
+			410 = { #Baghdad
+				num_of_times_improved = 8
+			}
+		}
+		effect = {
+			410 = {
+				add_building = university
+				add_province_modifier = {
+					name = kus_baghdad_uni
+					duration = -1
+				}
+			}
+		}
+	}
+	kus_second_golden_age = {
+		icon = mission_persianate_empire
+		required_missions = { kus_school_of_baghdad kus_second_revenge kus_eco_dominance }
+		position = 6
+		trigger = {
+			NOT = { great_power_rank = 4 } #at least 3rd
+			share_of_starting_income = 5
+			prestige = 90
+			legitimacy = 100
+			stability = 3
+			government_rank = 3
+		}
+		effect = {
+			if = { 
+				limit = { has_had_golden_age = yes }
+				reset_golden_age = yes 
+			}
+			else_if = { 	
+				limit = { in_golden_age = yes } 
+				extend_golden_age = 240 
+			}
+			else = { 
+				add_adm_power = 100 
+				add_dip_power = 100 
+				add_mil_power = 100  
+			} 
+			if = { 
+				limit = { 
+					has_dlc = "Mandate of Heaven"
+					has_had_golden_age = no 
+					in_golden_age = no 
+				}
+				custom_tooltip = fin_gain_golden_era_bonuses_tt
+			}
+		}
+	}
+}
+
+KUS_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		tag = KUS
+	}
+	kus_conquer_azerbaijan = {
+		icon = mission_deccanis
+		required_missions = { kus_unite_kurdistan }
+		position = 2
+		provinces_to_highlight = {
+			OR = {
+				area = tabriz_area
+				area = shirvan_area
+				area = azerbaijan_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			shirvan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			tabriz_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			azerbaijan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			tabarestan_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			luristan_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+			isfahan_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	kus_persianite_empire = {
+		icon = mission_conquer_persia
+		required_missions = { kus_conquer_azerbaijan }
+		position = 3
+		provinces_to_highlight = {
+			OR = {
+				area = tabarestan_area
+				area = luristan_area
+				area = isfahan_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			tabarestan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			luristan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			isfahan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			persia_region = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_claim = ROOT
+			}
+			mashhad_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_claim = ROOT
+			}
+			birjand_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_claim = ROOT
+			}
+			herat_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_claim = ROOT
+			}
+			sistan_area = {
+				limit = {
+					NOT = {
+						is_core = ROOT
+						is_permanent_claim = ROOT
+					}
+				}
+				add_claim = ROOT
+			}
+		}
+	}
+	kus_dev_mountains = {
+		icon = mission_industrialize_bengal
+		required_missions = { kus_persianite_empire }
+		position = 4
+		provinces_to_highlight = {
+			OR = {
+				area = tabriz_area
+				area = shirvan_area
+			}
+			NOT = { num_of_times_improved = 1 }
+			NOT = { has_building = workshop }
+		}
+		trigger = {
+			tabriz_area = {
+				type = all
+				num_of_times_improved = 1
+				has_building = workshop
+			}
+			shirvan_area = {
+				type = all
+				num_of_times_improved = 1
+				has_building = workshop
+			}
+			azerbaijan_area = {
+				type = all
+				num_of_times_improved = 1
+				has_building = workshop
+			}
+			424 = { #Ardabil
+				has_building = fort_15th
+				has_building = ramparts
+			}
+		}
+		effect = {
+			424 = {
+				add_province_modifier = {
+					name = local_fortress
+					duration = -1
+				}
+				add_province_modifier = {
+					name = improved_fortifications
+					duration = -1
+				}
+			}
+			424 = {
+				remove_building = fort_15th
+				add_building = fort_16th
+			}
+		}
+	}
+	kus_eco_dominance = {
+		icon = mission_entrepot_of_india
+		required_missions = { kus_dev_mountains kus_dev_persia }
+		position = 5
+		provinces_to_highlight = {
+			OR = {
+				area = tabriz_area
+				area = shirvan_area
+			}
+		}
+		trigger = {
+			all_rival_country = {
+				NOT = { monthly_income = ROOT }
+			}
+			1335 = { #Basra
+				trade_share = {
+					country = ROOT
+					share = 51
+				}
+			}
+			4341 = { #Persia
+				trade_share = {
+					country = ROOT
+					share = 51
+				}
+			}
+			1334 = { #Hormuz
+				trade_share = {
+					country = ROOT
+					share = 25
+				}
+			}
+		}
+		effect = {
+			add_mercantilism = 10
+		}
+	}
+}
+
+KUS_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		tag = KUS
+	}
+	kus_dev_persia = {
+		icon = mission_expand_textile_industry
+		required_missions = { kus_persianite_empire }
+		position = 4
+		provinces_to_highlight = {
+			OR = {
+				area = tabarestan_area
+				area = iraq_e_ajam_area
+				area = isfahan_area
+			}
+			NOT = { num_of_times_improved = 3 }
+			NOT = { has_building = workshop }
+		}
+		trigger = {
+			accepted_culture = persian 	
+			trading_bonus = {
+				trade_goods = silk
+				value = yes
+			}
+			tabarestan_area = {
+				type = all
+				num_of_times_improved = 3
+				has_building = workshop
+			}
+			iraq_e_ajam_area = {
+				type = all
+				num_of_times_improved = 3
+				has_building = workshop
+			}
+			isfahan_area = {
+				type = all
+				num_of_times_improved = 3
+				has_building = workshop
+			}
+			429 = {
+				has_building = marketplace
+				num_of_times_improved = 6
+			}
+			4341 = {
+				has_building = marketplace
+				num_of_times_improved = 6
+			}
+		}
+		effect = {
+			every_owned_province = {
+				limit = { trade_goods = silk }
+				add_province_modifier = {
+					name = persian_carpets_abroad
+					duration = -1
+				}
+			}
+		}
+	}
+}

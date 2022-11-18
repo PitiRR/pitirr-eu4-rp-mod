@@ -1,0 +1,7 @@
+government = monarchy
+add_government_reform = indep_daimyo
+government_rank = 2
+primary_culture = togoku
+religion = shinto
+technology_group = chinese
+capital = 4193 # Hakodate
