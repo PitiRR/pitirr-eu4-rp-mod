@@ -9,17 +9,17 @@ ULM_diplomacy = {
 
 
 	ULM_hre_allies = {
-		icon = mission_alliances
+		icon = mission_alliances.dds
 		required_missions = { }
 		position = 1
 		
 		trigger = {
 			calc_true_if = { # alejandro = god
-				amount = 2
-				all_countries = {
+				any_countries = {
 					is_part_of_hre = yes
 					allied_to = ROOT
 				}
+				amount = 2
 			}
 		}
 
@@ -33,7 +33,7 @@ ULM_diplomacy = {
 	}
 	
 	ULM_imperial_guarantee = {
-	icon = mission_monarch_in_throne_room
+	icon = mission_monarch_in_throne_room.dds
 	required_missions = { ULM_hre_allies }
 	position = 2
 		
@@ -66,7 +66,7 @@ ULM_diplomacy = {
 	}
 
 	ULM_swabians_and_the_swiss = {
-		icon = mission_italian_condotierre
+		icon = mission_italian_condotierre.dds
 		required_missions = { ULM_imperial_guarantee }
 		position = 4
 		
@@ -82,12 +82,12 @@ ULM_diplomacy = {
 		}
 
 		effect = {
-			country_event = ULM_zael_event.1
+			ROOT = { country_event = ULM_zael_event.1 }
 		}
 	}
 	
 	ULM_free_city_guard = {
-		icon = mission_lanshknecht_soldier
+		icon = mission_lanshknecht_soldier.dds
 		required_missions = { ULM_swabians_and_the_swiss ULM_defensive_overhaul }
 		position = 6
 		
@@ -126,7 +126,7 @@ ULM_diplomacy = {
 		effect = {
 			add_mil_power = 300
 			add_army_professionalism = 10
-			country_event = ULM_zael_event.2
+			ROOT = { country_event = ULM_zael_event.2 }
 		}
 	}
 }
@@ -141,11 +141,20 @@ ULM_imperial_misc_missions = {
 	has_country_shield = yes
 	
 	ULM_imperial_bankers = {
-		icon = mission_high_income
+		icon = mission_high_income.dds
 		required_missions = { ULM_imperial_guarantee }
 		position = 3
 		
 		trigger = {
+			employed_advisor = {
+				OR = {
+					type = treasurer
+					type = master_of_mint
+					type = trader
+					type = statesman
+				}
+				level = 2
+			}
 			diplomatic_reputation = 4
 			mercantilism = 15
 			OR = {
@@ -162,7 +171,8 @@ ULM_imperial_misc_missions = {
 		}
 		
 		effect = {
-			country_event = ULM_zael_event.3
+			ROOT = { country_event = ULM_zael_event.3 }
+			add_years_of_income = 3
 			add_mercantilism = 10
 			hidden_effect = {
 				limit = { guaranteed_by = emperor }
@@ -172,11 +182,12 @@ ULM_imperial_misc_missions = {
 	}
 	
 	ULM_defensive_overhaul = {
-		icon = mission_conquer_50_development
+		icon = mission_conquer_50_development.dds
 		required_missions = { ULM_swabians_and_the_swiss ULM_establish_milf }
 		position = 5
 		
 		trigger = {
+			has_reform = municipal_self_defense_reform
 			OR = { 
 				any_ally = {
 					primary_culture = swabian
@@ -256,7 +267,7 @@ ULM_province_development = {
 	has_country_shield = yes
 	
 	ULM_a_free_city = {
-		icon = mission_early_game_buildings
+		icon = mission_early_game_buildings.dds
 		required_missions = { }
 		position = 1
 		
@@ -282,7 +293,7 @@ ULM_province_development = {
 	}
 	
 	ULM_early_municipal_safeguards = {
-		icon = mission_colonial
+		icon = mission_colonial.dds
 		required_missions = { ULM_a_free_city }
 		position = 2
 		
@@ -308,11 +319,16 @@ ULM_province_development = {
 		position = 3
 		
 		trigger = {
-		
+			1872 = {
+				num_of_times_improved = 8
+				has_building = temple
+				has_building = marketplace
+				has_building = barracks
 		}
 		
 		effect = {
-		
+			change_government_reform_progress = 150
+			
 		}
 	}
 	
@@ -322,11 +338,244 @@ ULM_province_development = {
 		position = 4
 		
 		trigger = {
+			employed_advisor = {
+				type = spymaster
+				level = 3
+			}
+			has_reform = provincial_governments_reform #replace with unique M.I.L.F.s gov't form
+		}
 		
+		effect = {
+			add_years_of_income = 1
+			change_government_reform_progress = 260
+			add_splendor = 800
+		}
+	}
+	
+	ULM_expand_regional_infrastructure = {
+		icon =
+		required_missions = { ULM_establish_milf }
+		position = 5
+		
+		trigger = {
+			1872 = {
+				num_of_times_improved = 25
+				province_has_center_of_trade_level = 2
+			}
+		}
+		
+		effect = {
+			add_years_of_income = 2
+			1872 = {
+				add_permanent_province_modifier = {
+					name = ulm_city_tier_3
+					duration = -1
+				}
+			}
+		}
+	}
+	
+	ULM_the_free_city_of_worlds_desire = {
+		icon = 
+		required_missions = { ULM_expand_regional_infrastructure ULM_defensive_overhaul }
+		position = 6
+		
+		trigger = {
+			1872 = {
+				development = 75
+				is_prosperous = yes
+				has_matching_religion = ROOT
+				province_has_center_of_trade_level = 3
+				NOT = {
+					unrest = 1
+				}
+			}
+		}
+		
+		effect = {
+			add_splendor = 1600
+			add_prestige = 100
+			1872 = {
+				add_permanent_province_modifier = {
+					name = ulm_city_tier_4
+					duration = -1
+				}
+			}
+		}
+	}
+	
+	ULM_omnipotent = {
+		icon =
+		required_missions = { ULM_the_free_city_of_worlds_desire }
+		position = 7
+		
+		trigger = {
+			1872 = {
+				development = 100
+			}
+			OR = {
+				has_reform = seize_executive_power_reform
+				has_reform = reinforce_republican_values_reform
+				has_reform = federal_senate_reform
+			}
+		
+		effect = {
+			add_adm_power = 300
+			add_dip_power = 300
+			add_mil_power = 300
+			1872 = {
+				add_permanent_province_modifier = {
+					name = ulm_city_tier_5
+					duration = -1
+				}
+			}
+		}
+	}
+}
+
+ULM_misc_tree = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = ULM
+	}
+	has_country_shield = yes
+	
+	ULM_scriveners = {
+		icon = 
+		required_missions = { ULM_minster }
+		position = 3
+		
+		trigger = {
+			innovativeness = 20
+			employed_advisor = {
+				type = natural_scientist
+				level = 2
+			}
 		}
 		
 		effect = {
 		
+		}
+	}
+	
+	ULM_religious_alliance = {
+		icon = 
+		required_missions { ULM_establish_milf ULM_vanguard_of_the_league }
+		position = 5
+		
+		trigger = {
+			is_year = 1550
+			ROOT = { religion_group = christian }
+			any_ally = {
+				is_defender_of_faith = yes
+				has_opinion = {
+					who = ROOT
+					value = 150
+				}
+			}
+		}
+		
+		effect = {
+			add_stability = 1
+			add_war_exhaustion = -4
+			add_fervor = 100
+			add_church_power = 200
+			add_papal_influence 200
+		}
+	}
+}
+
+ULM_religion_missions = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = ULM
+	}
+	has_country_shield = yes
+
+	ULM_church_compromises = {
+		icon = 
+		required_missions = { }
+		position = 1
+		
+		trigger = {
+			
+		}
+		
+		effect = {
+			ROOT = { country_event = ULM_zael_event.4 }
+		}
+	}
+	
+	ULM_establish_an_ulm_minster = {
+		icon = 
+		required_missions = { ULM_church_compromises }
+		position = 2
+		
+		provinces_to_highlight = {
+			province_id = 1872
+		}
+		
+		trigger = {
+			current_age = age_of_reformation
+			has_great_project = {
+				type = ulm_minster
+				tier = 2
+			}
+		}
+		
+		effect = {
+			add_years_of_income = 1
+			1872 = {
+				add_permanent_province_modifier = {
+					name = ulm_minster_established
+					duration = -1
+				}
+			}
+			ROOT = { country_event = ULM_zael_event.5 }
+		}
+	}
+	
+	ULM_vanguard_of_the_league = {
+		icon = 
+		required_missions = { ULM_establish_an_ulm_minster }
+		position = 4
+		
+		trigger = {
+			1872 = {
+				fort_level = 5
+			}
+			OR = {
+				in_league = protestant
+				in_league = catholic
+			}
+		}
+		
+		effect = {
+			ROOT = { country_event = ULM_zael_event.6 }
+		}
+	}
+	
+	ULM_triumph_of_the_true_league = {
+		icon = 
+		required_missions = { ULM_religious_alliance ULM_vanguard_of_the_league }
+		position = 6
+		
+		trigger = {
+			OR = {
+				hre_religion_locked = yes
+				hre_religion_treaty = yes
+			}
+			emperor = {
+				religion = ROOT
+			}
+		}
+		
+		effect = {
+			ROOT = { country_event = ULM_zael_event.7 }
 		}
 	}
 }

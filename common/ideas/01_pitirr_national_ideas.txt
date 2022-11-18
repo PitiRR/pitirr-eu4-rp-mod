@@ -332,3 +332,4 @@ africa_ideas = {
 		development_cost = -0.1
 	}
 }
+
