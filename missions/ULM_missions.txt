@@ -8,7 +8,7 @@ ULM_diplomacy = {
 	has_country_shield = yes
 
 
-	ULM_hre_allies = {
+	ulm_hre_allies = {
 		icon = mission_alliances
 		required_missions = { }
 		position = 1
@@ -32,9 +32,9 @@ ULM_diplomacy = {
 		}
 	}
 	
-	ULM_imperial_guarantee = {
+	ulm_imperial_guarantee = {
 	icon = mission_monarch_in_throne_room
-	required_missions = { ULM_hre_allies }
+	required_missions = { ulm_hre_allies }
 	position = 2
 		
 		trigger = {
@@ -61,9 +61,9 @@ ULM_diplomacy = {
 		}
 	}
 
-	ULM_swabians_and_the_swiss = {
+		ulm_swabians_and_the_swiss = {
 		icon = mission_italian_condottiere
-		required_missions = { ULM_imperial_guarantee }
+		required_missions = { ulm_imperial_guarantee }
 		position = 4
 		
 		trigger = {
@@ -82,13 +82,13 @@ ULM_diplomacy = {
 
 		effect = {
 			add_prestige = 10
-			# country_event = ULM_zael_event.1
+			# country_event = { ULM_zael_event.1 }
 		}
 	}
 	
-	ULM_free_city_guard = {
+	ulm_free_city_guard = {
 		icon = mission_landsknecht_soldier
-		required_missions = { ULM_swabians_and_the_swiss ULM_defensive_overhaul }
+		required_missions = { ulm_swabians_and_the_swiss ulm_defensive_overhaul }
 		position = 6
 		
 		trigger = {
@@ -132,12 +132,12 @@ ULM_diplomacy = {
 		effect = {
 			add_mil_power = 300
 			add_army_professionalism = 0.1
-			# country_event = ULM_zael_event.2
+			# country_event = { ULM_zael_event.2 }
 		}
 	}
 }
 
-ULM_imperial_misc_missions = {
+ulm_imperial_misc_missions = {
 	slot = 2
 	generic = no
 	ai = yes
@@ -146,9 +146,9 @@ ULM_imperial_misc_missions = {
 	}
 	has_country_shield = yes
 	
-	ULM_imperial_bankers = {
+	ulm_imperial_bankers = {
 		icon = mission_high_income
-		required_missions = { ULM_imperial_guarantee }
+		required_missions = { ulm_imperial_guarantee }
 		position = 3
 		
 		trigger = {
@@ -186,7 +186,7 @@ ULM_imperial_misc_missions = {
 		}
 		
 		effect = {
-			# country_event = ULM_zael_event.3
+			# country_event = { ulm_zael_event.3 }
 			add_years_of_income = 3
 			add_mercantilism = 10
 			hidden_effect = {
@@ -196,9 +196,9 @@ ULM_imperial_misc_missions = {
 		}
 	}
 	
-	ULM_defensive_overhaul = {
+	ulm_defensive_overhaul = {
 		icon = mission_conquer_50_development
-		required_missions = { ULM_swabians_and_the_swiss ULM_establish_milf }
+		required_missions = { ulm_swabians_and_the_swiss ulm_establish_milf }
 		position = 5
 		
 		trigger = {
@@ -254,7 +254,7 @@ ULM_imperial_misc_missions = {
 			treasury = -600
 			1872 = {
 				add_permanent_province_modifier = {
-					name = ULM_defensive_overhaul
+					name = ulm_defensive_overhaul
 					duration = -1
 				}
 			}
@@ -282,7 +282,7 @@ ULM_imperial_misc_missions = {
 	}
 }
 
-ULM_province_development = {
+ulm_province_development = {
 	slot = 3
 	generic = no
 	ai = yes
@@ -291,7 +291,7 @@ ULM_province_development = {
 	}
 	has_country_shield = yes
 	
-	ULM_a_free_city = {
+	ulm_a_free_city = {
 		icon = mission_colonial
 		required_missions = { }
 		position = 1
@@ -311,15 +311,15 @@ ULM_province_development = {
 			add_prestige = 10
 			1872 = {
 				add_permanent_province_modifier = {
-					name = ULM_city_tier_one
+					name = ulm_city_tier_one
 				}
 			}
 		}
 	}
 	
-	ULM_early_municipal_safeguards = {
+	ulm_early_municipal_safeguards = {
 		icon = mission_colonial
-		required_missions = { ULM_a_free_city }
+		required_missions = { ulm_a_free_city }
 		position = 2
 		
 		trigger = {
@@ -332,47 +332,16 @@ ULM_province_development = {
 			1872 = {
 				add_building = fort_15th
 				add_permanent_province_modifier = {
-					name = ULM_defensive_safeguards
+					name = ulm_defensive_safeguards
 					duration = -1
 				}
 			}
 		}
 	}
 	
-	ULM_hundred_year_plans = {
-		icon = mission_colonial
-		required_missions = { ULM_early_municipal_safeguards }
-		position = 3
-		
-		provinces_to_highlight = {
-			province_id = 1872
-		}
-		
-		trigger = {
-			1872 = {
-				num_of_times_improved = 8
-				has_building = temple
-				OR = {
-					has_building = marketplace
-					has_building = barracks
-				}
-			}
-		}
-		
-		effect = {
-			change_government_reform_progress = 150
-			1872 = {
-				add_permanent_province_modifier = {
-					name = ULM_city_tier_two
-					duration = -1
-				}
-			}
-		}
-	}
-	
-	ULM_establish_milf = {
+	ulm_establish_milf = {
 		icon = mission_ottoman_harem
-		required_missions = { ULM_imperial_bankers ULM_hundred_year_plans ULM_scriveners }
+		required_missions = { ulm_imperial_bankers ulm_early_municipal_safeguards ulm_scriveners }
 		position = 4
 		
 		trigger = {
@@ -393,10 +362,41 @@ ULM_province_development = {
 		}
 	}
 	
-	ULM_expand_regional_infrastructure = {
-		icon = mission_early_game_buildings
-		required_missions = { ULM_establish_milf }
+	ulm_hundred_year_plans = {
+		icon = mission_colonial
+		required_missions = { ulm_establish_milf }
 		position = 5
+		
+		provinces_to_highlight = {
+			province_id = 1872
+		}
+		
+		trigger = {
+			1872 = {
+				num_of_times_improved = 8
+				has_building = temple
+				OR = {
+					has_building = marketplace
+					has_building = barracks
+				}
+			}
+		}
+		
+		effect = {
+			change_government_reform_progress = 150
+			1872 = {
+				add_permanent_province_modifier = {
+					name = ulm_city_tier_two
+					duration = -1
+				}
+			}
+		}
+	}
+	
+	ulm_expand_regional_infrastructure = {
+		icon = mission_early_game_buildings
+		required_missions = { ulm_hundred_year_plans ulm_defensive_overhaul }
+		position = 6
 		
 		trigger = {
 			1872 = {
@@ -409,17 +409,17 @@ ULM_province_development = {
 			add_years_of_income = 2
 			1872 = {
 				add_permanent_province_modifier = {
-					name = ULM_city_tier_three
+					name = ulm_city_tier_three
 					duration = -1
 				}
 			}
 		}
 	}
 	
-	ULM_the_free_city_of_worlds_desire = {
+	ulm_the_free_city_of_worlds_desire = {
 		icon = mission_hanseatic_city
-		required_missions = { ULM_expand_regional_infrastructure ULM_defensive_overhaul }
-		position = 6
+		required_missions = { ulm_expand_regional_infrastructure }
+		position = 7
 		
 		trigger = {
 			1872 = {
@@ -444,10 +444,10 @@ ULM_province_development = {
 		}
 	}
 	
-	ULM_omnipotent = {
+	ulm_omnipotent = {
 		icon = mission_empire
-		required_missions = { ULM_the_free_city_of_worlds_desire }
-		position = 7
+		required_missions = { ulm_the_free_city_of_worlds_desire }
+		position = 8
 		
 		trigger = {
 			1872 = {
@@ -474,7 +474,7 @@ ULM_province_development = {
 	}
 }
 
-ULM_misc_tree = {
+ulm_misc_tree = {
 	slot = 4
 	generic = no
 	ai = yes
@@ -483,9 +483,9 @@ ULM_misc_tree = {
 	}
 	has_country_shield = yes
 	
-	ULM_scriveners = {
+	ulm_scriveners = {
 		icon = mission_scholar_officials
-		required_missions = { ULM_minster }
+		required_missions = { ulm_establish_an_ulm_minster }
 		position = 3
 		
 		trigger = {
@@ -501,9 +501,9 @@ ULM_misc_tree = {
 		}
 	}
 	
-	ULM_religious_alliance = {
+	ulm_religious_alliance = {
 		icon = mission_assemble_an_army
-		required_missions { ULM_establish_milf ULM_vanguard_of_the_league }
+		required_missions { ulm_establish_milf ulm_vanguard_of_the_league }
 		position = 5
 		
 		trigger = {
@@ -528,7 +528,7 @@ ULM_misc_tree = {
 	}
 }
 
-ULM_religion_missions = {
+ulm_religion_missions = {
 	slot = 5
 	generic = no
 	ai = yes
@@ -537,7 +537,7 @@ ULM_religion_missions = {
 	}
 	has_country_shield = yes
 
-	ULM_church_compromises = {
+	ulm_church_compromises = {
 		icon = mission_religious
 		required_missions = { }
 		position = 1
@@ -556,13 +556,13 @@ ULM_religion_missions = {
 		
 		effect = {
 			add_prestige = 1
-			# ROOT = { country_event = ULM_zael_event.4 } # spend money and give church crownland for papal influence, temp relations, and perm church influence down. Or don't and piss off pope/lose prestige/temperory clergy influence increase.
+			# country_event = { ulm_zael_event.4 } # spend money and give church crownland for papal influence, temp relations, and perm church influence down. Or don't and piss off pope/lose prestige/temperory clergy influence increase.
 		}
 	}
 	
-	ULM_establish_an_ulm_minster = {
+	ulm_establish_an_ulm_minster = {
 		icon = mission_european_church
-		required_missions = { ULM_church_compromises }
+		required_missions = { ulm_church_compromises }
 		position = 2
 		
 		provinces_to_highlight = {
@@ -585,13 +585,13 @@ ULM_religion_missions = {
 					duration = -1
 				}
 			}
-			# ROOT = { country_event = ULM_zael_event.5 }
+			# ROOT = { country_event = ulm_zael_event.5 }
 		}
 	}
 	
-	ULM_vanguard_of_the_league = {
+	ulm_vanguard_of_the_league = {
 		icon = mission_teutonic_knights
-		required_missions = { ULM_establish_an_ulm_minster }
+		required_missions = { ulm_establish_an_ulm_minster }
 		position = 4
 		
 		trigger = {
@@ -606,13 +606,13 @@ ULM_religion_missions = {
 		
 		effect = {
 			add_prestige = 1
-			# ROOT = { country_event = ULM_zael_event.6 }
+			# country_event = { ulm_zael_event.6 }
 		}
 	}
 	
-	ULM_triumph_of_the_true_league = {
+	ulm_triumph_of_the_true_league = {
 		icon = mission_luther_theses
-		required_missions = { ULM_religious_alliance ULM_vanguard_of_the_league }
+		required_missions = { ulm_religious_alliance ulm_vanguard_of_the_league }
 		position = 6
 		
 		trigger = {
@@ -627,7 +627,7 @@ ULM_religion_missions = {
 		
 		effect = {
 			add_prestige = 1
-			# ROOT = { country_event = ULM_zael_event.7 }
+			# country_event = { ulm_zael_event.7 }
 		}
 	}
 }
