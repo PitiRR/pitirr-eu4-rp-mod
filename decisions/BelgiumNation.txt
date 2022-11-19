@@ -28,6 +28,7 @@ country_decisions = {
             }
 		}
 		allow = {
+			always = no #unfinished
 			adm_tech = 10
 			is_at_war = no
             owns_core_province = 92			#Brussels
