@@ -1,6 +1,0 @@
-government = monarchy
-add_government_reform = feudalism_reform
-primary_culture = phoenician
-religion = animism
-technology_group = muslim
-fixed_capital = 341 #Carthage
