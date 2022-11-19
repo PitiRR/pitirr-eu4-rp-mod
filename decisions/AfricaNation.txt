@@ -1,9 +1,9 @@
 country_decisions = {
  
-        Africa_nation = {
+        africa_nation = {
                   major = yes
                   potential = {
-		                       	NOT = { has_country_flag = formed_AHE_flag }
+		                       	NOT = { has_country_flag = formed_KOA_flag }
 			                      OR = {
 				                    ai = no
 				                    is_playing_custom_nation = no
@@ -42,7 +42,7 @@ country_decisions = {
 				                                              name = "centralization_modifier"
 				                                              duration = 7300
 			                       }
-			                       set_country_flag = formed_AHE_flag
+			                       set_country_flag = formed_KOA_flag
 			                       add_prestige = 25
                     }
           }
