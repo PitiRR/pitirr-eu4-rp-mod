@@ -28,15 +28,15 @@ tunis_ideas = {
 		regiment_manpower_usage = -0.15
 	}
 	board_of_captains = {
-		leader_navy_fire = 1
-		leader_army_fire = 1
+		leader_naval_fire = 1
+		leader_land_fire = 1
 	}
 	export_monopolies = {
 		trade_efficiency = 0.15
 		embargo_efficiency = 0.25
 	}
 	tunisian_caliphate = {
-		own_tolerance = 2
+		tolerance_own = 2
 		monthly_piety_accelerator = 0.001
 	}
 }
@@ -57,7 +57,7 @@ scotland_ideas = {
 	
 	break_the_black_douglas = {
 		global_unrest = -2
-		tax_efficiency = 0.15
+		global_tax_modifier = 0.15
 	}
 	modernize_the_royal_scots_navy = {
 		ship_durability = 0.05
@@ -110,11 +110,11 @@ pomerania_ideas = { # feels weird to not type "pomeranian"
 		global_trade_power = 0.1
 	}
 	religious_freedom = {
-		heretic_tolerance = 3
-		max_heretic_tolerance = 2
+		tolerance_heretic = 3
+		max_tolerance_heretic = 2
 	}
 	mercenary_contracts = {
-		mercenary_maintenance_modifier = -0.2
+		merc_maintenance_modifier = -0.2
 		spy_offence = 0.5
 	}
 	dominate_the_baltic = {
@@ -152,8 +152,8 @@ arabia_ideas = {
 		land_morale = 0.25
 	}
 	spreading_the_prophets_word = {
-		heretic_missionary_strength = 0.02
-		manpower_in_true_faith = 0.2
+		global_heretic_missionary_strength = 0.02
+		manpower_in_true_faith_provinces = 0.2
 	}
 	bedouin_traders = {
 		global_prov_trade_power_modifier = 0.3
@@ -161,7 +161,7 @@ arabia_ideas = {
 	}
 	clan_loyalties = {
 		all_estate_influence_modifier = 0.1
-		allow_free_estate_privilege_recovation = yes
+		allow_free_estate_privilege_revocation = yes
 	}
 	arabia = {
 		hostile_attrition = 2
@@ -185,7 +185,7 @@ ulm_ideas = {
 	}
 	
 	grosser_schworbrief = {
-		burghers_loyalty_equilibrium = 0.15
+		estate_burghers_loyalty_equilibrium = 0.15
 		republican_tradition = 0.15
 	}
 	schwabischer_bund = {
