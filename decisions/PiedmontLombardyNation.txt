@@ -31,7 +31,7 @@ country_decisions = {
             }
 		}
 		allow = {
-			adm_tech = 7
+			adm_tech = 10
 			is_at_war = no
             owns_core_province = 103	#Turin
             owns_core_province = 104    #Milan
