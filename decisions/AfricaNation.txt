@@ -20,14 +20,14 @@ country_decisions = {
 			                        is_nomad = no
 			                        government = monarchy
 		                        	is_at_war = no
-                              owns_core province = 341
-                              owns_core province = 2454
-                              owns_core province = 2455
-                              owns_core province = 2473
-                              owns_core province = 4566
-                              owns_core province = 125
-                              owns_core province = 4736
-                              owns_core province = 4737
+                              tunisia_area = {
+				type = all
+				owned_by = ROOT
+				}
+			      western_sicily_area = {
+				type = all
+				owned_by = ROOT
+				}	
                               religion = catholic
                     }
                     effect = {
