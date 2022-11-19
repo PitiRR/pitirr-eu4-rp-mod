@@ -1,0 +1,45 @@
+KOA_ideas = {
+     start = {
+              galley_power = 0.25
+              global_missionary_strength = 0.03
+     }
+     
+     bonus = { 
+              land_morale = 0.1
+              naval_morale = 0.1
+     }
+     
+     trigger = {
+		          tag = KOA_ideas
+	   }
+	   free = yes
+     
+     koa_african_riches = {
+          development_cost = -0.1
+     }
+     
+     koa_european_ties = {
+          diplomatic_reputation = 1
+     }
+     
+     koa_culling_raiders = {
+          yearly_corruption = -0.1
+     }
+     
+     koa_roman_occupation = {
+          infantry_power = 0.1
+     }
+     
+     koa_carthage = {
+          trade_efficiency = 0.1
+     }
+     
+     koa_military_missions = {
+          warscore_cost_vs_other_religion = -0.25
+     }
+     
+     koa_leviathan = {
+          monarch_admin_power = 1
+          global_tax_modifier = 0.05
+     }
+}
