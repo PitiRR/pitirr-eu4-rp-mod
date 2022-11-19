@@ -1,0 +1,49 @@
+country_decisions = {
+ 
+        Africa_nation = {
+                  major = yes
+                  potential = {
+		                       	NOT = { has_country_flag = formed_AHE_flag }
+			                      OR = {
+				                    ai = no
+				                    is_playing_custom_nation = no
+			                      }
+                            OR = {
+                                    tag = TUN
+                            }
+                            government = monarchy
+                     }
+                     allow = {
+                              NOT = { exists = KOA }
+                              adm_tech = 7
+                              is_free_or_tributary_trigger = yes
+			                        is_nomad = no
+			                        government = monarchy
+		                        	is_at_war = no
+                              owns_core province = 341
+                              owns_core province = 2454
+                              owns_core province = 2455
+                              owns_core province = 2473
+                              owns_core province = 4566
+                              owns_core province = 125
+                              owns_core province = 4736
+                              owns_core province = 4737
+                              religion = catholic
+                    }
+                    effect = {
+                             change_tag = KOA
+                             if = {
+				                            limit = {
+					                                    has_custom_ideas = no
+				                            }
+			 	                            country_event = { id = ideagroups.1 } #Swap Ideas
+			                       }
+			                       add_country_modifier = {
+				                                              name = "centralization_modifier"
+				                                              duration = 7300
+			                       }
+			                       set_country_flag = formed_AHE_flag
+			                       add_prestige = 25
+                    }
+          }
+   }
