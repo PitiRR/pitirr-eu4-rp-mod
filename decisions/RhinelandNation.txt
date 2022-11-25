@@ -82,4 +82,71 @@ country_decisions = {
 			factor = 1
 		}
 	}
+
+	rhi_buy_free_city = {
+		potential = {
+			mission_completed = rhi_imperial_diplo
+			any_neighbor_country = {
+				has_reform = free_city
+			}
+		}
+		provinces_to_highlight = {
+            owner = { 
+               is_neighbor_of = ROOT 
+               has_reform = free_city 
+            }
+		}
+		allow = {
+			treasury = 1000
+			imperial_influence = 15
+			emperor = {
+				has_opinion = {
+					who = RHI
+					value = 0
+				}
+				trust = {
+					who = RHI
+					value = 50
+				}
+			}
+		}
+		effect = {
+			add_imperial_influence = -15
+			add_treasury = -1000
+			if = {
+				limit = {
+					NOT = { ROOT = { is_emperor = yes } }
+				}
+				emperor = {
+					add_treasury = 1000
+				}
+			}
+			random_neighbor_country = { 
+				limit = {
+					has_reform = free_city
+				}
+				ROOT = {
+					inherit = PREV
+				}
+			}
+			emperor = {
+				add_opinion = {
+					who = RHI
+					modifier = rhi_annexed_free_city
+				}
+				add_trust = {
+					who = RHI
+					value = -10
+				}
+			}
+			add_aggressive_expansion = {
+				who = ROOT
+				value = 50
+				apply_calc = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
 }

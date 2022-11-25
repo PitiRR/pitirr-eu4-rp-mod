@@ -92,3 +92,30 @@
 
   KUS_claim_to_ayubbid_splendor:0 "Ayyubid Claims"
   KUS_claim_to_ayubbid_splendor_desc:0 "We are the direct inheritants of the Ayyubids Caliphate, in the later years referred sometimes as Hisn Kayfa. This is a glorious mantle to carry, and we carry it with pride."
+
+  #Rhineland
+  
+  rhineland_ideas:0 "Rhenish Ideas"
+  rhineland_ideas_start:0 "Rhenish Traditions"
+  rhineland_ideas_bonus:0 "Rhenish Ambition"
+
+  RHI_zollverein:0 "Establish Zollverein"
+  RHI_zollverein_desc:0 "Germany is a powerful Kingdom, but divided into very autonomous princes. It is in the benefit of everyone to establish a common customs union to manage tariffs and economic policies of the region. It should be led by us - an economic powerhouse."
+
+  RHI_agricultural_revolution:0 "Agricultural Revolution"
+  RHI_agricultural_revolution_desc:0 "Through new inventions like the fertilizer and importation of crops from the New World, we are experiencing a sort of revolution. The population is increasing almost exponentially. Rhineland, having a rich, mineral soil and hills full of vineyards, is in the centre of this event."
+
+  RHI_prussian_model:0 "Remodel the Armies after Prussia"
+  RHI_prussian_model_desc:0 "Prussian army is famous for its efficiency and discipline in the entire world. While shaping our society anew is not possible, or beneficial, without a doubt we should adopt institutions from the Prussians if we wish to defend our sovereignty from the imperialist French and Austrians."
+
+  RHI_hessian_mercenaries:0 "Home of Hessian Mercenaries"
+  RHI_hessian_mercenaries_desc:0 "Our lands are home to Hesse, a duchy that famously house very efficient and rich mercenaries. We have no intent to stop this business, and as a matter of fact - we are richer and more powerful than Hesse ever was, and we can expand, subsidise and train Hessians further."
+
+  RHI_bishoprics_league:0 "Bishoprics League" 
+  RHI_bishoprics_league_desc:0 "The Bishoprics of Cologne, Trier and Mainz have been central to the region for centuries. Often the center of power and influence, they are still influential within Rhineland. With no more strife and conflict between them, we can begin to cooperate with each other and use their influence in Germany for our benefit."
+
+  RHI_copper_iron_artillery:0 "Copper Batteries"
+  RHI_copper_iron_artillery_desc:0 "Rhineland is rich in copper, iron, zinc and many other minerals important for the development of artillery. The metals found in our mountains are unusually rich in various rare materials, allowing our own artillery be more durable, precise and efficient on the battlefield."
+
+  RHI_early_industrialization:0 "Early Industrialisation"
+  RHI_early_industrialization_desc:0 "While every state is benefitting from the new Steam Engine, spinning jenny or even the experimental electric generators, Rhineland has already established weaving and mining industries that can easily adopt new inventions. The increased efficiency is much better noticeable if your base production is already superb."
