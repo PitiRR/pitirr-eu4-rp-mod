@@ -1,0 +1,49 @@
+country_decisions = {
+ 
+        africa_nation = {
+                  major = yes
+                  potential = {
+		                       	NOT = { has_country_flag = formed_KOA_flag }
+			                      OR = {
+				                    ai = no
+				                    is_playing_custom_nation = no
+			                      }
+                            OR = {
+                                    tag = TUN
+                            }
+                            government = monarchy
+                     }
+                     allow = {
+                              NOT = { exists = KOA }
+                              adm_tech = 7
+                              is_free_or_tributary_trigger = yes
+			                        is_nomad = no
+			                        government = monarchy
+		                        	is_at_war = no
+                              tunisia_area = {
+				type = all
+				owned_by = ROOT
+				}
+			      western_sicily_area = {
+				type = all
+				owned_by = ROOT
+				}	
+                              religion = catholic
+                    }
+                    effect = {
+                             change_tag = KOA
+                             if = {
+				                            limit = {
+					                                    has_custom_ideas = no
+				                            }
+			 	                            country_event = { id = ideagroups.1 } #Swap Ideas
+			                       }
+			                       add_country_modifier = {
+				                                              name = "centralization_modifier"
+				                                              duration = 7300
+			                       }
+			                       set_country_flag = formed_KOA_flag
+			                       add_prestige = 25
+                    }
+          }
+   }
