@@ -1,0 +1,90 @@
+ulm_regional_diplomacy = {
+	diplomatic_reputation = 2
+	relation_with_other_culture = 25
+	envoy_travel_time = -0.3
+}
+
+ulm_defensive_safeguards = {
+	local_defensiveness = 0.25
+	supply_limit_modifier = 0.25
+	local_garrison_size = 0.2
+}
+
+ulm_defensive_overhaul = {
+	local_defensiveness = 0.75
+	supply_limit_modifier = 1
+	local_garrison_size = 0.5
+	fort_level = 1
+}
+
+##### ULM FREE CITY IMPROVEMENT ##### (to cope with being an OPM)
+ulm_city_tier_one = {
+	owner = {
+		has_reform = free_city
+	}
+	land_forcelimit = 10
+	local_development_cost_modifier = -0.2
+	allowed_num_of_buildings = 1
+	tax_income = 24
+	local_manpower = 10
+}
+
+ulm_city_tier_two = {
+	owner = {
+		has_reform = free_city
+	}
+	land_forcelimit = 50
+	local_development_cost_modifier = -0.4
+	allowed_num_of_buildings = 2
+	tax_income = 48
+	local_manpower = 50
+}
+
+ulm_city_tier_three = {
+	owner = {
+		has_reform = free_city
+	}
+	land_forcelimit = 100
+	local_development_cost_modifier = -0.8
+	allowed_num_of_buildings = 2
+	tax_income = 72
+	local_manpower = 100
+}
+
+ulm_city_tier_four = {
+	owner = {
+		has_reform = free_city
+	}
+	land_forcelimit = 160
+	local_development_cost = -1.5
+	allowed_num_of_buildings = 3
+	allowed_num_of_manufactories = 1
+	tax_income = 120
+	local_manpower = 160
+}
+
+ulm_city_tier_four = {
+	owner = {
+		has_reform = free_city
+	}
+	land_forcelimit = 160
+	local_development_cost = -3
+	allowed_num_of_buildings = 4
+	allowed_num_of_manufactories = 1
+	tax_income = 168
+	local_manpower = 160
+}
+
+clerical_scriviners_in_government = {
+	technology_cost = -0.05
+	innovativeness_gain = 0.25
+	institution_spread_from_true_faith = 0.25
+}
+
+ulm_minster_established = {
+	owner = {
+		tag = ULM
+	}
+	monthly_splendor = 2
+	republican_tradition = 0.2
+}

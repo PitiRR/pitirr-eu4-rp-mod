@@ -50,10 +50,3 @@
  pitirr_flavor_slv.4.t:0 "The Emperor declines"
  pitirr_flavor_slv.4.d:0 "The Archduke of Austria has declined our request to acquire Krain. If we want to acquire the province we will have to fight for it."
  pitirr_flavor_slv.4.a:0 "Most regrettable."
-
-  #kus_events.txt
-
-  pitirr_flavor_kus.1.title:0 "Mend or End the Schism?"
-  pitirr_flavor_kus.1.desc:0 "My [Root.Monarch.GetTitle], I bring news - we have successfully captured the last outposts of our enemies and now all of Iraq and Basrah are under our control! As it appears, the Sunni minorities in the southern regions are far less populous as we have initially expected, though Baghdad is indeed Sunni. This rises an important question, which we can't ignore - what should we do with the Shi'ite population of Mashriq?\n\nWe can forcefully convert them, of course. This will make the Ulema in our country happy as well as influential, as they will be spearheading the integration of the provinces. Should You wish, my lord, we could attempt to placate the locals by tolerating their beliefs, though is separate mosques of course."
-  pitirr_flavor_kus.1.a:0 "Convert the heretics!"
-  pitirr_flavor_kus.1.b:0 "Stability is critical - leave them be."

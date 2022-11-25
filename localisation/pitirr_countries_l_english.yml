@@ -30,9 +30,8 @@
   slovenia_nation_desc:0 "Throughout history, one nation of Slovenes have lived under many lords, most not speaking or acknowledging Slovene. The [Root.Monarch.GetTitle] of [Root.GetTag] has consolidated [Root.Monarch.GetHerHis] holdings in Carniola. It is the time to create the state of Slovenia and forge our own destiny!"  
   
   KUS:0 "Kurdistan"
-  KUS_ADJ:0 "Great Kurdish"
+  KUS:0 "Kurd"
   kurdistan_nation_title:0 "Unite the Kurdish nation"
-  kurdistan_nation_desc:0 "Through spearheded leadership, fervent armies and cunning diplomacy, the Kurdish people are able to unite under a single flag. No more will a Kurd bow to an oppressor. Let's celebrate the formation of nation of our own."
-  AYYUBID_CALIPHATE:0 "Ayyubids"
+  kurdistan_nation_desc:0 "**TODO**"
 
   

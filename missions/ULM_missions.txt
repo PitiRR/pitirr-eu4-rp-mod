@@ -15,7 +15,7 @@ ULM_diplomacy = {
 		
 		trigger = {
 			calc_true_if = { # alejandro is god
-				any_country = {
+				all_country = {
 					is_part_of_hre = yes
 					alliance_with = ROOT
 				}
@@ -26,7 +26,7 @@ ULM_diplomacy = {
 		effect = {
 			add_prestige = 20
 			add_country_modifier = {
-				name = "regional_diplomacy"
+				name = "ulm_regional_diplomacy"
 				duration = 9125 #25 years
 			}
 		}
@@ -71,7 +71,7 @@ ULM_diplomacy = {
 			calc_true_if = {
 				amount = 1
 				all_country = {
-					is_enemy = ROOT
+					is_RIVAL = ROOT
 					OR = {
 						primary_culture = swiss
 						primary_culture = swabian
@@ -81,8 +81,9 @@ ULM_diplomacy = {
 		}
 
 		effect = {
-			add_prestige = 10
-			# country_event = { ULM_zael_event.1 }
+			country_event = {
+				id = ulm_zael_event.1
+			}
 		}
 	}
 	
@@ -94,7 +95,6 @@ ULM_diplomacy = {
 		trigger = {
 			employed_advisor = {
 				type = army_reformer
-				tier = 5
 			}
 			army_professionalism = 0.2
 			OR = { 
@@ -114,6 +114,7 @@ ULM_diplomacy = {
 					}
 				}
 				calc_true_if = {
+					amount = 1
 					all_country = {
 						vassal_of = ROOT
 						has_opinion = {
@@ -132,7 +133,7 @@ ULM_diplomacy = {
 		effect = {
 			add_mil_power = 300
 			add_army_professionalism = 0.1
-			# country_event = { ULM_zael_event.2 }
+			# country_event = { id = ulm_zael_event.2 }
 		}
 	}
 }
@@ -155,23 +156,19 @@ ulm_imperial_misc_missions = {
 			OR = {
 				employed_advisor = {
 					type = treasurer
-					level = 2
 				}
 				employed_advisor = {
 					type = master_of_mint
-					level = 2
 				}
 				employed_advisor = {
 					type = trader
-					level = 2
 				}
 				employed_advisor = {
 					type = statesman
-					level = 2
 				}
 			}
 			diplomatic_reputation = 4
-			mercantilism = 15
+			mercantilism = 30
 			OR = {
 				ROOT = {
 					guaranteed_by = emperor
@@ -186,7 +183,7 @@ ulm_imperial_misc_missions = {
 		}
 		
 		effect = {
-			# country_event = { ulm_zael_event.3 }
+			# country_event = { id = ulm_zael_event.3 }
 			add_years_of_income = 3
 			add_mercantilism = 10
 			hidden_effect = {
@@ -200,6 +197,10 @@ ulm_imperial_misc_missions = {
 		icon = mission_conquer_50_development
 		required_missions = { ulm_swabians_and_the_swiss ulm_establish_milf }
 		position = 5
+
+		provinces_to_highlight = {
+			province_id = 1872
+		}
 		
 		trigger = {
 			has_reform = municipal_self_defense_reform
@@ -219,22 +220,28 @@ ulm_imperial_misc_missions = {
 						}
 					}
 				}
-				all_country = {
-					vassal_of = ROOT
-					has_opinion = {
-						who = ROOT
-						value = 100
-					}
-					OR = {
-						primary_culture = swiss
-						primary_culture = swabian
-					}
-				}
-				all_country = {
-					NOT = {
+				calc_true_if = {
+					amount = 1
+					all_country = {
+						vassal_of = ROOT
+						has_opinion = {
+							who = ROOT
+							value = 100
+						}
 						OR = {
 							primary_culture = swiss
-							primary_cultre = swabian
+							primary_culture = swabian
+						}
+					}
+				}
+				calc_true_if = {
+					amount = 1
+					all_country = {
+						NOT = {
+							OR = {
+								primary_culture = swiss
+								primary_culture = swabian
+							}
 						}
 					}
 				}
@@ -251,7 +258,7 @@ ulm_imperial_misc_missions = {
 		}
 		
 		effect = {
-			treasury = -600
+			add_treasury = -600
 			1872 = {
 				add_permanent_province_modifier = {
 					name = ulm_defensive_overhaul
@@ -311,28 +318,32 @@ ulm_province_development = {
 			add_prestige = 10
 			1872 = {
 				add_permanent_province_modifier = {
-					name = ulm_city_tier_one
+					name = "ulm_city_tier_one"
 				}
 			}
 		}
 	}
 	
-	ulm_early_municipal_safeguards = {
+	ulm_municipal_safeguards = {
 		icon = mission_colonial
 		required_missions = { ulm_a_free_city }
 		position = 2
-		
+
+		provinces_to_highlight = {
+			province_id = 1872
+		}
+
 		trigger = {
 			army_size_percentage = 1
 			treasury = 100
 		}
 		
 		effect = {
-			add_treasury = -50
+			add_treasury = -100
 			1872 = {
 				add_building = fort_15th
 				add_permanent_province_modifier = {
-					name = ulm_defensive_safeguards
+					name = "ulm_defensive_safeguards"
 					duration = -1
 				}
 			}
@@ -341,7 +352,7 @@ ulm_province_development = {
 	
 	ulm_establish_milf = {
 		icon = mission_ottoman_harem
-		required_missions = { ulm_imperial_bankers ulm_early_municipal_safeguards ulm_scriveners }
+		required_missions = { ulm_imperial_bankers ulm_municipal_safeguards ulm_scriveners }
 		position = 4
 		
 		trigger = {
@@ -350,7 +361,7 @@ ulm_province_development = {
 			}
 			employed_advisor = {
 				type = spymaster
-				level = 3
+				skill = 3
 			}
 			has_reform = provincial_governments_reform #replace with unique M.I.L.F.s gov't form
 		}
@@ -386,7 +397,7 @@ ulm_province_development = {
 			change_government_reform_progress = 150
 			1872 = {
 				add_permanent_province_modifier = {
-					name = ulm_city_tier_two
+					name = "ulm_city_tier_two"
 					duration = -1
 				}
 			}
@@ -437,7 +448,7 @@ ulm_province_development = {
 			add_prestige = 100
 			1872 = {
 				add_permanent_province_modifier = {
-					name = ulm_city_tier_4
+					name = "ulm_city_tier_four"
 					duration = -1
 				}
 			}
@@ -466,7 +477,7 @@ ulm_province_development = {
 			add_mil_power = 300
 			1872 = {
 				add_permanent_province_modifier = {
-					name = ulm_city_tier_5
+					name = "ulm_city_tier_five"
 					duration = -1
 				}
 			}
@@ -492,12 +503,15 @@ ulm_misc_tree = {
 			innovativeness = 20
 			employed_advisor = {
 				type = natural_scientist
-				level = 2
 			}
 		}
 		
 		effect = {
-		
+			change_innovativeness = 20
+			add_country_modifier = {
+				name = "clerical_scriviners_in_government"
+				duration = -1
+			}
 		}
 	}
 	
@@ -555,7 +569,12 @@ ulm_religion_missions = {
 		}
 		
 		effect = {
-			add_prestige = 1
+			add_prestige = 10
+			add_great_project = {
+				type = ulm_minster_great_project
+				tier = 2
+				instant = no 
+			}
 			# country_event = { ulm_zael_event.4 } # spend money and give church crownland for papal influence, temp relations, and perm church influence down. Or don't and piss off pope/lose prestige/temperory clergy influence increase.
 		}
 	}
@@ -581,7 +600,7 @@ ulm_religion_missions = {
 			add_years_of_income = 1
 			1872 = {
 				add_permanent_province_modifier = {
-					name = ulm_minster_established
+					name = "ulm_minster_established"
 					duration = -1
 				}
 			}

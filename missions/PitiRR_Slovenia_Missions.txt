@@ -542,8 +542,8 @@ slv_3_column_mission = {
 		effect = {
 			1769 = {
 				add_province_modifier = {
-					name = slv_dev_up_devboy
-					duration = 7300
+					name = slv_gorizia_1
+					duration = -1
 				}
 			}
 		}
@@ -563,7 +563,39 @@ slv_3_column_mission = {
 		
 		effect = {
 			add_prestige = 20
-			custom_tooltip = slv_can_build_kropa_mine_tt
+            1769 = {
+				if = {
+					limit = {
+						has_great_project = {
+							type = alhambra
+							tier = 0
+						}
+					}
+					add_great_project_tier = {
+						type = kropa_mine
+						tier = 2
+					}
+				}
+				else_if = {
+					limit = {
+						has_great_project = {
+							type = alhambra
+							tier = 1
+						}
+					}
+					add_great_project_tier = {
+						type = kropa_mine
+						tier = 1
+					}
+				}
+			}
+			1769 = { remove_province_modifier = slv_gorizia_1 }
+			1769 = {
+				add_province_modifier = {
+					name = slv_gorizia_2
+					duration = -1
+				}
+			}
 		}
 	}
 }
