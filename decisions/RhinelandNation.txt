@@ -47,6 +47,7 @@ country_decisions = {
 		}
 		effect = {
 			change_tag = RHI
+			swap_non_generic_missions = yes
 			hesse_area = {
 				limit = {
 					NOT = { owned_by = ROOT }

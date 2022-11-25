@@ -8,7 +8,10 @@ country_decisions = {
 			is_colonial_nation = no
 			is_former_colonial_nation = no
 
-            culture = pontic_greek
+			NOT = { tag = BYZ }
+			NOT = { tag = PAP }
+            primary_culture = pontic_greek
+			
 			NOT = { has_country_flag = formed_pontus_flag }
 			NOT = { exists = POE }
 		}
@@ -40,12 +43,12 @@ country_decisions = {
 		effect = {
 			if = {
 				limit = {
-					NOT = { government_rank = 3 }
+					NOT = { government_rank = 2 }
 				}
 				hidden_effect = {
 					set_in_empire = no
 				}
-				set_government_rank = 3
+				set_government_rank = 2
 			}
 			change_tag = POE
 			swap_non_generic_missions = yes

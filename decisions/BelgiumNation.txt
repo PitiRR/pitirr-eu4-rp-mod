@@ -28,6 +28,7 @@ country_decisions = {
             }
 		}
 		allow = {
+			always = no #unfinished
 			adm_tech = 10
 			is_at_war = no
             owns_core_province = 92			#Brussels
@@ -73,6 +74,7 @@ country_decisions = {
 				set_government_rank = 2
 			}
 			change_tag = BGM
+			swap_non_generic_missions = yes
 			picardy_area = {
 				limit = {
 					NOT = { owned_by = ROOT }

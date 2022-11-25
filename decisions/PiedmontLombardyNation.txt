@@ -31,7 +31,7 @@ country_decisions = {
             }
 		}
 		allow = {
-			adm_tech = 7
+			adm_tech = 10
 			is_at_war = no
             owns_core_province = 103	#Turin
             owns_core_province = 104    #Milan
@@ -118,6 +118,7 @@ country_decisions = {
 				set_government_rank = 2
 			}
 			change_tag = PLM
+			swap_non_generic_missions = yes
 			piedmont_area = {
 				limit = {
 					NOT = { owned_by = ROOT }

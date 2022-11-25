@@ -1,0 +1,39 @@
+﻿l_english:
+  pom_internal_matters_title:0 "Home matters"
+  pom_internal_matters_desc:0 "It would be unwise to start major wars and engage in trade conflicts without building a base. We should improve our capital so that our position in Germany is strengthened."
+  pom_develop_trade_title:0 "Develop trade"
+  pom_develop_trade_desc:0 "Trade is key to the Baltic economy. Hansa has a lot of influence, but so do we after reuniting [Root.GetName]. We should begin serious competition, and disrupt the Hanseatic monopoly."
+  pom_develop_economy_title:0 "Develop Economy"
+  pom_develop_economy_desc:0 "We can now begin a feedback loop, in which successful trade ships generate income to improve economy at home, which in turns improves traders. Let's do the first lap of this cycle instead of daydreaming about it."
+  pom_enlightement_title:0 "[Root.GetName] Enlightement"
+  pom_enlightement_desc:0 "A new wave of thought is flowing through Europe, empiricism is flourishing and education is becoming the make or break of an empire. We cannot fall, and we should improve in the education of our own people."
+  pom_army_of_pomerania_title:0 "Army of [Root.GetName]"
+  pom_army_of_pomerania_desc:0 "No state can function without an army. It is imperative we have a functional and acceptably large army."
+  pom_infantry_focus_title:0 "Infantry Focus"
+  pom_infantry_focus_desc:0 "Infantry is becoming the king of the battlefield very quickly. Our strategists believe we shouldn't just recruit cannon fodder, but sufficiently supply and train our troops."
+  pom_galley_focus_title:0 "Galley Focus"
+  pom_galley_focus_desc:0 "While army is very important, so is the navy, especially in the Baltic Sea. We should construct both light ships as well as galleys to protect them. Enough galleys to protect us from our rivals."
+  pom_expand_eastwards_title:0 "Expand Eastwards"
+  pom_expand_eastwards_desc:0 "Sike! You thought this navy was for defensive purposes only? If it just stays in ports it's a waste. We should conquer Estonia and the Neva estuary, so as to cement our influence in the Baltic Sea."
+  pom_conquer_novgorod_title:0 "Conquer Novgorod"
+  pom_conquer_novgorod_desc:0 "Our naval invasions have been ultimately a huge success. With an improved economy and larger army, we should be able to continue expansion into Russia to control most trade flowing through the Neva river to the Baltic."
+  pom_conquer_baltic_title:0 "Mare Nostrum"
+  pom_conquer_baltic_desc:0 "It is not enough to be influential - we should conquer the Baltic coast and create our very own Mare Nostrum, just like the Romans."
+
+  own_all_provs_around_baltic_trigger_tt:0 "The entire §YBaltic Coast§! is owned by §Y[Root.GetName]§!."
+  claims_on_baltic_coast_tt:0 "§Y[Root.GetName]§! gains a permanent claim on the entire §YBaltic Coast§!."
+
+  pom_mare_nostrum:0 "Mare Nostrum"
+  desc_pom_mare_nostrum:0 "We directly own the entirety of the Baltic Coast. We have an unparalleled power in the region."
+
+  pom_enlightement_modifier:0 "Pomeranian Enlightement"
+  desc_pom_enlightement_modifier:0 "Enlightement ideals are flourishing in Pomerania like nowhere else and we are benefitting as a result of that."
+
+  pom_developed_eco:0 "Well-off generation"
+  desc_pom_developed_eco:0 "Thanks to our efforts to developed Pomerania, we have secured a generation of Germans who are safe from poverty."
+
+  pom_good_trade:0 "Good trade policy"
+  desc_pom_good_trade:0 "Our efforts to compete in the Baltic are paying off. We are benefitting from unusually increased trade income, until our rivals catch up."
+
+  pom_developed_capital:0 "Pomerania Prospers"
+  desc_pom_developed_capital:0 "Developing our capital trickles down to all of Pomerania, where everyone benefits."

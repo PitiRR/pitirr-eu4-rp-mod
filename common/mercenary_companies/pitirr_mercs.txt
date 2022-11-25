@@ -1,0 +1,31 @@
+merc_eth_janissaries_company = {
+    regiments_per_development = 0.03
+    home_province = 1211
+	cost_modifier = 0.25
+	sprites = { dlc002_tur_sprite_pack dlc042_tur_sprite_pack tur_base_sprite_pack }
+    trigger = {
+		is_allowed_to_recruit_mercenaries = yes
+		OR = {
+			AND = {
+				mission_completed = yem_anti_mamluks_diplo
+				exists = TUR
+			}
+			AND = {
+				tag = ADA
+				exists = TUR
+				has_global_flag = eth_ottoman_company_available
+				has_country_flag = aju_can_use_janissaries_mercs
+			}
+			OR = {
+				is_subject_of = TUR
+				alliance_with = TUR
+				is_subject_of = RUM
+				alliance_with = RUM
+			}
+		}
+	}
+    modifier = {
+		shock_damage_received = -0.1
+		fire_damage_received = -0.1
+	}
+}

@@ -1,0 +1,32 @@
+namespace = pitirr_flavor_kus
+
+country_event = { # Kurdistan gets to temporarily buff tolerance or get stronger conversion cost
+    id = pitirr_flavor_kus.1
+    title = pitirr_flavor_kus.1.title
+    desc = pitirr_flavor_kus.1.desc
+    picture = RAMADAN_eventPicture
+
+    fire_only_once = yes
+	is_triggered_only = yes
+
+    option = {
+        # Tolerance
+        name = pitirr_flavor_kus.1.a
+		add_country_modifier = {
+			name = kus_schism_tolerate
+			duration = 7300
+		}
+		add_piety = 0.5
+		set_country_flag = kus_tolerating
+    }    
+    option = {
+        # Conversion
+        name = pitirr_flavor_poe.1.b
+		add_country_modifier = {
+			name = kus_schism_convert
+			duration = 7300
+		}
+		add_piety = -0.5
+		set_country_flag = kus_converting
+    }
+}
