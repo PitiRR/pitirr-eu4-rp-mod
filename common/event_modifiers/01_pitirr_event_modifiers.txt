@@ -193,3 +193,62 @@ persian_carpets_abroad = {
     trade_goods_size_modifier = 0.1
     local_prosperity_growth = 0.1
 }
+
+rhi_professional_army = { #50 years
+    yearly_army_professionalism = 0.005 # 50 * 0.005 = 25%
+}
+rhi_professional_army_2 = { #permanent
+    army_tradition_decay = -0.01
+}
+
+rhi_nobles_happy = {
+    nobles_loyalty_modifier = 0.1
+}
+rhi_church_happy = {
+    church_loyalty_modifier = 0.1
+}
+rhi_burghers_happy = {
+    burghers_loyalty_modifier = 0.1
+}
+
+rhi_created_zollverein = {
+    global_own_trade_power = 0.1
+    global_prov_trade_power_modifier = 0.1
+}
+
+rhi_leading_zollverein = { 	
+    trade_efficiency = 0.1
+    global_trade_power = 0.1
+}
+
+rhi_united_heartlands = {
+    global_autonomy = -0.05
+    global_prosperity_growth = 0.01
+}
+
+rhi_internal_focus = {
+    development_cost = -0.1
+    global_prosperity_growth = 0.01
+}
+
+rhi_richest_in_europe = {
+    trade_efficiency = 0.1
+    production_efficiency = 0.1
+    global_tax_modifier = 0.1
+    global_prosperity_growth = 0.2
+}
+
+rhi_estates_happy = {
+    all_estate_loyalty_equilibrium = 0.1
+}
+
+rhi_industrialization_pioneer = {
+    trade_goods_size_modifier = 0.1
+    development_cost_modifier = -0.1
+}
+
+rhi_growth_of_cities = {
+    local_development_cost_modifier = -0.1
+    local_tax_modifier = 0.25
+    local_manpower_modifier = 0.25
+}

@@ -3,6 +3,6 @@ tags={
 	"Balance"
 }
 name="PitiRR's RP Mod (github)"
-path="mod/pitirr-eu4-rp-mod"
-#picture="PitiRR_RP_Mod.png"
 supported_version="1.34.*"
+path="C:/Users/Piotr/Documents/Paradox Interactive/Europa Universalis IV/mod/pitirr-eu4-rp-mod"
+remote_file_id="2890580432"
