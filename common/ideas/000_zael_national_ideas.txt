@@ -1,4 +1,5 @@
 tunis_ideas = {
+	free = yes
 	start = {
 		galley_power = 0.25
 		may_perform_slave_raid = yes
@@ -42,6 +43,7 @@ tunis_ideas = {
 }
 
 scotland_ideas = {
+	free = yes
 	start = {
 		land_forcelimit_modifier = 0.33
 		leader_land_shock = 1
@@ -85,6 +87,7 @@ scotland_ideas = {
 }
 
 pomerania_ideas = { # feels weird to not type "pomeranian"
+	free = yes
 	start = {
 		land_morale = 0.1
 		light_ship_cost = -0.2
@@ -126,6 +129,7 @@ pomerania_ideas = { # feels weird to not type "pomeranian"
 }
 
 arabia_ideas = {
+	free = yes
 	start = {
 		movement_speed = 0.1
 		land_attrition = -0.33
@@ -140,7 +144,7 @@ arabia_ideas = {
 	}
 	
 	indian_ocean_trade = {
-		trade_steering = 0.5
+		trade_steering = 0.4
 	}
 	arabian_horses = {
 		cavalry_cost = -0.3
@@ -170,10 +174,11 @@ arabia_ideas = {
 }
 
 ulm_ideas = {
+	free = yes
 	start = {
 		own_territory_dice_roll_bonus = 1
 		trade_efficiency = 0.1
-		governing_capacity_modifier = -0.99
+		# governing_capacity_modifier = -0.99
 	}
 	
 	bonus = {
@@ -181,7 +186,7 @@ ulm_ideas = {
 	}
 	
 	trigger = {
-		tag = ulm
+		tag = ULM
 	}
 	
 	grosser_schworbrief = {
