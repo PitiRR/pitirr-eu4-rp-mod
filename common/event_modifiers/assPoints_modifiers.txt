@@ -1,7 +1,0 @@
-assPoints_one = {
-
-}
-
-assPoints_two = {
-	
-}
