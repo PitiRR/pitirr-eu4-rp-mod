@@ -2,3 +2,11 @@
   #parking lot for copy paste: §Y §!
   koj_convert_provinces_at_formation_french_tt:0 "All owned provinces in the §YLevant§! Subcontinent and in the §YFrench§! Culture Group will become §YFranco-Levantine§!."
   koj_convert_provinces_at_formation_greek_tt:0 "All owned provinces in the §YLevant§! Subcontinent and in the §YByzantine§! Culture Group will become §YGreco-Levantine§!."
+
+  has_any_manufactory_tt:0 "Has §Yany§! manufactory building."
+
+  rhi_buy_free_city_title:0 "Buy a Free City"
+  rhi_buy_free_city_desc:0 "Using our influence within the Empire, we can annex a Free City by handsomely compensating the Emperor."
+
+  remember_the_bruce:0 "Remember the Bruce" # New Scottish national idea in 000_zael+national_ideas.txt
+  remember_the_bruce_desc:0 "Robert I the Bruce led a fierce rebellion against Edward I, tyrant of England. It is believed he saw a spider in his prison cell try to anchor its web six time, and succeeded only after 7 tries. Seeing this as an omen, he saw this as a sign to continue his struggle against the English. In 1314, he won against the English and became King of Scotland until 1329. Let his memory live on forever in our hearts."

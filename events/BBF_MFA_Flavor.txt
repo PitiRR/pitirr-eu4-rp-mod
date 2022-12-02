@@ -1,0 +1,306 @@
+namespace = bbf_mfa_event
+
+# Byzantine Crown and our Legacy
+country_event = {
+	id = bbf_mfa_event.1
+	title = "MFA_EVENT.1"
+	desc = "MFA_EVENT_DESC.1"
+	picture = COURT_eventPicture
+	
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = "MFA_EVENT.1A"			# We must support Byzantium
+		add_historical_friend = BYZ
+		hidden_effect = {
+			BYZ = { add_historical_friend = ROOT }
+		}
+		add_ruler_modifier = {
+			name = mfa_friends_byzantium 
+			duration = -1
+		}
+		ai_chance = { 
+			factor = 1
+		}
+	}
+	option = {
+		name = "MFA_EVENT.1B"			# No, Byzantium should be ours!
+		set_country_flag = mfa_seize_byzantium_flag
+		add_prestige = 10
+		add_opinion = {
+    			who = BYZ
+    			modifier = BYZ_claimed_throne 
+		}
+		reverse_add_opinion = {
+    			who = BYZ
+    			modifier = BYZ_claimed_throne 
+		}
+		if = {
+			limit = {
+				exists = BYZ
+				valid_for_personal_unions_trigger = yes
+				BYZ = {
+					valid_for_personal_unions_trigger = yes
+				}
+			}
+			add_casus_belli = {
+				type = cb_restore_personal_union
+				months = 300
+				target = BYZ
+			}
+		}
+		else = {
+			144 = { add_permanent_claim = ROOT }
+			145 = { add_permanent_claim = ROOT }
+			146 = { add_permanent_claim = ROOT }
+			147 = { add_permanent_claim = ROOT }
+			148 = { add_permanent_claim = ROOT }
+			4779 = { add_permanent_claim = ROOT }
+			1773 = { add_permanent_claim = ROOT }
+			1853 = { add_permanent_claim = ROOT }
+			4699 = { add_permanent_claim = ROOT }
+			4705 = { add_permanent_claim = ROOT }
+			4702 = { add_permanent_claim = ROOT }
+		}
+		hidden_effect = {
+			add_trust = {
+    				who = BYZ
+    				value = -100
+   				mutual = yes
+			}
+		}
+		ai_chance = { 
+			factor = 0
+		}
+	}
+}
+# Byzantium and [From.GetName]
+country_event = {
+	id = bbf_mfa_event.2
+	title = "MFA_EVENT.2"
+	desc = "MFA_EVENT_DESC.2"
+	picture = POPE_PREACHING_eventPicture
+	
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = "MFA_EVENT.2A"			# Let us end the Schism
+		change_religion = catholic
+		capital_scope = { change_religion = catholic }
+		ai_chance = { 
+			factor = 1
+		}
+	}
+	option = {
+		name = "MFA_EVENT.2B"			# Remain Orthodox
+		add_prestige = 10
+		reverse_add_opinion = {
+    			who = FROM
+    			modifier = MFA_refused_catholic
+		}
+		ai_chance = { 
+			factor = 2
+			modifier = {
+				factor = 0
+				BYZ = {	is_subject_of = FROM	}
+			}
+		}
+	}
+}
+# Question the Pope
+country_event = {
+	id = bbf_mfa_event.3
+	title = "MFA_EVENT.3"
+	desc = "MFA_EVENT_DESC.3"
+	picture = RELIGIOUS_CONVERSION_eventPicture
+	
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = "MFA_EVENT.3A"			# Side with the Pope
+		if = {
+			limit = { religion = catholic }
+			add_papal_influence = 10
+		}
+		change_religion = catholic
+		capital_scope = { change_religion = catholic }
+		if = {
+			limit = {
+				NOT = { has_country_flag = mfa_catholic_path_flag }
+				NOT = { has_country_flag = mfa_noncatholic_path_flag }
+			}
+			set_country_flag = mfa_catholic_path_flag
+			custom_tooltip = mfa_catholic_path_tt
+			hidden_effect = { swap_non_generic_missions = yes }
+		}
+		ai_chance = { 
+			factor = 1
+		}
+	}
+	option = {
+		name = "MFA_EVENT.3B"			# Orthodoxy is better
+		if = {
+			limit = { religion = catholic }
+			add_patriarch_authority = 0.1
+		}
+		change_religion = orthodox
+		capital_scope = { change_religion = orthodox }
+		if = {
+			limit = {
+				NOT = { has_country_flag = mfa_catholic_path_flag }
+				NOT = { has_country_flag = mfa_noncatholic_path_flag }
+			}
+			set_country_flag = mfa_noncatholic_path_flag
+			custom_tooltip = mfa_noncatholic_path_tt
+			hidden_effect = { swap_non_generic_missions = yes }
+		}
+		ai_chance = { 
+			factor = 1
+		}
+	}
+	option = {
+		name = "MFA_EVENT.3C"			# Protestantism is the only way forward
+		trigger  = {
+			NOT = { exists = BYZ }
+			NOT = { exists = ROM }
+			is_religion_enabled = protestant 
+		}
+		if = {
+			limit = { religion = catholic }
+			add_church_power = 10
+		}
+		change_religion = protestant
+		capital_scope = { change_religion = protestant }
+		if = {
+			limit = {
+				NOT = { has_country_flag = mfa_catholic_path_flag }
+				NOT = { has_country_flag = mfa_noncatholic_path_flag }
+			}
+			set_country_flag = mfa_noncatholic_path_flag
+			custom_tooltip = mfa_noncatholic_path_tt
+			hidden_effect = { swap_non_generic_missions = yes }
+		}
+		ai_chance = { 
+			factor = 1
+		}
+	}
+}
+# Invade the Papacy?
+country_event = {
+	id = bbf_mfa_event.4
+	title = "MFA_EVENT.4"
+	desc = "MFA_EVENT_DESC.4"
+	picture = PRINCE_BISHOP_RESIGN_eventPicture
+	
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = mfa_attack_pope_flag 
+	}
+
+	option = {
+		name = "MFA_EVENT.4A"			# Rome shall be ours!
+		lazio_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		central_italy_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		ai_chance = { 
+			factor = 2
+			modifier = {
+				factor = 0
+				religion = catholic
+			}
+		}
+	}
+	option = {
+		name = "MFA_EVENT.4B"			# No, leave the Pope alone
+		if = {
+			limit = {
+				NOT = { religion_group = christian }
+			}
+			add_prestige = 10
+		}
+		else = {
+			add_patriarch_authority = 0.10
+			add_church_power = 10
+			add_church_power = 10
+			add_papal_influence = 10
+		}
+		ai_chance = { 
+			factor = 1
+		}
+	}
+}
+# End the Heathen Order
+country_event = {
+	id = bbf_mfa_event.5
+	title = "MFA_EVENT.5"
+	desc = "MFA_EVENT_DESC.5"
+	picture = POPE_PREACHING_eventPicture
+	
+	major = yes
+	trigger = {
+		religion = catholic
+		118 = { 
+			has_province_modifier = BBF_MFA_new_christain_order
+			owned_by = ROOT
+		}
+	}
+
+	option = {
+		name = "MFA_EVENT.5A"			# Glory to Rome!
+		add_prestige = 10
+		add_papal_influence = 10
+		118 = { 
+			remove_province_triggered_modifier = BBF_MFA_new_christain_order
+			religion = catholic
+		}
+	}
+}
+# Papacy Revokes our Excommunication
+country_event = {
+	id = bbf_mfa_event.6
+	title = "MFA_EVENT.6"
+	desc = "MFA_EVENT_DESC.6"
+	picture = POPE_PREACHING_eventPicture
+	
+	major = yes
+	trigger = {
+		NOT = { tag = PAP }
+		is_excommunicated = yes
+		religion = catholic
+		has_country_flag = get_out_of_excommunication_free_flag
+	}
+
+	option = {
+		name = "MFA_EVENT.6A"			# Thank God!
+		if = {
+			limit = { is_excommunicated = yes }
+			excommunicate = ROOT
+			clr_country_flag = get_out_of_excommunication_free_flag
+		}
+		hidden_effect = {
+			add_opinion = {
+    				who = PAP
+    				modifier = MFA_welcomed_back
+			}
+			reverse_add_opinion = {
+    				who = PAP
+    				modifier = MFA_influenced_papacy_opinion
+			}
+		}
+	}
+}

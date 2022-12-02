@@ -128,7 +128,7 @@ pomerania_ideas = { # feels weird to not type "pomeranian"
 	}
 }
 
-arabia_ideas = {
+arabian_ideas = {
 	free = yes
 	start = {
 		movement_speed = 0.1
@@ -183,6 +183,11 @@ ULM_ideas = {
 	
 	bonus = {
 		yearly_army_professionalism = 0.002
+		governing_capacity_modifier = -0.99
+	}
+	
+	bonus = {
+		yearly_army_professionalism = 0.0025
 	}
 	
 	trigger = {
@@ -191,6 +196,7 @@ ULM_ideas = {
 	
 	ulm_grosser_schwoerbrief = {
 		burgher_loyalty_equilibrium = 0.1
+		burghers_loyalty_modifier = 0.1
 		republican_tradition = 0.2
 	}
 	ulm_swabian_league = {
@@ -217,6 +223,16 @@ ULM_ideas = {
 	ulm_minster = {
 		tolerance_own = 2
 		monthly_church_power = 0.03
+		development_cost = -0.3
+	}
+	ulm_swiss_mercs = {
+		discipline = 0.075
+		army_tradition_decay = -0.01
+		possible_condottieri = 1
+	}
+	ulm_minster = {
+		tolerance_own = 2
+		monthly_church_power = 0.025
 		monthly_fervor_increase = 1
 	}
 }

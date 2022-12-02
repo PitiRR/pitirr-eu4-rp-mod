@@ -1,0 +1,67 @@
+# Province Triggered modifiers are here.
+# These are added to provinces through the add_province_triggered_modifier effect
+#
+# Effects are fully scriptable here.
+
+rhi_jewel_of_germany_tm = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+	
+	trigger = {
+		owner = {
+			tag = rhi
+		}
+	}
+
+	trade_goods_size_modifier = 0.1
+	local_development_cost_modifier = -0.025
+}
+rhi_cloth_of_aachen_tm = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+	
+	trigger = {
+		owner = {
+			tag = rhi
+		}
+	}
+
+	trade_goods_size_modifier = 0.1
+	local_development_cost_modifier = -0.025
+}
+rhi_mossele_valley_tm = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+	
+	trigger = {
+		owner = {
+			tag = rhi
+		}
+	}
+
+	trade_goods_size_modifier = 0.1
+	local_development_cost_modifier = -0.025
+}
+
+rhi_jewish_minority_tm = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		religion = jewish
+		OR = {
+			owned_by = RHI
+			tolerance_to_this = 2
+		}
+	}
+
+	local_religious_unity_contribution = -1
+	local_missionary_strength = -1
+	local_production_efficiency = 0.2
+	local_development_cost = -0.1
+	interest = -0.5
+}

@@ -71,7 +71,7 @@ rhineland_ideas = {
         possible_condottieri = 1
 	}
 	RHI_bishoprics_league = {
-        monthly_church_power = 0.025
+        monthly_church_power = 0.05
         papal_influence = 2
         monthly_fervor_increase = 2
 	}
@@ -80,8 +80,6 @@ rhineland_ideas = {
 	}
 	RHI_early_industrialization = {
         global_trade_goods_size_modifier = 0.1
-        governing_cost = 0.75
-        expand_administration_cost = -0.5
 	}
 }
 
