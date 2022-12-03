@@ -1,0 +1,202 @@
+romance_senate_reform = {
+	icon = "signoria_reform"
+	allow_normal_conversion = yes
+	valid_for_nation_designer = yes
+	nation_designer_cost = 40
+	royal_marriage = yes
+	heir = no
+	potential = {
+		OR = {
+			tag = RIG
+			culture_group = latin
+			culture_group = byzantine
+			dynasty = "palaiologos"
+			dynasty = "macedonian"
+			dynasty = "komnenos"
+		}
+	}
+	nation_designer_trigger = {
+		OR = {
+			culture_group = byzantine
+			culture_group = latin
+		}
+	}
+	modifiers = {
+		global_autonomy = -0.025
+		all_estate_loyalty_equilibrium = 0.1
+		max_absolutism = -20
+	}
+	custom_attributes = {
+		enables_plutocratic_idea_group = yes
+		enables_aristocratic_idea_group = no
+		enables_nepotism = yes
+	}
+	ai = {	
+		factor = 1
+	}
+
+	conditional = {
+		allow = { has_dlc = "Common Sense" }
+		has_parliament = yes
+		heir = no
+	}
+
+	conditional = {
+        allow = { has_dlc = "Res Publica" }
+        queen = no
+        heir = no
+        duration = 2
+        has_term_election = yes
+        states_general_mechanic = {
+            consuls = {
+				monthly_reform_progress_modifier = 0.1
+				discipline = 0.025
+            }
+
+            magistrates = {
+				idea_cost = -0.1
+				all_estate_loyalty_equilibrium = 0.05 # Replace with bribe parliament cost reduction
+				all_estate_influence_modifier = 0.05
+            }
+        }
+    }
+}
+
+islamicized_political_dynasties_reform = {
+	icon = "signoria_reform"
+	allow_normal_conversion = yes
+    valid_for_nation_designer = yes
+	nation_designer_cost = 40
+	royal_marriage = yes
+
+	potential = {
+		religion_group = muslim
+		capital_scope = {
+			superregion = central_america_superregion
+		}
+	}
+
+	modifiers = {
+		monarch_diplomatic_power = 1
+		monthly_reform_progress_modifier = 0.1
+		no_religion_penalty = yes
+		yearly_corruption = 0.1
+	}
+	custom_attributes = {
+		enables_nepotism = yes
+	}
+	ai = {	
+		factor = 1
+	}
+	lock_level_when_selected = yes
+}
+
+settled_khanate_reform = {
+    icon = "native_war_band_reform"
+    allow_normal_conversion = yes
+    potential = {
+		OR = {
+			have_had_reform = steppe_horde
+			have_had_reform = settled_khanate_reform
+			has_reform = settled_khanate_reform
+		}
+    }
+    valid_for_nation_designer = yes
+    nation_designer_cost = 40
+    royal_marriage = yes
+
+    modifiers = {
+		vassal_forcelimit_bonus = 1
+        tolerance_heathen = 3
+    }
+
+    ai = {
+        factor = 100 # AI should always pick this
+    }
+
+	conditional = {
+		allow = {
+			has_dlc = "Origins"
+		}
+		custom_attributes = {
+			has_itinerant_capital = yes
+		}
+	}
+
+    conditional = {
+		custom_attributes = {
+			disables_estate_nobles = yes
+		}
+        allow = { has_dlc = "Res Publica" }
+        heir = no
+        duration = 20
+        has_term_election = yes
+        states_general_mechanic = {
+            decentralized = {
+                country_military_power = 1
+				army_tradition_from_battle = 0.5
+				liberty_desire_from_subject_development = -0.25
+
+            }
+
+            centralized = {
+                same_culture_advisor_cost = -0.15
+				years_of_nationalism = -10
+                army_tradition = 0.5
+            }
+        }
+    }
+	
+	custom_attributes = {
+		enables_estate_nomadic_tribes = yes
+	}
+}
+
+multicultural_empire = {
+	icon = "peasants"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			religion_group = muslim
+			religion_group = christian
+		}
+		OR = {
+			AND = {
+				tag = KUS
+				NOT = { map_setup = map_setup_random }
+			}
+			capital_scope = {
+				superregion = near_east_superregion
+			}
+		}
+	}
+	maintain_dynasty = yes
+
+	valid_for_nation_designer = yes
+	nation_designer_cost = 60
+
+	nation_designer_trigger = {
+		OR = {
+			religion_group = muslim
+			religion_group = christian
+		}
+	}
+
+	modifiers = {
+		num_accepted_cultures = 3
+		promote_culture_cost = -0.5
+		reduced_liberty_desire = 10
+		vassal_income = 0.33
+		accept_vassalization_reasons = 5
+		manpower_in_accepted_culture_provinces = 0.1
+		culture_conversion_cost = 1
+	}
+
+	conditional = {
+		allow = { has_dlc = "Cradle of Civilization" }
+		government_abilities = {
+			mamluk_mechanic
+		}
+	}
+	lock_level_when_selected = yes
+}
