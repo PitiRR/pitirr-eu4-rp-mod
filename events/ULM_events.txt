@@ -1,0 +1,41 @@
+namespace = ulm_zael_event
+
+#Swabians and the Swiss
+country_event = {
+	id = ulm_zael_event.1
+	title = ulm_zael_event.1.t
+	desc = ulm_zael_event.1.d
+	picture = DIPLOMACY_eventPicture
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ulm_zael_event.1.a # Choose the swabians
+		add_casus_belli = {
+			target = SWI
+			type = cb_vassalize_mission
+			months = 36
+		}
+		1872 = {
+			add_base_tax = 1
+			add_base_production = 2
+		}
+	}
+	
+	option = {
+		name = ulm_zael_event.1.b # Align with the Swiss
+		change_primary_culture = swiss
+		set_ruler_culture = swiss
+		1872 = {
+			change_culture = swiss
+			add_base_manpower = 5
+		}
+	}
+	
+	option = {
+		name = ulm_zael_event.1.c # "We are tired of their squabbling"
+		add_prestige = 10
+	}
+}

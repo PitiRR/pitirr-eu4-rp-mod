@@ -19,7 +19,7 @@ ulm_defensive_overhaul = {
 
 ##### ULM FREE CITY IMPROVEMENT ##### (to cope with being an OPM)
 ulm_city_tier_one = {
-	owner = {
+	ROOT = {
 		has_reform = free_city
 	}
 	land_forcelimit = 10
@@ -30,7 +30,7 @@ ulm_city_tier_one = {
 }
 
 ulm_city_tier_two = {
-	owner = {
+	ROOT = {
 		has_reform = free_city
 	}
 	land_forcelimit = 50
@@ -41,7 +41,7 @@ ulm_city_tier_two = {
 }
 
 ulm_city_tier_three = {
-	owner = {
+	ROOT = {
 		has_reform = free_city
 	}
 	land_forcelimit = 100
@@ -52,7 +52,7 @@ ulm_city_tier_three = {
 }
 
 ulm_city_tier_four = {
-	owner = {
+	ROOT = {
 		has_reform = free_city
 	}
 	land_forcelimit = 160
@@ -64,7 +64,7 @@ ulm_city_tier_four = {
 }
 
 ulm_city_tier_four = {
-	owner = {
+	ROOT = {
 		has_reform = free_city
 	}
 	land_forcelimit = 160
@@ -82,7 +82,7 @@ clerical_scriviners_in_government = {
 }
 
 ulm_minster_established = {
-	owner = {
+	ROOT = {
 		tag = ULM
 	}
 	monthly_splendor = 2

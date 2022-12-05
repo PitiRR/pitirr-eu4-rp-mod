@@ -59,10 +59,10 @@ rhineland_ideas = {
         global_own_trade_power = 0.2
         mercantilism_cost = -0.25
 	}
-	RHI_ = {
+	RHI_agricultural_revolution = {
         global_manpower_modifier = 0.25
 	}
-	RHI_ = {
+	RHI_prussian_model = {
         discipline = 0.05
 	}
 	RHI_hessian_mercenaries = {
@@ -84,44 +84,44 @@ rhineland_ideas = {
 }
 
 sarmatia_ideas = {
-	start = {
+    start = {
         global_tax_modifier = 0.2
         prestige = 1
-	}
-	
-	bonus = {
+    }
+    
+    bonus = {
         shock_damage = 0.15
-	}
-	
-	trigger = {
-		tag = SMT
-	}
-	free = yes
-	
-	SMT_ = {
+    }
+    
+    trigger = {
+        tag = SMT
+    }
+    free = yes
+    
+    SMT_ruthenian_refugees = {
         manpower_recovery_speed = 0.10
-	}
-	SMT_ = {
+    }
+    SMT_the_free_steppe = {
         province_warscore_cost = -0.2
-	}
-	SMT_ = {
-        cavalry_power = 0.2
-        cav_to_inf_ratio = 0.25
-	}
-	SMT_ = { 	
+    }
+    SMT_united_cossack_hosts = {
+        cavalry_power = 0.15
+        cav_to_inf_ratio = 0.2
+    }
+    SMT_reestablish_trade_routes = {     
         global_own_trade_power = 0.25
-	}
-	SMT_ = {
+    }
+    SMT_warriors_with_a_state = {
         army_tradition_from_battle = 0.5
-	}
-	SMT_ = {
+    }
+    SMT_cavalry_traditions = {
         possible_mil_policy = 1
-	}
-	SMT_sich_rada = {
+    }
+    SMT_sich_rada = {
         republican_tradition = 0.5
         legitimacy = 1
-        devotion = 1 	
-	}
+        devotion = 1     
+    }
 }
 
 belgium_ideas = {
@@ -129,8 +129,6 @@ belgium_ideas = {
 	}
 	
 	bonus = {
-		production_efficiency = 0.1
-		ship_cost = -0.1
 	}
 	
 	trigger = {
@@ -138,30 +136,19 @@ belgium_ideas = {
 	}
 	free = yes
 	
-	BGM_coastal_traders = {
-		global_ship_trade_power = 0.2
-		light_ship_power = 0.25
+	BGM_ = {
 	}
-	BGM_fertile_lands = {
-		development_cost = -0.1
+	BGM_ = {
 	}
-	BGM_employ_spanish_cartographers = { # invited on pretense of mapping new belgian settlements from idea 2 rp
-		range = 0.33
-		may_explore = yes
+	BGM_ = {
 	}
-	BGM_lenient_banking = { # invite jews and the like, overlook what is not allowed in catholicism
-		interest = -0.5
-		trade_efficiency = 0.15
+	BGM_ = {
 	}
-	BGM_free_militias = {
-		land_morale = 0.05
-		naval_morale = 0.05
+	BGM_ = {
 	}
-	BGM_invest_in_maritime_interests = {
-		naval_forcelimit_modifier = 0.33
+	BGM_ = {
 	}
-	BGM_never_serve_another = {
-		reserves_organisation = 0.05
+	BGM_ = {
 	}
 }
 
@@ -248,86 +235,43 @@ slovenia_ideas = {
 }
 
 kurdistan_ideas = {
-	start = {
+    start = {
         shock_damage_received = -0.1
         land_attrition = -0.20
-	}
-	
-	bonus = {
-		discipline = 0.05
-	}
-	
-	trigger = {
-		tag = KUS
-	}
-	free = yes
-	
-	KUS_irredentism = { # Irredentism
-		core_creation = -0.2
-		enemy_core_creation = 0.2
-	}
-	KUS_turko_arabic_influences = { # Turko-arabic influences
+    }
+    
+    bonus = {
+        discipline = 0.05
+    }
+    
+    trigger = {
+        tag = KUS
+    }
+    free = yes
+    
+    KUS_irredentism = { # Irredentism
+        core_creation = -0.25
+		hostile_attrition = 1
+    }
+    KUS_turko_arabic_influences = { # Turko-arabic influences
         cavalry_power = 0.15
-	}
-	KUS_righteousness_of_faith = { # Righteousness of Faith
-		land_morale = 0.1
-		global_heretic_missionary_strength = 0.02
-	}
-	KUS_citadels_and_fortresses = { #Citadels and fortresses
-		defensiveness = 0.25
-		rival_border_fort_maintenance = -0.1
-	}
-	KUS_kurdish_nationalism = { # Kurdish Nationalism
-		manpower_in_own_culture_provinces = 0.3
-	}
-	KUS_cradle_to_cradle = { # Cradle to Cradle
-		global_trade_goods_size_modifier = 0.1
-		global_tax_modifier = 0.2
-	}
-	KUS_claim_to_ayubbid_splendor = { # Claim to Ayubbid Splendor
-		monthly_splendor = 1
-	}
+    }
+    KUS_righteousness_of_faith = { # Righteousness of Faith
+        land_morale = 0.1
+        global_heretic_missionary_strength = 0.02
+    }
+    KUS_citadels_and_fortresses = { #Citadels and fortresses
+        defensiveness = 0.2
+        rival_border_fort_maintenance = -0.1
+    }
+    KUS_kurdish_nationalism = { # Kurdish Nationalism
+        manpower_in_own_culture_provinces = 0.3
+    }
+    KUS_cradle_to_cradle = { # Cradle to Cradle
+        global_trade_goods_size_modifier = 0.1
+        global_tax_modifier = 0.2
+    }
+    KUS_claim_to_ayubbid_splendor = { # Claim to Ayubbid Splendor
+        monthly_splendor = 2
+    }
 }
-africa_ideas = {
-	start = {
-		global_missionary_strength = 0.03
-		galley_power = 0.15
-	}
-	
-	bonus = {
-		discipline = 0.05
-	}
-	
-	trigger = {
-		tag = AFC
-	}
-	
-	AFC_renewed_knightly_orders = {
-		infantry_power = 0.1
-		cavalry_power = 0.1
-	}
-	AFC_coastal_settlements = {
-		placed_merchant_power = 20
-		center_of_trade_upgrade_cost = -0.25
-	}
-	AFC_desert_caravaneers = {
-		merchants = 1
-		global_tax_modifier = 0.25
-	}
-	AFC_crossing_stations = {
-		land_attrition = -0.25
-		global_tax_income = 24
-	}
-	AFC_frontier_churches = {
-		build_cost = -0.1
-		ae_impact = -0.1
-	}
-	AFC_multicultural_empire = {
-		num_accepted_cultures = 3
-		promote_culture_cost = -0.2
-	}
-	AFC_a_new_heartland = {
-		development_cost = -0.1
-	}
-}
-

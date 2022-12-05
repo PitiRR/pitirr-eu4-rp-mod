@@ -2,6 +2,8 @@
   #Pontus
   pontus_ideas:0 "Pontic Ideas"
   pontus_ideas_start:0 "Pontic Traditions"
+  pontus_ideas_bonus:0 "Pontic Ambition"
+
   POE_black_sea_contender:0 "Contender of the Black Sea"
   POE_black_sea_contender_desc:0 "The waves of the Black Sea are our Empire's heartbeats, and Greek Fire is our fist. We have an established contact with the descendants of the greatest Greek naval engineers, and we shall use them to protect us from any hostilities from the sea."
   POE_phoenix_rises:0 "The Phoenix Rises"
@@ -20,6 +22,8 @@
   #Slovenia
   slovenia_ideas:0 "Slovene Ideas"
   slovenia_ideas_start:0 "Slovene Traditions"
+  slovenia_ideas_bonus:0 "Slovene Ambition"
+
   SLV_develop_slovenia:0 "Develop Slovenia"
   SLV_develop_slovenia_desc:0 "The Slovenes is a small nation. It is imperative to follow a \"work from the foundations\" approach, rather than fruitlessly fight military wars. Let's dedicate our funds to help out the poorest, subsidize merchants and educate the nobles."
   SLV_cilli_diplomacy:0 "von Cilli Diplomacy"
@@ -36,6 +40,7 @@
   SLV_local_infrastructure_desc:0 "A major benefit of small states is how close and relevant it can stay to its population. Intel is high, allowing for close attention to detail and quality supervision of development. We are no different, and can plan ahead like nobody else."
 
   #Sarmatia
+
   sarmatia_ideas:0 "Sarmatian Ideas"
   sarmatia_ideas_start:0 "Sarmatian Traditions"
   sarmatia_ideas_bonus:0 "Sarmatian Ambition"
@@ -62,6 +67,7 @@
   SMT_sich_rada_desc:0 "The Government of the Sich is a unique one. The Cossack Council consistent of thousands, tens of thousands people and was the most important institution in the state. An 'upper house' was the Cossack Elders, the closest advisors of the Ataman. Finally, we have two rulers - Kosh otaman to lead us in peace and Otaman to lead us in war. Quite literally we are ahead of our times, and our structures predate modern balance of power structures. Our republican values are unparalleled."
 
   #Kurdistan
+
   kurdistan_ideas:0 "Kurdish Ideas"
   kurdistan_ideas_start:0 "Kurdish Traditions"
   kurdistan_ideas_bonus:0 "Kurdish Ambition"
@@ -86,8 +92,8 @@
 
   KUS_claim_to_ayubbid_splendor:0 "Ayyubid Claims"
   KUS_claim_to_ayubbid_splendor_desc:0 "We are the direct inheritants of the Ayyubids Caliphate, in the later years referred sometimes as Hisn Kayfa. This is a glorious mantle to carry, and we carry it with pride."
-
   #Rhineland
+  
   rhineland_ideas:0 "Rhenish Ideas"
   rhineland_ideas_start:0 "Rhenish Traditions"
   rhineland_ideas_bonus:0 "Rhenish Ambition"

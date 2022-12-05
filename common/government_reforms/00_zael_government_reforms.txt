@@ -3,7 +3,6 @@ romance_senate_reform = {
 	allow_normal_conversion = yes
 	valid_for_nation_designer = yes
 	nation_designer_cost = 40
-	royal_marriage = yes
 	heir = no
 	potential = {
 		OR = {
@@ -106,7 +105,7 @@ settled_khanate_reform = {
     royal_marriage = yes
 
     modifiers = {
-		vassal_forcelimit_bonus = 1
+		liberty_desire_from_subject_development = -0.25
         tolerance_heathen = 3
     }
 
@@ -123,10 +122,11 @@ settled_khanate_reform = {
 		}
 	}
 
+	custom_attributes = {
+		disables_estate_nobles = yes
+	}
+
     conditional = {
-		custom_attributes = {
-			disables_estate_nobles = yes
-		}
         allow = { has_dlc = "Res Publica" }
         heir = no
         duration = 20
@@ -135,8 +135,7 @@ settled_khanate_reform = {
             decentralized = {
                 country_military_power = 1
 				army_tradition_from_battle = 0.5
-				liberty_desire_from_subject_development = -0.25
-
+				vassal_forcelimit_bonus = 1
             }
 
             centralized = {
