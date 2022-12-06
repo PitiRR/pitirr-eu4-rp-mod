@@ -32,7 +32,7 @@ KUS_1 = {
 				add_prestige = 10
 			}
 			add_country_modifier = {
-				name = kus_first_revenge
+				name = "kus_first_revenge"
 				duration = 7300
 			}
 			if = {
@@ -787,7 +787,7 @@ KUS_5 = {
 			every_owned_province = {
 				limit = { trade_goods = silk }
 				add_province_modifier = {
-					name = persian_carpets_abroad
+					name = "persian_carpets_abroad"
 					duration = -1
 				}
 			}
