@@ -1,3 +1,47 @@
+tunis_ideas = {
+	free = yes
+	start = {
+		galley_power = 0.25
+		may_perform_slave_raid = yes
+	}
+	
+	bonus = {
+		naval_forcelimit_modifier = 0.3
+	}
+	
+	trigger = {
+		tag = TUN
+	}
+	
+	catalan_guard = {
+		infantry_power = 0.15
+	}
+	dual_diplomacy = {
+		rival_change_cost = -1
+		diplomatic_upkeep = 1
+	}
+	corsairs = {
+		navy_tradition = 1
+		privateer_efficiency = 0.25
+	}
+	attract_foreign_pirates = {
+		global_sailors_modifier = 0.25
+		regiment_manpower_usage = -0.15
+	}
+	board_of_captains = {
+		leader_naval_fire = 1
+		leader_land_fire = 1
+	}
+	export_monopolies = {
+		trade_efficiency = 0.15
+		embargo_efficiency = 0.25
+	}
+	tunisian_caliphate = {
+		tolerance_own = 2
+		monthly_piety_accelerator = 0.001
+	}
+}
+
 SCO_Ideas = {
 	free = yes
 	start = {
@@ -42,7 +86,49 @@ SCO_Ideas = {
 	}
 }
 
-arabian_ideas = {
+pomerania_ideas = { # feels weird to not type "pomeranian"
+	free = yes
+	start = {
+		land_morale = 0.1
+		light_ship_cost = -0.2
+	}
+	
+	bonus = {
+		discipline = 0.075
+	}
+	
+	trigger = {
+		tag = POM
+	}
+	
+	legacy_of_pirates = {
+		embargo_efficiency = 0.33
+		privateer_efficiency = 0.33
+	}
+	pomeranian_merchants = {
+		merchants = 1
+		trade_steering = 0.25
+	}
+	nortern_ports = {
+		global_trade_power = 0.1
+	}
+	religious_freedom = {
+		tolerance_heretic = 3
+		tolerance_heretic_capacity = 3
+	}
+	mercenary_contracts = {
+		merc_maintenance_modifier = -0.2
+		spy_offence = 0.5
+	}
+	dominate_the_baltic = {
+		trade_efficiency = 0.25
+	}
+	germany_navy = {
+		naval_forcelimit_modifier = 0.25
+	}
+}
+
+arabia_ideas = {
 	free = yes
 	start = {
 		movement_speed = 0.1
@@ -92,11 +178,11 @@ ULM_ideas = {
 	start = {
 		own_territory_dice_roll_bonus = 1
 		trade_efficiency = 0.1
-		governing_capacity_modifier = -0.99
+		# governing_capacity_modifier = -0.99
 	}
 	
 	bonus = {
-		yearly_army_professionalism = 0.0025
+		yearly_army_professionalism = 0.002
 	}
 	
 	trigger = {
@@ -104,7 +190,7 @@ ULM_ideas = {
 	}
 	
 	ulm_grosser_schwoerbrief = {
-		burghers_loyalty_modifier = 0.1
+		burghers_loyalty_equilibrium = 0.1
 		republican_tradition = 0.2
 	}
 	ulm_swabian_league = {
@@ -121,16 +207,16 @@ ULM_ideas = {
 		garrison_size = 0.25
 	}
 	ulm_textile_trade = {
-		development_cost = -0.3
+		development_cost = -0.1 # replace with the 30% after zael rp mp #1 finishes
+		# development_cost = -0.3
 	}
 	ulm_swiss_mercs = {
-		discipline = 0.075
+		discipline = 0.05 # Improve to 7.5 after zael rp mp #1 finishes
 		army_tradition_decay = -0.01
-		possible_condottieri = 1
 	}
 	ulm_minster = {
 		tolerance_own = 2
-		monthly_church_power = 0.025
+		monthly_church_power = 0.03
 		monthly_fervor_increase = 1
 	}
 }
