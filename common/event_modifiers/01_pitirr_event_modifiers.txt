@@ -252,3 +252,12 @@ rhi_growth_of_cities = {
     local_tax_modifier = 0.25
     local_manpower_modifier = 0.25
 }
+
+pitirr_tur_classical_army = {
+    land_attrition = -0.1
+    drill_gain_modifier = 0.5
+}
+
+pitirr_tur_gunpowder_empire = {
+    fire_damage = 0.15
+}

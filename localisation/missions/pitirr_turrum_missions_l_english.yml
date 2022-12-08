@@ -1,0 +1,29 @@
+﻿l_english:
+  defeat_austria_title:0 "Defeat Austria"
+  defeat_austria_desc:0 "Our archrivals, the archdukes of Austria, have become weak thanks to our efforts. To ensure they will never again doubt our power, it's imperative to dissolve the Holy Roman Empire, the core of their influence, or to actually defeat them in a war, directly."
+
+  emirates_in_calabria_title:0 "Calabrian Emirates"
+  emirates_in_calabria_desc:0 "South Italy was once a stronghold of Muslim influence, wealth and power. Although Sicily is firmly under our control, we must restore the emirates to entrench our power in the Mediterranean and Italy."
+
+  develop_constantinople_title:0 "City Worthy of a Padishah"
+  develop_constantinople_desc:0 "Konstantiniyye is truly the greatest city of all. Unfortunately, the Byzantine mismanagement resulted in its fall, both in commerce, culture and political power.\n\nAs the new Sons of Rome, we must restore it to its former glory - this time, in the pious light of Allah."
+
+  tur_classical_army_title:0 "The Classical Army"
+  tur_classical_army_desc:0 "A growing empire requires a formidable army. We must completely overhaul our army structure if we wish to compete on the arena of Great Powers.\n\nWe are in a unique position in the sense that we control lands of both Muslim Turks, but also Christian Turks, Greeks, Muslim Greeks and much more alien cultures. We must work to integrates those regions in the form of Jannisaries, as well as auxiliary units. A delicate balance of provincial troops must also be controlled."
+
+  pitirr_tur_classical_army:0 "The Classical Army"
+  desc_pitirr_tur_classical_army:0 "We have established what will be known in the future as the Classical Army. Composed of elite Jannisaries, but also provincial troops, auxiliary forces and beys leading the cavalries makes a very unique and formidable army that many will base off of us."
+
+  tur_gunpowder_empire_title:0 "The Gunpowder Empire"
+  tur_gunpowder_empire_desc:0 "We are the leading users of modern muskets and field artillery. Not only we extensively use those weapons, but those manufactured by us are of great quality - say the Chinese, to whom we export some guns.\n\nWe must expand our artillery units and properly train them to ensure we do not fall behind our enemies, and stay on top as the Greatest Empire in the World."
+
+  pitirr_tur_gunpowder_empire:0 "Gunpowder Empire"
+  desc_pitirr_tur_gunpowder_empire:0 "We are known as one of the three Gunpowder Empires due to our extensive use of muskets, artillery and other firearms. Ours are of the best quality used by trained troops and thus we stay on top."
+
+  tur_reform_jannisaries_title:0 "Reform the Janisaries"
+  tur_reform_jannisaries_desc:0 "While the Janissaries are undoubtedly among the best warriors of the modern age, they have gone too far - they are involved in palace intrigues and politics where they should listen to their superiors.\n\nWhile they are extensively trained, they also somewhat refuse to adopt modern, Western tactics which are evidently superior due to development of technology.\n\nIt appears that despite out alliances with certain powers, how Janissaries come to be is controversial. It is believed it's a crown symbol of Turkish backwardness and despotism.\n\nWe must modernize and Westernize if we wish not to fall prey to imperialist powers."
+
+  pitirr_tur_had_janissary_decadence_tt:0 "Completed the §YJanissary Coup§! disaster."
+
+  ally_horde_title:0 "Steppe Diplomacy"
+  ally_horde_desc:0 "The Mongols have established a very profitable Silk Road, and one of its threads was placed on the emporium of Sarai. While outside of our direct reach, it would be wise and profitable to ally a fellow Muslim there for mutual benefit."

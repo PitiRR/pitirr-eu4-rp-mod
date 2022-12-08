@@ -65,3 +65,16 @@ rhi_jewish_minority_tm = {
 	local_development_cost = -0.1
 	interest = -0.5
 }
+
+edinburgh_london_modifier = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		owned_by = SCO
+	}
+
+	local_build_cost = -0.15
+	local_development_cost = -0.15
+}
