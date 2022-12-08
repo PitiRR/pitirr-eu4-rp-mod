@@ -1088,7 +1088,7 @@ mfa_religion_catholic = {
 				}
 			}
 			else = {
-				add_stability = 1
+				add_stability_or_adm_power = yes
 				add_dip_power = 50
 			}
 		}

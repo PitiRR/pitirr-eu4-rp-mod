@@ -4,6 +4,7 @@ monarchy = {
 		feudalism_vs_autocracy = {
 			reforms = {
 				multicultural_empire
+				settled_khanate_reform
 				feudalism_reform
 				autocracy_reform
 				plutocratic_reform
@@ -89,6 +90,7 @@ monarchy = {
 		}
 		bureaucracy = {
 			reforms = {
+				romance_senate_reform
 				centralize_reform
 				centralize_empire_reform
 				decentralize_reform
@@ -392,10 +394,12 @@ republic = {
 				liberte_reform
 				egalite_reform
 				fraternite_reform
+				islamicized_political_dynasties_reform
 			}
 		}
 		frequent_elections_vs_consolidation_of_power = {
 			reforms = {
+				romance_senate_reform
 				frequent_elections_reform
 				consolidation_of_power_reform
 				consolidate_power_in_doge_reform
@@ -735,6 +739,7 @@ theocracy = {
 	reform_levels = {
 		theocratic_leadership = {
 			reforms = {
+				multicultural_empire
 				leading_clergy_reform
 				monastic_order_reform
 				crusading_kingdom_reform
@@ -762,6 +767,7 @@ theocracy = {
 		}
 		education_of_the_state = {
 			reforms = {
+				romance_senate_reform
 				kingdom_of_god_reform
 				education_of_the_bishop_reform
 				education_of_the_advisors_reform
