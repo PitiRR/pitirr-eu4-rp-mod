@@ -292,6 +292,10 @@
  statists_MECHANIC_TOOLTIP:0 "Statists"
  orangists_MECHANIC_TOOLTIP:0 "Orangists"
  monarchists_MECHANIC_TOOLTIP:0 "Monarchists"
+ consuls_MECHANIC_TOOLTIP:0 "Consuls" #romance_senate_reform
+ magistrates_MECHANIC_TOOLTIP:0 "Magistrates" #romance_senate_reform
+ decentralized_MECHANIC_TOOLTIP:0 "Decentralized Rule" # settled_khanate_reform
+ centralized_MECHANIC_TOOLTIP:0 "Centralized Rule" # settled_khanate_reform
  mechanic_allow_vassal_war_yes:0 "Allows wars between vassals."
  mechanic_allow_vassal_war_no:0 "Disallows wars between vassals."
  mechanic_allow_vassal_alliance_yes:0 "Allows alliances between vassals."
