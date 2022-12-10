@@ -1,0 +1,20 @@
+estate_french_colonial_strongmen = {
+	is_valid = { tag = SCO }
+	icon = privilege_grant_autonomy
+	land_share = 0
+	max_absolutism = 0
+	loyalty = 0.00
+	influence = 0.10
+	can_select = {
+	}
+	on_granted = {
+	}
+	penalties = {
+		global_tariffs = -0.05
+	}
+	benefits = {
+	}
+	ai_will_do = {
+		factor = 0
+	}
+}

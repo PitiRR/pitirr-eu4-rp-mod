@@ -61,6 +61,45 @@ romance_senate_reform = {
     }
 }
 
+romance_empire_reform = {
+	icon = "signoria_reform"
+	allow_normal_conversion = yes
+	valid_for_nation_designer = yes
+	nation_designer_cost = 40
+	heir = no
+	fixed_rank = 3
+	potential = {
+		OR = {
+			tag = RMN
+			culture_group = latin
+			culture_group = byzantine
+			dynasty = "palaiologos"
+			dynasty = "macedonian"
+			dynasty = "komnenos"
+		}
+	}
+	nation_designer_trigger = {
+		OR = {
+			culture_group = byzantine
+			culture_group = latin
+		}
+	}
+	modifiers = {
+		governing_capacity = 100
+		build_cost = -0.1
+		max_absolutism = 20
+	}
+	ai = {	
+		factor = 0
+	}
+
+	conditional = {
+		allow = { has_dlc = "Common Sense" }
+		has_parliament = yes
+		heir = no
+	}
+}
+
 islamicized_political_dynasties_reform = {
 	icon = "signoria_reform"
 	allow_normal_conversion = yes
