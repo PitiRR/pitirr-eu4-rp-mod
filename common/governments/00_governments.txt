@@ -5,6 +5,7 @@ monarchy = {
 			reforms = {
 				multicultural_empire
 				settled_khanate_reform
+				romance_empire_reform
 				feudalism_reform
 				autocracy_reform
 				plutocratic_reform
