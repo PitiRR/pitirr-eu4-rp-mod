@@ -261,3 +261,15 @@ pitirr_tur_classical_army = {
 pitirr_tur_gunpowder_empire = {
     fire_damage = 0.15
 }
+
+rule_britannia = {
+    naval_morale = 0.1
+    global_ship_cost = -0.1
+    ship_recruit_speed = -0.25
+    legitimacy = 1
+}
+
+sco_plantations = {
+    local_culture_conversion_cost = -0.75
+    local_unrest = 2
+}

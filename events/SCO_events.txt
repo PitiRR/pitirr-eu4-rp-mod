@@ -36,28 +36,42 @@ country_event = {
 	id = flavor_sco.12
 	title = "flavor_sco.EVTNAME12"
 	desc = "flavor_sco.EVTDESC12"
-	picture = CITY_DEVELOPMENT_eventPicture
+	picture = CULTURE_eventPicture
 	
 	is_triggered_only = yes
 	
-	# make scottish become celtic
+	# unify all into celtic and switch
 	option = {
 		name = "flavor_sco.EVTOPTA12"
-		236 = {
-			add_base_tax = -2
-			add_base_manpower = -2
-			add_base_production = -2
+		every_province = {
+			limit = {
+				OR = {
+					culture = welsh
+					culture = highland_scottish
+					culture = cornish
+					culture = scottish
+				}
+			}
+			change_culture = briton
 		}
-		248 = {
-			add_base_tax = 3
-			add_base_manpower = 3
-			add_base_production = 3
-			add_province_triggered_modifier = edinburgh_london_modifier
-		}
+		add_stability = -2
 	}
-	# leave london alone
+	# remain british group
 	option = {
 		name = "flavor_sco.EVTOPTB12"
+		every_owned_province = {
+			limit = {
+				OR = {
+					culture = welsh
+					culture = highland_scottish
+					culture = cornish
+				}
+			}
+			add_province_modifier = {
+				name = sco_plantations
+				duration = 7300
+			}
+		}
 		add_stability_or_adm_power = yes
 	}
 }

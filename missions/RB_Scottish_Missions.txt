@@ -378,7 +378,31 @@ sco_rb_conquest_missions = {
 			add_prestige = 25
 			add_country_modifier = {
 				name = "rule_britannia"
-				duration = 7300
+				duration = -1
+			}
+		}
+	}
+	sco_to_be_or_not_to_be = {
+		icon = mission_noble_council
+		required_missions = { sco_british_empire }
+		trigger = {
+			stability = 2
+			all_province = {
+				region = british_isles_region
+				OR = {
+					culture = highland_scottish
+					culture = welsh
+					culture = cornish
+					culture = scottish
+				}
+				owned_by = ROOT
+				NOT = { local_autonomy = 10 }
+				NOT = { unrest = 1 }
+			}
+		}
+		effect = {
+			country_event = {
+				id = flavor_sco.12
 			}
 		}
 	}

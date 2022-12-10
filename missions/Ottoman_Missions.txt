@@ -948,8 +948,8 @@ tur_black_sea = {
 	has_country_shield = yes
 		
 	ally_horde = {
-		icon = mission_conquer_50_development
-		required_missions = { mission_chinese_general_riding }
+		icon = mission_chinese_general_riding
+		required_missions = { consolidate_asia_minor }
 		position = 3
 		completed_by = 1461.1.1
 		provinces_to_highlight = {
@@ -1313,14 +1313,20 @@ tur_conquest_of_middle_east = {
 		trigger = {
 			north_kurdistan_area = {
 				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+				OR = {
+					country_or_non_sovereign_subject_holds = ROOT
+					owner = {
+						alliance_with = ROOT
+						trust = { who = ROOT value = 75 }
+					}
+				}
 			}
 			dulkadir_area = {
 				type = all
 				OR = {
 					country_or_non_sovereign_subject_holds = ROOT
-					any_ally = {
-						country_or_non_sovereign_subject_holds = PREV
+					owner = {
+						alliance_with = ROOT
 						trust = { who = ROOT value = 75 }
 					}
 				}
