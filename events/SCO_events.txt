@@ -33,7 +33,7 @@ country_event = {
 }
 
 country_event = {
-	id = flavor_sco.12
+	id = pitirr_flavor_sco.12
 	title = "flavor_sco.EVTNAME12"
 	desc = "flavor_sco.EVTDESC12"
 	picture = CULTURE_eventPicture

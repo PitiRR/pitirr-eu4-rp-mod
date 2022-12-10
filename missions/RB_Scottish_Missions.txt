@@ -402,7 +402,7 @@ sco_rb_conquest_missions = {
 		}
 		effect = {
 			country_event = {
-				id = flavor_sco.12
+				id = pitirr_flavor_sco.12
 			}
 		}
 	}
