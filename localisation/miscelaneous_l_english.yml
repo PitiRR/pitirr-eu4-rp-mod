@@ -3,7 +3,7 @@
   koj_convert_provinces_at_formation_french_tt:0 "All owned provinces in the §YLevant§! Subcontinent and in the §YFrench§! Culture Group will become §YFranco-Levantine§!."
   koj_convert_provinces_at_formation_greek_tt:0 "All owned provinces in the §YLevant§! Subcontinent and in the §YByzantine§! Culture Group will become §YGreco-Levantine§!."
 
-  has_any_manufactory_tt:0 "Has §Yany§! manufactory building."
+  has_any_manufactory_tt:0 "Has §Yany§! Manufactory."
 
   rhi_buy_free_city_title:0 "Buy a Free City"
   rhi_buy_free_city_desc:0 "Using our influence within the Empire, we can annex a Free City by handsomely compensating the Emperor."

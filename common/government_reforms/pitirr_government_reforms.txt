@@ -1,0 +1,49 @@
+multicultural_empire = {
+    icon = "peasants"
+    allow_normal_conversion = yes
+    potential = {
+        OR = {
+            religion_group = muslim
+            religion_group = christian
+        }
+        OR = {
+            AND = {
+                tag = KUS
+                NOT = { map_setup = map_setup_random }
+            }
+            capital_scope = {
+                superregion = near_east_superregion
+            }
+        }
+    }
+    maintain_dynasty = yes
+
+    valid_for_nation_designer = yes
+    nation_designer_cost = 60
+
+    nation_designer_trigger = {
+        OR = {
+            religion_group = muslim
+            religion_group = christian
+        }
+    }
+    
+    lock_level_when_selected = yes
+
+    modifiers = {
+        num_accepted_cultures = 3
+        promote_culture_cost = -0.5
+        reduced_liberty_desire = 10
+        vassal_income = 0.33
+        accept_vassalization_reasons = 5
+        manpower_in_accepted_culture_provinces = 0.1
+        culture_conversion_cost = 1
+    }
+    
+    conditional = {
+        allow = { has_dlc = "Cradle of Civilization" }
+        government_abilities = {
+            mamluk_mechanic
+        }
+    }
+}

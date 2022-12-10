@@ -57,3 +57,15 @@
   pitirr_flavor_kus.1.desc:0 "My [Root.Monarch.GetTitle], I bring news - we have successfully captured the last outposts of our enemies and now all of Iraq and Basrah are under our control! As it appears, the Sunni minorities in the southern regions are far less populous as we have initially expected, though Baghdad is indeed Sunni. This rises an important question, which we can't ignore - what should we do with the Shi'ite population of Mashriq?\n\nWe can forcefully convert them, of course. This will make the Ulema in our country happy as well as influential, as they will be spearheading the integration of the provinces. Should You wish, my lord, we could attempt to placate the locals by tolerating their beliefs, though is separate mosques of course."
   pitirr_flavor_kus.1.a:0 "Convert the heretics!"
   pitirr_flavor_kus.1.b:0 "Stability is critical - leave them be."
+
+  #sco_events.txt
+
+  flavor_sco.EVTNAME12:0 "To be, or not to be"
+  flavor_sco.EVTDESC12:0 "As we have concluded the conquest of the British isles as well as consolidated the many cultures of the region, an oppoortunity has risen - by firmly and directly controlling all Welsh, Scottish and Cornish cultures we are able to still reverse the English plantations and deculturization efforts.\n\nOnce proudly Celtic Briton, some damages have already been done in integrating those cultures into English. However, with proper administrative care, we could attempt to reverse completely and unify the south once more with our Irish and Highlander brothers. Monks from those regions await our decision to teach people in the languages of their forefathers.\n\nAlternatively, we can continue English efforts to integrate those cultures. This would significantly lower the administrative overhead from accepting those cultures. What should we do, my lord?"
+  flavor_sco.EVTOPTA12:0 "The Britons shall rule once more!"
+  flavor_sco.EVTOPTB12:0 "Let's continue English efforts."
+
+  sco_plantations:0 "Plantations of Scotland"
+  desc_sco_plantations:0 "We decided to confiscate lands owned by local heads and settle English and Scottish settlers there."
+
+  briton:0 "Briton"
