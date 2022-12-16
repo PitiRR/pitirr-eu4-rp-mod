@@ -1,0 +1,185 @@
+# For RP game, remove file after it ends.
+
+hanans_paranoia = {
+	spy_offence = 0.2
+	global_spy_defence = 0.2
+	tolerance_heretic = -2
+	harsh_treatment_cost = -0.5
+}
+
+timurid_military_aid = {
+	manpower_recovery_speed = 0.2
+	land_maintenance_modifier = -0.2
+}
+
+gutnish_pirate_tolerance = {
+	no_religion_penalty = yes
+}
+
+influence_over_french_crown = {
+	papal_influence = 2
+	diplomatic_reputation = 1
+	diplomatic_upkeep = 1
+}
+
+cilli_isolationism = {
+	diplomatic_upkeep = -1
+	global_spy_defence = 0.5
+	trade_efficiency = -0.2
+	development_cost = -0.20
+	stability_cost_to_declare_war = 1
+}
+
+celovic_fortification_efforts = {
+	local_defensiveness = 0.2
+	local_garrison_size = 0.5
+	local_fort_maintenance_modifier = 0.25
+	local_hostile_attrition = 1
+}
+
+yama_o_taosu_hoho = {
+	artillery_levels_available_vs_fort = 1
+	leader_siege = 1
+	siege_ability = 0.1
+}
+
+integrate_wakou_pirates = {
+	galley_power = 0.1
+	may_perform_slave_raid = yes
+}
+
+#### SESSION TWO
+
+roman_business_academy = {
+	tax_income = 6
+	trade_efficiency = 0.1
+	prestige = 0.5
+}
+
+invitation_of_brilliant_scholars = {
+	idea_cost = -0.05
+	technology_cost = -0.05
+}
+
+modern_jannisary_drills = {
+	fire_damage = 0.1
+	shock_damage = -0.05
+	siege_ability = 0.15
+	drill_gain_modifier = 0.33
+	land_maintenance_modifier = 0.1
+}
+
+fadl_clan_defenders = {
+	local_defensiveness = 0.1
+	local_garrison_size = 0.1
+	local_hostile_attrition = 1
+}
+
+catholic_pariah = {
+	relation_with_same_religion = -50
+	manpower_recovery_speed = -0.2
+}
+
+direct_andalusian_oversight = {
+	local_tax_modifier = -1
+	trade_goods_size = 0.5
+	trade_goods_size_modifier = 0.05
+	local_development_cost = -0.1
+}
+
+suleyman_the_malevolent = {
+	reduced_liberty_desire = 20
+	diplomatic_reputation = -2
+	morale_damage = 0.05
+	ae_impact = 0.25
+}
+
+slayer_of_christians = {
+	tolerance_heathen = -3
+}
+
+bank_of_arabia = {
+	inflation_reduction = 0.03
+	interest = -0.25
+	production_efficiency = 0.05
+	mercantilism_cost = -0.2
+	trade_steering = 0.05
+}
+
+bagrationi_royal_emissary = {
+	reduced_liberty_desire = 10
+	vassal_income = 0.25
+	vassal_forcelimit_bonus = 0.25
+}
+
+armenian_auxilia = {
+	infantry_power = 0.1
+	infantry_cost = 0.05
+}
+
+andalusian_settlements = {
+	trade_value = 5
+	local_development_cost = -0.05
+	local_manpower = 0.5
+}
+
+stable_dynastic_rule = {
+	reelection_cost = -0.6
+	nobles_influence_modifier = 0.1
+}
+
+andalusians_join_the_conquest = {
+	ae_impact = -0.1
+	core_creation = -0.1
+	manpower_recovery_speed = 0.2
+	land_maintenance_modifier = -0.05
+}
+
+clean_earth_clean_sky = {
+	global_missionary_strength = 0.02
+	culture_conversion_cost = -0.25
+	tolerance_heathen = -4
+}
+
+internal_immigration = {
+	development_cost = -0.1
+}
+
+internal_emigration = {
+	local_development_cost = 0.3
+}
+
+smuggler_deal = {
+	yearly_corruption = 0.05
+	development_cost = -0.05
+	trade_efficiency = 0.05
+}
+
+absent_monarch = {
+	global_autonomy = 0.1
+}
+
+iron_fist = {
+	max_absolutism = 10
+	harsh_treatment_cost = -0.1
+	global_unrest = 1
+}
+
+bureaucratic_scrambling = {
+	core_creation = 0.1
+}
+
+bread_and_sermons = {
+	global_tax_income = -6
+	global_heretic_missionary_strength = 0.02
+}
+
+extreme_oversight = {
+	local_unrest = -3
+	culture_conversion_cost = -0.5
+	local_missionary_strength = 0.02
+}
+
+eager_migrants = {
+	local_development_cost = -0.3
+}
